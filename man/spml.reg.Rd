@@ -7,7 +7,7 @@ Circular or angular regression.
 Regression with circualr dependent variable and Euclidean or categorical independent variables. 
 }
 \usage{
-spml.reg(y, x, rads = T)
+spml.reg(y, x, xnew = x, pred = F, rads = T)
 }
 \arguments{
   \item{y}{
@@ -15,6 +15,12 @@ spml.reg(y, x, rads = T)
 }
   \item{x}{
   The independent variable(s). Can be Euclidean or categorical. If they are categorical, the user must provide them as dummy variables. It does not accept factor variables. 
+}
+  \item{xnew}{
+  The new values of some independent variable(s) whose circular values you want to predict. Can be Euclidean or categorical. If they are categorical, the user must provide them as dummy variables. It does not accept factor variables. 
+}
+  \item{pred}{
+  A boolean variable taking values TRUE if the xnew is new data or FALSE if the xnew is the same as x. In the second case, the fitted values will be calculated. 
 }
   \item{rads}{
 If the dependent variable is expressed in rads, this should be TRUE and FALSE otherwise. 
@@ -64,7 +70,7 @@ x <- rnorm(100)
 z <- cbind(3+ 2 * x, 1 -3 * x)
 y <- cbind( rnorm(100,z[ ,1], 1), rnorm(100, z[ ,2], 1) )
 y <- y/sqrt(rowSums(y^2))
-y <- ( atan(y[, 2]/y[, 1]) + pi * I(y[, 1] < 0) ) %% (2 * pi)
+y <- ( atan(y[, 2]/y[, 1]) + pi * I(y[, 1] < 0) ) \%\% (2 * pi)
 spml.reg(y, x, rads = TRUE)
 }
 \keyword{ Circular regression }

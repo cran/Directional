@@ -40,13 +40,13 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{vmf.kerncontour}, \link{vmf.contour}, \link{mix.vmf}}
 }
 \examples{
-k = runif(2, 4, 20)
-prob = c(0.4, 0.6)
-mu = matrix(rnorm(6), ncol = 3)
-mu = mu / sqrt(rowSums(mu^2))
-x = rmixvmf(200, prob, mu, k)$x
-mod = mix.vmf(x, 2)
-y = euclid.inv(x)
+k <- runif(2, 4, 20)
+prob <- c(0.4, 0.6)
+mu <- matrix(rnorm(6), ncol = 3)
+mu <- mu / sqrt(rowSums(mu^2))
+x <- rmixvmf(200, prob, mu, k)$x
+mod <- mix.vmf(x, 2)
+y <- euclid.inv(x)
 mixvmf.contour(y, mod)
 }
 \keyword{ Contour plot}

@@ -53,8 +53,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{vmfda.pred}, \link{mix.vmf}, \link{vmf}}
 }
 \examples{
-x = rvmf(100, rnorm(4), 15)
-ina = rep(1:2, each = 50)
+x <- rvmf(100, rnorm(4), 15)
+ina <- rep(1:2, each = 50)
 vmf.da(x, ina, fraction = 0.2, R = 200, seed = FALSE) 
 }
 \keyword{ Discriminant analysis }

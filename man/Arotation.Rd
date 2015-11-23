@@ -42,9 +42,9 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 }
 \examples{
-ksi = c(25.31, 24.29)
-theta = 2.38
-A = rot.matrix(ksi, theta, rads = FALSE)
+ksi <- c(25.31, 24.29)
+theta <- 2.38
+A <- rot.matrix(ksi, theta, rads = FALSE)
 A 
 Arotation(A)
 }

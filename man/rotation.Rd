@@ -39,11 +39,11 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{Arotation}, \link{rot.matrix}, \link{lambert}, \link{lambert.inv}}
 }
 \examples{
-a = rnorm(3)
-a = a/sqrt(sum(a^2))
-b = rnorm(3)
-b = b/sqrt(sum(b^2))
-A = rotation(a, b)
+a <- rnorm(3)
+a <- a/sqrt(sum(a^2))
+b <- rnorm(3)
+b <- b/sqrt(sum(b^2))
+A <- rotation(a, b)
 A
 a  ;  b
 a %*% t(A)

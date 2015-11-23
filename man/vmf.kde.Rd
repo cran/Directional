@@ -46,10 +46,10 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{vmfkde.tune}, \link{vm.kde}, \link{vmf}}
 }
 \examples{
-x = rvmf(100, rnorm(5), 15)
-h = vmfkde.tune(x)$hopt
-f1 = vm.kde(x, h = h, thumb = "none")
-f2 = vm.kde(x, h = h, thumb = "rot") 
+x <- rvmf(100, rnorm(5), 15)
+h <- vmfkde.tune(x)$hopt
+f1 <- vm.kde(x, h = h, thumb = "none")
+f2 <- vm.kde(x, h = h, thumb = "rot") 
 f1$h  ;  f2$h
 }
 \keyword{ von Mises-Fisher }

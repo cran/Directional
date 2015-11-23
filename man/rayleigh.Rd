@@ -21,7 +21,7 @@ If B is greater than 1, bootstap calibation os performed. If it is equal to 1, c
 }
 }
 \details{
-The Rayleigh test of uniformity is not the best, when there are two antipodal mean directions. In this case it will fail. It is good to test whether there is one mean direction or not. TO put it differently, it tests whether the concentration parameter of the Fisher distribution is zero or not. 
+The Rayleigh test of uniformity is not the best, when there are two antipodal mean directions. In this case it will fail. It is good to test whether there is one mean direction or not. To put it differently, it tests whether the concentration parameter of the Fisher distribution is zero or not. 
 }
 \value{
 A vector including:
@@ -52,7 +52,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 \examples{
 
-x = rvmf(100, rnorm(5), 1)  ## Fisher distribution with low 
+x <- rvmf(100, rnorm(5), 1)  ## Fisher distribution with low 
 ## concentration
 rayleigh(x)
 

@@ -50,20 +50,20 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{spher.cor}, \link{spml.reg}}
 }
 \examples{
-mx = rnorm(3)
-mx = mx/sqrt(sum(mx^2))
-my = rnorm(3)
-my = my/sqrt(sum(my^2))
-x = rvmf(100, mx, 15)
-A =rotation(mx, my)
-y = x %*% t(A) 
-mod = spher.reg(y, x, euclidean = TRUE) 
-A 
-mod$A   ## exact match, no noise
-y = x %*% t(A) + rvmf(100, my, 5)
-mod = spher.reg(y, x, euclidean = TRUE) 
-A 
-mod$A   ## noise added, more relistic example
+mx <- rnorm(3)
+mx <- mx/sqrt(sum(mx^2))
+my <- rnorm(3)
+x <- rvmf(100, mx, 15)
+A <- rotation(mx, my)
+y <- x %*% t(A)
+mod <- spher.reg(y, x, euclidean = TRUE)
+A
+mod$A ## exact match, no noise
+y <- x %*% t(A) 
+y <- y + rvmf(100, colMeans(y), 40)
+mod <- spher.reg(y, x, euclidean = TRUE)
+A
+mod$A ## noise added, more relistic example
 }
 \keyword{ Spherical-Spherical regression }
 \keyword{ Spherical data }

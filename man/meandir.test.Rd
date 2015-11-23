@@ -47,8 +47,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{vmf}, \link{kent.mle}, \link{rayleigh}}
 }
 \examples{
-mu = rnorm(5)
-x = rvmf(100, mu, 10)
+mu <- rnorm(5)
+x <- rvmf(100, mu, 10)
 meandir.test(x, mu, 1)
 meandir.test(x, mu, 999)
 }

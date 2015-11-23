@@ -51,9 +51,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{rfb}, \link{rvmf} }
 }
 \examples{
-
-f.rbing(100, c(1, 0.6, 0.1))
-
+x <- f.rbing( 100, c(1, 0.6, 0.1) )
+x
 }
 \keyword{ Bingham distribution}
 \keyword{ Rejection sampling }

@@ -13,7 +13,7 @@ fitting distributions, random values generation, contour plots and many more are
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 1.5\cr
 Date: \tab 2015-11-12\cr
 License: \tab GPL-2\cr
 }

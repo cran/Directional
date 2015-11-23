@@ -51,12 +51,12 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{vmkde.tune}, \link{vmkde.tune_2}, \link{vm.kde}}
 }
 \examples{
-x = rvonmises(100, 2.4, 10, rads = TRUE)
+x <- rvonmises(100, 2.4, 10, rads = TRUE)
 hist(x, freq = FALSE)
-f1 = vm.kde(x, h = 0.1, thumb = "rot", rads = TRUE)$f
-f2 = vm.kde(x, h = 0.1, thumb = "tay", rads = TRUE)$f 
-h = vmkde.tune_2(x)[1]
-f3 = vm.kde(x, h = h, thumb = "none", rads = TRUE)$f 
+f1 <- vm.kde(x, h = 0.1, thumb = "rot", rads = TRUE)$f
+f2 <- vm.kde(x, h = 0.1, thumb = "tay", rads = TRUE)$f 
+h <- vmkde.tune_2(x)[1]
+f3 <- vm.kde(x, h = h, thumb = "none", rads = TRUE)$f 
 points(x, f1, col = 1)
 points(x, f2, col = 2)
 points(x, f3, col = 3)

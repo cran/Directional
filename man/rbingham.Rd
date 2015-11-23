@@ -42,8 +42,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{f.rbing}, \link{rfb}, \link{rvmf}}
 }
 \examples{
-A = cov(iris[,1:3])
-x = rbingham(100, A)
+A <- cov(iris[, 1:3])
+x <- rbingham(100, A)
 }
 \keyword{ Bingham distribution }
 \keyword{ Simulation of random values }

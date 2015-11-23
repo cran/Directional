@@ -54,7 +54,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \examples{
 u <- rvonmises(100, 2.4, 10, rads = TRUE)
 #parallel version 
-#vmkde.tune(u, ncores = 2)
+vmkde.tune(u, ncores = 2)
 vmkde.tune_2(u)
 }
 \keyword{ Kernel density estimate}

@@ -24,7 +24,7 @@ It calcculates the contour plot using a von Mises-Fisher kernel for spherical da
 A plot with the data in latitude and longitude along with their kernel density estimate contour lines.
 }
 \references{
-Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655-1685.
+Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655--1685.
 
 }
 \author{
@@ -39,8 +39,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{vmf.kde}, \link{vmfkde.tune}, \link{vmf.contour}}
 }
 \examples{
-x = rvmf(100, rnorm(3), 15)
-x = euclid.inv(x)
+x <- rvmf(100, rnorm(3), 15)
+x <- euclid.inv(x)
 par( mfrow = c(1, 2) )
 vmf.kerncontour(x, "rot")
 vmf.kerncontour(x, "none")

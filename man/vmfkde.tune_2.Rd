@@ -52,8 +52,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 x <- rvmf(100, rnorm(3), 15)
 f1 <- vmfkde.tune(x)
 f2 <- vmfkde.tune_2(x)
-f1
-f2
+f1  ;  f2
 }
 \keyword{ Kernel density estimate }
 \keyword{ von Mises-Fisher distribution }

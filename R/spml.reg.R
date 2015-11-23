@@ -6,9 +6,12 @@
 ################################
 
 
-spml.reg <- function(y, x, rads = T) {
+spml.reg <- function(y, x, xnew = x, pred = F, rads = T) {
   ## y is the angular dependent variable
   ## x contains the independent variable(s)
+  ## xnew is some new data or the current ones
+  ## pred is either TRUE (xnew is new data) or
+  ## FALSE (xnew is the same as x)
   ## if the data are in degrees we transform them into radians
   if (rads == F)   y <- y/180 * pi
   u <- cbind(cos(y), sin(y))  ## bring the data onto the circle
@@ -48,7 +51,7 @@ spml.reg <- function(y, x, rads = T) {
   mu <- x %*% B
   tau <- diag(u %*% t(mu))
   psit <- tau + pnorm(tau)/( dnorm(tau) + tau * pnorm(tau) ) 
-  psit2 <- diag( 2 - tau * pnorm(tau)/( dnorm(tau) + tau * pnorm(tau) ) -
+  psit2 <- diag( 2 - tau * pnorm(tau)/( dnorm(tau) + tau * pnorm(tau) )  - 
   ( pnorm(tau)/( dnorm(tau) + tau * pnorm(tau) ) )^2  )
   C <- u[, 1]   ;   S <- u[, 2]
   s11 <-  - crossprod(x) + t(x) %*% psit2 %*% crossprod(t(C)) %*% x
@@ -70,11 +73,13 @@ spml.reg <- function(y, x, rads = T) {
   rho <- circ.cor1(y, fitted, rads = T)  
   ## rho is the correlation between the fitted and the observed values
   ## the fitted values are in radians
-  if (rads == F)  fitted = fitted * 180 /pi 
-  if (p == 2) {
-    plot(x[, 2], y, xlab = "X", ylab = "Observed and fitted values")
-    points(x[, 2], fitted, col = 3, pch = 2)
+  if (pred == T) {  ## predict new values?
+    xnew <- cbind(1, xnew)
+    xnew <- as.matrix(xnew)
+    est <- xnew %*% B
+    fitted <- ( atan(est[, 2]/est[, 1]) + pi * I(est[, 1] < 0) ) %% (2 * pi) 
   }
+  if (rads == F)  fitted = fitted * 180 /pi 
   list(beta = B, seb = seb, rho = rho, R.sq = rho[1]^2, loglik = loglik, 
   fitted = fitted)
 }

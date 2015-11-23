@@ -44,8 +44,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{het.aov}, \link{lr.aov}, \link{embed.aov}, \link{hcf.aov} }
 }
 \examples{
-x = rvmf(100, rnorm(3), 15)
-ina = rep(1:4, each = 25)
+x <- rvmf(100, rnorm(3), 15)
+ina <- rep(1:4, each = 25)
 spherconc.test(x, ina)
 }
 \keyword{ Concentration parameters }

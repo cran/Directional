@@ -45,17 +45,17 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{rbingham}, \link{rvmf}}
 }
 \examples{
-k = 15
-mu = rnorm(3)
-A = cov(iris[, 1:3])  
-x = rfb(50, k, mu, A)
-vmf(x)  ## fits a von Mises-Fisher distribution to the simulated ## data. 
-## Next we simulate from a Kent distribution. 
-A = diag( c(5, 0, 5) )
-n=50
-x = rfb(n, k, mu, A)   ## data follow a Kent distribution
-kent.mle(x)  ##  fits a Kent distribution
-vmf(x)  ## fits a von Mises-Fisher distribution
+k <- 15
+mu <- rnorm(3)
+A <- cov(iris[, 1:3])
+x <- rfb(50, k, mu, A)
+vmf(x) ## fits a von Mises-Fisher distribution to the simulated data
+## Next we simulate from a Kent distribution
+A <- diag( c(-5, 0, 5) )
+n <- 50
+x <- rfb(n, k, mu, A) ## data follow a Kent distribution
+kent.mle(x) ## fits a Kent distribution
+vmf(x) ## fits a von Mises-Fisher distribution
 }
 
 \keyword{ Fisher-Bingham distribution }

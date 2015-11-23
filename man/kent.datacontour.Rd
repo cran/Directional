@@ -35,9 +35,9 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{kent.contour}, \link{kent.mle}, \link{vmf.kerncontour}}
 }
 \examples{
-x = rvmf(100, rnorm(3), 10) 
+x <- rvmf(100, rnorm(3), 10) 
 kent.mle(x) 
-y = euclid.inv(x) 
+y <- euclid.inv(x) 
 kent.datacontour(y)
 vmf.kerncontour(y, thumb = "none")
 }
