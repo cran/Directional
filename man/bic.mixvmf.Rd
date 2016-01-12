@@ -30,7 +30,7 @@ A plot of the BIC values.
 }
 }
 \references{
-Hornik, K. and Grun, B. (2014). movMF: An R package for fitting mixtures of von misesfisher distributions. Journal of Statistical Software, 58(10):1?31.
+Hornik, K. and Grun, B. (2014). movMF: An R package for fitting mixtures of von misesfisher distributions. Journal of Statistical Software, 58(10):1--31.
 }
 \author{
 Michail Tsagris

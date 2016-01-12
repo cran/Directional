@@ -1,4 +1,4 @@
-ef1ada3b89b49afa5a7bd098deb55da2 *DESCRIPTION
+5d3e4a5a5aead8356f00bcac03b38649 *DESCRIPTION
 1fdf8aef3e1e56316d9d1895031b640c *NAMESPACE
 383beac9f3574e269b0593d434c31296 *R/Arotation.R
 8e11b99807a25b1023a89603620d32ff *R/bic.mixvmf.R
@@ -7,6 +7,8 @@ dd929ad9646849903cc42e86662509e9 *R/circ.cor2.R
 eb5295694049b7b8ee2e341801fbbca6 *R/circ.summary.R
 e9d02868f2edba3d3195954ffeb4ff81 *R/circlin.cor.R
 3275308ce946b2690262b14167e0069e *R/conc.test.R
+7e162e3368e4d4452e2cab23963048d1 *R/dirknn.R
+79c57f46f1dadaadbccebaa7b77fe7a2 *R/dirknn.tune.R
 38831752358b161659625585823d4a0f *R/embed.aov.R
 d658a99781a6b065c9bab11ed7f91553 *R/embed.circaov.R
 4daee5b9a4d6ab0c4991cd610f4a82f9 *R/euclid.R
@@ -32,7 +34,7 @@ fdeda3155c6fed9ed9272c38b1ac9d4c *R/mixvmf.contour.R
 91d3f2d1e8cbd43a198674068fe94078 *R/rbingham.R
 3d41a5937adc4b089d8cd04c2888b410 *R/rfb.R
 0a3d8528b2d1bda3535b2874eed7bdf8 *R/rmixvmf.R
-85c168ae18bc833de7d84e4dd6e5c0e9 *R/rot.matrix.R
+f8accc8b337e7fc7290f5976c8049b5a *R/rot.matrix.R
 78997a0e79a719237fae7c345b8a10f7 *R/rotation.R
 0ec1bd6a69fad3a9b01a75f78dc3723c *R/rvmf.R
 06d7590a320e41ef11008a9a6b656e76 *R/rvnomises.R
@@ -54,12 +56,14 @@ f4f22010e22b90e7aaacd8d77e0bcc2d *R/vmkde.tune.R
 0acb48035c0aa1d1fc4366bd01779672 *R/vmkde.tune_2.R
 14d41043794f4ca1d1cb8bd703b47ae8 *man/Arotation.Rd
 6deb11e60bd3d6c6b865b1ce1898d758 *man/Directional-package.Rd
-0caea10d923c47c8f4a91b9fcc51ec8f *man/bic.mixvmf.Rd
+62c2db993e900b87cd419c0950e63b35 *man/bic.mixvmf.Rd
 7b9cb9dd8078d34068b35af831f549ea *man/circ.cor1.Rd
 c6ff0c840ecaac5bddd350a461812277 *man/circ.cor2.Rd
 38823e377da4f16ea99d7012acbbff6b *man/circ.summary.Rd
 be5de2b94c2e63b0f1aef07bf58148ea *man/circlin.cor.Rd
 78ee461e05ac7b83c8162c8ce9546451 *man/conc.test.Rd
+c7187fc902475ca9f9429bdcc238a756 *man/dirknn.Rd
+3e50d76d9c12eb4dac7b3852cca7b1c5 *man/dirknn.tune.Rd
 c6380760dbe07d0f94cdcbd8b6f592c3 *man/embed.aov.Rd
 7dcb221d70e1438c870cd49fc2247a0c *man/embed.circaov.Rd
 be20490723fbf27785c947b6304b4c81 *man/euclid.Rd
@@ -84,13 +88,13 @@ ddb79175640e5b4080cb1ee2e278315a *man/meandir.test.Rd
 9a06697368175bf4deff371ac051a77a *man/rayleigh.Rd
 ac6ddbeac4f32ec3bc929f39166b5ff6 *man/rbingham.Rd
 f7208a1bdae6cacdca45cce34c35c551 *man/rfb.Rd
-7609db4aee6409fc3c2ff36107f0c698 *man/rmixvmf.Rd
+f5d83fed816b2b187dc2fa5de293f860 *man/rmixvmf.Rd
 a37b78809b08330d792876be486f2352 *man/rot.matrix.Rd
 8d53da08cdf14238b02df63d7738b2a1 *man/rotation.Rd
 e749e884aa83de59ceb6563864747105 *man/rvmf.Rd
 f408245c2ccffa02bed5e7b546f598fb *man/rvonmises.Rd
 09f070ce6c263a734107e8b780021344 *man/spher.cor.Rd
-6bdfc8ee080d578f9e7ca9ac8e2949e0 *man/spher.reg.Rd
+093e4be7c84bbc8876ed3c4ac0829a85 *man/spher.reg.Rd
 851a30c3c3e08fa98bacca10e6e13534 *man/spherconc.tet.Rd
 9ce1a40271ad13f2797de1c6aa232c2c *man/spml.reg.Rd
 b73a574691f09c9f9078055ff856cf28 *man/tang.conc.Rd

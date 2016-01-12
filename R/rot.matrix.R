@@ -14,8 +14,7 @@ rot.matrix <- function(ksi, theta, rads = FALSE) {
     lat <- ksi[1]
     long <- ksi[2]
     the <- theta
-  }
-  if (rads == FALSE) {
+  } else {
     lat <- ksi[1] * pi/180
     long <- ksi[2] * pi/180
     the <- theta * pi/180
