@@ -27,7 +27,7 @@ Discriminant analysis assuming von Mises-Fisher distributions.
 A vector with the predicted group of each new observation.
 }
 \references{
-Morris, J. E., & Laycock, P. J. (1974). Discriminant analysis of directional data. Biometrika, 61(2), 335-341.
+Morris J. E. & Laycock P. J. (1974). Discriminant analysis of directional data. Biometrika, 61(2): 335-341.
 }
 \author{
 Michail Tsagris
@@ -38,7 +38,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf.da}, \link{mix.vmf}}
+\code{\link{vmf.da}, \link{mix.vmf}
+}
 }
 \examples{
 m1 <- rnorm(5)

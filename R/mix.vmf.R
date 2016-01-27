@@ -1,6 +1,6 @@
 ################################
 #### Model based clustering using mixtures of von Mises-Fisher distributions
-#### Tsagris Michail 4/2015 
+#### Tsagris Michail 4/2015
 #### mtsagris@yahoo.gr
 #### References: Kurt Hornik and  Bettina Grun (2014)
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
@@ -20,7 +20,7 @@ mix.vmf <- function(x, g) {
   pij <- matrix(nrow = n, ncol = g)
   ka <- ka2 <- numeric(g)
   Apk <- function(p, k) {
-  besselI(k, p/2, expon.scaled = T)/besselI(k, p/2 - 1, expon.scaled = T) 
+  besselI(k, p/2, expon.scaled = T)/besselI(k, p/2 - 1, expon.scaled = T)
   }
   ## Step 1
   l <- 1
@@ -44,18 +44,18 @@ mix.vmf <- function(x, g) {
     i <- 1
     k[i] <- R * (p - R^2)/(1 - R^2)
     i <- 2
-    k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 - 
+    k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
     (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
     while (abs(k[i] - k[i - 1]) > 1e-07) {
       i <- i + 1
-      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 - 
+      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
       (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
     }
     ka[j] <- k[i] ## initial concentration parameters
-    lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - 
-    (log(besselI(ka[j], p/2 - 1, expon.scaled = T)) + ka[j]) + 
+    lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
+    (log(besselI(ka[j], p/2 - 1, expon.scaled = T)) + ka[j]) +
      ka[j] * (x %*% mat[j,])
-  }  
+  }
   lik[1] <- sum(log(rowSums(w * exp(lika))))  ## initial log-likelihood
   l <- 2
   ## Step 2
@@ -69,20 +69,20 @@ mix.vmf <- function(x, g) {
     i <- 1
     k[i] <- R * (p - R^2)/(1 - R^2)
     i <- 2
-    k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 - 
+    k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
     (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
     while (abs(k[i] - k[i - 1]) > 1e-07) {
       i <- i + 1
-      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 - 
+      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
       (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
     }
     ka2[j] <- k[i]
-    lika[, j] <- (p/2 - 1) * log(ka2[j]) - 0.5 * p * log(2 * pi) - 
-    (log(besselI(ka2[j], p/2 - 1, expon.scaled = T)) + ka2[j]) + 
+    lika[, j] <- (p/2 - 1) * log(ka2[j]) - 0.5 * p * log(2 * pi) -
+    (log(besselI(ka2[j], p/2 - 1, expon.scaled = T)) + ka2[j]) +
     ka2[j] * (x %*% mat2[j, ])
-  }  
+  }
    ka <- rbind(ka, ka2) ## concentration parameters at step 2
-   mat <- abind( mat, mat2, along = 3 )
+   mat <- abind::abind( mat, mat2, along = 3 )
   lik[2] <- sum(log(rowSums(w[2, ] * exp(lika))))  ## log-likelihood at step 2
   ## Step 3 and beyond
   while (lik[l] - lik[l - 1] > 1e-05) {
@@ -98,25 +98,25 @@ mix.vmf <- function(x, g) {
       i <- 1
       k[i] <- R * (p - R^2)/(1 - R^2)
       i <- 2
-      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 - 
+      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
       (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
       while (abs(k[i] - k[i - 1]) > 1e-07) {
         i <- i + 1
-        k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 - 
+        k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
           (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
       }
       ka2[j] <- k[i]
-      lika[, j] <- (p/2 - 1) * log(ka2[j]) - 0.5 * p * log(2 * pi) - 
-      (log(besselI(ka2[j], p/2 - 1, expon.scaled = T)) + ka2[j]) + 
+      lika[, j] <- (p/2 - 1) * log(ka2[j]) - 0.5 * p * log(2 * pi) -
+      (log(besselI(ka2[j], p/2 - 1, expon.scaled = T)) + ka2[j]) +
 	ka2[j] * (x %*% mat2[j, ])
-    }  
+    }
     ka <- rbind(ka, ka2) ## concentration parameters at step l
-    mat <- abind( mat, mat2, along = 3 )
+    mat <- abind::abind( mat, mat2, along = 3 )
     lik[l] <- sum(log(rowSums(w[l, ] * exp(lika))))
   }  ## log-likelihood at step l
   t <- apply(pij, 1, which.max)  ## estimated cluster of each observation
   param <- cbind( mat[, , l], ka[l, ], table(t)/n )
-  colnames(param) <- c( paste("mu", 1:p, sep = ""), 'kappa', 'probs' ) 
+  colnames(param) <- c( paste("mu", 1:p, sep = ""), 'kappa', 'probs' )
   rownames(param) <- paste("Cluster", 1:g, sep = " ")
   list(param = param, loglik = lik[l], pred = t)
 }

@@ -1,10 +1,10 @@
 \name{hcf.circaov}
 \alias{hcf.circaov}
 \title{
-Analysis of variance for circular data using the high concentration F test. 
+Analysis of variance for circular data using the high concentration F test.
 }
 \description{
-Analysis of variance for circular data using the high concentration F test. 
+Analysis of variance for circular data using the high concentration F test.
 }
 \usage{
 hcf.circaov(u, ina, rads = F)
@@ -17,7 +17,7 @@ hcf.circaov(u, ina, rads = F)
   A numerical or factor variable indicating the group of each value.
 }
   \item{rads}{
-  If the data are in radians, this should be TRUE and FALSE otherwise. 
+  If the data are in radians, this should be TRUE and FALSE otherwise.
 }
 }
 \value{
@@ -29,7 +29,7 @@ The value of the test statistic.
 The p-value of the test.
 }
 \item{kappa}{
-The concentration parameter based on all the data. 
+The concentration parameter based on all the data.
 }
 }
 \references{
@@ -44,7 +44,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{conc.test}, \link{lr.circaov}, \link{embed.circaov}, \link{het.circaov}}
+\code{\link{conc.test}, \link{lr.circaov}, \link{embed.circaov}, \link{het.circaov}
+}
 }
 \examples{
 x <- rvonmises(100, 2.4, 15)

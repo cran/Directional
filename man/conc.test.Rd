@@ -4,17 +4,17 @@
 A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data.
 }
 \description{
-A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data. It is a tangential approach. 
+A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data. It is a tangential approach.
 }
 \usage{
 conc.test(u, ina, rads = F)
 }
 \arguments{
   \item{u}{
-  A numeric vector containing the values of all samples. 
+  A numeric vector containing the values of all samples.
   }
   \item{ina}{
-  A numerical variable or factor indicating the groups of each value. 
+  A numerical variable or factor indicating the groups of each value.
   }
   \item{rads}{
   If the data are in radians this should be TRUE and FALSE otherwise.
@@ -26,10 +26,10 @@ This test works for circular data.
 \value{
 A list including:
 \item{mess}{
-A message informing the use of the test statistic used. 
+A message informing the use of the test statistic used.
 }
 \item{res}{
-A numeric vector containing the value of the test statistic and its associated p-value. 
+A numeric vector containing the value of the test statistic and its associated p-value.
 }
 }
 \references{
@@ -44,13 +44,14 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{embed.circaov}, \link{hcf.circaov}, \link{lr.circaov}, \link{het.circaov}}
+\code{\link{embed.circaov}, \link{hcf.circaov}, \link{lr.circaov}, \link{het.circaov}
+}
 }
 \examples{
 x <- rvonmises(100, 2.4, 15)
 ina <- rep(1:4,each = 25)
 conc.test(x, ina, rads = TRUE)
 }
-\keyword{ Circular data}
+\keyword{ Circular data }
 \keyword{ Equality of concentrations }
 \keyword{ Hypothesis testing }

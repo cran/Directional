@@ -17,14 +17,14 @@ rfb(n, k, m, A)
   The concentraion parameter (Fisher part). It has to be greater than 0.
 }
   \item{m}{
-  The mean direction (Fisher part). 
+  The mean direction (Fisher part).
 }
   \item{A}{
-  A symmetric matrix. (Bingham part). 
+  A symmetric matrix. (Bingham part).
 }
 }
 \details{
-Random values from a fisher Bingham distribution are generated. This functions included the option of simulating from a Kent distribution also. 
+Random values from a fisher Bingham distribution are generated. This functions included the option of simulating from a Kent distribution also.
 }
 \value{
 A matrix with the simulated data.
@@ -42,7 +42,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{rbingham}, \link{rvmf}}
+\code{\link{rbingham}, \link{rvmf}
+}
 }
 \examples{
 k <- 15

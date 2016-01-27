@@ -1,11 +1,11 @@
 \name{rbingham}
 \alias{rbingham}
 \title{
-Simulation from a Bingham distribution using any symmetric 
+Simulation from a Bingham distribution using any symmetric
 matrix A}
 
 \description{
-It simulates random values from a Bingham distribution with any given symmetric matrix. 
+It simulates random values from a Bingham distribution with any given symmetric matrix.
 }
 \usage{
 rbingham(n, A)
@@ -19,15 +19,15 @@ rbingham(n, A)
 }
 }
 \details{
-The eigenvalues are fist calcualted and then Chris Fallaize and Theo Kypraio's code (f.rbing) is used. The resulting simulated data anre then right multiplied by the eigenvectors of the matrix A. 
+The eigenvalues are fist calcualted and then Chris Fallaize and Theo Kypraio's code (f.rbing) is used. The resulting simulated data anre then right multiplied by the eigenvectors of the matrix A.
 }
 \value{
 A matrix with the siumlated data.
 }
 \references{
-Kent J.T., Ganeiber A.M. and Mardia K.V. (2013). A new method to simulate the Bingham and related distributions in directional data analysis with applications http://arxiv.org/pdf/1310.8110v1.pdf 
+Kent J.T., Ganeiber A.M. and Mardia K.V. (2013). A new method to simulate the Bingham and related distributions in directional data analysis with applications http://arxiv.org/pdf/1310.8110v1.pdf
 
-C.J. Fallaize and T. Kypraios (2014). Exact Bayesian Inference for the Bingham Distribution. Statistics and Computing (To appear). 
+C.J. Fallaize and T. Kypraios (2014). Exact Bayesian Inference for the Bingham Distribution. Statistics and Computing (To appear).
 http://arxiv.org/pdf/1401.2894v1.pdf
 }
 \author{
@@ -39,7 +39,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{f.rbing}, \link{rfb}, \link{rvmf}}
+\code{\link{f.rbing}, \link{rfb}, \link{rvmf}
+}
 }
 \examples{
 A <- cov(iris[, 1:3])

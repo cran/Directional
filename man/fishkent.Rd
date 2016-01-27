@@ -4,21 +4,21 @@
 Hypothesis test for von Mises-Fisher distribution over Kent's distribution.
 }
 \description{
-The null hypothesis is whether a von Mises-Fisher distribution fits the data well, where the altenrative is that Kent distribution is more suitable. 
+The null hypothesis is whether a von Mises-Fisher distribution fits the data well, where the altenrative is that Kent distribution is more suitable.
 }
 \usage{
 fishkent(x, B = 999)
 }
 \arguments{
   \item{x}{
-  A numeric matrix containing the data as unit vectors, i.e. in Euclidean coordinates. 
+  A numeric matrix containing the data as unit vectors, i.e. in Euclidean coordinates.
 }
   \item{B}{
-The number of bootstrap re-samples. By default is set to 999. If it is equal to 1, no bootstrap is performed and the p-value is obtained throught the asymptotic distribution. 
+The number of bootstrap re-samples. By default is set to 999. If it is equal to 1, no bootstrap is performed and the p-value is obtained throught the asymptotic distribution.
 }
 }
 \details{
-Essentially it is a test of rotational symmetry, whether Kent's ovalness parameter (beta) is equal to zero. This works for spherical data only. 
+Essentially it is a test of rotational symmetry, whether Kent's ovalness parameter (beta) is equal to zero. This works for spherical data only.
 }
 \value{
 A vector including:
@@ -26,7 +26,7 @@ A vector including:
 The value of the test statistic
 }
 \item{p-value or Bootstrap p-value}{
-The p-value of the test. 
+The p-value of the test.
 }
 }
 \references{
@@ -41,14 +41,15 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf}, \link{kent.mle}}
+\code{\link{vmf}, \link{kent.mle}
+}
 }
 \examples{
 x <- rvmf(100, rnorm(3), 15)
 fishkent(x)
 fishkent(x, B = 1)
 }
-\keyword{ Goodness of fit test}
-\keyword{ von Mises-Fisher distribution}
-\keyword{ Kent distribution}
+\keyword{ Goodness of fit test }
+\keyword{ von Mises-Fisher distribution }
+\keyword{ Kent distribution }
 

@@ -28,7 +28,7 @@ f.rbing <- function(n, lam) {
   while (nsamp < n) {
     x.samp <- FALSE
     while (x.samp == FALSE) {
-      yp <- mvrnorm(n = 1, mu = numeric(q), Sigma = SigACG)
+      yp <- MASS::mvrnorm(n = 1, mu = numeric(q), Sigma = SigACG)
       y <- yp/sqrt(t(yp) %*% yp)
       lratio <- -t(y) %*% A %*% y - q/2 * log(q) + 
       0.5 * (q - 1) + q/2 * log( t(y) %*% SigACG.inv %*% y )

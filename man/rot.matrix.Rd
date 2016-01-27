@@ -4,7 +4,7 @@
 Rotation matrix from a rotation axis and angle of rotation.
 }
 \description{
-Rotation matrix from a rotation axis and angle of rotation.
+It calculates a rotation matrix from a rotation axis and angle of rotation.
 }
 \usage{
 rot.matrix(ksi, theta, rads = FALSE)
@@ -18,11 +18,11 @@ latitude and the second is the longitude.
   The angle of rotation.
 }
   \item{rads}{
-  If both the ksi and theta are in rads, this should be TRUE. If both the ksi and theta are in degrees, this should be FALSE. 
+  If both the ksi and theta are in rads, this should be TRUE. If both the ksi and theta are in degrees, this should be FALSE.
 }
 }
 \details{
-The function accepts as arguments the rotation axis and the angle of rotation and it calcualtes the requested rotation matrix. 
+The function accepts as arguments the rotation axis and the angle of rotation and it calcualtes the requested rotation matrix.
 }
 \value{
 A 3 x 3 rotation matrix.
@@ -39,13 +39,14 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{Arotation}, \link{rotation} }
+\code{\link{Arotation}, \link{rotation}
+}
 }
 \examples{
 ksi <- c(25.31, 24.29)
 theta <- 2.38
 A <- rot.matrix(ksi, theta, rads = FALSE)
-A 
+A
 Arotation(A)
 }
 \keyword{ Rotation matrix }

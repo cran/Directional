@@ -11,13 +11,13 @@ tang.conc(u, ina, rads = F)
 }
 \arguments{
   \item{u}{
-  A numeric vector containing the values of all samples. 
+  A numeric vector containing the values of all samples.
 }
   \item{ina}{
   A numerical variable or factor indicating the groups of each value.
   }
   \item{rads}{
-  If the data are in radians this should be TRUE and FALSE otherwise. 
+  If the data are in radians this should be TRUE and FALSE otherwise.
 }
 }
 \details{
@@ -26,7 +26,7 @@ This test works for circular data.
 \value{
 A vector including:
 \item{test}{
-The value of the test statistic. 
+The value of the test statistic.
 }
 \item{p-value}{
 The p-value of the test.
@@ -45,7 +45,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{embed.circaov}, \link{hcf.circaov}, \link{lr.circaov}, \link{het.circaov}}
+\code{\link{embed.circaov}, \link{hcf.circaov}, \link{lr.circaov}, \link{het.circaov}
+}
 }
 \examples{
 x <- rvonmises(100, 2.4, 15)

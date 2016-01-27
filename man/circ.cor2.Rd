@@ -30,7 +30,7 @@ A vector including:
 The value of the correlation coefficient.
 }
 \item{p-value}{
-The p-value of the zero correlation hypothesis testing. 
+The p-value of the zero correlation hypothesis testing.
 }
 }
 \references{
@@ -44,12 +44,13 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{circ.cor1}, \link{circlin.cor}}
+\code{\link{circ.cor1}, \link{circlin.cor}
+}
 }
 \examples{
 y <- runif(50, 0, 2*pi)
 x <- runif(50, 0, 2*pi)
-circ.cor2(x, y, rads = TRUE)  
+circ.cor2(x, y, rads = TRUE)
 }
-\keyword{Circular correlation type II}
+\keyword{ Circular correlation type II }
 

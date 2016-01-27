@@ -1,10 +1,10 @@
 \name{rayleigh}
 \alias{rayleigh}
 \title{
-Rayleigh's test of uniformity. 
+Rayleigh's test of uniformity.
 }
 \description{
-It checkes whether the data are uniformly distributed on the sphere or hypersphere. 
+It checkes whether the data are uniformly distributed on the sphere or hypersphere.
 }
 \usage{
 rayleigh(x, modif = T, B = 999)
@@ -14,14 +14,14 @@ rayleigh(x, modif = T, B = 999)
   A matrix containing the data, unit vectors.
 }
   \item{modif}{
-If modif is TRUE, the modification as suggested by Jupp (2001) is used. 
+If modif is TRUE, the modification as suggested by Jupp (2001) is used.
 }
   \item{B}{
-If B is greater than 1, bootstap calibation os performed. If it is equal to 1, classical theory is used. 
+If B is greater than 1, bootstap calibation os performed. If it is equal to 1, classical theory is used.
 }
 }
 \details{
-The Rayleigh test of uniformity is not the best, when there are two antipodal mean directions. In this case it will fail. It is good to test whether there is one mean direction or not. To put it differently, it tests whether the concentration parameter of the Fisher distribution is zero or not. 
+The Rayleigh test of uniformity is not the best, when there are two antipodal mean directions. In this case it will fail. It is good to test whether there is one mean direction or not. To put it differently, it tests whether the concentration parameter of the Fisher distribution is zero or not.
 }
 \value{
 A vector including:
@@ -29,7 +29,7 @@ A vector including:
 The value of the test statistic.
 }
 \item{p-value or Bootstrap p-value}{
-The (bootstrap) p-value of the test. 
+The (bootstrap) p-value of the test.
 }
 }
 \references{
@@ -48,14 +48,15 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf}, \link{meandir.test}}
+\code{\link{vmf}, \link{meandir.test}
+}
 }
 \examples{
 
-x <- rvmf(100, rnorm(5), 1)  ## Fisher distribution with low 
+x <- rvmf(100, rnorm(5), 1)  ## Fisher distribution with low
 ## concentration
 rayleigh(x)
 
 }
-\keyword{ Uniform distribution on the (hyper)-sphere}
+\keyword{ Uniform distribution on the (hyper)-sphere }
 \keyword{ Hypothesis test }

@@ -1,10 +1,10 @@
 \name{fb.saddle}
 \alias{fb.saddle}
 \title{
-Saddlepoint approximations of the Fisher-Bingham distributions 
+Saddlepoint approximations of the Fisher-Bingham distributions
 }
 \description{
-It calculates the logarithm of the normalising constant of the Fisher-Bingham distribution.  
+It calculates the logarithm of the normalising constant of the Fisher-Bingham distribution.
 }
 \usage{
 fb.saddle(gam, lam)
@@ -14,11 +14,11 @@ fb.saddle(gam, lam)
   A numeric vector containing the parameters of the Fisher part.
 }
   \item{lam}{
-All the eigenvalues of the Bingham part. Not just the non zero ones. 
+All the eigenvalues of the Bingham part. Not just the non zero ones.
 }
 }
 \details{
-It calculate the three approximations given by Kume and Wood (2005) and it uses the Fisher-Bingham parametrizastion of that paper. 
+It calculate the three approximations given by Kume and Wood (2005) and it uses the Fisher-Bingham parametrization of that paper.
 }
 \value{
 A list including:
@@ -46,19 +46,20 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{rfb}, \link{kent.mle}}
+\code{\link{rfb}, \link{kent.mle}
+}
 }
 \examples{
 
 fb.saddle( c(0, 0, 0), c(1, 2, 3) )
 p <- 3  ;  k <- 1
 0.5 * p * log(2 * pi) - (p/2 - 1) * log(k) + (log(besselI(k, p/2 - 1, expon.scaled = TRUE)) + k)
-## normalising constant of the 
+## normalising constant of the
 ## von Mises-Fisher distribution
 fb.saddle( c(0, k, 0), c(0, 0, 0) ) ## saddlepoint approximation
 
 }
-\keyword{ Fisher-Bingham distribution}
+\keyword{ Fisher-Bingham distribution }
 \keyword{ Normalising constant }
 \keyword{ Saddlepoint approximation }
 

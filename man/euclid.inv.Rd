@@ -11,15 +11,15 @@ euclid.inv(U)
 }
 \arguments{
   \item{U}{
-  A matrix of unit vectors, or even one single unit vector in three dimensions. 
+  A matrix of unit vectors, or even one single unit vector in three dimensions.
 }
 }
 \details{
-It takes the matrix of unit vectors and back transforms it to latitude and longitude.  
+It takes the matrix of unit vectors and back transforms it to latitude and longitude.
 }
 \value{
 A two column matrix:
-\item{u}{ The first column is the latitude and the second is the longitude, both expressed in degrees. 
+\item{u}{ The first column is the latitude and the second is the longitude, both expressed in degrees.
 }
 }
 \author{
@@ -31,7 +31,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{euclid}, \link{Arotation}}
+\code{\link{euclid}, \link{Arotation}
+}
 }
 \examples{
 x <- rvmf(10, rnorm(3), 10)
@@ -39,5 +40,5 @@ euclid.inv(x)
 euclid(euclid.inv(x))
 x
 }
-\keyword{ Euclidean coordinates}
+\keyword{ Euclidean coordinates }
 \keyword{ Spherical coordinates }

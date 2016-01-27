@@ -11,7 +11,7 @@ euclid(u)
 }
 \arguments{
   \item{u}{
-  A two column matrix or even one single vector, where the first column (or element) is the latitude and the second is the longitude. The order is important. 
+  A two column matrix or even one single vector, where the first column (or element) is the latitude and the second is the longitude. The order is important.
 }
 }
 \details{
@@ -19,7 +19,7 @@ It takes the matrix of unit vectors of latitude and longitude and  transforms it
 }
 \value{
 A three column matrix:
-\item{U}{ The Euclidean coordinates of the latitude and longitude.  
+\item{U}{ The Euclidean coordinates of the latitude and longitude.
 }
 }
 \author{
@@ -29,14 +29,15 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 
 \seealso{
-\code{\link{euclid.inv}, \link{Arotation}}
+\code{\link{euclid.inv}, \link{Arotation}
+}
 }
 \examples{
 x <- rvmf(10, rnorm(3), 10)
 u <- euclid.inv(x)
-euclid(u) 
-x 
+euclid(u)
+x
 }
-\keyword{ Euclidean coordinates}
+\keyword{ Euclidean coordinates }
 \keyword{ Spherical coordinates }
 

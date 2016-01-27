@@ -18,7 +18,7 @@ vmf.kerncontour(u, thumb = "none")
 }
 }
 \details{
-It calcculates the contour plot using a von Mises-Fisher kernel for spherical data only. 
+It calcculates the contour plot using a von Mises-Fisher kernel for spherical data only.
 }
 \value{
 A plot with the data in latitude and longitude along with their kernel density estimate contour lines.
@@ -36,7 +36,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf.kde}, \link{vmfkde.tune}, \link{vmf.contour}}
+\code{\link{vmf.kde}, \link{vmfkde.tune}, \link{vmf.contour}
+}
 }
 \examples{
 x <- rvmf(100, rnorm(3), 15)

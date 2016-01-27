@@ -18,7 +18,7 @@ vmf(x, tol = 1e-06)
 }
 }
 \details{
-The mean direction and concentration of a fitted von Mises-Fisher distribution are estimated. 
+The mean direction and concentration of a fitted von Mises-Fisher distribution are estimated.
 }
 \value{
 A list including:
@@ -41,7 +41,7 @@ The maximum log-likelihood value.
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Sra, S. (2012). A short note on parameter approximation for von Mises-Fisher distributions: and a fast implementation of I s (x). Computational Statistics, 27(1), 177--190.
+Sra, S. (2012). A short note on parameter approximation for von Mises-Fisher distributions: and a fast implementation of Is(x). Computational Statistics, 27(1): 177--190.
 }
 \author{
 Michail Tsagris
@@ -52,7 +52,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{rvmf}, \link{kent.mle}, \link{vmf.kde}}
+\code{\link{rvmf}, \link{kent.mle}, \link{vmf.kde}
+}
 }
 \examples{
 m <- rnorm(3)

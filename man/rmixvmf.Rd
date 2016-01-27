@@ -1,10 +1,10 @@
 \name{rmixvmf}
 \alias{rmixvmf}
 \title{
-Random values simulation from a mixture of von Mises-Fisher distributions. 
+Random values simulation from a mixture of von Mises-Fisher distributions.
 }
 \description{
-The function simulates random values simulation from a given mixture of von Mises-Fisher distributions. 
+The function simulates random values simulation from a given mixture of von Mises-Fisher distributions.
 }
 \usage{
 rmixvmf(n, prob, mu, k)
@@ -24,7 +24,7 @@ rmixvmf(n, prob, mu, k)
 }
 }
 \details{
-The function simulates random values simulation from a given mixture of von Mises-Fisher distributions using the rvmf function. 
+The function simulates random values simulation from a given mixture of von Mises-Fisher distributions using the rvmf function.
 }
 \value{
 A list including:
@@ -32,7 +32,7 @@ A list including:
 An indicator of the group of each simulated vector.
 }
 \item{x}{
-A matrix with the simulated data. 
+A matrix with the simulated data.
 }
 }
 \references{
@@ -41,13 +41,14 @@ http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf}
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr> 
+R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
 }
 %\note{
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{mix.vmf}, \link{rvmf}, \link{rvmf}}
+\code{\link{mix.vmf}, \link{rvmf}, \link{rvmf}
+}
 }
 \examples{
 k <- runif(4, 4, 20)

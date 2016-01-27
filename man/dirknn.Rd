@@ -5,7 +5,7 @@ k-NN algorithm using the arc cosinus distance.
 }
 
 \description{
-It classifies new observations to some known groups via the k-NN algorithm. 
+It classifies new observations to some known groups via the k-NN algorithm.
 }
 \usage{
 dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE)
@@ -31,7 +31,7 @@ dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE)
 }
 }
 \details{
-The standard algorithm is to keep the k nearest observations and see the groups of these observations. The new observation is allocated to the most frequent seen group. The non standard algorithm is to calculate the classical mean or the harmonic mean of the k nearest observations for each group. The new observation is allocated to the group with the smallest mean distance. 
+The standard algorithm is to keep the k nearest observations and see the groups of these observations. The new observation is allocated to the most frequent seen group. The non standard algorithm is to calculate the classical mean or the harmonic mean of the k nearest observations for each group. The new observation is allocated to the group with the smallest mean distance.
 }
 \value{
 A vector including:
@@ -40,11 +40,12 @@ The predicted group.
 }
 }
 \references{
-course webpage of Howard E. Haber. 
+course webpage of Howard E. Haber.
 http://scipp.ucsc.edu/~haber/ph216/rotation_12.pdf
 }
 \author{
-Michail Tsagris 
+Michail Tsagris
+
 R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
 }
 %\note{
@@ -60,11 +61,11 @@ prob <- c(0.2, 0.4, 0.3, 0.1)
 mu <- matrix(rnorm(16), ncol = 4)
 mu <- mu / sqrt( rowSums(mu^2) )
 da <- rmixvmf(200, prob, mu, k)
-nu <- sample(1:200, 180) 
+nu <- sample(1:200, 180)
 x <- da$x[nu, ]
 ina <- da$id[nu]
 xx <- da$x[-nu, ]
-id <- da$id[-nu] 
+id <- da$id[-nu]
 a1 <- dirknn(x, xx, k = 5,  ina, type = "S", mesos = TRUE)
 a2 <- dirknn(x, xx, k = 5,ina, type = "NS", mesos = TRUE)
 a3 <- dirknn(x, xx, k = 5, ina, type = "S", mesos = FALSE)

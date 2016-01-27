@@ -15,10 +15,10 @@ vmf.contour(k)
 }
 }
 \details{
-The user specifies the concentration parameter only and not the mean direction or data. This is for illustration purposes only. The graph will always contain circles, as the von Mises-Fisher distribution is the analogue of a bivariate normal in two dimensions with a zero covariance. 
+The user specifies the concentration parameter only and not the mean direction or data. This is for illustration purposes only. The graph will always contain circles, as the von Mises-Fisher distribution is the analogue of a bivariate normal in two dimensions with a zero covariance.
 }
 \value{
-A contour plot of the von Mises-Fisher distribution. 
+A contour plot of the von Mises-Fisher distribution.
 }
 \author{
 Michail Tsagris
@@ -29,7 +29,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{rvmf}, \link{vmf}, \link{vmf.kerncontour}}
+\code{\link{rvmf}, \link{vmf}, \link{vmf.kerncontour}
+}
 }
 \examples{
 par(mfrow = c(1,3) )

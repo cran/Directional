@@ -11,22 +11,22 @@ hcf.aov(x, ina, fc = TRUE)
 }
 \arguments{
   \item{x}{
-  The data in Euclidean coordinates, i.e. unit vectors. 
+  The data in Euclidean coordinates, i.e. unit vectors.
 }
   \item{ina}{
-  A numerical variable or a factor indicating the group of each vector. 
+  A numerical variable or a factor indicating the group of each vector.
 }
   \item{fc}{
   A boolean that indicates whether a corrected F test should be used or not.
 }
 }
 \details{
-The embedding approach is used. 
+The embedding approach is used.
 }
 \value{
 A vector including:
 \item{F}{
-The F test statistic. 
+The F test statistic.
 }
 \item{p-value}{
 The p-value of the F test.
@@ -47,7 +47,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{lr.aov}, \link{embed.aov}, \link{het.aov}, \link{spherconc.test}}
+\code{\link{lr.aov}, \link{embed.aov}, \link{het.aov}, \link{spherconc.test}
+}
 }
 \examples{
 x <- rvmf(60, rnorm(3), 15)

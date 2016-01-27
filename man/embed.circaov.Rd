@@ -1,10 +1,10 @@
 \name{embed.circaov}
 \alias{embed.circaov}
 \title{
-Analysis of variance for circular data using the embedding approach. 
+Analysis of variance for circular data using the embedding approach.
 }
 \description{
-Analysis of variance for circular data using the embedding approach. 
+Analysis of variance for circular data using the embedding approach.
 }
 \usage{
 embed.circaov(u, ina, rads = F)
@@ -17,7 +17,7 @@ embed.circaov(u, ina, rads = F)
   A numerical or factor variable indicating the group of each value.
 }
   \item{rads}{
-  If the data are in radians, this should be TRUE and FALSE otherwise. 
+  If the data are in radians, this should be TRUE and FALSE otherwise.
 }
 }
 \value{
@@ -29,7 +29,7 @@ The value of the test statistic.
 The p-value of the test.
 }
 \item{kappa}{
-The concentration parameter based on all the data. 
+The concentration parameter based on all the data.
 }
 }
 \references{
@@ -44,14 +44,15 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{lr.circaov}, \link{conc.test}, \link{hcf.circaov}, \link{het.circaov}
+\code{ \link{lr.circaov}, \link{conc.test}, \link{hcf.circaov}, \link{het.circaov}
+}
 }
 \examples{
 x <- rvonmises(100, 2.4, 15)
 ina <- rep(1:4,each = 25)
 embed.circaov(x, ina, rads = TRUE)
 }
-\keyword{ Circular data}
+\keyword{ Circular data }
 \keyword{ Analysis of variance }
 \keyword{ Hypothesis testing }
 

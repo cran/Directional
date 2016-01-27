@@ -4,7 +4,7 @@
 Rotation axis and angle of rotation given a rotation matrix.
 }
 \description{
-Given a 3 x 3 rotation matrix the angleand the axis of rotation are calcualted. 
+Given a 3 x 3 rotation matrix, the angle and the axis of rotation are calcualted.
 }
 \usage{
 Arotation(A)
@@ -15,7 +15,7 @@ Arotation(A)
 }
 }
 \details{
-If the user does not supply a rotation matrix a message will appear. 
+If the user does not supply a rotation matrix a message will appear.
 }
 \value{
 A list including:
@@ -27,11 +27,11 @@ The axis of rotation. A vector of two components, latitude and longitude, expres
 }
 }
 \references{
-course webpage of Howard E. Haber. 
+course webpage of Howard E. Haber.
 http://scipp.ucsc.edu/~haber/ph216/rotation_12.pdf
 }
 \author{
-Michail Tsagris 
+Michail Tsagris
 R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
 }
 %\note{
@@ -45,8 +45,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 ksi <- c(25.31, 24.29)
 theta <- 2.38
 A <- rot.matrix(ksi, theta, rads = FALSE)
-A 
+A
 Arotation(A)
 }
-\keyword{ Angle of rotation}
+\keyword{ Angle of rotation }
 \keyword{ Axis of rotation }

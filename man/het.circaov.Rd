@@ -17,7 +17,7 @@ het.circaov(u, ina, rads = F)
   A numerical or factor variable indicating the group of each value.
 }
   \item{rads}{
-  If the data are in radians, this should be TRUE and FALSE otherwise. 
+  If the data are in radians, this should be TRUE and FALSE otherwise.
 }
 }
 \value{
@@ -41,14 +41,15 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{conc.test}, \link{lr.circaov}, \link{embed.circaov}, \link{hcf.circaov}}
+\code{\link{conc.test}, \link{lr.circaov}, \link{embed.circaov}, \link{hcf.circaov}
+}
 }
 \examples{
 x <- rvonmises(100, 2.4, 15)
 ina <- rep(1:4,each = 25)
 het.circaov(x, ina, rads = TRUE)
 }
-\keyword{ Circular data}
+\keyword{ Circular data }
 \keyword{ Analysis of variance }
 \keyword{ Hypothesis testing }
 

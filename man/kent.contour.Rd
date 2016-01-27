@@ -1,10 +1,10 @@
 \name{kent.contour}
 \alias{kent.contour}
 \title{
-Contour plot of the Kent distribution without any data. 
+Contour plot of the Kent distribution without any data.
 }
 \description{
-The contour plot of the Kent distribution on the sphere is produced. The user can see how the shape and ovalness change as he/she changes the ovlaness parameter. 
+The contour plot of the Kent distribution on the sphere is produced. The user can see how the shape and ovalness change as he/she changes the ovlaness parameter.
 }
 \usage{
 kent.contour(k, b)
@@ -14,11 +14,11 @@ kent.contour(k, b)
   The concentration parameter.
 }
   \item{b}{
-  The ovalness parameter. It has to be less than or equal to k/2 in order for the distribution to be unimodal. Otherwise it is bimodal. 
+  The ovalness parameter. It has to be less than k/2 in order for the distribution to be unimodal. Otherwise it is bimodal.
 }
 }
 \details{
-The goal of this function is for the user to see hwo the Kent distribution looks like. 
+The goal of this function is for the user to see hwo the Kent distribution looks like.
 }
 \value{
 A plot containing the contours of the distribution.
@@ -35,7 +35,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{kent.datacontour}, \link{kent.mle}, \link{vmf.contour}, \link{vmf.kerncontour}}
+\code{\link{kent.datacontour}, \link{kent.mle}, \link{vmf.contour}, \link{vmf.kerncontour}
+}
 }
 \examples{
 par( mfrow = c(1, 2) )

@@ -6,7 +6,7 @@ importFrom("graphics", "contour", "lines", "plot", "points")
 importFrom("stats", "aggregate", "coef", "cor", "dist", "dnorm",
             "kmeans", "lm", "optim", "optimize", "pchisq", "pf",
             "pnorm", "qchisq", "quantile", "rbeta", "rnorm", "runif",
-            "sd", "uniroot")
+            "sd", "uniroot", "qnorm")
 import("doParallel")
 import("parallel")
 import("foreach")
