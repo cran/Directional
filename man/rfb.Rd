@@ -1,14 +1,17 @@
 \name{rfb}
 \alias{rfb}
 \title{
-Simulation of random values from a Fisher-Bingham distribution.
+Simulation of random values from a Fisher-Bingham distribution
 }
+
 \description{
 Simulation of random values from a Fisher-Bingham distribution.
 }
+
 \usage{
 rfb(n, k, m, A)
 }
+
 \arguments{
   \item{n}{
   The sample size.
@@ -23,16 +26,20 @@ rfb(n, k, m, A)
   A symmetric matrix. (Bingham part).
 }
 }
+
 \details{
 Random values from a fisher Bingham distribution are generated. This functions included the option of simulating from a Kent distribution also.
 }
+
 \value{
 A matrix with the simulated data.
 }
+
 \references{
 Kent J.T., Ganeiber A.M. and Mardia K.V. (2013). A new method to simulate the Bingham and related distributions in directional data analysis with applications.
 http://arxiv.org/pdf/1310.8110v1.pdf
 }
+
 \author{
 Michail Tsagris
 
@@ -45,6 +52,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \code{\link{rbingham}, \link{rvmf}
 }
 }
+
 \examples{
 k <- 15
 mu <- rnorm(3)

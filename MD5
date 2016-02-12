@@ -1,6 +1,7 @@
-09c567ffb08f9ab3a047c00c53bc9946 *DESCRIPTION
-654d2f75860e2d6d3b994dd2ffbab1db *NAMESPACE
+064d4da1f5fc214a8848ffa583987961 *DESCRIPTION
+a1d9baf1fe35995441fa9f732e7d9e98 *NAMESPACE
 52672f0bb333545a2bb6813db0d3d77f *R/Arotation.R
+be767e9c6c9c175f45971b6f4f461141 *R/acg.R
 8e11b99807a25b1023a89603620d32ff *R/bic.mixvmf.R
 481f1305d8e3d0e012dc486422d1e8fd *R/circ.cor1.R
 dd929ad9646849903cc42e86662509e9 *R/circ.cor2.R
@@ -55,10 +56,11 @@ c781e339206222b66cfbfd3b5ab91e74 *R/vmf.kerncontour.R
 e0e79aa54421fe6d106c0b6814de6441 *R/vmfkde.tune.R
 9564ef1e86acd00eea017154d514bc65 *R/vmfkde.tune_2.R
 1c83070798f70df80c9038291b10a62d *R/vmkde.tune.R
-0acb48035c0aa1d1fc4366bd01779672 *R/vmkde.tune_2.R
+4b2ee66e5bc2a8e0b305793cca92a5ea *R/vmkde.tune_2.R
 a09634a922a5727ac28b75557a88eefb *R/wood.mle.R
 1d428454166f6392fa637e036afc7761 *man/Arotation.Rd
 8cff95aaa17611b625cac99e0553e455 *man/Directional-package.Rd
+5a0c0e92b0a45393ad7527774a210491 *man/acg.Rd
 0c34e8580107c4d05f89fd1b7963ca3d *man/bic.mixvmf.Rd
 aaa7c4e3079aca5662fab0b93be4f1f3 *man/circ.cor1.Rd
 e0c689f462fca7cfff246aef71681d7d *man/circ.cor2.Rd
@@ -92,7 +94,7 @@ c8d5d40c37bc2e3085d3ee45ee335312 *man/lambert.inv.Rd
 ccb3665f297b821ea73ae7c999d8f3c1 *man/mixvmf.contour.Rd
 bf056a53d999f340eb5673b38e38fb92 *man/rayleigh.Rd
 26e86a3a6e9edfa681b5f90c460e2d4e *man/rbingham.Rd
-273e786705a8f462ae71f168b59d9ef7 *man/rfb.Rd
+23dcbd0ed70eb584dc6098b595a127a4 *man/rfb.Rd
 bec6721449af89b3a5b506be73be6ea6 *man/rmixvmf.Rd
 ebefde9f66608ff6e67b60d0ed679175 *man/rot.matrix.Rd
 f5a61fe01373fddc4c990a289aee050f *man/rotation.Rd
