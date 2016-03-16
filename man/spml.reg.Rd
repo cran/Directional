@@ -7,7 +7,7 @@ Circular or angular regression.
 Regression with circualr dependent variable and Euclidean or categorical independent variables.
 }
 \usage{
-spml.reg(y, x, xnew = x, pred = F, rads = T)
+spml.reg(y, x, rads = T, xnew = NULL)
 }
 \arguments{
   \item{y}{
@@ -16,18 +16,16 @@ spml.reg(y, x, xnew = x, pred = F, rads = T)
   \item{x}{
   The independent variable(s). Can be Euclidean or categorical. If they are categorical, the user must provide them as dummy variables. It does not accept factor variables.
 }
-  \item{xnew}{
-  The new values of some independent variable(s) whose circular values you want to predict. Can be Euclidean or categorical. If they are categorical, the user must provide them as dummy variables. It does not accept factor variables.
-}
-  \item{pred}{
-  A boolean variable taking values TRUE if the xnew is new data or FALSE if the xnew is the same as x. In the second case, the fitted values will be calculated.
-}
   \item{rads}{
 If the dependent variable is expressed in rads, this should be TRUE and FALSE otherwise.
 }
+  \item{xnew}{
+  The new values of some independent variable(s) whose circular values you want to predict. Can be Euclidean or categorical. 
+If they are categorical, the user must provide them as dummy variables. It does not accept factor variables. If you have no new x values, leave it NULL (default). 
+}
 }
 \details{
-The E-M algorithm as described in Presnell et al. (1998).
+The E-M algorithm is fitted in this regression as described in Presnell et al. (1998).
 }
 \value{
 A list including:
@@ -37,17 +35,11 @@ The regression coefficients.
 \item{seb}{
 The standard errors of the coefficients.
 }
-\item{rho}{
-The circular correlation of the ubeserved and the fitted data.
-}
-\item{R.sq}{
-The squared circular correlation of the ubeserved and the fitted data.
-}
 \item{loglik}{
 The vlaue of the maximised log-likelihood.
 }
-\item{fitted}{
-The fitted values expressed in radians if the obsereved data are in radians and in degrees otherwise.
+\item{est}{
+The fitted values expressed in radians if the obsereved data are in radians and in degrees otherwise. If xnew is not NULL, i.e. if you have new x values, then the predicted values of y will be returned. 
 }
 
 }

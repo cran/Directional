@@ -23,5 +23,5 @@ rot.matrix <- function(ksi, theta, rads = FALSE) {
   t2 <- cos(lat) * sin(long)
   t3 <- sin(lat)
   L <- matrix(c(0, t3, -t2, -t3, 0, t1, t2, -t1, 0), ncol = 3)
-  diag(3) + L * sin(the) + L %*% L * (1 - cos(the))
+  diag(3) + L * sin(the) + crossprod(L) * ( 1 - cos(the) )
 }

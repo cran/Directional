@@ -1,38 +1,35 @@
 \name{vmkde.tune}
 \alias{vmkde.tune}
 \title{
-Tuning of the bandwidth parameter in the von Mises kernel for circular data.
+Fast tuning of the bandwidth parameter in the von Mises kernel for circular data.
 }
 \description{
-Tuning of the bandwidth parameter in the von Mises kernel for circular data. Cross validation is used.
+Fast tuning of the bandwidth parameter in the von Mises kernel for circular data. Cross validation is used.
 }
 \usage{
-vmkde.tune(u, h = seq(0.1, 1, by = 0.01), rads =T, plot = TRUE, ncores = 4)
+vmkde.tune(u, low = 0.1, up = 1, rads = TRUE)
 }
 \arguments{
   \item{u}{
   The data, a numerical vector.
 }
-  \item{h}{
-    A vector with candidate values for the bandwidth parameter. The search is conducted over this grid of values.
+  \item{low}{
+    The lower value of h to search.
+}
+  \item{up}{
+    The lower value of h to search.
 }
   \item{rads}{
   If the data are in radians this should be TRUE and FALSE otherwise.
 }
-  \item{plot}{
-  If TRUE the plot of pseudo-likelihood will appear.
-}
- \item{ncores}{
-  How many cores should be used? If more than 1, the computations take place in parallel.
-}
 }
 \details{
-Tuning of the bandwidth parameter in the von Mises kernel for circula data via cross validation.
+Tuning of the bandwidth parameter in the von Mises kernel for circula data via cross validation. The procedure is fast because an optimiser is used.
 }
 \value{
-A list including:
-\item{hopt}{
-The optimal bandwidth, the one that maximises the pseudo-likelihood.
+A vector including two elements:
+\item{Optimal h}{
+The best H found.
 }
 \item{cv}{
 The value of the maximised pseudo-likelihood.
@@ -52,13 +49,12 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vm.kde}, \link{vmkde.tune_2}
+\code{\link{vm.kde}, \link{vmfkde.tune}
 }
 }
 \examples{
 u <- rvonmises(100, 2.4, 10, rads = TRUE)
-vmkde.tune(u, ncores = 2)
-vmkde.tune_2(u)
+vmkde.tune(u)
 }
 \keyword{ Kernel density estimate }
 \keyword{ von Mises distribution }

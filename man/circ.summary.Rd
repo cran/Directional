@@ -7,7 +7,7 @@ Summary statistics for circular data.
 It produces a few summary measures for circular data.
 }
 \usage{
-circ.summary(u, rads = F, plot = T)
+circ.summary(u, rads = FALSE, plot = TRUE)
 }
 \arguments{
   \item{u}{

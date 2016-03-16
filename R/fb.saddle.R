@@ -17,12 +17,12 @@ fb.saddle <- function(gam, lam) {
   }  
   p <- length(gam)  ## dimensionality of the distribution
   para <- c(gam, lam)  ## the parameters of the Fisher-Bingham
-  saddle.equat <- function(t, para) {
+  saddle.equat <- function(ta, para) {
     ## saddlepoint equation
     p <- length(para)/2
     gam <- para[1:p]
     lam <- para[ -c(1:p) ]
-    f <- sum(0.5/(lam - t) + 0.25 * (gam^2/(lam - t)^2)) - 1
+    f <- sum( 0.5/(lam - ta) + 0.25 * ( gam^2/(lam - ta)^2 ) ) - 1
     f
   }
   low <- lam[1] - 0.25 * p - 0.5 * sqrt(0.25 * p^2 + p * max(gam)^2)  ## lower bound
@@ -31,22 +31,23 @@ fb.saddle <- function(gam, lam) {
   ela <- uniroot(saddle.equat, c(low, up), para = para, tol = 1e-08)
   tau <- ela$root  ## tau which solves the saddlepoint equation
   ### below are the derivatives of the cumulant generating function
-  kfb <- function(j, gam, lam, t) {
+  kfb <- function(j, gam, lam, ta) {
     if (j == 1) {
-      kd <- sum(0.5/(lam - t) + 0.25 * (gam^2/(lam - t)^2))
+      kd <- sum( 0.5/(lam - ta) + 0.25 * ( gam^2/(lam - ta)^2 ) )
     } else if (j > 1) {
-      kd <- sum(0.5 * factorial(j - 1)/(lam - t)^j + 0.25 * factorial(j) * 
-        gam^2/(lam - t)^(j + 1))
+      kd <- sum( 0.5 * factorial(j - 1)/(lam - ta)^j + 0.25 * factorial(j) * 
+        gam^2/(lam - ta)^(j + 1) )
     }
     kd
   }
   rho3 <- kfb(3, gam, lam, tau)/kfb(2, gam, lam, tau)^1.5
   rho4 <- kfb(4, gam, lam, tau)/kfb(2, gam, lam, tau)^2
   T <- rho4/8 - 5/24 * rho3^2
-  c1 <- 0.5 * log(2) + 0.5 * (p - 1) * log(pi) - 0.5 * log(kfb(2, gam, lam, tau)) - 
-    0.5 * sum(log(lam - tau)) - tau + 0.25 * sum(gam^2/(lam - tau))
-  ## c1=sqrt(2)*pi^(0.5*(p-1))*kfb(2,gam,lam,tau)^(-0.5)*prod(lam-tau)^(-0.5)*
-  ## exp(-tau+0.25*sum(gam^2/(lam-tau)))
+  c1 <- 0.5 * log(2) + 0.5 * (p - 1) * log(pi) - 
+        0.5 * log( kfb(2, gam, lam, tau) ) - 0.5 * sum( log(lam - tau) ) - 
+        tau + 0.25 * sum( gam^2/(lam - tau) )
+  ## c1 <- sqrt(2) * pi^(0.5 * (p - 1) ) * kfb(2, gam, lam, tau)^(-0.5) * 
+  ## prod(lam - tau)^(-0.5) * exp( -tau + 0.25 * sum( gam^2/(lam - tau) ) )
   c2 <- c1 + log(1 + T)
   c3 <- c1 + T
   ## the next multiplications brings the modification with the negative

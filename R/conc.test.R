@@ -6,14 +6,14 @@
 #### Directional statistics, page 139-140
 ################################
 
-conc.test <- function(u, ina, rads = F) {
+conc.test <- function(u, ina, rads = FALSE) {
   ## u contains all the circular data in rads or degrees
   ## ina is an indicator variable of each sample
   n <- length(u)  ## sample size
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
   ni <- as.vector(table(ina))
-  if (rads == F)  u <- u * pi/180
+  if (rads == FALSE)  u <- u * pi/180
   ## if the data are in degrees we transform them into radians
   x1 <- cos(u)
   x2 <- sin(u)
@@ -40,7 +40,7 @@ conc.test <- function(u, ina, rads = F) {
     g2 <- asinh((Rb - 1.089)/0.258)
     U2 <- sum(wi * g2^2) - (sum(wi * g2))^2/sum(wi)
     pvalue <- 1 - pchisq(U2, g - 1)
-    mess <- paste('The mean resultant length is between 0.45 and 0.7. 
+    mess <- paste('The mean resultant length is between 0.45 and 0.7.
     U3 was calculated')
   }
   if (Rb > 0.7) {

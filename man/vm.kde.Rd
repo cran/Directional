@@ -7,7 +7,7 @@ Kernel density estimation of circular data with a von Mises kernel.
 Kernel density estimation of circular data with a von Mises kernel.
 }
 \usage{
-vm.kde(u, h, thumb = "none", rads = T)
+vm.kde(u, h, thumb = "none", rads = TRUE)
 }
 \arguments{
   \item{u}{
@@ -37,6 +37,7 @@ The kernel density estimate at the observed points.
 }
 \references{
 Taylor, C. C. (2008). Automatic bandwidth selection for circular density estimation. Computational Statistics & Data Analysis, 52(7): 3493-3500.
+
 Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655-1685.
 }
 \author{
@@ -48,7 +49,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmkde.tune}, \link{vmkde.tune_2}, \link{vm.kde}
+\code{\link{vmkde.tune}, \link{vmkde.tune}, \link{vm.kde}
 }
 }
 \examples{
@@ -56,7 +57,7 @@ x <- rvonmises(100, 2.4, 10, rads = TRUE)
 hist(x, freq = FALSE)
 f1 <- vm.kde(x, h = 0.1, thumb = "rot", rads = TRUE)$f
 f2 <- vm.kde(x, h = 0.1, thumb = "tay", rads = TRUE)$f
-h <- vmkde.tune_2(x)[1]
+h <- vmkde.tune(x)[1]
 f3 <- vm.kde(x, h = h, thumb = "none", rads = TRUE)$f
 points(x, f1, col = 1)
 points(x, f2, col = 2)

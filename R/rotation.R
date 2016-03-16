@@ -12,9 +12,11 @@ rotation <- function(a, b) {
   ## to move a to b along the geodesic path
   ## on the unit sphere which connects a to b
   p <- length(a)
-  c <- a - b * (a %*% t( t(b)) )
-  c <- c/sqrt( sum(c^2) )
-  A <- t( t(b) ) %*% c - t( t(c) ) %*% b
-  theta <- acos(sum(a * b))
-  diag(p) + sin(theta) * A + (cos(theta) - 1) * ( t( t(b) ) %*% b + t( t(c) ) %*% c )
- }
+  ca <- a - b * crossprod(a, b)
+  ca <- ca /sqrt( sum(ca^2) )
+  A <- tcrossprod(b, ca) 
+  A <- A - t(A)
+  theta <- acos( sum(a * b) )
+  diag(p) + sin(theta) * A + (cos(theta) - 1) * ( tcrossprod(b) + 
+  tcrossprod(ca) )
+}

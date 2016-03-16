@@ -7,7 +7,7 @@ Spherical-Spherical regression.
 It performs regression when both the dependent and independent variables are spherical.
 }
 \usage{
-spher.reg(y, x, euclidean = FALSE, rads = FALSE)
+spher.reg(y, x, euclidean = TRUE, rads = FALSE)
 }
 \arguments{
   \item{y}{

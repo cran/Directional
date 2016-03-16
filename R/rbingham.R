@@ -21,5 +21,5 @@ rbingham <- function(n, A) {
   lam <- lam - lam[p]
   lam <- lam[-p]
   x <- f.rbing(n, lam)$X  ## Chris and Theo's code
-  x %*% t(V)  ## simulated data 
-}  
+  tcrossprod(x, V) ## simulated data 
+}

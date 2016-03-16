@@ -17,7 +17,7 @@ rvonmises(n, m, k, rads = TRUE)
   The mean angle expressed in radians or degrees.
 }
   \item{k}{
-  The concentration parameter.
+  The concentration parameter. If k is zero the sample will be generated from the uniform distribution over \eqn{(0, 2\pi)}.
 }
   \item{rads}{
   If the mean angle is expressed in radians, this should be TRUE and FALSE otherwise. The simulated data will be expressed in radians or degrees depending on what the mean angle is expressed.

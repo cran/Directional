@@ -19,13 +19,13 @@ het.aov <- function(x, ina) {
   kappa <- numeric(g)
     mi <- aggregate(x, by = list(ina), mean)
     mi <- mi[, -1]
-    for (i in 1:g) { 
+    for (i in 1:g) {
     kappa[i] <- vmf(x[ina == i, ])$kappa
   }
   tw <- colSums(kappa * ni * mi)
-  T <- 2 * ( sum(kappa * ni * sqrt(rowSums(mi^2))) - sqrt(sum(tw^2)) )
-  pvalue <- 1 - pchisq(T, (p - 1) * (g - 1))
-  res <- c(T, pvalue)
+  Tt <- 2 * ( sum(kappa * ni * sqrt(rowSums(mi^2))) - sqrt(sum(tw^2)) )
+  pvalue <- 1 - pchisq(Tt, (p - 1) * (g - 1))
+  res <- c(Tt, pvalue)
   names(res) <- c('test', 'p-value')
   res
 }

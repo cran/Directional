@@ -18,9 +18,10 @@ fishkent <- function(x, B = 999) {
   ## under the H0, that the Fisher distribution is true
   mu <- estim$mu  ## the estimated mean direction under H0
   e1 <- c(1, 0, 0)
-  P <- diag(3) - (e1 - mu) %*% t(e1 - mu)/(1 - mu[1])
-  y <- (x %*% P)[, 2:3]
-  lam <- eigen((1/n) * (t(y) %*% y))$values
+  i3 <- diag(3)
+  P <- i3 -  tcrossprod(e1 - mu) / (1 - mu[1])
+  y <- tcrossprod(x, P)[, 2:3]
+  lam <- eigen( crossprod(y) / n )$values
   rat <- besselI(k, 0.5, expon.scaled = T)/besselI(k, 2.5, expon.scaled = T)
   T <- n * (k/2)^2 * rat * (lam[1] - lam[2])^2
   if (B == 1) {
@@ -35,10 +36,9 @@ fishkent <- function(x, B = 999) {
       k <- estim$k  ## the estimated concentration parameter
       ## under the H0, that the Fisher distribution is true
       mu <- estim$mu  ## the estimated mean direction under H0
-      e1 <- c(1, 0, 0)
-      P <- diag(3) - (e1 - mu) %*% t(e1 - mu)/(1 - mu[1])
-      y <- (x[nu, ] %*% P)[, 2:3]
-      lam <- eigen((1/n) * (t(y) %*% y))$values
+      P <- i3 -  tcrossprod(e1 - mu) / (1 - mu[1])
+      y <- tcrossprod(x[nu, ], P)[, 2:3]
+      lam <- eigen( crossprod(y) / n )$values
       rat <- besselI(k, 0.5, expon.scaled = T)/besselI(k, 2.5, expon.scaled = T)
       Tb[i] <- n * (k/2)^2 * rat * (lam[1] - lam[2])^2
     }

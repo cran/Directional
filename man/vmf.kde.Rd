@@ -48,7 +48,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 \examples{
 x <- rvmf(100, rnorm(5), 15)
-h <- vmfkde.tune(x)$hopt
+h <- vmfkde.tune(x)[1]
 f1 <- vm.kde(x, h = h, thumb = "none")
 f2 <- vm.kde(x, h = h, thumb = "rot")
 f1$h  ;  f2$h

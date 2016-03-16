@@ -10,6 +10,7 @@ importFrom("stats", "aggregate", "coef", "cor", "dist", "dnorm",
 import("doParallel")
 import("parallel")
 import("foreach")
+importFrom("fields", rdist)
 
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")

@@ -4,7 +4,7 @@
 A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data.
 }
 \description{
-A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data.
+A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data. It is a tangential approach.
 }
 \usage{
 tang.conc(u, ina, rads = F)

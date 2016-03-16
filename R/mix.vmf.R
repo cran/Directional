@@ -19,9 +19,11 @@ mix.vmf <- function(x, g) {
   lika <- matrix(nrow = n, ncol = g)
   pij <- matrix(nrow = n, ncol = g)
   ka <- ka2 <- numeric(g)
-  Apk <- function(p, k) {
-  besselI(k, p/2, expon.scaled = T)/besselI(k, p/2 - 1, expon.scaled = T)
-  }
+   Apk <- function(p, k) {
+     besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
+   }
+
+  runtime <- proc.time()
   ## Step 1
   l <- 1
   mesa <- array(dim = c(g, p, 100))
@@ -53,7 +55,7 @@ mix.vmf <- function(x, g) {
     }
     ka[j] <- k[i] ## initial concentration parameters
     lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-    (log(besselI(ka[j], p/2 - 1, expon.scaled = T)) + ka[j]) +
+    (log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) + ka[j]) +
      ka[j] * (x %*% mat[j,])
   }
   lik[1] <- sum(log(rowSums(w * exp(lika))))  ## initial log-likelihood
@@ -82,18 +84,18 @@ mix.vmf <- function(x, g) {
     ka2[j] * (x %*% mat2[j, ])
   }
    ka <- rbind(ka, ka2) ## concentration parameters at step 2
-   mat <- abind::abind( mat, mat2, along = 3 )
-  lik[2] <- sum(log(rowSums(w[2, ] * exp(lika))))  ## log-likelihood at step 2
+   mat <- abind( mat, mat2, along = 3 )
+  lik[2] <- sum( log( rowSums(w[2, ] * exp(lika)) ) )  ## log-likelihood at step 2
   ## Step 3 and beyond
   while (lik[l] - lik[l - 1] > 1e-05) {
     l <- l + 1
-    pij <- w[l - 1, ] * exp(lika)/rowSums(w[l - 1, ] * exp(lika))  ## weights at step l
+    pij <- w[l - 1, ] * exp(lika)/rowSums( w[l - 1, ] * exp(lika) )  ## weights
     w <- rbind(w, colMeans(pij) )
     ka2 <- numeric(g)
     for (j in 1:g) {
       m1 <- colSums(pij[, j] * x)
-      mat2[j, ] <- m1/sqrt(sum(m1^2))  ## mean directions at step l
-      R <- sqrt(sum(m1^2))/sum(pij[, j])  ## mean resultant lengths at step l
+      mat2[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step l
+      R <- sqrt( sum(m1^2) ) / sum(pij[, j])  ## mean resultant lengths at step l
       k <- numeric(4)
       i <- 1
       k[i] <- R * (p - R^2)/(1 - R^2)
@@ -103,20 +105,21 @@ mix.vmf <- function(x, g) {
       while (abs(k[i] - k[i - 1]) > 1e-07) {
         i <- i + 1
         k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
-          (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
+        (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
       }
       ka2[j] <- k[i]
       lika[, j] <- (p/2 - 1) * log(ka2[j]) - 0.5 * p * log(2 * pi) -
-      (log(besselI(ka2[j], p/2 - 1, expon.scaled = T)) + ka2[j]) +
+      ( log(besselI(ka2[j], p/2 - 1, expon.scaled = TRUE) ) + ka2[j]) +
 	ka2[j] * (x %*% mat2[j, ])
     }
     ka <- rbind(ka, ka2) ## concentration parameters at step l
-    mat <- abind::abind( mat, mat2, along = 3 )
+    mat <- abind( mat, mat2, along = 3 )
     lik[l] <- sum(log(rowSums(w[l, ] * exp(lika))))
   }  ## log-likelihood at step l
-  t <- apply(pij, 1, which.max)  ## estimated cluster of each observation
-  param <- cbind( mat[, , l], ka[l, ], table(t)/n )
+  ta <- apply(pij, 1, which.max)  ## estimated cluster of each observation
+  param <- cbind( mat[, , l], ka[l, ], table(ta)/n )
+  runtime <- proc.time() - runtime
   colnames(param) <- c( paste("mu", 1:p, sep = ""), 'kappa', 'probs' )
   rownames(param) <- paste("Cluster", 1:g, sep = " ")
-  list(param = param, loglik = lik[l], pred = t)
+  list(param = param, loglik = lik[l], pred = ta, runtime = runtime)
 }

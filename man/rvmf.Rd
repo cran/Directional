@@ -17,7 +17,7 @@ rvmf(n, mu, k)
   The mean direction.
 }
   \item{k}{
-  The concentration parameter.
+  The concentration parameter. If k = 0, random values from the spherical uniform will be drwan. Values from a multivariate normal distribution with zero mean vector and the identity matrix as the covariance matrix. Then each vector becomes a unit vector.
 }
 }
 \details{

@@ -2,7 +2,7 @@
 #### Discrminant analysis for directional data
 #### assuming a von Mises-Fisher distribution
 #### Cross-validation for the performance
-#### Tsagris Michail 03/2014 
+#### Tsagris Michail 03/2014
 #### mtsagris@yahoo.gr
 #### References: J. E. Morris and P. J. Laycock (1974)
 #### Discriminant Analysis of Directional Data (Biometrika)
@@ -24,7 +24,7 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   mesi <- matrix(nrow = g, ncol = p)
   k <- numeric(g)
   ## if seed==TRUE then the results will always be the same
-  if (seed == TRUE)  set.seed(1234567) 
+  if (seed == TRUE)  set.seed(1234567)
   for (i in 1:R) {
     mat <- matrix(nrow = frac, ncol = g)
     est <- numeric(frac)
@@ -36,12 +36,12 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
       da <- vmf(train[id == j, ])  ## estimates the parameters of the vMF
       mesi[j, ] <- da$mu  ## mean direction of each group
       k[j] <- da$kappa ## concentration of each group
-    }  
-    for (j in 1:g) {
-      mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * test %*% mesi[j, ] - 0.5 * 
-        p * log(2 * pi) - log(besselI(k[j], p/2 - 1, expon.scaled = T)) - k[j]
     }
-    est <- apply(mat, 1, which.max) 
+    for (j in 1:g) {
+      mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * test %*% mesi[j, ] - 0.5 *
+        p * log(2 * pi) - log(besselI(k[j], p/2 - 1, expon.scaled = TRUE)) - k[j]
+    }
+    est <- apply(mat, 1, which.max)
     per[i] <- sum(est == ina[nu])/frac
   }
   percent <- mean(per)
@@ -50,10 +50,10 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   conf1 <- c(percent - 1.96 * s1, percent + 1.96 * s1)  ## 1st way of a CI
   conf2 <- c(percent - 1.96 * s2, percent + 1.96 * s2)  ## 2nd way of a CI
   ## next we check if the confidence limits exceeds the allowed limits
-  if (conf1[2] > 1) conf1[2] <- 1 
-  if (conf1[1] < 0) conf1[1] <- 0 
-  if (conf2[2] > 1) conf2[2] <- 1 
-  if (conf2[1] < 0) conf2[1] <- 0 
+  if (conf1[2] > 1) conf1[2] <- 1
+  if (conf1[1] < 0) conf1[1] <- 0
+  if (conf2[2] > 1) conf2[2] <- 1
+  if (conf2[1] < 0) conf2[1] <- 0
   conf3 <- quantile(per, probs = c(0.025, 0.975))  ## 3rd way of a CI
   ci <- rbind(conf1, conf2, conf3)
   colnames(ci) <- c("2.5%", "97.5%")

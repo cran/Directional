@@ -6,7 +6,7 @@
 #### Spherical egession. Annals of statistics, 14(3): 907-924
 ################################
 
-spher.reg <- function(y, x, euclidean = FALSE, rads = FALSE) {
+spher.reg <- function(y, x, euclidean = TRUE, rads = FALSE) {
   ## x is the independent variable
   ## y is the dependent variable
   ## The first row of both matrices is the latitude
@@ -16,9 +16,9 @@ spher.reg <- function(y, x, euclidean = FALSE, rads = FALSE) {
   n <- nrow(x)  ## sample size
   if (euclidean == FALSE) {
     if (rads == FALSE) {
-        x <- pi * x / 180  ## from degrees to rads
-        y <- pi * y / 180
-      }  ## from degrees to rads
+      x <- pi * x / 180  ## from degrees to rads
+      y <- pi * y / 180
+    }  ## from degrees to rads
     ## the first row of both matrices is the latitude and the second is the longitude
     ## the next two rows transform the data to Euclidean coordinates
     X <- cbind(cos(x[, 1]) * cos(x[, 2]), cos(x[, 1]) * sin(x[, 2]), sin(x[, 1]))
@@ -27,13 +27,13 @@ spher.reg <- function(y, x, euclidean = FALSE, rads = FALSE) {
     X <- x
     Y <- y
   }
-  XY <- t(X) %*% Y/n
+  XY <- crossprod(X, Y) / n
   b <- svd(XY)  ## SVD of the XY matrix
   A <- b$v %*% t(b$u)
   if (det(A) < 0) {
     b$u[, 3] <-  - b$u[, 3]
-    A <- b$v %*% t(b$u)
+    A <- tcrossprod(b$v, b$u )
   }
-  est <- X %*% t(A)
+  est <- tcrossprod(X, A)
   list(A = A, fitted = est)
 }

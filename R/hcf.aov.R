@@ -7,23 +7,23 @@ hcf.aov <- function(x, ina, fc = TRUE) {
   x <- x/sqrt(rowSums(x^2))  ## makes sure x are unit vectors
   p <- ncol(x)
   n <- nrow(x)  ## dimensionality and sample size of the data
-  S <- aggregate(x, by = list(ina), sum) 
+  S <- aggregate(x, by = list(ina), sum)
   Ri <- sqrt( rowSums(S[, -1]^2) )  ## the resultant length of each group
   S <- colSums(x)
   R <- sqrt(sum(S^2))  ## the resultant length based on all the data
   ## Next we stimate the common concentration parameter kappa
   kappa <- vmf(x)$kappa
   ## kappa is the estimated concentration parameter based on all the data
-  F <- ( (n - g) * (p - 1) * (sum(Ri) - R) )/((g - 1) * (p - 1) * (n - sum(Ri)))
+  Ft <- ( (n - g) * (p - 1) * (sum(Ri) - R) )/((g - 1) * (p - 1) * (n - sum(Ri)))
   if (fc == TRUE) {  ## correction is used
     if (p == 3) {
-      F <- kappa * (1/kappa - 1/(5 * kappa^3)) * F
+      Ft <- kappa * (1/kappa - 1/(5 * kappa^3)) * Ft
      } else if (p > 3)  {
-      F <- kappa * (1/kappa - (p - 3)/(4 * kappa^2) - (p - 3)/(4 * kappa^3)) * F
+      Ft <- kappa * (1/kappa - (p - 3)/(4 * kappa^2) - (p - 3)/(4 * kappa^3)) * Ft
     }
   }
-  pvalue <- 1 - pf(F, (g - 1) * (p - 1), (n - g) * (p - 1))
-  res <- c(F, pvalue, kappa)
-  names(res) <- c('test', 'p-value', 'kappa')
+  pvalue <- 1 - pf(Ft, (g - 1) * (p - 1), (n - g) * (p - 1))
+  res <- c(Ft, pvalue)
+  names(res) <- c('test', 'p-value')
   res
 }

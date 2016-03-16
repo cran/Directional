@@ -1,12 +1,12 @@
 ################################
 #### Cicrular correlation for cicular data I
-#### Tsagris Michail 1/2014 
+#### Tsagris Michail 1/2014
 #### mtsagris@yahoo.gr
 #### References: S Rao Jammalamadaka and A SenGupta (2001)
-#### Topics in circular statistics 
+#### Topics in circular statistics
 ################################
 
-circ.cor1 <- function(theta, phi, rads = F) {
+circ.cor1 <- function(theta, phi, rads = FALSE) {
   ## theta and phi are angular data in degrees or radians
   ## by default they are in degrees
   n <- length(theta)  ## sample size
@@ -16,8 +16,8 @@ circ.cor1 <- function(theta, phi, rads = F) {
     phi <- phi * pi/180
   }
   ## We calculate the mean of each vector
-  m1 <- circ.summary(theta, rads = T, plot = F)$mesos
-  m2 <- circ.summary(phi, rads = T, plot = F)$mesos
+  m1 <- circ.summary(theta, rads = TRUE, plot = FALSE)$mesos
+  m2 <- circ.summary(phi, rads = TRUE, plot = FALSE)$mesos
   up <- sum(sin(theta - m1) * sin(phi - m2))
   down <- sqrt(sum(sin(theta - m1)^2) * sum(sin(phi - m2)^2))
   rho <- up/down  ## circular correlation

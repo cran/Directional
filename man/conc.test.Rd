@@ -4,10 +4,10 @@
 A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data.
 }
 \description{
-A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data. It is a tangential approach.
+A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data. 
 }
 \usage{
-conc.test(u, ina, rads = F)
+conc.test(u, ina, rads = FALSE)
 }
 \arguments{
   \item{u}{

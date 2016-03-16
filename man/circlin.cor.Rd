@@ -4,10 +4,10 @@
 Circular-linear correlation.
 }
 \description{
-It calculates the squared correlation between a circular and one or more inear variables.
+It calculates the squared correlation between a circular and one or more linear variables.
 }
 \usage{
-circlin.cor(theta, x, rads = F)
+circlin.cor(theta, x, rads = FALSE)
 }
 \arguments{
   \item{theta}{
