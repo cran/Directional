@@ -42,7 +42,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
     apostasi <- tcrossprod( x )
     apostasi <- as.matrix(apostasi)
     diag(apostasi) <- 1
-    apostasi[ apostasi >=1 ] <- 1
+    apostasi[ apostasi >= 1 ] <- 1
     apostasi <- acos(apostasi)
     diag(apostasi) <- 0
 
@@ -79,7 +79,14 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
             est[i, ] <- k / colSums( yb )
           }
         }
-        per[vim, l] <- 1 - sum( diag( crossprod(est, ytest) ) ) / rmat
+
+        if (res == "spher") {
+          est <- est / sqrt( rowSums(est^2) )
+          ytest <- ytest / sqrt( rowSums(ytest^2) )
+          per[vim, l] <- 1 - sum( diag( crossprod(est, ytest) ) ) / rmat
+        } else  {
+          per[vim, l] <- sum( (est - ytest)^2 ) / rmat
+        }
       }
     }
 

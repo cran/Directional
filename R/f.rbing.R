@@ -17,6 +17,7 @@
 f.rbing <- function(n, lam) {
   ## n is the sample size
   ## lam are the q - 1 non zero eigenvalues
+
   lam <- sort(lam, decreasing = TRUE)  ## sort the eigenvalues in desceding order
   nsamp <- 0
   X <- NULL
@@ -27,6 +28,7 @@ f.rbing <- function(n, lam) {
   SigACG.inv <- diag(qa) + 2 * A
   SigACG <- solve(SigACG.inv)
   Ntry <- 0
+
   while (nsamp < n) {
     x.samp <- FALSE
     while (x.samp == FALSE) {
@@ -42,6 +44,7 @@ f.rbing <- function(n, lam) {
       Ntry <- Ntry + 1
     }
   }
+
   if (n > 1)
     X <- matrix(X, byrow = TRUE, ncol = qa)
   ## the X contains the simulated values

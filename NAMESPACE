@@ -6,11 +6,11 @@ importFrom("graphics", "contour", "lines", "plot", "points")
 importFrom("stats", "aggregate", "coef", "cor", "dist", "dnorm",
             "kmeans", "lm", "optim", "optimize", "pchisq", "pf",
             "pnorm", "qchisq", "quantile", "rbeta", "rnorm", "runif",
-            "sd", "uniroot", "qnorm", "mahalanobis", "cov")
+            "sd", "uniroot", "qnorm", "mahalanobis", "cov", "model.matrix", "nlm")
 import("doParallel")
 import("parallel")
 import("foreach")
-importFrom("fields", rdist)
+#importFrom("sphereplot", rgl.sphgrid, rgl.sphpoints)
 
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")

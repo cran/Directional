@@ -13,8 +13,8 @@ fitting distributions, random values generation, contour plots and many more are
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 1.8\cr
-Date: \tab 2016-03-16\cr
+Version: \tab 1.9\cr
+Date: \tab 2016-04-21\cr
 License: \tab GPL-2\cr
 }
 }
@@ -47,12 +47,17 @@ Panagiotis (pronounced Panayiotis) Tzirakis (master student at the department of
 
 Professor John Kent from the university of Leeds is acknowledged for clarifying one thing with the ovalness parameter in his distribution.
 
+Phillip Paine (postdoc at the university of Nottingham) spotted that the function \code{\link{rfb}} is rather slow and he suggested me to change it. The funciton has changed now and this is also due to Joshua Davis (from Carleton College, Northfield, MN) who spotted that mistakes could occur, due a vector not being a matrix and so on.
+
 }
 
+\keyword{ Directional data }
 \keyword{ Spherical data }
-\keyword{ Directional }
 \keyword{ circular data }
 \keyword{ Regression }
 \keyword{ Anova }
+\keyword{ Discriminant analysis }
+\keyword{ Graphs }
+\keyword{ Simulation }
 
 

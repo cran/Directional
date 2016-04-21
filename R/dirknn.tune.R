@@ -10,7 +10,6 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
   ## x is the matrix containing the data
   ## M is the number of folds, set to 10 by default
   ## A is the maximum number of neighbours to use
-  ## actually it goes until A + 1
   ## ina indicates the groups, numerical variable
   ## type is either 'S' or 'NS'. Should the standard k-NN be use or not
   ## if mesos is TRUE, then the arithmetic mean distange of the k nearest
@@ -41,23 +40,25 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
   per <- matrix(nrow = M, ncol = A)
   rmat <- nrow(mat)
 
+  dis <- tcrossprod( z )
+  diag(dis) <- 1
+  dis[ dis > 1 ] <- 1
+  dis <- acos(dis)
+
   ## The k-NN algorith is calculated M times. For every repetition a
   ## fold is chosen and its observations are classified
   for (vim in 1:M) {
 
-    deigma <- mat[, vim]
-    xnew <- z[deigma, ]
-    x <- z[-deigma, ]
-    apo <- tcrossprod(xnew, x)
-    apo <- acos(apo)
-    id <- ina[ as.vector( t(deigma) ) ]
-    ina2 <- ina[ -as.vector( t(deigma) ) ]
-    g <- numeric(rmat)
+    id <- as.vector( ina[ mat[, vim] ] )  ## groups of test sample
+    ina2 <- as.vector( ina[ -mat[, vim] ] )   ## groups of training sample
+    aba <- as.vector( mat[, vim] )
+    aba <- aba[aba > 0]
+    apo <- dis[aba, -aba]
     ta <- matrix(nrow = rmat, ncol = ng)
 
     if (type == "NS") {
       ## Non Standard algorithm
-      for (j in 1:c(A - 1) ) {
+      for ( j in 1:c(A - 1) ) {
         knn <- j + 1
         for (l in 1:ng) {
           dista <- apo[, ina2 == l]
@@ -69,11 +70,13 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
           }
         }
         g <- apply(ta, 1, which.min)
-        per[vim, j] <- sum(g == id) / rmat
+        per[vim, j] <- mean(g == id)
       }
+
     } else {
       ## Standard algorithm
-      for (j in 1:A) {
+      g <- numeric( A - 1)
+      for ( j in 1:c(A - 1) ) {
         knn <- j + 1
         for (k in 1:rmat) {
           xa <- cbind(ina2, apo[k, ])
@@ -82,7 +85,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
           tab <- table(sa)
           g[k] <- as.integer( names(tab)[ which.max(tab) ] )
         }
-        per[vim, j] <- sum(g == id) / rmat
+        per[vim, j] <- mean(g == id)
       }
     }
   }

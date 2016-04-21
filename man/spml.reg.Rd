@@ -7,21 +7,21 @@ Circular or angular regression.
 Regression with circualr dependent variable and Euclidean or categorical independent variables.
 }
 \usage{
-spml.reg(y, x, rads = T, xnew = NULL)
+spml.reg(y, x, rads = TRUE, xnew = NULL)
 }
 \arguments{
   \item{y}{
   The dependent variable,  it can be in radians or degrees.
 }
   \item{x}{
-  The independent variable(s). Can be Euclidean or categorical. If they are categorical, the user must provide them as dummy variables. It does not accept factor variables.
+  The independent variable(s). Can be Euclidean or categorical (factor variables).
 }
   \item{rads}{
 If the dependent variable is expressed in rads, this should be TRUE and FALSE otherwise.
 }
   \item{xnew}{
-  The new values of some independent variable(s) whose circular values you want to predict. Can be Euclidean or categorical. 
-If they are categorical, the user must provide them as dummy variables. It does not accept factor variables. If you have no new x values, leave it NULL (default). 
+  The new values of some independent variable(s) whose circular values you want to predict. Can be Euclidean or categorical.
+If they are categorical, the user must provide them as dummy variables. It does not accept factor variables. If you have no new x values, leave it NULL (default).
 }
 }
 \details{
@@ -36,10 +36,10 @@ The regression coefficients.
 The standard errors of the coefficients.
 }
 \item{loglik}{
-The vlaue of the maximised log-likelihood.
+The value of the maximised log-likelihood.
 }
 \item{est}{
-The fitted values expressed in radians if the obsereved data are in radians and in degrees otherwise. If xnew is not NULL, i.e. if you have new x values, then the predicted values of y will be returned. 
+The fitted values expressed in radians if the obsereved data are in radians and in degrees otherwise. If xnew is not NULL, i.e. if you have new x values, then the predicted values of y will be returned.
 }
 
 }

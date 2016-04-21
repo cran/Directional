@@ -13,7 +13,8 @@ rfb <- function(n, k, m, A) {
   ## k is the concentration parameter, the Fisher part
   ## m is the mean vector, the Fisher part
   ## A is the symmetric matrix, the Bingham part
-  m <- m / sqrt(sum(m^2))
+
+  m <- m / sqrt( sum(m^2) )
   m0 <- c(0, 1, 0)
   mu <- c(0, 0, 0)
   B <- rotation(m0, m)
@@ -24,12 +25,19 @@ rfb <- function(n, k, m, A) {
   V <- eig$vectors
   lam <- lam - lam[q]
   lam <- lam[-q]
-  x <- f.rbing(5 * n, lam)$X  ## Chris and Theo's code
-  x <- tcrossprod(x, V) ## simulated data
-  u <- log(runif(5 * n))
-  ffb <- k * x[, 2]  - mahalanobis(x, mu, A, inverted = TRUE )
-  fb <- k - mahalanobis(x, mu, A1, inverted = TRUE )
-  x1 <- x[u <= c(ffb - fb), ]
-  x <- x1[sample(1:nrow(x1), n), ]
-  tcrossprod(x, B) ## simulated data with the wanted mean direction
+
+  x1 <- matrix( 0, n, length(m) )
+  i <- 1
+  while (i <= n) {
+    x <- f.rbing(1, lam)$X  ## Chris and Theo's code
+    x <- tcrossprod(x, V) ## simulated data
+    u <- log( runif(1) )
+    ffb <- k * x[, 2]  - mahalanobis(x, mu, A, inverted = TRUE )
+    fb <- k - mahalanobis(x, mu, A1, inverted = TRUE )
+    if ( u <= c(ffb - fb) ) {
+      x1[i, ] <- x
+      i <- i + 1
+    }
+  }
+  tcrossprod(x1, B) ## simulated data with the wanted mean direction
 }

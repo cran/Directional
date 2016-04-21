@@ -7,11 +7,11 @@ Contour plot of the Kent distribution without any data.
 The contour plot of the Kent distribution on the sphere for some data is produced.
 }
 \usage{
-kent.datacontour(u)
+kent.datacontour(x)
 }
 \arguments{
-  \item{u}{
-  A tow column matrix, where the first column is the latitude and the second comlumn is the longitude.
+  \item{x}{
+  A two column matrix, where the first column is the latitude and the second comlumn is the longitude. If the matrix has two columns, it is assumed to have unit vectors and in this case it is turned into latitude and longitude.
 }
 }
 \details{

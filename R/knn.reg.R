@@ -19,7 +19,6 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
   x <- as.matrix(x)
   p <- ncol(x)  ## dimensions of x
   n <- nrow(y)
-  num <- 1:n
   xnew <- as.matrix(xnew)
   xnew <- matrix(xnew, ncol = p)
   nu <- nrow(xnew)
@@ -30,9 +29,10 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
     xnew <- xnew / sqrt( rowSums(xnew^2) )  ## makes sure x are unit vectors
 
     dis <- tcrossprod(xnew, x)
+    dis[ dis >= 1 ] <- 1
     disa <- acos(dis)
 
-  } else {
+  } else if ( type =="euclidean" || type == "manhattan" ) {
     m <- colMeans(x)
     s <- apply(x, 2, sd)
     x <- scale(x)[1:n, ]  ## standardize the independent variables
@@ -52,13 +52,21 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
       xnew <- as.matrix(x)
       xnew <- matrix(xnew, ncol = p)
     }
+
+    disa <- matrix( 0, nu, n )
+
     if (type == "euclidean") {
-      dis <- fields::rdist( rbind(xnew, x) )
-    } else {
-      dis <- dist(rbind(xnew, x), method = type, diag = TRUE, upper = TRUE)
-      dis <- as.matrix(dis)
+      Ip <- diag(p)
+      for (i in 1:nu) {
+        disa[i, ] <- as.vector( sqrt( mahalanobis(x, xnew[i, ], Ip, inverted = TRUE) ) )
+      }
+
+    } else if (type == "manhattan") {
+      for (i in 1:nu) {
+        a <- t(x) - xnew[i, ]
+        disa[i, ] <- colSums( abs(a) )
+      }
     }
-    disa <- dis[1:nu, -c(1:nu)]
   }
 
   ina <- 1:n
