@@ -7,7 +7,7 @@ Uniformity tests for circular data.
 }
 
 \description{
-Hypothesis test of uniformity test for circular data.
+Hypothesis tests of uniformity for circular data.
 }
 
 \usage{

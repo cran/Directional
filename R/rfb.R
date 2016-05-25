@@ -26,8 +26,9 @@ rfb <- function(n, k, m, A) {
   lam <- lam - lam[q]
   lam <- lam[-q]
 
-  x1 <- matrix( 0, n, length(m) )
+  x1 <- matrix( 0, n, 3 )
   i <- 1
+
   while (i <= n) {
     x <- f.rbing(1, lam)$X  ## Chris and Theo's code
     x <- tcrossprod(x, V) ## simulated data
@@ -39,5 +40,6 @@ rfb <- function(n, k, m, A) {
       i <- i + 1
     }
   }
+
   tcrossprod(x1, B) ## simulated data with the wanted mean direction
 }

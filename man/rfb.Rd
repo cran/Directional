@@ -1,11 +1,11 @@
 \name{rfb}
 \alias{rfb}
 \title{
-Simulation of random values from a Fisher-Bingham distribution
+Simulation of random values from a spherical Fisher-Bingham distribution
 }
 
 \description{
-Simulation of random values from a Fisher-Bingham distribution.
+Simulation of random values from a spherical Fisher-Bingham distribution.
 }
 
 \usage{
@@ -28,7 +28,7 @@ rfb(n, k, m, A)
 }
 
 \details{
-Random values from a Fisher-Bingham distribution are generated. This functions included the option of simulating from a Kent distribution also.
+Random values from a spherical Fisher-Bingham distribution are generated. This functions included the option of simulating from a Kent distribution also.
 }
 
 \value{

@@ -37,7 +37,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
   } else  mat <- mat
 
   M <- ncol(mat)
-  per <- matrix(nrow = M, ncol = A)
+  per <- matrix(nrow = M, ncol = A - 1)
   rmat <- nrow(mat)
 
   dis <- tcrossprod( z )
@@ -94,8 +94,8 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
   bias <- per[ , which.max(ela)] - apply(per, 1, max)  ## TT estimate of bias
   estb <- mean( bias )  ## TT estimate of bias
   runtime <- proc.time() - runtime
-  names(ela) <- paste("k=", 2:c(A + 1), sep = "")
-  plot(2:c(A + 1), ela, type = "b", xlab = "k nearest neighbours",
+  names(ela) <- paste("k=", 2:A, sep = "")
+  plot(2:A, ela, type = "b", xlab = "k nearest neighbours",
        pch = 9, ylab = "Estimated percentage of correct classification")
   percent <- c( max(ela) + estb)
   names(percent) <- c("Bias corrected estimated percentage")

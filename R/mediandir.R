@@ -10,21 +10,20 @@
 
 mediandir = function(x) {
   ## x is the directional data
-
   x = as.matrix(x)
   x = x / sqrt( rowSums(x^2) )
   n = nrow(x)  ;  p = ncol(x)
-  funa = function(pa) {
-    pa = pa / sqrt( sum(pa^2) )
-    f = mean( acos( x %*% t( t(pa) ) ) )
-    f
-  }
 
-  bar = optim( colMeans(x), funa, control = list(maxit = 10000) )
+   funa = function(pa) {
+    pa = pa / sqrt( sum(pa^2) )
+    mean( acos( x %*% pa ) )
+   }
+
+  pa = colMeans(x)
+  bar = optim( pa, funa, control = list(maxit = 10000) )
   bar = optim( bar$par, funa, control = list(maxit = 10000) )
   bar = optim( bar$par, funa, control = list(maxit = 10000) )
   bar = optim( bar$par, funa, control = list(maxit = 10000) )
   med = bar$par
   med / sqrt( sum(med^2) )
-
 }

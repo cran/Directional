@@ -18,8 +18,9 @@ rkent <- function(n, k, m, b) {
   m0 <- m0 / sqrt( sum(m0^2) )
   m <- m / sqrt( sum(m^2) )
   a <- rotation(m0, m)
-  A <- diag(c(-b, 0, b))
+  A <- diag( c(-b, 0, b) )
   x <- rfb(n, k, m0, A)  ## simulated values with mean direction equal to m
-  x %*% t(a)  ## simulated values with mean direction equal to m
+
+  tcrossprod(x, a)  ## simulated values with mean direction equal to m
 
 }

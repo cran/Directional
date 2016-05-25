@@ -23,8 +23,9 @@ spher.reg <- function(y, x, rads = FALSE) {
     }  ## from degrees to rads
     ## the first row of both matrices is the latitude and the second is the longitude
     ## the next two rows transform the data to Euclidean coordinates
-    X <- cbind(cos(x[, 1]) * cos(x[, 2]), cos(x[, 1]) * sin(x[, 2]), sin(x[, 1]))
-    Y <- cbind(cos(y[, 1]) * cos(y[, 2]), cos(y[, 1]) * sin(y[, 2]), sin(y[, 1]))
+    cosx1 <- cos(x[, 1])   ;  cosy1 <- cos(y[, 1])
+    X <- cbind( cosx1 * cos(x[, 2]), cosx1 * sin(x[, 2]), sin(x[, 1]) )
+    Y <- cbind( cosy1 * cos(y[, 2]), cosy1 * sin(y[, 2]), sin(y[, 1]) )
   } else if ( ncol(x) == 3  &  ncol(y) == 3 ) {
     X <- x
     Y <- y
@@ -33,7 +34,7 @@ spher.reg <- function(y, x, rads = FALSE) {
   XY <- crossprod(X, Y) / n
   b <- svd(XY)  ## SVD of the XY matrix
   A <- b$v %*% t(b$u)
-  if (det(A) < 0) {
+  if ( det(A) < 0 ) {
     b$u[, 3] <-  - b$u[, 3]
     A <- tcrossprod(b$v, b$u )
   }

@@ -51,4 +51,5 @@ f.rbing <- function(n, lam) {
   ## the avtry is the estimate of the M in rejection sampling
   ## 1/M is the probability of acceptance
   list(X = X, avtry = Ntry/n)
+
 }

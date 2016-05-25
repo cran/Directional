@@ -15,18 +15,21 @@ circ.cor1 <- function(theta, phi, rads = FALSE) {
     theta <- theta * pi/180
     phi <- phi * pi/180
   }
+
   ## We calculate the mean of each vector
-  m1 <- circ.summary(theta, rads = TRUE, plot = FALSE)$mesos
-  m2 <- circ.summary(phi, rads = TRUE, plot = FALSE)$mesos
-  up <- sum(sin(theta - m1) * sin(phi - m2))
-  down <- sqrt(sum(sin(theta - m1)^2) * sum(sin(phi - m2)^2))
+  m1 <- circ.summary(theta, rads = T, plot = F)$mesos
+  m2 <- circ.summary(phi, rads = T, plot = F)$mesos
+  up <- sum( sin(theta - m1) * sin(phi - m2) )
+  down <- sqrt( sum(sin(theta - m1)^2 ) * sum( sin(phi - m2)^2) )
   rho <- up/down  ## circular correlation
-  lam22 <- mean((sin(theta - m1))^2 * (sin(phi - m2))^2)
-  lam02 <- mean((sin(phi - m2))^2)
-  lam20 <- mean((sin(theta - m1))^2)
+  lam22 <- mean( (sin(theta - m1) )^2 * ( sin(phi - m2))^2 )
+  lam02 <- mean( (sin(phi - m2) )^2)
+  lam20 <- mean( (sin(theta - m1) )^2)
   zrho <- sqrt(n) * sqrt(lam02 * lam20/lam22) * rho
-  pvalue <- 2 * (1 - pnorm(abs(zrho)))
+  pvalue <- 2 * ( 1 - pnorm(abs(zrho)) )
+
   res <- c(rho, pvalue)
   names(res) <- c("rho", "p-value")
   res
+
 }

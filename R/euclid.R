@@ -10,7 +10,8 @@ euclid <- function(u) {
   u <- as.matrix(u)
   if (ncol(u) == 1)  u <- t(u)
   u <- pi * u/180  ## from degrees to rads
-  U <- cbind(cos(u[, 1]), sin(u[, 1]) * cos(u[, 2]), sin(u[, 1]) * sin(u[, 2]))
+  a1 <- sin(u[, 1])
+  U <- cbind(cos(u[, 1]), a1 * cos(u[, 2]), a1 * sin(u[, 2]))
   colnames(U) <- c("x", "y", "z")
   ## U are the cartesian coordinates of u
   U

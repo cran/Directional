@@ -1,12 +1,12 @@
 ################################
-#### Simulating from a Bingham distribution 
-#### Tsagris Michail 02/2014 
+#### Simulating from a Bingham distribution
+#### Tsagris Michail 02/2014
 #### mtsagris@yahoo.gr
-#### References: A new method to simulate the Bingham and related distributions 
+#### References: A new method to simulate the Bingham and related distributions
 #### in directional data analysis with applications
 #### Kent J.T., Ganeiber A.M. and Mardia K.V. (2013)
-#### http://arxiv.org/pdf/1310.8110v1.pdf 
-#### and 
+#### http://arxiv.org/pdf/1310.8110v1.pdf
+#### and
 #### Exact Bayesian Inference for the Bingham Distribution
 #### C.J. Fallaize and T. Kypraios (2014)
 #### http://arxiv.org/pdf/1401.2894v1.pdf
@@ -15,11 +15,45 @@
 ######### Simulation using any symmetric A matrix
 
 rbingham <- function(n, A) {
+
   p <- ncol(A)  ## dimensionality of A
-  lam <- eigen(A)$values  ## eigenvalues
-  V <- eigen(A)$vectors  ## eigenvectors
+  eig <- eigen(A)
+  lam <- eig$values  ## eigenvalues
+  V <- eig$vectors  ## eigenvectors
   lam <- lam - lam[p]
   lam <- lam[-p]
-  x <- f.rbing(n, lam)$X  ## Chris and Theo's code
-  tcrossprod(x, V) ## simulated data 
+
+  ### f.rbing part
+  lam <- sort(lam, decreasing = TRUE)  ## sort the eigenvalues in desceding order
+  nsamp <- 0
+  X <- NULL
+  lam.full <- c(lam, 0)
+  qa <- length(lam.full)
+  mu <- numeric(qa)
+  A <- diag(lam.full)
+  SigACG.inv <- diag(qa) + 2 * A
+  SigACG <- solve(SigACG.inv)
+  Ntry <- 0
+
+  while (nsamp < n) {
+    x.samp <- FALSE
+    while (x.samp == FALSE) {
+      yp <- MASS::mvrnorm(n = 1, mu = mu, Sigma = SigACG)
+      y <- yp / sqrt( sum( yp^2 ) )
+      lratio <-  - mahalanobis(y, mu, A, inverted = TRUE) - qa/2 * log(qa) +
+        0.5 * (qa - 1) + qa/2 * log( mahalanobis( y, mu, SigACG.inv, inverted = TRUE ) )
+      if ( log(runif(1) ) < lratio) {
+        X <- c(X, y)
+        x.samp <- TRUE
+        nsamp <- nsamp + 1
+      }
+      Ntry <- Ntry + 1
+    }
+  }
+
+  if (n > 1)
+    x <- matrix(X, byrow = TRUE, ncol = qa)
+  ## the x contains the simulated values
+  tcrossprod(x, V) ## simulated data
+
 }

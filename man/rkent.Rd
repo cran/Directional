@@ -17,13 +17,13 @@ rkent(n, k, m, b)
   The sample size.
 }
   \item{k}{
-  The concentraion parameter (Fisher part). It has to be greater than 0.
+  The concentraion parameter \eqn{\kappa}. It has to be greater than 0.
 }
   \item{m}{
   The mean direction (Fisher part).
 }
   \item{b}{
-  The ovalness parameter.
+  The ovalness parameter, \eqn{\beta}.
 }
 }
 

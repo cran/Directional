@@ -24,7 +24,7 @@ rvmf(n, mu, k)
 It uses a rejection smapling as suggested by Andrew Wood (1994). I have mentioned the description of the algorithm as I found it in Dhillon and Sra in 2003.
 }
 \value{
-A matrix with the simualted data.
+A matrix with the simulated data.
 }
 \references{
 Wood A. T. A. (1994). Simulation of the von Mises Fisher distribution. Communications in statistics-simulation and computation, 23(1): 157--164.

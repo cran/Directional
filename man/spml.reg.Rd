@@ -29,6 +29,9 @@ The E-M algorithm is fitted in this regression as described in Presnell et al. (
 }
 \value{
 A list including:
+\item{runtime}{
+The runtime of the procedure.
+}
 \item{beta}{
 The regression coefficients.
 }

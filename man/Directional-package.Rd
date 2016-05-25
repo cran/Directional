@@ -2,25 +2,25 @@
 \alias{Directional-package}
 \docType{package}
 \title{
-This is an R package that provides methods for statistical analysis of Directional data.
+This is an R package that provides methods for the statistical analysis of Directional data.
 }
 \description{
-Circular-linear regression, spherical-spherical regression, discriminant analysis, ANOVA for circular and (hyper-)spherical data, tests for eaquality of conentration parameters,
-fitting distributions, random values generation, contour plots and many more are included in this package.
+Circular-linear regression, spherical-spherical regression, discriminant analysis, ANOVA for circular and (hyper-)spherical data, tests for eaquality of conentration parameters, fitting distributions, random values generation, contour plots and many more are included in this package.
 
 }
 \details{
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 1.9\cr
-Date: \tab 2016-04-21\cr
+Version: \tab 2.0\cr
+Date: \tab 2016-05-25\cr
 License: \tab GPL-2\cr
 }
 }
 \author{
-Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
+Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <athineou@csd.uoc.gr> and Anamul Sajib <pmxahsa@nottingham.ac.uk>
 }
+
 \section{Maintainers }{
 Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
 }
@@ -47,7 +47,7 @@ Panagiotis (pronounced Panayiotis) Tzirakis (master student at the department of
 
 Professor John Kent from the university of Leeds is acknowledged for clarifying one thing with the ovalness parameter in his distribution.
 
-Phillip Paine (postdoc at the university of Nottingham) spotted that the function \code{\link{rfb}} is rather slow and he suggested me to change it. The funciton has changed now and this is also due to Joshua Davis (from Carleton College, Northfield, MN) who spotted that mistakes could occur, due a vector not being a matrix and so on.
+Phillip Paine (postdoc at the university of Nottingham) spotted that the function \code{\link{rfb}} is rather slow and he suggested me to change it. The function has changed now and this is also due to Joshua Davis (from Carleton College, Northfield, MN) who spotted that mistakes could occur, due a vector not being a matrix and so on.
 
 }
 

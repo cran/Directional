@@ -11,23 +11,32 @@ circ.cor2 <- function(theta, phi, rads = FALSE) {
   ## by default they are in degrees
   n <- length(theta)  ## sample size
   ## if the data are in degrees we transform them into radians
-  if (rads == FALSE) {
+
+  if (rads == F) {
     theta <- theta * pi/180
     phi <- phi * pi/180
   }
-  rcc <- cor( cos(theta), cos(phi) )
-  rcs <- cor( cos(theta), sin(phi) )
-  rss <- cor( sin(theta), sin(phi) )
-  rsc <- cor( sin(theta), cos(phi) )
-  r1 <- cor( cos(theta), sin(theta) )
-  r2 <- cor( cos(phi), sin(phi) )
+
+  costheta <- cos(theta)
+  cosphi <- cos(phi)
+  sintheta <- sin(theta)
+  sinphi<- sin(phi)
+
+  rcc <- cor(costheta, cosphi)
+  rcs <- cor(costheta, sinphi)
+  rss <- cor(sintheta, sinphi)
+  rsc <- cor(sintheta, cosphi)
+  r1 <- cor(costheta, sintheta)
+  r2 <- cor(cosphi, sinphi)
+
   up <- rcc^2 + rcs^2 + rsc^2 + rss^2 + 2 * (rcc * rss + rcs * rsc) * r1 * r2 -
     2 * (rcc * rcs + rsc * rss) * r2 - 2 * (rcc * rsc + rcs * rss) * r1
   down <- (1 - r1^2) * (1 - r2^2)
   rho <- up/down
   test <- n * rho^2
-  pvalue <- 1 - pchisq(test, 4)
+  pvalue <- pchisq(test, 4, lower.tail = FALSE)
   res <- c(rho, pvalue)
   names(res) <- c("rho", "p-value")
   res
+
 }
