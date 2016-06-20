@@ -14,7 +14,7 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   ## fraction denotes the percentage of the sample to be used as the test sample
   ## R is the number of cross validations
   x <- as.matrix(x)
-  x <- x / sqrt(rowSums(x^2))  ## makes sure x is unit vectors
+  x <- x / sqrt( rowSums(x^2) )  ## makes sure x is unit vectors
   p <- ncol(x)  ## p is the dimensionality of the data
   per <- numeric(R)
   n <- nrow(x)  ## sample size
@@ -25,6 +25,7 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   k <- numeric(g)
   ## if seed==TRUE then the results will always be the same
   if (seed == TRUE)  set.seed(1234567)
+
   for (i in 1:R) {
     mat <- matrix(nrow = frac, ncol = g)
     est <- numeric(frac)
@@ -32,18 +33,22 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
     test <- x[nu, ]
     id <- ina[-nu]
     train <- x[-nu, ]
+
     for (j in 1:g) {
       da <- vmf(train[id == j, ])  ## estimates the parameters of the vMF
       mesi[j, ] <- da$mu  ## mean direction of each group
       k[j] <- da$kappa ## concentration of each group
     }
+
     for (j in 1:g) {
       mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * test %*% mesi[j, ] - 0.5 *
-        p * log(2 * pi) - log(besselI(k[j], p/2 - 1, expon.scaled = TRUE)) - k[j]
+        p * log(2 * pi) - log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]
     }
+
     est <- apply(mat, 1, which.max)
     per[i] <- sum(est == ina[nu])/frac
   }
+
   percent <- mean(per)
   s1 <- sd(per)
   s2 <- sqrt(percent * (1 - percent)/R)
@@ -54,6 +59,7 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   if (conf1[1] < 0) conf1[1] <- 0
   if (conf2[2] > 1) conf2[2] <- 1
   if (conf2[1] < 0) conf2[1] <- 0
+
   conf3 <- quantile(per, probs = c(0.025, 0.975))  ## 3rd way of a CI
   ci <- rbind(conf1, conf2, conf3)
   colnames(ci) <- c("2.5%", "97.5%")
@@ -61,4 +67,5 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   percent <- c(percent, s1, s2)
   names(percent) <- c('percent', 'sd1', 'sd2')
   list(percent = percent, ci = ci)
+
 }

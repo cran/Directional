@@ -32,6 +32,7 @@ The number if iterations required by the algorithm to converge to the solution.
 The estimated covatriance matrix.
 }
 }
+
 \references{
 Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere.
 Biometrika 74(3): 579-589.
@@ -47,7 +48,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{rbingham}, \link{rfb}
+\code{\link{rbingham}, \link{rfb}, \link{f.rbing}, \link{fb.saddle}
 }
 }
 

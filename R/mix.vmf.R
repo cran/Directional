@@ -11,15 +11,18 @@ mix.vmf <- function(x, g) {
 
   ## x contains the data
   ## g is the number of clusters
+
   x <- as.matrix(x)
-  x <- x/sqrt(rowSums(x^2))
+  x <- x / sqrt( rowSums(x^2) )
   p <- ncol(x)  ## dimensionality of the data
   n <- nrow(x)  ## sample size of the data
   lik <- NULL
-  ##
+
+
   lika <- matrix(nrow = n, ncol = g)
   pij <- matrix(nrow = n, ncol = g)
   ka <- ka2 <- numeric(g)
+
    Apk <- function(p, k) {
      besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
    }
@@ -57,44 +60,47 @@ mix.vmf <- function(x, g) {
       i <- 1
       k[i] <- R * (p - R^2)/(1 - R^2)
       i <- 2
-      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
-      (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
+      apk <- Apk(p, k[i - 1])
+      k[i] <- k[i - 1] - ( apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
       while (abs(k[i] - k[i - 1]) > 1e-07) {
         i <- i + 1
-        k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
-        (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
+        apk <- Apk(p, k[i - 1])
+        k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
       }
       ka[j] <- k[i] ## initial concentration parameters
       lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-      (log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) + ka[j]) +
+      ( log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE))  + ka[j]) +
        ka[j] * (x %*% mat[j,])
     }
-    lik[1] <- sum(log(rowSums(w * exp(lika))))  ## initial log-likelihood
+
+    wlika <- w * exp(lika)
+    rswlika <- rowSums(wlika)
+    lik[1] <- sum( log( rswlika ) )  ## initial log-likelihood
 
     l <- 2
     ## Step 2
-    pij <- w * exp(lika)/rowSums(w * exp(lika))  ## weights at step 2
+    pij <- wlika / rswlika  ## weights at step 2
     w <- rbind( w, colMeans(pij) ) ## weights for step 2
 
     for (j in 1:g) {
       m1 <- colSums(pij[, j] * x)
-      mat2[j, ] <- m1/sqrt(sum(m1^2))  ## mean directions at step 2
-      R <- sqrt(sum(m1^2))/sum(pij[, j])  ## mean resultant lengths at step 2
+      mat2[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step 2
+      R <- sqrt( sum(m1^2) )/sum(pij[, j])  ## mean resultant lengths at step 2
       k <- numeric(4)
       i <- 1
       k[i] <- R * (p - R^2)/(1 - R^2)
       i <- 2
-      k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
-      (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
+      apk <- Apk(p, k[i - 1])
+      k[i] <- k[i - 1] - ( apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
 
       while (abs(k[i] - k[i - 1]) > 1e-07) {
         i <- i + 1
-        k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
-        (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
+        apk <- Apk(p, k[i - 1])
+        k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
       }
       ka2[j] <- k[i]
       lika[, j] <- (p/2 - 1) * log(ka2[j]) - 0.5 * p * log(2 * pi) -
-      (log(besselI(ka2[j], p/2 - 1, expon.scaled = T)) + ka2[j]) +
+      ( log(besselI(ka2[j], p/2 - 1, expon.scaled = TRUE) ) + ka2[j]) +
       ka2[j] * (x %*% mat2[j, ])
     }
 
@@ -105,7 +111,8 @@ mix.vmf <- function(x, g) {
     ## Step 3 and beyond
     while ( lik[l] - lik[l - 1] > 1e-05 ) {
       l <- l + 1
-      pij <- w[l - 1, ] * exp(lika)/rowSums( w[l - 1, ] * exp(lika) )  ## weights
+      wexplika <- w[l - 1, ] * exp(lika)
+      pij <- wexplika / rowSums( wexplika )  ## weights
       w <- rbind(w, colMeans(pij) )
       ka2 <- numeric(g)
 
@@ -117,13 +124,13 @@ mix.vmf <- function(x, g) {
         i <- 1
         k[i] <- R * (p - R^2)/(1 - R^2)
         i <- 2
-        k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
-        (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
+        apk <- Apk(p, k[i - 1])
+        k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
 
         while (abs(k[i] - k[i - 1]) > 1e-07) {
           i <- i + 1
-          k[i] <- k[i - 1] - (Apk(p, k[i - 1]) - R)/(1 - Apk(p, k[i - 1])^2 -
-          (p - 1)/k[i - 1] * Apk(p, k[i - 1]))
+          apk <- Apk(p, k[i - 1])
+          k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
         }
 
         ka2[j] <- k[i]
@@ -134,7 +141,7 @@ mix.vmf <- function(x, g) {
 
       ka <- rbind(ka, ka2) ## concentration parameters at step l
       mat <- abind( mat, mat2, along = 3 )
-      lik[l] <- sum(log(rowSums(w[l, ] * exp(lika))))
+      lik[l] <- sum( log( rowSums( w[l, ] * exp(lika) ) ) )
     }  ## log-likelihood at step l
 
     ta <- apply(pij, 1, which.max)  ## estimated cluster of each observation

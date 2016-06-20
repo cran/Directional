@@ -20,6 +20,7 @@ circlin.cor(theta, x, rads = FALSE)
   If the circualr variable is in rads, this should be TRUE and FALSE otherwise.
 }
 }
+
 \details{
 The squared correlation between a circular and one or more linear variables is calculated.
 }
@@ -32,21 +33,26 @@ The value of the squared correlation.
 The p-value of the zero correlation hypothesis testing.
 }
 }
+
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 }
+
 \author{
 Michail Tsagris
 
 R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
 }
+
 %\note{
 %%  ~~further notes~~
 %}
+
 \seealso{
-\code{\link{circ.cor1}, \link{circ.cor2}
+\code{\link{circ.cor1}, \link{circ.cor2}, \link{spml.reg}
 }
 }
+
 \examples{
 phi <- rvonmises(50, 2, 20, rads = TRUE)
 x <- 2 * phi + rnorm(50)

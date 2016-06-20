@@ -30,11 +30,13 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
     if (thumb == "tay") {
       k <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
       h <- ( (4 * pi^0.5 * besselI(k, 0)^2)/(3 * n * k^2 *
-      besselI(2 * k, 2)) )^(1/5)
+      besselI(2 * k, 2)) )^0.2
+
     } else if (thumb == "rot") {
       k <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
       h <- ( (4 * pi^0.5 * besselI(k, 0)^2) /( k * n * ( 2 * besselI(2 * k, 1) +
-      3 * k * besselI(2 * k, 2)) ) )^(1/5)
+      3 * k * besselI(2 * k, 2)) ) )^0.2
+
     } else if (thumb == "none") {
       h <- as.numeric( vmkde.tune(u, low = 0.1, up = 1)[1] )
     }

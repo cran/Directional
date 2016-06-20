@@ -1,4 +1,3 @@
-
 \name{matrixfisher.mle}
 \alias{matrixfisher.mle}
 \title{
@@ -6,7 +5,7 @@ Mle of the Matrix Fisher distribution on SO(3)
 }
 
 \description{
-It estimates the maximum likelihood estimates of Matrix Fisher parameter F(3x3).
+It returns the maximum likelihood estimate of the Matrix Fisher parameter F(3x3).
 }
 
 \usage{
@@ -15,7 +14,7 @@ matrixfisher.mle(X)
 
 \arguments{
 \item{X}{
-An array containing rotation matrices in SO3.
+An array containing rotation matrices in SO(3).
 }
 }
 
@@ -48,6 +47,11 @@ F <- 10^(-1) * matrix( c(85, 11, 41, 78, 39, 60, 43, 64, 48), ncol = 3 )   ### A
 X <- rmatrixfisher(3000, F)
 matrixfisher.mle(X)
 svd(F)
+## Bigger sample is needed to obtain better results
+## X <- rmatrixfisher(30000, F)
+## matrixfisher.mle(X)
+## svd(F)
+
 }
 
 \keyword{ Matrix Fisher distribution }

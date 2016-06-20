@@ -33,6 +33,7 @@ vmf.kerncontour <- function(u, thumb = "none") {
   x2 <- seq(min(u[, 2]) - 5, max(u[, 2]) + 5, length = n2)  ## longitude
   cpk <- 1 / (  ( h^2)^0.5 *(2 * pi)^1.5 * besselI(1/h^2, 0.5) )
   mat <- matrix(nrow = n1, ncol = n2)
+
   for (i in 1:n1) {
     for (j in 1:n2) {
       y <- euclid( c(x1[i], x2[j]) )
@@ -43,6 +44,7 @@ vmf.kerncontour <- function(u, thumb = "none") {
      } else  mat[i, j] <- NA
     }
   }
+
   contour(x1, x2, mat, nlevels = 10, col = 2, xlab = "Latitude",
   ylab = "Longitude")
   points(u[, 1], u[, 2])

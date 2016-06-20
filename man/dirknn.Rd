@@ -1,15 +1,17 @@
 \name{dirknn}
 \alias{dirknn}
 \title{
-k-NN algorithm using the arc cosinus distance.
+k-NN algorithm using the arc cosinus distance
 }
 
 \description{
 It classifies new observations to some known groups via the k-NN algorithm.
 }
+
 \usage{
 dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE)
 }
+
 \arguments{
   \item{x}{
   The data, a numeric matrix with unit vectors.
@@ -30,6 +32,7 @@ dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE)
   A boolean variable used only in the case of the non standard algorithm (type="NS"). Should the average of the distances be calculated (TRUE) or not (FALSE)? If it is FALSE, the harmonic mean is calculated.
 }
 }
+
 \details{
 The standard algorithm is to keep the k nearest observations and see the groups of these observations. The new observation is allocated to the most frequent seen group. The non standard algorithm is to calculate the classical mean or the harmonic mean of the k nearest observations for each group. The new observation is allocated to the group with the smallest mean distance.
 }
@@ -39,10 +42,12 @@ A vector including:
 The predicted group.
 }
 }
+
 \references{
 course webpage of Howard E. Haber.
 http://scipp.ucsc.edu/~haber/ph216/rotation_12.pdf
 }
+
 \author{
 Michail Tsagris
 
@@ -51,10 +56,12 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %\note{
 %%  ~~further notes~~
 %}
+
 \seealso{
-\code{\link{dirknn.tune}, \link{vmfda.pred}
+\code{\link{dirknn.tune}, \link{vmfda.pred}, \link{mix.vmf}
 }
 }
+
 \examples{
 k <- runif(4, 4, 20)
 prob <- c(0.2, 0.4, 0.3, 0.1)
@@ -76,5 +83,6 @@ table(id, a2)
 table(id, a3)
 table(id, a4)
 }
+
 \keyword{ Directional k-NN algorithm }
 \keyword{ Supervised classification }

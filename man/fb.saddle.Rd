@@ -54,7 +54,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{kent.logcon}, \link{rfb}, \link{kent.mle}
+\code{\link{kent.logcon}, \link{rfb}, \link{kent.mle}, \link{rbingham}
 }
 }
 

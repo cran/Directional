@@ -45,8 +45,7 @@ f.rbing <- function(n, lam) {
     }
   }
 
-  if (n > 1)
-    X <- matrix(X, byrow = TRUE, ncol = qa)
+  X <- matrix(X, byrow = TRUE, ncol = qa)
   ## the X contains the simulated values
   ## the avtry is the estimate of the M in rejection sampling
   ## 1/M is the probability of acceptance

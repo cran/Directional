@@ -51,8 +51,7 @@ rbingham <- function(n, A) {
     }
   }
 
-  if (n > 1)
-    x <- matrix(X, byrow = TRUE, ncol = qa)
+  x <- matrix(X, byrow = TRUE, ncol = qa)
   ## the x contains the simulated values
   tcrossprod(x, V) ## simulated data
 

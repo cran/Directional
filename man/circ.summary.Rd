@@ -45,24 +45,30 @@ The circular variance.
 The circular standard deviation.
 }
 }
+
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 }
+
 \author{
 Michail Tsagris
 
 R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
 }
+
 %\note{
 %%  ~~further notes~~
 %}
+
 \seealso{
-\code{\link{rvonmises}, \link{vm.kde}
+\code{\link{rvonmises}, \link{vm.kde}, \link{vmf}, \link{group.vm}, \link{hcf.circaov}
 }
 }
+
 \examples{
 x <- rvonmises(50, 2.5, 15, rads = TRUE)
 circ.summary(x, rads = TRUE, plot = TRUE)
 }
+
 \keyword{ Summary statistics}
 \keyword{ Von Mises distribution }

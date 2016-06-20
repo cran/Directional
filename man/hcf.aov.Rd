@@ -5,7 +5,7 @@
 \alias{het.aov}
 
 \title{
-Analysis of variance for (hyper-)spherical data.
+Analysis of variance for (hyper-)spherical data
 }
 
 \description{
@@ -61,7 +61,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{lr.aov}, \link{embed.aov}, \link{het.aov}, \link{spherconc.test}
+\code{\link{lr.aov}, \link{embed.aov}, \link{het.aov}, \link{spherconc.test}, \link{conc.test}
 }
 }
 

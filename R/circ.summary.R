@@ -15,23 +15,28 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
   if (rads == FALSE)  u <- u * pi/180
   ## mesos contains the sample mean
   ## direction
+
   C <- mean( cos(u) )
   S <- mean( sin(u) )
-  Rbar <- sqrt(C^2 + S^2)  ## mean resultant length
+  Rbar <- sqrt( C^2 + S^2 )  ## mean resultant length
+
   if (C > 0) {
     mesos <- atan(S/C)
   } else  mesos <- atan(S/C) + pi
   MRL <- Rbar  ## mean resultant length
   circv <- 1 - Rbar
   circs <- sqrt(-2 * log(Rbar))  ## sample cicrular standard deviation
+
   ## lik is the von Mises likelihood
    lik <- function(k) {
      f <- k * sum( cos(u - mesos) ) - n * log(2 * pi) -
      n * (log(besselI( k, 0, expon.scaled = TRUE) ) + k)
      f
    }
+
   kappa <- optimize(lik, c(0, 100000), maximum = TRUE)$maximum
   ## kappa is the estimated concentration (kappa)
+
   R <- n * Rbar
   if (Rbar < 2/3) {
     fact <- sqrt(2 * n * (2 * R^2 - n * qchisq(0.05, 1))/
@@ -41,10 +46,12 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
     fact <- sqrt(n^2 - (n^2 - R^2) * exp(qchisq(0.05, 1)/n))/R
     ci <- c(mesos - acos(fact), mesos + acos(fact))
   }
-  if (rads == F) {
+
+  if (rads == FALSE) {
     mesos <- mesos * 180/pi
     ci <- ci * 180/pi
   }
+
   if (plot == TRUE) {
     r <- seq(0, 2 * pi, by = 0.01)
     plot(cos(r), sin(r), type = "l", xlab = "Cosinus", ylab = "Sinus")
@@ -55,6 +62,8 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
     lines(yy, t, lty = 2)
     points(cos(u), sin(u))
   }
+
   list(mesos = mesos, confint = ci, kappa = kappa, MRL = MRL,
   circvariance = circv, circstd = circs)
+
 }

@@ -21,14 +21,14 @@ mediandir_2 = function(x) {
   u[1, ] <- pa / sqrt( sum(pa^2) )
   ww <- as.vector( sqrt( 1 - ( x %*% pa )^2 ) )
   u[2, ] <- colSums(x / ww )
-  u[2, ] <- u[2, ] / sqrt(sum(u[2, ]^2))
+  u[2, ] <- u[2, ] / sqrt( sum(u[2, ]^2) )
 
   i <- 2
   while ( sum( abs(u[i, ] - u[i - 1, ]) ) > 1e-10 ) {
     i <- i +1
     ww <- as.vector( sqrt( 1 - ( x %*% u[i - 1, ] )^2 ) )
     u[i, ] <- colSums(x / ww )
-    u[i, ] <- u[i, ] / sqrt(sum(u[i, ]^2))
+    u[i, ] <- u[i, ] / sqrt( sum(u[i, ]^2) )
   }
 
   u[i, ]

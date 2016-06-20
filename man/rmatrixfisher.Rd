@@ -13,11 +13,11 @@ rmatrixfisher(n, F)
 }
 
 \arguments{
-  \item{n}{
-  the sample size.
+\item{n}{
+the sample size.
 }
-  \item{F}{
-  An arbitrary 3x3 matrix.
+\item{F}{
+An arbitrary 3x3 matrix.
 }
 }
 
@@ -39,7 +39,6 @@ Anamul Sajib & Chris Fallaize
 
 R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk> & Chris Fallaize
 }
-
 
 \examples{
 F <- 10^(-1) * matrix( c(85, 11, 41, 78, 39, 60, 43, 64, 48), ncol = 3)   ### An arbitrary F matrix

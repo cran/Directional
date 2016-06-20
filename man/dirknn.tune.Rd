@@ -1,7 +1,7 @@
 \name{dirknn.tune}
 \alias{dirknn.tune}
 \title{
-k-NN algorithm using the arc cosinus distance. Tuning the k neigbours.
+k-NN algorithm using the arc cosinus distance. Tuning the k neigbours
 }
 
 \description{
@@ -69,7 +69,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{dirknn}, \link{vmf.da}
+\code{\link{dirknn}, \link{vmf.da}, \link{mix.vmf}
 }
 }
 

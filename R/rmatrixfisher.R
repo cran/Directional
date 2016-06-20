@@ -9,7 +9,7 @@ rmatrixfisher <- function(n, F) {
     anal <- svd(F)
     U <- anal$u
     V <- anal$v
-    D <- diag( anal$d )
+    D <- anal$d
     l1 <- 0
     l2 <- 2 * ( D[2] + D[3] )
     l3 <- 2 * ( D[1] + D[3] )

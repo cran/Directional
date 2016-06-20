@@ -1,7 +1,7 @@
 \name{group.vm}
 \alias{group.vm}
 \title{
-Summary statistics for grouped circular data.
+Summary statistics for grouped circular data
 }
 \description{
 It produces a few summary measures for grouped circular data.

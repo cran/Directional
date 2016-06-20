@@ -8,6 +8,9 @@
 ################################
 
 acg <- function(x) {
+
+  x <- as.matrix(x)
+  x <- x /sqrt( rowSums(x^2) )
   p <- ncol(x)
   n <- nrow(x)
   mu <- numeric(p)
@@ -15,10 +18,11 @@ acg <- function(x) {
   lam[, , 1] <- cov(x)
   maha <- mahalanobis(x, mu, lam[, , 1])
   down <- sum( 1 / maha )
-  up <- array( dim = c(p, p, n) )
+  tx <- up <- array( dim = c(p, p, n) )
 
   for (j in 1:n) {
-    up[, , j] <- crossprod( t( x[j, ] ) ) / maha[j]
+    tx[, , j] <- crossprod( t( x[j, ] ) )
+    up[, , j] <- tx[, , j] / maha[j]
   }
 
   up <- apply(up, 1:2, sum)
@@ -29,10 +33,10 @@ acg <- function(x) {
     i <- i + 1
     maha <- mahalanobis(x, mu, lam[, , i - 1])
     down <- sum( 1 / maha )
-    down <- sum( 1 / maha )
-    up<- array(dim = c(p, p, n) )
+    up <- array(dim = c(p, p, n) )
+
     for (j in 1:n) {
-      up[, , j] <- crossprod( t( x[j, ] ) ) / maha[j]
+      up[, , j] <- tx[, , j] / maha[j]
     }
     up <- apply(up, 1:2, sum)
     lam[, , i] <- p * up / down

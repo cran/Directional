@@ -6,26 +6,28 @@
 ################################
 
 
-spml.reg <- function(y, x, rads = TRUE, xnew = NULL) {
+spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   ## y is the angular dependent variable
   ## x contains the independent variable(s)
   ## xnew is some new data or the current ones
   ## pred is either TRUE (xnew is new data) or
   ## FALSE (xnew is the same as x)
   ## if the data are in degrees we transform them into radians
+
   if (rads == F)   y <- y/180 * pi
   u <- cbind( cos(y), sin(y) )  ## bring the data onto the circle
   n <- nrow(u)
   x <- cbind(1, x)
   x <- as.matrix(x)
-  XX <- solve( crossprod(x), t(x) )
+  csx <- crossprod(x)
+  XX <- solve( csx, t(x) )
   p <- ncol(x)
 
   funa <- function(beta) {
     mu <- x %*% beta
     tau <- diag( tcrossprod(u, mu) )
-    ell <-  -0.5 * sum( diag( tcrossprod( mu ) ) ) +
-    sum( log( 1 + tau * pnorm(tau) / dnorm(tau) ) ) - n * log(2 * pi)
+    ell <-  -0.5 * sum( mu * mu ) +
+      sum( log( 1 + tau * pnorm(tau) / dnorm(tau) ) ) - n * log(2 * pi)
     ell
   }
 
@@ -38,52 +40,64 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL) {
   lik[1] <- funa(B)
   mu <- x %*% B
   tau <- diag( tcrossprod(u, mu) )
-  psit <- tau + pnorm(tau) / ( dnorm(tau) + tau * pnorm(tau) )
-  M <- diag(psit)
-  B <-  tcrossprod(XX, M) %*% u
+  ptau <- pnorm(tau)
+  psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
+  B <- crossprod( t(XX) * psit, u)
   lik[2] <- funa(B)
   i <- 2
 
   while ( lik[i] - lik[i - 1] > 1e-06 ) {
     i <- i + 1
     mu <- x %*% B
-  tau <- diag( tcrossprod(u, mu) )
-    psit <- tau + pnorm(tau) / ( dnorm(tau) + tau * pnorm(tau) )
-    M <- diag(psit)
-    B <-  tcrossprod(XX, M) %*% u
+    tau <- diag( tcrossprod(u, mu) )
+    ptau <- pnorm(tau)
+    psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
+    B <- crossprod( t(XX) * psit, u)
     lik[i] <- funa(B)
   }
 
   loglik <- lik[i]
   mu <- x %*% B
-  tau <- diag( tcrossprod(u, mu) )
-  psit <- tau + pnorm(tau)/( dnorm(tau) + tau * pnorm(tau) )
-  psit2 <- diag( 2 - tau * pnorm(tau) / ( dnorm(tau) + tau * pnorm(tau) )  -
-  ( pnorm(tau)/( dnorm(tau) + tau * pnorm(tau) ) )^2  )
-  C <- u[, 1]   ;   S <- u[, 2]
 
-  A1 <-  - crossprod(x)
-  A2 <-  crossprod(x, psit2)
-  s11 <-  A1 + A2 %*% tcrossprod(C) %*% x
-  s12 <- t(tcrossprod(C,A2) )  %*% crossprod(S, x)
-  s21 <- t(s12)
-  s22 <-  A1 + A2 %*% tcrossprod(S) %*% x
-  se1 <- cbind(s11, s12)
-  se2 <- cbind(s21, s22)
-  se <-  - rbind(se1, se2)  ## negative Hessian of the log-likelihood
-  se <- solve(se)
-  se <- sqrt( diag(se) )  ## standard errors of the coefficients
-  seb <- matrix(se, ncol = 2)
-  colnames(B) <- colnames(seb) <- c("Cosinus of y", "Sinus of y")
+  if ( seb == TRUE ) {
+
+    dtau <- dnorm(tau)
+    pdtau <- tau * ptau
+
+    frac <-  ptau/( dtau + pdtau )
+    psit <- tau + frac
+    psit2 <- 2 - pdtau / (dtau + pdtau)  - ( frac )^2
+
+    C <- u[, 1]    ;    S <- u[, 2]
+
+    A1 <-  - csx
+    A2 <-  t( x * psit2 )
+    s11 <-  A1 + A2 %*% tcrossprod(C) %*% x
+    s12 <- t( tcrossprod(C, A2) ) %*% crossprod(S, x)
+    s21 <- t(s12)
+    s22 <-  A1 + A2 %*% tcrossprod(S) %*% x
+    se1 <- cbind(s11, s12)
+    se2 <- cbind(s21, s22)
+    se <-  - rbind(se1, se2)  ## negative Hessian of the log-likelihood
+    se <- solve(se)
+    se <- sqrt( diag(se) )  ## standard errors of the coefficients
+    seb <- matrix(se, ncol = 2)
+    colnames(seb) <- c("Cosinus of y", "Sinus of y")
+
+    if ( is.null( colnames(x) ) )  {
+      rownames(seb) <- c( "Intercept", paste("X", 1:c(p - 1), sep = "") )
+    } else rownames(seb) <- colnames(x)
+
+  } else seb = NULL
+
+  colnames(B) <- c("Cosinus of y", "Sinus of y")
 
   runtime <- proc.time() - tic
 
   if ( is.null( colnames(x) ) )  {
     rownames(B) <- c( "Intercept", paste("X", 1:c(p - 1), sep = "") )
-    rownames(seb) <- c( "Intercept", paste("X", 1:c(p - 1), sep = "") )
-  } else rownames(B) <- rownames(seb) <- colnames(x)
-  ## rho is the correlation between the fitted and the observed values
-  ## the fitted values are in radians
+  } else rownames(B) <- colnames(x)
+
 
   if ( !is.null(xnew) ) {  ## predict new values?
     xnew <- cbind(1, xnew)
@@ -96,6 +110,7 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL) {
   }
 
   if (rads == F)  est = est * 180 /pi
+
   list(runtime = runtime, beta = B, seb = seb, loglik = loglik, est = est)
 
 }

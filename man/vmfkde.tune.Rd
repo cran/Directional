@@ -1,11 +1,13 @@
 \name{vmfkde.tune}
 \alias{vmfkde.tune}
 \title{
-Fast tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data with an optimizer.
+Fast tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data with an optimizer
 }
+
 \description{
 Fast tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data when cross validation is used with an optimiser.
 }
+
 \usage{
 vmfkde.tune(x, low = 0.1, up = 1)
 }
@@ -20,6 +22,7 @@ vmfkde.tune(x, low = 0.1, up = 1)
   The upper value of the bandwdith to search.
 }
 }
+
 \details{
 Fast tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data via cross validation.
 }
@@ -32,11 +35,13 @@ The best H found.
 The value of the maximised pseudo-likelihood.
 }
 }
+
 \references{
 Garcia Portugues E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655--1685.
 
 Wand M. P.,  and Jones M. C. (1994). Kernel smoothing. Crc Press.
 }
+
 \author{
 Michail Tsagris
 
@@ -45,14 +50,17 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %\note{
 %%  ~~further notes~~
 %}
+
 \seealso{
-\code{\link{vmf.kde},\link{vmf.kerncontour}
+\code{\link{vmf.kde},\link{vmf.kerncontour}, \link{vm.kde}, \link{vmkde.tune}
 }
 }
+
 \examples{
 x <- rvmf(100, rnorm(3), 15)
 vmfkde.tune(x)
 }
+
 \keyword{ Kernel density estimate }
 \keyword{ von Mises-Fisher distribution }
 \keyword{ Tuning of the bandwidth }

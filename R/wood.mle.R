@@ -24,8 +24,9 @@ wood.mle <- function(y) {
     a2 <- as.vector( x %*% m2 )
     a3 <- as.vector( x %*% m3 )
     u <- sum(a3)
-    v <- sum( ( a1^2 - a2^2 ) / sqrt( 1 - a3^2 ) )
-    w <- 2 * sum( a1 * a2  / sqrt( 1 - a3^2 ) )
+    down <- sqrt( 1 - a3^2 )
+    v <- sum( ( a1^2 - a2^2 ) / down )
+    w <- 2 * sum( a1 * a2  / down )
     f <-  - ( u^2 + v^2 + w^2 )
     f
   }
@@ -47,8 +48,9 @@ wood.mle <- function(y) {
   a2 <- as.vector( x %*% m2 )
   a3 <- as.vector( x %*% m3 )
   u <- sum(a3)
-  v <- sum( ( a1^2 - a2^2 ) / sqrt( 1 - a3^2 ) )
-  w <- 2 * sum( a1 * a2  / sqrt( 1 - a3^2 ) )
+  down <- sqrt( 1 - a3^2 )
+  v <- sum( ( a1^2 - a2^2 ) / down )
+  w <- 2 * sum( a1 * a2  / down )
   a <- atan2( sqrt(v^2 + w^2), u )
   b <- atan2( w, v )
   n <- nrow(y)
@@ -83,6 +85,6 @@ wood.mle <- function(y) {
   unitvectors <- cbind(m1, m2, m3)
   colnames(unitvectors) <- c("mu 1", "mu 2", "mu 3")
 
-  list(info = info, modes = modes, unitvectors = unitvectors, loglik = ka$objective )
+  list( info = info, modes = modes, unitvectors = unitvectors, loglik = ka$objective )
 
 }

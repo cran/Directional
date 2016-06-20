@@ -6,7 +6,7 @@ hcf.aov <- function(x, ina, fc = TRUE) {
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
   x <- as.matrix(x)
-  x <- x/sqrt(rowSums(x^2))  ## makes sure x are unit vectors
+  x <- x/sqrt(rowSums(x^2) )  ## makes sure x are unit vectors
   p <- ncol(x)
   n <- nrow(x)  ## dimensionality and sample size of the data
   S <- aggregate(x, by = list(ina), sum)

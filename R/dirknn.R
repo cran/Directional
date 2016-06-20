@@ -52,5 +52,6 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
       g[l] <- as.integer( names(tab)[ which.max(tab) ] )
     }
   }
+
   return(g)
 }

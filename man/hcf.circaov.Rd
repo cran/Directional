@@ -5,7 +5,7 @@
 \alias{het.circaov}
 
 \title{
-Analysis of variance for circular data.
+Analysis of variance for circular data
 }
 
 \description{

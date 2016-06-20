@@ -62,7 +62,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{ \link{circlin.cor}
+\code{ \link{circlin.cor}, \link{circ.cor2}, \link{spml.reg}
 }
 }
 

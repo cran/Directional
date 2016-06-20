@@ -49,7 +49,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{rbingham}, \link{rvmf}
+\code{\link{rbingham}, \link{rvmf}, \link{rkent}, \link{f.rbing}
 }
 }
 
