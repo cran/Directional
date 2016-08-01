@@ -1,4 +1,4 @@
-\name{quat2rot}
+\name{Converting an unsigned unit quaternion to rotation matrix on SO(3)}
 \alias{quat2rot}
 \title{
 Converting an unsigned unit quaternion to rotation matrix on SO(3)
@@ -31,9 +31,9 @@ Prentice,M. J. (1986). Orientation statistics without parametric assumptions.Jou
 }
 
 \author{
-Anamul Sajib & Chris Fallaize
+Anamul Sajib
 
-R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk> & Chris Fallaize
+R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk>
 }
 
 \seealso{

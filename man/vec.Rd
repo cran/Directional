@@ -1,4 +1,4 @@
-\name{vec}
+\name{Unit vector(s) with a given angle}
 \alias{vec}
 \title{
 Unit vector(s) with a given angle
@@ -14,19 +14,19 @@ vec(x, n = 1, deg = 90)
 
 \arguments{
 \item{x}{
-A unit vector. If it is not a unit vector it becomes a unit vector. 
+A unit vector. If it is not a unit vector it becomes a unit vector.
 }
 \item{n}{
 The number of unit vectors to return.
 }
 \item{deg}{
-The angle between the given vector and the n vectors to be returned. This must be in degrees and it has to be between 0 and 180 degrees.  
-If the angle is 0, the same unit vector will be returned. If the angle is 180, the same unit vector with the signs changed will be returned. 
+The angle between the given vector and the n vectors to be returned. This must be in degrees and it has to be between 0 and 180 degrees.
+If the angle is 0, the same unit vector will be returned. If the angle is 180, the same unit vector with the signs changed will be returned.
 }
 }
 
 \details{
-The user provides a unit vector and the degrees. The function will return n unit vectors whose angle with the given unit vector equals the degrees given. 
+The user provides a unit vector and the degrees. The function will return n unit vectors whose angle with the given unit vector equals the degrees given.
 For example, if you want 10 unit vectors purpendicualr to the x put vec(x, 10, 90).
 }
 
@@ -36,10 +36,10 @@ A list including:
 The runtime of the procedure.
 }
 \item{crit}{
-The calculated angle between the given unit vector and each of the generated unit vectors. 
+The calculated angle between the given unit vector and each of the generated unit vectors.
 }
 \item{mat}{
-A matrix with the n unit vectors. 
+A matrix with the n unit vectors.
 }
 }
 

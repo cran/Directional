@@ -1,4 +1,4 @@
-\name{spher.reg}
+\name{Spherical-Spherical regression}
 \alias{spher.reg}
 \title{
 Spherical-Spherical regression

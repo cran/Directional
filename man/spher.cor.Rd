@@ -1,7 +1,7 @@
-\name{spher.cor}
+\name{Spherical-spherical correlation}
 \alias{spher.cor}
 \title{
-Spherical-spherical correlation.
+Spherical-spherical correlation
 }
 \description{
 Correlation between two spherical variables.

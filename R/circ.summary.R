@@ -16,8 +16,8 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
   ## mesos contains the sample mean
   ## direction
 
-  C <- mean( cos(u) )
-  S <- mean( sin(u) )
+  C <- sum( cos(u) ) / n
+  S <- sum( sin(u) )/ n
   Rbar <- sqrt( C^2 + S^2 )  ## mean resultant length
 
   if (C > 0) {

@@ -1,4 +1,4 @@
-\name{vmfda.pred}
+\name{Prediction in discriminant analysis based on von Mises-Fisher distributions}
 \alias{vmfda.pred}
 \title{
 Prediction of a new observation using discriminant analysis based on von Mises-Fisher distributions

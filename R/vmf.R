@@ -13,12 +13,12 @@ vmf <- function(x, tol = 1e-06) {
   ## when estimating the concentration parameter
 
   x <- as.matrix(x)
-  x <- x/sqrt(rowSums(x^2))
+  x <- x / sqrt( rowSums(x^2) )
   p <- ncol(x)  ## dimensionality of the data
   n <- nrow(x)  ## sample size of the data
 
   Apk <- function(p, k) {
-   besselI(k, p/2, expon.scaled = T)/besselI(k, p/2 - 1, expon.scaled = T)
+    besselI(k, p/2, expon.scaled = TRUE)/besselI(k, p/2 - 1, expon.scaled = TRUE)
   }
 
   m1 <- colSums(x)
@@ -44,9 +44,8 @@ vmf <- function(x, tol = 1e-06) {
   }
 
   loglik <- n * (p/2 - 1) * log(k) - 0.5 * n * p * log(2 * pi) -
-  n * (log(besselI(k, p/2 - 1, expon.scaled = T)) + k) + k * sum(x %*% m)
-  vark <- 1/(n * ( 1 - Apk(p, k)/k - Apk(p, k)^2) )
-
+    n * ( log( besselI(k, p/2 - 1, expon.scaled = TRUE) ) + k ) + k * sum(x %*% m)
+  vark <- 1 / ( n * (1 - Apk(p, k)/k - Apk(p, k)^2) )
   list(mu = m, kappa = k, MRL = R, vark = vark, loglik = loglik)
 
 }

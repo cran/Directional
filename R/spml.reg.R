@@ -5,7 +5,6 @@
 #### Presnell, Morrison and Littell (1998), JASA
 ################################
 
-
 spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   ## y is the angular dependent variable
   ## x contains the independent variable(s)
@@ -14,18 +13,19 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   ## FALSE (xnew is the same as x)
   ## if the data are in degrees we transform them into radians
 
-  if (rads == F)   y <- y/180 * pi
+  if ( rads == FALSE )   y <- y/180 * pi
   u <- cbind( cos(y), sin(y) )  ## bring the data onto the circle
   n <- nrow(u)
   x <- cbind(1, x)
   x <- as.matrix(x)
   csx <- crossprod(x)
   XX <- solve( csx, t(x) )
+  tXX <- t(XX)
   p <- ncol(x)
 
-  funa <- function(beta) {
-    mu <- x %*% beta
-    tau <- diag( tcrossprod(u, mu) )
+  funa <- function(be) {
+    mu <- x %*% be
+    tau <- rowSums(u * mu)
     ell <-  -0.5 * sum( mu * mu ) +
       sum( log( 1 + tau * pnorm(tau) / dnorm(tau) ) ) - n * log(2 * pi)
     ell
@@ -33,30 +33,31 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
 
   tic <- proc.time()
 
-  para <- as.vector( coef( lm(u ~ x[, -1]) ) )  ## starting values
+  para <- as.vector( coef( lm.fit(x, u) ) )  ## starting values
   ### E-M algorithm is implemented below
-  lik <- NULL
+
   B <- matrix(para, ncol = 2)
-  lik[1] <- funa(B)
+  lik1 <- funa(B)
   mu <- x %*% B
-  tau <- diag( tcrossprod(u, mu) )
+  tau <- rowSums(u * mu)
   ptau <- pnorm(tau)
   psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
-  B <- crossprod( t(XX) * psit, u)
-  lik[2] <- funa(B)
+  B <- crossprod( tXX * psit, u)
+  lik2 <- funa(B)
   i <- 2
 
-  while ( lik[i] - lik[i - 1] > 1e-06 ) {
+  while ( lik2 - lik1 > 1e-06 ) {
     i <- i + 1
+    lik1 <- lik2
     mu <- x %*% B
-    tau <- diag( tcrossprod(u, mu) )
+    tau <- rowSums(u * mu)
     ptau <- pnorm(tau)
     psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
-    B <- crossprod( t(XX) * psit, u)
-    lik[i] <- funa(B)
+    B <- crossprod( tXX * psit, u)
+    lik2 <- funa(B)
   }
 
-  loglik <- lik[i]
+  loglik <- lik2
   mu <- x %*% B
 
   if ( seb == TRUE ) {

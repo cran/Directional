@@ -1,11 +1,11 @@
-\name{vmfkde.tune}
+\name{Tuning of the bandwidth parameter in the von Mises-Fisher kernel}
 \alias{vmfkde.tune}
 \title{
-Fast tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data with an optimizer
+Tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data
 }
 
 \description{
-Fast tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data when cross validation is used with an optimiser.
+Tuning of the bandwidth parameter in the von Mises-Fisher kernel for (hyper-)spherical data whit cross validation.
 }
 
 \usage{

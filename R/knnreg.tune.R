@@ -67,7 +67,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
             yb <- as.matrix( y[a, ] )
-            est[i, ] <- colMeans( yb )
+            est[i, ] <- as.vector( Rfast::colmeans( yb ) )
           }
 
         } else if (estim == "harmonic") {
@@ -76,25 +76,25 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
             yb <- as.matrix( y[a, ] )
-            est[i, ] <- k / colSums( yb )
+            est[i, ] <- k / as.vector( Rfast::colsums( yb ) )
           }
         }
 
         if (res == "spher") {
           est <- est / sqrt( rowSums(est^2) )
           ytest <- ytest / sqrt( rowSums(ytest^2) )
-          per[vim, l] <- 1 - sum( diag( crossprod(est, ytest) ) ) / rmat
+          per[vim, l] <- 1 - sum( est * ytest )  / rmat
         } else  {
           per[vim, l] <- sum( (est - ytest)^2 ) / rmat
         }
       }
     }
 
-    mspe <- colMeans(per)
+    mspe <- as.vector( Rfast::colmeans(per) )
     bias <- per[ ,which.min(mspe)] - apply(per, 1, min)  ## TT estimate of bias
     estb <- mean( bias )  ## TT estimate of bias
     performance <- c( 1 - min(mspe) + estb, estb)
-    mspe <- 1 - colMeans(per)
+    mspe <- 1 - as.vector( Rfast::colmeans(per) )
     runtime <- proc.time() - runtime
 
   } else {

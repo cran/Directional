@@ -17,7 +17,6 @@ vmfda.pred <- function(xnew, x, ina) {
   xnew <- as.matrix(xnew)
   if (ncol(xnew) == 1)  xnew <- t(xnew)
   xnew <- xnew / sqrt( rowSums(xnew ^ 2) )
-
   p <- ncol(x)  ## dimensonality of the data
   ina <- as.numeric(ina)
   g <- max(ina)
@@ -28,15 +27,15 @@ vmfda.pred <- function(xnew, x, ina) {
   est <- numeric(nu)
 
   for (j in 1:g) {
-    da <- vmf(x[ina == j, ])  ## estimates the parameters of the vMF
+    da <- vmf( x[ina == j, ] )  ## estimates the parameters of the vMF
     mesi[j, ] <- da$mu  ## mean direction
     k[j] <- da$k  ## concentration
   }
 
   for (j in 1:g) {
     mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * xnew %*% mesi[j, ] - 0.5 * p *
-    log(2 * pi) - log(besselI(k[j], p/2 - 1, expon.scaled = TRUE)) - k[j]
+    log(2 * pi) - log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]
   }
 
-  apply(mat, 1, which.max)
+  max.col(mat)
 }

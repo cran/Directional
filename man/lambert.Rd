@@ -1,4 +1,4 @@
-\name{lambert}
+\name{Lambert's equal area projection}
 \alias{lambert}
 \title{
 Lambert's equal area projection

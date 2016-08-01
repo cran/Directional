@@ -1,10 +1,10 @@
-\name{kent.logcon}
+\name{Logarithm of the Kent distribution normalizing constant}
 \alias{kent.logcon}
 \title{
-Logarithm of the Kent normalizing constant
+Logarithm of the Kent distribution normalizing constant
 }
 \description{
-Logarithm of the Kent normalizing constant.
+Logarithm of the Kent distribution normalizing constant.
 }
 
 \usage{

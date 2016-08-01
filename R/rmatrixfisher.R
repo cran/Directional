@@ -10,7 +10,13 @@ rmatrixfisher <- function(n, F) {
     U <- anal$u
     V <- anal$v
     D <- anal$d
-    l1 <- 0
+	
+    if ( det ( U %*% t(V) ) < 0 ) { 
+	  U[, 3] <-  - U[, 3]  
+	  D[3] <-  - D[3]
+    }
+	
+	l1 <- 0
     l2 <- 2 * ( D[2] + D[3] )
     l3 <- 2 * ( D[1] + D[3] )
     l4 <- 2 * ( D[1] + D[2] )

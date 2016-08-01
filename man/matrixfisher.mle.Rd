@@ -1,4 +1,4 @@
-\name{matrixfisher.mle}
+\name{Mle of the Matrix Fisher distribution on SO(3)}
 \alias{matrixfisher.mle}
 \title{
 Mle of the Matrix Fisher distribution on SO(3)

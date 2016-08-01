@@ -1,11 +1,11 @@
-\name{vmkde.tune}
+\name{Tuning of the bandwidth parameter in the von Mises kernel}
 \alias{vmkde.tune}
 \title{
-Fast tuning of the bandwidth parameter in the von Mises kernel for circular data
+Tuning of the bandwidth parameter in the von Mises kernel for circular data
 }
 
 \description{
-Fast tuning of the bandwidth parameter in the von Mises kernel for circular data. Cross validation is used.
+Tuning of the bandwidth parameter in the von Mises kernel for circular data. Cross validation is used.
 }
 
 \usage{

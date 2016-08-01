@@ -1,4 +1,4 @@
-\name{rfb}
+\name{Simulation of random values from a spherical Fisher-Bingham distribution}
 \alias{rfb}
 \title{
 Simulation of random values from a spherical Fisher-Bingham distribution

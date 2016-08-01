@@ -1,4 +1,4 @@
-\name{kent.contour}
+\name{Contour plot of the Kent distribution without any data}
 \alias{kent.contour}
 \title{
 Contour plot of the Kent distribution without any data

@@ -1,4 +1,4 @@
-\name{vmf.contour}
+\name{Contour plots of the von Mises-Fisher distribution}
 \alias{vmf.contour}
 \title{
 Contour plots of the von Mises-Fisher distribution on the sphere

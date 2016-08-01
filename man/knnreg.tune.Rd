@@ -1,4 +1,4 @@
-\name{knnreg.tune}
+\name{Tuning of the k-NN regression}
 \alias{knnreg.tune}
 \title{
 Tuning of the k-NN regression with Euclidean or (hyper-)spherical response and or predictor variables
@@ -94,7 +94,7 @@ mat = NULL, graph = TRUE)
 y <- iris[, 1:3]
 y <- y/ sqrt( rowSums(y^2) )  ## Spherical response and Euclidean predictor
 x <- iris[, 2]
-knnreg.tune(y, x, A = 5, res = "eucl", type = "euclidean", estim = "arithmetic",
+knnreg.tune(y, x, A = 5, res = "spher", type = "euclidean", estim = "arithmetic",
 mat = NULL, graph = TRUE)
 }
 

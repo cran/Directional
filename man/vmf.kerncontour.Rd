@@ -1,4 +1,4 @@
-\name{vmf.kerncontour}
+\name{Contour plot of spherical data using a von Mises-Fisher kernel density estimate}
 \alias{vmf.kerncontour}
 \title{
 Contour plot of spherical data using a von Mises-Fisher kernel density estimate

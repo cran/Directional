@@ -1,4 +1,4 @@
-\name{mixvmf.contour}
+\name{Contour plot of a mixture of von Mises-Fisher distributions model}
 \alias{mixvmf.contour}
 \title{
 Contour plot of a mixture of von Mises-Fisher distributions model for spherical data only.

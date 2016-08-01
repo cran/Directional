@@ -33,8 +33,8 @@ rfb <- function(n, k, m, A) {
     x <- f.rbing(1, lam)$X  ## Chris and Theo's code
     x <- tcrossprod(x, V) ## simulated data
     u <- log( runif(1) )
-    ffb <- k * x[, 2]  - mahalanobis(x, mu, A, inverted = TRUE )
-    fb <- k - mahalanobis(x, mu, A1, inverted = TRUE )
+    ffb <- k * x[, 2]  - sum( x %*% A * x )
+    fb <- k - sum( x %*% A1 * x )
     if ( u <= c(ffb - fb) ) {
       x1[i, ] <- x
       i <- i + 1

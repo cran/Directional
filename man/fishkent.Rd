@@ -1,7 +1,7 @@
-\name{fishkent}
+\name{Hypothesis test for von Mises-Fisher distribution over Kent distribution}
 \alias{fishkent}
 \title{
-Hypothesis test for von Mises-Fisher distribution over Kent's distribution
+Hypothesis test for von Mises-Fisher distribution over Kent distribution
 }
 
 \description{

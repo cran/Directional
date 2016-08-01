@@ -45,6 +45,9 @@ The test statistic value.
 \item{p-value}{
 The p-value of the F test.
 }
+\item{kappa}{
+The common concentration parameter kappa based on all the data.
+}
 }
 
 \references{

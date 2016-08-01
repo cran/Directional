@@ -1,4 +1,4 @@
-\name{rkent}
+\name{Simulation of random values from a spherical Kent distribution}
 \alias{rkent}
 \title{
 Simulation of random values from a spherical Kent distribution

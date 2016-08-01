@@ -22,8 +22,10 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
 
   if (rads == FALSE)  u <- u/180 * pi
   n <- length(u)  ## sample size
-  disa <- dist(u, diag = TRUE, upper = TRUE)
-  disa <- as.matrix(disa)
+  x <- cbind( cos(u), sin(u) )
+  disa <- tcrossprod(x)
+  diag(disa) <- 1
+  expa <- exp(disa)  
 
   if ( is.null(h) ) {
 
@@ -43,7 +45,7 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
 
   } else h <- h
 
-  f <- rowSums( exp( cos(disa)/h^2 ) ) / ( n * 2 * pi * besselI(1/h^2, 0) )
+  f <- rowSums( expa^( 1 / h^2 ) ) / ( n * 2 * pi * besselI(1/h^2, 0) ) 
 
   list( h = h, f = as.vector(f) )
 }

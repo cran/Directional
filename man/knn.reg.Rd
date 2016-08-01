@@ -1,4 +1,4 @@
-\name{knn.reg}
+\name{k-NN regression}
 \alias{knn.reg}
 
 \title{

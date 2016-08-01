@@ -1,4 +1,4 @@
-\name{group.vm}
+\name{Summary statistics for grouped circular data}
 \alias{group.vm}
 \title{
 Summary statistics for grouped circular data

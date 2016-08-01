@@ -1,4 +1,4 @@
-\name{rayleigh}
+\name{Rayleigh's test of uniformity}
 \alias{rayleigh}
 \title{
 Rayleigh's test of uniformity

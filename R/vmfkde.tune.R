@@ -19,8 +19,8 @@ vmfkde.tune <- function(x, low = 0.1, up = 1) {
    funa <- function(h) {
     A <- d/h^2
     cpk <- ( (1/h^2)^(p/2 - 1) )/( (2 * pi)^(p/2) * besselI(1/h^2, p/2 - 1) )
-    f <- rowSums( exp(A + log(cpk)), na.rm = TRUE )/(n - 1)
-    mean( log(f) )
+    f <- rowSums( exp(A + log(cpk)), na.rm = TRUE )/(n - 1) 
+    sum( log(f) ) / n
   }
 
   a <- optimize(funa, c(low, up), maximum = TRUE)

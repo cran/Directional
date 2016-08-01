@@ -70,12 +70,12 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
           }
         }
         g <- apply(ta, 1, which.min)
-        per[vim, j] <- mean(g == id)
+        per[vim, j] <- sum( g == id ) / rmat
       }
 
     } else {
       ## Standard algorithm
-      g <- numeric( A - 1)
+      g <- numeric( rmat )
       for ( j in 1:c(A - 1) ) {
         knn <- j + 1
         for (k in 1:rmat) {
@@ -85,7 +85,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
           tab <- table(sa)
           g[k] <- as.integer( names(tab)[ which.max(tab) ] )
         }
-        per[vim, j] <- mean(g == id)
+        per[vim, j] <- sum( g == id ) / rmat
       }
     }
   }

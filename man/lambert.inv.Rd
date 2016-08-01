@@ -1,4 +1,4 @@
-\name{lambert.inv}
+\name{Inverse of Lambert's equal area projection}
 \alias{lambert.inv}
 \title{
 Inverse of Lambert's equal area projection

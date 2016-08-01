@@ -16,27 +16,27 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
   p <- ncol(x)  ## dimensionality of the data
   n <- nrow(x)  ## sample size of the data
   m <- colSums(x)
-  T <- sum( m^2 ) *p / n
+  test <- sum( m^2 ) *p / n
 
   if (modif == TRUE) {
-    T <- ( 1 - 1/(2 * n) ) * T + T^2 / ( 2 * n * (p + 2) )
+    test <- ( 1 - 1/(2 * n) ) * test + test^2 / ( 2 * n * (p + 2) )
   }
 
   if (B == 1) {
-    pvalue <- 1 - pchisq(T, p)
-    res <- c(T, pvalue)
+    pvalue <- pchisq(test, p, lower.tail = FALSE)
+    res <- c(test, pvalue)
     names(res) <- c('test', 'p-value')
 
   } else {
-    Tb <- numeric(B)
+    tb <- numeric(B)
     for (i in 1:B) {
-      x <- matrix( rnorm(p * n), ncol = p )
+      x <- matrix( RcppZiggurat::zrnorm(n * p), ncol = p )
       x <- x / sqrt( rowSums(x^2) )
-      mb <- colSums(x)
-      Tb[i] <- p * sum( mb^2 ) / n
+      mb <- as.vector( Rfast::colsums(x) )
+      tb[i] <- p * sum( mb^2 ) / n
     }
 
-    res <- c( T, (sum(Tb > T) + 1)/(B + 1) )
+    res <- c( test, (sum(tb > test) + 1)/(B + 1) )
     names(res) <- c('test', 'Bootstrap p-value')
   }
 

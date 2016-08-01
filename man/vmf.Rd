@@ -1,11 +1,11 @@
-\name{vmf}
+\name{MLe of the von Mises-Fisher distribution}
 \alias{vmf}
 \title{
-MLe of the parameters of a von Mises-Fisher distribution
+MLe of von Mises-Fisher distribution
 }
 
 \description{
-MLe of the parameters of a von Mises-Fisher distribution.
+MLe of the von Mises-Fisher distribution.
 }
 
 \usage{

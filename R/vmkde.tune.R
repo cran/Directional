@@ -12,13 +12,16 @@ vmkde.tune <- function(u, low = 0.1, up = 1, rads = TRUE) {
 
   ## if the data are in degrees we transform them into radians
   if (rads == FALSE)  u <- u/180 * pi
-  disa <- as.matrix( dist(u) )
+  x <- cbind( cos(u), sin(u) )
+  disa <- tcrossprod(x)
+  diag(disa) <- 1
+  expa <- exp(disa)
+  diag(expa) <- NA  ## we do not want the diagonal elements
 
    funa <- function(h) {
-    A <- exp( cos(disa) / h^2 )
-    diag(A) <- NA  ## we do not want the diagonal elements
-    f <- rowSums( A, na.rm = TRUE )/( (n - 1) * 2 * pi * besselI(1/h^2, 0) )
-    mean( log(f) )
+    A <- expa^( 1 / h^2 )
+    f <- rowSums( A, na.rm = TRUE )/( (n - 1) * 2 * pi * besselI(1/h^2, 0) ) 
+    sum( log(f) ) / n
    }
 
   bar <- optimize(funa, c(low, up), maximum = TRUE)

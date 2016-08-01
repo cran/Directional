@@ -12,8 +12,8 @@ Circular-linear regression, spherical-spherical regression, discriminant analysi
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 2.1\cr
-Date: \tab 2016-06-20\cr
+Version: \tab 2.2\cr
+Date: \tab 2016-08-01\cr
 License: \tab GPL-2\cr
 }
 }
@@ -39,9 +39,9 @@ Dr Georgios Pappas (former postDoc at the university of Nottingham) helped me co
 Dr Christopher Fallaize and Dr Theo Kypraios from the university of Nottingham have provided a function for simulating from the Bingham distribution using rejection sampling.
 So any questions regarding this function should be addressed to them.
 
-Dr Kwang-Rae Kim from the university of Nottingham answered some of my questions.
+Dr Kwang-Rae Kim (post-doc at the university of Nottingham) answered some of my questions.
 
-Giorgos Borboudakis from the Foundation of Research and Technology (FORTH) pointed out to me a not so clear message in the algorithm of generating random values from the von Mises-Fisher distribution.
+Giorgos Borboudakis (PhD student at the university of Crete) pointed out to me a not so clear message in the algorithm of generating random values from the von Mises-Fisher distribution.
 
 Panagiotis (pronounced Panayiotis) Tzirakis (master student at the department of computer science in Heraklion during the 2013-2015 seasons) showed me how to perform parallel computing in R and he is greatly acknowledged and appreciated not only from me but from all the readers of this document. He also helped me with the vectorization of some contour plot functions.
 
@@ -49,6 +49,9 @@ Professor John Kent from the university of Leeds is acknowledged for clarifying 
 
 Phillip Paine (postdoc at the university of Nottingham) spotted that the function \code{\link{rfb}} is rather slow and he suggested me to change it. The function has changed now and this is also due to Joshua Davis (from Carleton College, Northfield, MN) who spotted that mistakes could occur, due a vector not being a matrix and so on.
 
+Professor Kurt Hornik from the Vienna university of economics and business is greatly acknowledged for his patience and contast help with this (and not only) R package.
+
+Manos Papadakis, undergraduate student in the department of computer science at university of Crete, is also acknowledged for his programming tips.
 }
 
 \keyword{ Directional data }

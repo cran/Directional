@@ -12,7 +12,7 @@
 #### http://arxiv.org/pdf/1401.2894v1.pdf
 ################################
 
-######### Christopher Fallaize and Theodore Kypraios' code
+######### Christopher Fallaize and Theodore Kypraios' code (modified)
 
 f.rbing <- function(n, lam) {
   ## n is the sample size
@@ -24,18 +24,19 @@ f.rbing <- function(n, lam) {
   lam.full <- c(lam, 0)
   qa <- length(lam.full)
   mu <- numeric(qa)
-  A <- diag(lam.full)
-  SigACG.inv <- diag(qa) + 2 * A
-  SigACG <- solve(SigACG.inv)
+  sigacginv <- 1 + 2 * lam.full
+  SigACG <- diag( 1 / ( 1 + 2 * lam.full ) )
+
   Ntry <- 0
 
   while (nsamp < n) {
     x.samp <- FALSE
     while (x.samp == FALSE) {
       yp <- MASS::mvrnorm(n = 1, mu = mu, Sigma = SigACG)
-      y <- yp / sqrt( t(yp) %*% yp )
-      lratio <-  - mahalanobis(y, mu, A, inverted = TRUE) - qa/2 * log(qa) +
-      0.5 * (qa - 1) + qa/2 * log( mahalanobis( y, mu, SigACG.inv, inverted = TRUE ) )
+      y <- yp / sqrt( sum(yp^2) )
+      lratio <-  - sum( y^2 * lam.full ) - qa/2 * log(qa) +
+      0.5 * (qa - 1) + qa/2 * log( sum(y^2 * sigacginv ) )
+
       if ( log(runif(1) ) < lratio) {
         X <- c(X, y)
         x.samp <- TRUE

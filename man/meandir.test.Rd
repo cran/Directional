@@ -1,7 +1,7 @@
-\name{meandir.test}
+\name{Test for a given mean direction}
 \alias{meandir.test}
 \title{
-Test for a given mean direction.
+Test for a given mean direction
 }
 \description{
 A log-likelihood ratio test for testing whether the sample mena direction is equal to some predefined one.

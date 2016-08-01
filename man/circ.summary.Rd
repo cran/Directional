@@ -1,7 +1,7 @@
-\name{circ.summary}
+\name{Summary statistics for circular data}
 \alias{circ.summary}
 \title{
-Summary statistics for circular data.
+Summary statistics for circular data
 }
 \description{
 It produces a few summary measures for circular data.

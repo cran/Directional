@@ -1,4 +1,4 @@
-\name{rsop}
+\name{Random sample of matrices in SO(p)}
 \alias{rsop}
 \title{
 Random sample of matrices in SO(p)

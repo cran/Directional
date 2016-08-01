@@ -1,7 +1,7 @@
-\name{Arotation}
+\name{Rotation axis and angle of rotation given a rotation matrix}
 \alias{Arotation}
 \title{
-Rotation axis and angle of rotation given a rotation matrix.
+Rotation axis and angle of rotation given a rotation matrix
 }
 
 \description{

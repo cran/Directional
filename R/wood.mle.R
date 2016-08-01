@@ -36,7 +36,7 @@ wood.mle <- function(y) {
     k * ( u * cos(a) + ( v * cos(b) + w * sin(b) ) * sin(a) )
   }
 
-  ini <- colMeans(y)
+  ini <- as.vector( Rfast::colmeans(y) )
   mod <- optim( ini, mle )
   mod <- optim(mod$par, mle, hessian = TRUE)
   gam <- mod$par[1]   ;   del <- mod$par[2]

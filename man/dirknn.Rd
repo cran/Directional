@@ -1,4 +1,4 @@
-\name{dirknn}
+\name{k-NN algorithm using the arc cosinus distance}
 \alias{dirknn}
 \title{
 k-NN algorithm using the arc cosinus distance

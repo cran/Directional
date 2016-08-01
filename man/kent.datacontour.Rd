@@ -1,7 +1,7 @@
-\name{kent.datacontour}
+\name{Contour plot of the Kent distribution for some data}
 \alias{kent.datacontour}
 \title{
-Contour plot of the Kent distribution without any data.
+Contour plot of the Kent distribution for some data
 }
 \description{
 The contour plot of the Kent distribution on the sphere for some data is produced.

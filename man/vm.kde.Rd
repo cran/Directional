@@ -1,4 +1,4 @@
-\name{vm.kde}
+\name{von Mises kernel density estimation}
 \alias{vm.kde}
 \title{
 Kernel density estimation of circular data with a von Mises kernel

@@ -1,4 +1,4 @@
-\name{euclid}
+\name{Euclidean transformation}
 \alias{euclid}
 \title{
 Euclidean transformation

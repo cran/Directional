@@ -1,11 +1,11 @@
-\name{rvonmises}
+\name{Random values simulation from a von Mises distribution}
 \alias{rvonmises}
 \title{
-Random values simulation from a von Mises-Fisher distribution
+Random values simulation from a von Mises distribution
 }
 
 \description{
-It generates random vectors following the von Mises-Fisher distribution. The data can be spherical or hyper-spherical.
+It generates random vectors following the von Mises distribution. The data can be spherical or hyper-spherical.
 }
 
 \usage{

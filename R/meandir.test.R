@@ -16,7 +16,7 @@ meandir.test <- function(x, mu, B = 999) {
   p <- ncol(x)  ## dimensionality of the data
   n <- nrow(x)  ## sample size of the data
   k1 <- vmf(x)$k  ## concentration parameter under H1
-  xbar <- colMeans(x)  ## x-bar
+  xbar <- as.vector( Rfast::colmeans(x) )  ## x-bar
   m1 <- xbar / sqrt( sum(xbar^2) )
 
   lik <- function(k) {
@@ -24,7 +24,7 @@ meandir.test <- function(x, mu, B = 999) {
       n * (log( besselI(k, p/2 - 1, expon.scaled = TRUE) ) + k)
   }
 
-  qa0 <- optimize(lik, c(0, 100000), maximum = T)  ## log-likelihood under H0
+  qa0 <- optimize(lik, c(0, 100000), maximum = TRUE)  ## log-likelihood under H0
   k0 <- qa0$maximum  ## concentration parameter under H0
   apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) +
   log( besselI(k0, p/2 - 1, expon.scaled = TRUE) ) + k0
@@ -47,7 +47,7 @@ meandir.test <- function(x, mu, B = 999) {
       nu <- sample(1:n, n, replace = TRUE)
       z <- y[nu, ]
       k1 <- vmf(z)$k  ## concentration parameter under H1
-      zbar <- colMeans(z)  ## z-bar
+      zbar <- as.vector( Rfast::colmeans(z) ) ## z-bar
       lik <- function(k) {
        n * (p/2 - 1) * log(k) - 0.5 * n * p * log(2 * pi) +
        k * sum(z %*% mu) - n * ( log(besselI(k, p/2 - 1, expon.scaled = TRUE)) + k )

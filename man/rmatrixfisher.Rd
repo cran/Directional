@@ -1,4 +1,4 @@
-\name{rmatrixfisher}
+\name{Simulation from a Matrix Fisher distribution on SO(3)}
 \alias{rmatrixfisher}
 \title{
 Simulation from a Matrix Fisher distribution on SO(3)

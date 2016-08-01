@@ -40,7 +40,7 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
       sim <- as.vector( table( cut(x, breaks = g) ) )
       sjb <- cumsum(sim - n * p)
       sjbarb <- sum(p * sjb)
-      ub[i] <- 1/n * sum( p * (sjb - sjbarb)^2 )
+      ub[i] <- sum( p * (sjb - sjbarb)^2 ) / n
     }
 
     runtime <- proc.time() - tic
@@ -56,7 +56,7 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
        sim <- as.vector( table( cut(x, breaks = g) ) )
        sjb <- cumsum(sim - n * p)
        sjbarb <- sum(p * sjb)
-       a <- 1/n * sum( p * (sjb - sjbarb)^2 )
+       a <- sum( p * (sjb - sjbarb)^2 ) / n
        return(a)
      }
 

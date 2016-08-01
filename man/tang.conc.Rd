@@ -1,4 +1,4 @@
-\name{tang.conc}
+\name{A test for testing the equality of the concentration parameters for ciruclar data}
 \alias{tang.conc}
 \title{
 A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data
@@ -9,7 +9,7 @@ A test for testing the equality of the concentration parameter among g samples, 
 }
 
 \usage{
-tang.conc(u, ina, rads = F)
+tang.conc(u, ina, rads = FALSE)
 }
 \arguments{
 \item{u}{

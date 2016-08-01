@@ -13,7 +13,7 @@ kent.mle <- function(x) {
   tic <- proc.time()
 
   n <- nrow(x)  ## sample size
-  xbar <- colMeans(x)  ## mean vector
+  xbar <- as.vector( Rfast::colmeans(x) )  ## mean vector
   xbar <- xbar / sqrt( sum(xbar^2) ) ## mean direction
   u <- c( acos(xbar[1]), ( atan(xbar[3] / xbar[2]) + pi * I(xbar[2]<0) )
   %% (2 * pi) )
@@ -42,7 +42,7 @@ kent.mle <- function(x) {
   ## the next function will be used to estimate the kappa and beta
   xg1 <- sum( x %*% G[, 1] )
   xg2 <- sum( ( x %*% G[, 2] )^2 )
-  xg3 <- sum( ( x %*% G[, 3])^2 )
+  xg3 <- sum( ( x %*% G[, 3] )^2 )
 
   mle <- function(para) {
     ## maximization w.r.t. to k and b

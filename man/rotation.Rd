@@ -1,4 +1,4 @@
-\name{rotation}
+\name{Rotation matrix to rotate a spherical vector along the direction of another}
 \alias{rotation}
 \title{
 Rotation matrix to rotate a spherical vector along the direction of another

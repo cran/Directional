@@ -1,4 +1,4 @@
-\name{acg}
+\name{MLE of the angular central Gaussian distribution}
 \alias{acg}
 \title{
 MLE of the angular central Gaussian distribution

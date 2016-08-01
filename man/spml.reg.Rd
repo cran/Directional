@@ -1,4 +1,4 @@
-\name{spml.reg}
+\name{Circular or angular regression}
 \alias{spml.reg}
 \title{
 Circular or angular regression

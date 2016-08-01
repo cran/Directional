@@ -29,8 +29,8 @@ vmf.kerncontour <- function(u, thumb = "none") {
 
   n1 <- 100
   n2 <- 100  ## n1 and n2 specify the number of points taken at each axis
-  x1 <- seq(min(u[, 1]) - 5, max(u[, 1]) + 5, length = n1)  ## latitude
-  x2 <- seq(min(u[, 2]) - 5, max(u[, 2]) + 5, length = n2)  ## longitude
+  x1 <- seq( min(u[, 1]) - 5, max(u[, 1]) + 5, length = n1 )  ## latitude
+  x2 <- seq( min(u[, 2]) - 5, max(u[, 2]) + 5, length = n2 )  ## longitude
   cpk <- 1 / (  ( h^2)^0.5 *(2 * pi)^1.5 * besselI(1/h^2, 0.5) )
   mat <- matrix(nrow = n1, ncol = n2)
 
@@ -38,10 +38,12 @@ vmf.kerncontour <- function(u, thumb = "none") {
     for (j in 1:n2) {
       y <- euclid( c(x1[i], x2[j]) )
       a <- as.vector( tcrossprod(x, y / h^2) )
-      can <- mean( exp(a + log(cpk)) )
+      can <- sum( exp(a + log(cpk)) ) / n1
+
       if (abs(can) < Inf) {
         mat[i, j] <- can
-     } else  mat[i, j] <- NA
+      } else  mat[i, j] <- NA
+
     }
   }
 

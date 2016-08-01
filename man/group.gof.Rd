@@ -1,4 +1,4 @@
-\name{group.gof}
+\name{Goodness of fit test for grouped data}
 \alias{group.gof}
 \title{
 Goodness of fit test for grouped data
@@ -76,8 +76,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 x <- rvonmises(100, 2, 10)
 g <- seq(min(x) - 0.1, max(x) + 0.1, length = 6)
 ni <- as.vector( table( cut(x, g) ) )
-group.gof(g, ni, 2, 10, dist = "vm", rads = TRUE, R = 999, ncores = 1)
-group.gof(g, ni, 2, 5, dist = "vm", rads = TRUE, R = 999, ncores = 1)
+group.gof(g, ni, 2, 10, dist = "vm", rads = TRUE, R = 299, ncores = 1)
+group.gof(g, ni, 2, 5, dist = "vm", rads = TRUE, R = 299, ncores = 1)
 }
 
 \keyword{ Grouped data }

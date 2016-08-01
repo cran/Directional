@@ -1,4 +1,4 @@
-\name{conc.test}
+\name{Test of equality of the concentration parameters for circular data}
 \alias{conc.test}
 \title{
 A test for testing the equality of the concentration parameter among g samples, where g >= 2 for ciruclar data

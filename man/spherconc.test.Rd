@@ -1,4 +1,4 @@
-\name{spherconc.test}
+\name{Test for equality of concentration parameters for spherical data}
 \alias{spherconc.test}
 \title{
 Test for equality of concentration parameters for spherical data

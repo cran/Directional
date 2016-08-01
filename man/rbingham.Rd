@@ -1,8 +1,8 @@
-\name{rbingham}
+\name{Simulation from a Bingham distribution using any symmetric matrix A}
 \alias{rbingham}
 \title{
-Simulation from a Bingham distribution using any symmetric
-matrix A}
+Simulation from a Bingham distribution using any symmetric matrix A
+}
 
 \description{
 It simulates random values from a Bingham distribution with any given symmetric matrix.

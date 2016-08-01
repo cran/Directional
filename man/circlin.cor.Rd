@@ -1,7 +1,7 @@
-\name{circlin.cor}
+\name{Circular-linear correlation}
 \alias{circlin.cor}
 \title{
-Circular-linear correlation.
+Circular-linear correlation
 }
 \description{
 It calculates the squared correlation between a circular and one or more linear variables.

@@ -1,4 +1,4 @@
-\name{bic.mixvmf}
+\name{BIC for the model based clustering using mixtures of von Mises-Fisher distributions}
 \alias{bic.mixvmf}
 \title{
 BIC to choose the number of components in a model based clustering using mixtures of von Mises-Fisher distributions

@@ -1,4 +1,4 @@
-\name{dirknn.tune}
+\name{Tuning of the k-NN algorithm using the arc cosinus distance}
 \alias{dirknn.tune}
 \title{
 k-NN algorithm using the arc cosinus distance. Tuning the k neigbours

@@ -15,7 +15,7 @@ rvonmises <- function(n, m, k, rads = TRUE) {
   ## m is the mean angle expressed in radians or degrees
   ## k is the concentration parameter
 
-  if (rads == F) m <- m/180 * pi  ## turn the degrees into radians
+  if ( rads == F )  m <- m/180 * pi  ## turn the degrees into radians
   mu <- c( cos(m), sin(m) )
 
   if (k > 0) {  ## draw from a von Mises distribution

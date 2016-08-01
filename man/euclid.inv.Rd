@@ -1,4 +1,4 @@
-\name{euclid.inv}
+\name{Inverse of the Euclidean transformation}
 \alias{euclid.inv}
 \title{
 Inverse of the Euclidean transformation

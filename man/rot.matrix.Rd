@@ -1,4 +1,4 @@
-\name{rot.matrix}
+\name{Rotation matrix from a rotation axis and angle of rotation}
 \alias{rot.matrix}
 \title{
 Rotation matrix from a rotation axis and angle of rotation

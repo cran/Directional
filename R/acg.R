@@ -14,35 +14,38 @@ acg <- function(x) {
   p <- ncol(x)
   n <- nrow(x)
   mu <- numeric(p)
-  lam <- array( dim = c(p, p, 10000) )
-  lam[, , 1] <- cov(x)
-  maha <- mahalanobis(x, mu, lam[, , 1])
+
+  lam1 <- cov(x)
+  maha <- Rfast::mahala(x, mu, lam1)
   down <- sum( 1 / maha )
-  tx <- up <- array( dim = c(p, p, n) )
+  tx <- up <- array( dim = c(n, p, p) )
 
   for (j in 1:n) {
-    tx[, , j] <- crossprod( t( x[j, ] ) )
-    up[, , j] <- tx[, , j] / maha[j]
+    tx[j, , ] <- crossprod( t( x[j, ] ) )
   }
+  up <- tx / maha
 
-  up <- apply(up, 1:2, sum)
-  lam[, , 2] <- p * up / down
+
+  up2 <- apply(up, 2:3, sum)
+  lam2 <- p * up2 / down
   i <- 2
 
-  while ( sum( abs(lam[, , i] - lam[, , i - 1] ) ) > 1e-10 ) {
-    i <- i + 1
-    maha <- mahalanobis(x, mu, lam[, , i - 1])
-    down <- sum( 1 / maha )
-    up <- array(dim = c(p, p, n) )
+  y <- t(x)
 
-    for (j in 1:n) {
-      up[, , j] <- tx[, , j] / maha[j]
-    }
-    up <- apply(up, 1:2, sum)
-    lam[, , i] <- p * up / down
+  while ( sum( abs(lam2 - lam1 ) ) > 1e-10 ) {
+    i <- i + 1
+    lam1 <- lam2
+    sa <- solve(lam1)
+    maha <- as.vector( Rfast::colsums( y * crossprod(sa, y) ) )
+    down <- sum( 1 / maha )
+
+    up <- tx / maha
+
+    up2 <- apply(up, 2:3, sum)
+    lam2 <- p * up2 / down
   }
 
-  A <- lam[, , i]
+  A <- lam2
 
   if ( is.null( colnames(x) ) ) {
     colnames(A) <- rownames(A) <- paste("X", 1:p, sep = "")
@@ -50,4 +53,3 @@ acg <- function(x) {
   list(iter = i, cova = A)
 
 }
-

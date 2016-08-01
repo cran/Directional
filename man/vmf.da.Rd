@@ -1,4 +1,4 @@
-\name{vmf.da}
+\name{Cross validation in von Mises-Fisher discrminant analysis}
 \alias{vmf.da}
 \title{
 Cross validation for estimating the classification rate of a discrminant analysis for directional data assuming a von Mises-Fisher distribution

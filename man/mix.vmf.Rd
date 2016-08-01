@@ -1,7 +1,7 @@
-\name{mix.vmf}
+\name{Mixtures of Von Mises-Fisher distributions}
 \alias{mix.vmf}
 \title{
-Mixtures of Von Mises-Fisher distributions.
+Mixtures of Von Mises-Fisher distributions
 }
 
 \description{

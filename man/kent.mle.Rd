@@ -1,7 +1,7 @@
-\name{kent.mle}
+\name{MLe of the Kent distribution}
 \alias{kent.mle}
 \title{
-MLe of the Kent distribution.
+MLe of the Kent distribution
 }
 
 \description{

@@ -1,4 +1,4 @@
-\name{fb.saddle}
+\name{Saddlepoint approximations of the Fisher-Bingham distributions}
 \alias{fb.saddle}
 \title{
 Saddlepoint approximations of the Fisher-Bingham distributions
