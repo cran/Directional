@@ -33,14 +33,14 @@ hcf.circaov <- function(u, ina, rads = FALSE) {
   R <- sqrt(C^2 + S^2)  ## the resultant length based on all the data
   ## Next we stimate the common concentration parameter kappa
 
-  kappa <- circ.summary(u, rads = T, plot = F)$kappa
+  kappa <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
   ## kappa is the estimated concentration parameter based on all the data
   if (kappa > 2) {
-    Ft <- ( (n - g) * (V - R) )/( (g - 1) * (n - V) )
+    Ft <- (n - g) * (V - R) / (g - 1) / (n - V) 
     pvalue <- pf(Ft, g - 1, n - g, lower.tail = FALSE)
 
   } else  if (kappa < 2 & kappa > 1) {
-    Ft <- (1 + 3/(8 * kappa)) * ((n - g) * (V - R))/( (g - 1) * (n - V) )
+    Ft <- (1 + 3/(8 * kappa)) * (n - g) * (V - R)/( (g - 1) * (n - V) )
     pvalue <- pf(Ft, g - 1, n - g, lower.tail = FALSE)
 
   } else {

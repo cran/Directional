@@ -11,13 +11,13 @@ tang.conc <- function(u, ina, rads = FALSE) {
   ## ina is an indicator variable of each sample
 
   n <- length(u)  ## sample size
-  ni <- as.vector(table(ina))
+  ni <- as.vector( table(ina) )
   ina <- as.numeric(ina)
 
   g <- max(ina)  ## how many groups are there
   ## if the data are in degrees we transform them into radians
 
-  if (rads == FALSE)  u <- u * pi/180
+  if ( rads == FALSE )   u <- u * pi/180
   d <- NULL  ## will store the absolute sinus centred data here
   d2 <- dmi <- numeric(g)
   x1 <- cos(u)
@@ -38,7 +38,7 @@ tang.conc <- function(u, ina, rads = FALSE) {
   }
 
   mdm <- mean(d)
-  Ft <- ( (n - g) * sum(ni * (dmi - mdm)^2) ) / ( (g - 1) * sum(d2) )
+  Ft <- (n - g) * sum(ni * (dmi - mdm)^2) / ( (g - 1) * sum(d2) )
   pvalue <- pf(Ft, g - 1, n - g, lower.tail = FALSE)
   res <- c(Ft, pvalue)
   names(res) <- c('test', 'p-value')

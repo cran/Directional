@@ -51,7 +51,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 mu <- rnorm(5)
 x <- rvmf(100, mu, 10)
 meandir.test(x, mu, 1)
-meandir.test(x, mu, 999)
+meandir.test(x, mu, 499)
 }
 \keyword{ One sample hypothesis test }
 \keyword{ Mean direction }

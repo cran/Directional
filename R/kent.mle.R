@@ -12,8 +12,8 @@ kent.mle <- function(x) {
 
   tic <- proc.time()
 
-  n <- nrow(x)  ## sample size
-  xbar <- as.vector( Rfast::colmeans(x) )  ## mean vector
+  n <- dim(x)[1]  ## sample size
+  xbar <- Rfast::colmeans(x)  ## mean vector
   xbar <- xbar / sqrt( sum(xbar^2) ) ## mean direction
   u <- c( acos(xbar[1]), ( atan(xbar[3] / xbar[2]) + pi * I(xbar[2]<0) )
   %% (2 * pi) )
@@ -51,7 +51,7 @@ kent.mle <- function(x) {
     gam <- c(0, k, 0)
     lam <- c(0, -b, b)
     ckb <- fb.saddle(gam, lam)[3]
-    g <-  -( -n * ckb + k * xg1 + b * ( xg2 - xg3 ) )
+    g <-  n * ckb - k * xg1 - b * ( xg2 - xg3 ) 
     g
   }
 

@@ -14,12 +14,12 @@ bic.mixvmf <- function(x, A = 3) {
 
   runtime <- proc.time()
   x <- as.matrix(x)  ## make sure the x is a matrix
-  n <- nrow(x)  ## sample size of the data
-  p <- ncol(x)  ## dimensionality of the data
-  x <- x/sqrt( rowSums(x^2) )  ## makes sure the data are directional
+  n <- dim(x)[1]  ## sample size of the data
+  p <- dim(x)[2]  ## dimensionality of the data
+  x <- x/sqrt( Rfast::rowsums(x^2) )  ## makes sure the data are directional
   bic <- 1:A
   mod <- vmf(x)
-  bic[1] <-  -2 * mod$loglik+ p * log(n)  ## BIC assuming one cluster
+  bic[1] <-  - 2 * mod$loglik+ p * log(n)  ## BIC assuming one cluster
 
   for (vim in 2:A) {
     a <- mix.vmf(x, vim)  ## model based clustering for some possible clusters

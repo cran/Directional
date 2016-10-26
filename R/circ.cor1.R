@@ -12,7 +12,7 @@ circ.cor1 <- function(theta, phi, rads = FALSE) {
   n <- length(theta)  ## sample size
 
   ## if the data are in degrees we transform them into radians
-  if (rads == FALSE) {
+  if ( rads == FALSE ) {
     theta <- theta * pi/180
     phi <- phi * pi/180
   }
@@ -29,8 +29,8 @@ circ.cor1 <- function(theta, phi, rads = FALSE) {
   lam22 <- sum( sintheta^2 * sinphi^2 ) / n
   lam02 <- sum( sinphi^2 ) / n
   lam20 <- sum( sintheta^2 ) / n
-  zrho <- sqrt(n) * sqrt(lam02 * lam20/lam22) * rho
-  pvalue <- 2 * ( 1 - pnorm( abs(zrho) ) )
+  zrho <- sqrt(n) * sqrt( lam02 * lam20/lam22 ) * rho
+  pvalue <- 2 * pnorm( abs(zrho), lower.tail = FALSE )
 
   res <- c(rho, pvalue)
   names(res) <- c("rho", "p-value")

@@ -20,23 +20,23 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
   ## 'rot' (Garcia-Portugues, 2013)
   ## if the data are in degrees we transform them into radians
 
-  if (rads == FALSE)  u <- u/180 * pi
+  if (rads == FALSE)  u <- u / 180 * pi
   n <- length(u)  ## sample size
   x <- cbind( cos(u), sin(u) )
   disa <- tcrossprod(x)
   diag(disa) <- 1
-  expa <- exp(disa)  
+  expa <- exp(disa)
 
   if ( is.null(h) ) {
 
     if (thumb == "tay") {
       k <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
-      h <- ( (4 * pi^0.5 * besselI(k, 0)^2)/(3 * n * k^2 *
+      h <- ( 4 * pi^0.5 * besselI(k, 0)^2 / (3 * n * k^2 *
       besselI(2 * k, 2)) )^0.2
 
     } else if (thumb == "rot") {
       k <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
-      h <- ( (4 * pi^0.5 * besselI(k, 0)^2) /( k * n * ( 2 * besselI(2 * k, 1) +
+      h <- ( 4 * pi^0.5 * besselI(k, 0)^2 / ( k * n * ( 2 * besselI(2 * k, 1) +
       3 * k * besselI(2 * k, 2)) ) )^0.2
 
     } else if (thumb == "none") {
@@ -45,7 +45,7 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
 
   } else h <- h
 
-  f <- rowSums( expa^( 1 / h^2 ) ) / ( n * 2 * pi * besselI(1/h^2, 0) ) 
+  f <- Rfast::rowsums( expa^( 1 / h^2 ) ) / ( n * 2 * pi * besselI(1/h^2, 0) )
 
-  list( h = h, f = as.vector(f) )
+  list( h = h, f = f )
 }

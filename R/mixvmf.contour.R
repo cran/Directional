@@ -27,8 +27,8 @@ mixvmf.contour <- function(u, mod) {
   g <- length(p)  ## how many clusters
   lika <- con <- numeric(g)
   for (l in 1:g) {
-  con[l] <- 0.5 * log(k[l]) - 1.5 * log(2 * pi) - ( log(besselI(k[l], 0.5,
-  expon.scaled = T)) + k[l] )
+    con[l] <- 0.5 * log(k[l]) - 1.5 * log(2 * pi) - ( log( besselI( k[l], 0.5,
+    expon.scaled = TRUE ) ) + k[l] )
   }
 
   for (i in 1:n1) {

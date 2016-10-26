@@ -22,7 +22,7 @@ circlin.cor <- function(theta, x, rads = FALSE) {
   R2xt <- (rxc^2 + rxs^2 - 2 * rxc * rxs * rcs)/(1 - rcs^2)
 
   ## linear-circular correlation
-  Ft <- (n - 3) * R2xt/(1 - R2xt)  ## F-test statistic value
+  Ft <- (n - 3) * R2xt / (1 - R2xt)  ## F-test statistic value
   pvalue <- pf(Ft, 2, n - 3, lower.tail = FALSE)
   res <- cbind(R2xt, pvalue)
   colnames(res) <- c('R-squared', 'p-value')

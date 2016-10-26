@@ -13,18 +13,19 @@ vmfda.pred <- function(xnew, x, ina) {
   ## ina is the group indicator variable
 
   x <- as.matrix(x)
-  x <- x / sqrt( rowSums(x ^ 2) )
+  x <- x / sqrt( Rfast::rowsums(x ^ 2) ) 
   xnew <- as.matrix(xnew)
-  if (ncol(xnew) == 1)  xnew <- t(xnew)
-  xnew <- xnew / sqrt( rowSums(xnew ^ 2) )
-  p <- ncol(x)  ## dimensonality of the data
+
+  if ( ncol(xnew) == 1 )   xnew <- t(xnew)
+  xnew <- xnew / sqrt( Rfast::rowsums(xnew ^ 2) ) 
+
+  p <- dim(x)[2]  ## dimensonality of the data
   ina <- as.numeric(ina)
   g <- max(ina)
   mesi <- matrix(nrow = g, ncol = p)
   k <- numeric(g)
   nu <- nrow(xnew)
   mat <- matrix(nrow = nu, ncol = g)
-  est <- numeric(nu)
 
   for (j in 1:g) {
     da <- vmf( x[ina == j, ] )  ## estimates the parameters of the vMF

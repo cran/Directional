@@ -11,20 +11,20 @@ rot.matrix <- function(ksi, theta, rads = FALSE) {
   ## latitude and the second is the longitude
   ## theta is the angle of rotation
 
-  if (rads == TRUE) {
+  if ( rads == TRUE ) {
     lat <- ksi[1]
     long <- ksi[2]
     the <- theta
 
   } else {
-    lat <- ksi[1] * pi/180
-    long <- ksi[2] * pi/180
-    the <- theta * pi/180
+    lat <- ksi[1] * pi / 180
+    long <- ksi[2] * pi / 180
+    the <- theta * pi / 180
   }
 
   t1 <- cos(lat) * cos(long)
   t2 <- cos(lat) * sin(long)
   t3 <- sin(lat)
-  L <- matrix(c(0, t3, -t2, -t3, 0, t1, t2, -t1, 0), ncol = 3)
-  diag(3) + L * sin(the) + crossprod(L) * ( 1 - cos(the) )
+  L <- matrix( c(0, t3, -t2, -t3, 0, t1, t2, -t1, 0), ncol = 3 )
+  diag(3) + L * sin(the) + L %*% L * ( 1 - cos(the) )
 }

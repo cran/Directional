@@ -12,11 +12,11 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
   ## If B==1 then no bootstrap is performed
 
   x <- as.matrix(x)  ## makes sure x is a matrix
-  x <- x/sqrt(rowSums(x^2))  ## makes sure x contains unit vectors
-  p <- ncol(x)  ## dimensionality of the data
-  n <- nrow(x)  ## sample size of the data
-  m <- colSums(x)
-  test <- sum( m^2 ) *p / n
+  x <- x / sqrt(Rfast::rowsums(x^2) )  ## makes sure x contains unit vectors
+  p <- dim(x)[2]  ## dimensionality of the data
+  n <- dim(x)[1]  ## sample size of the data
+  m <- Rfast::colsums(x) 
+  test <- sum( m^2 ) * p / n
 
   if (modif == TRUE) {
     test <- ( 1 - 1/(2 * n) ) * test + test^2 / ( 2 * n * (p + 2) )
@@ -31,8 +31,8 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
     tb <- numeric(B)
     for (i in 1:B) {
       x <- matrix( RcppZiggurat::zrnorm(n * p), ncol = p )
-      x <- x / sqrt( rowSums(x^2) )
-      mb <- as.vector( Rfast::colsums(x) )
+      x <- x / sqrt( Rfast::rowsums(x^2) ) 
+      mb <- Rfast::colsums(x) 
       tb[i] <- p * sum( mb^2 ) / n
     }
 

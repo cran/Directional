@@ -59,8 +59,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 
 \examples{
-x = rvmf(100, rnorm(3), 15)
-x = euclid.inv(x)
+x <- rvmf(100, rnorm(3), 15)
+x <- euclid.inv(x)
 wood.mle(x)
 }
 

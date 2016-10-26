@@ -61,10 +61,10 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 
 \examples{
-x = rvonmises(n = 40, m = 2, k = 10)
+x <- rvonmises(n = 40, m = 2, k = 10)
 kuiper(x, rads = TRUE)
 watson(x, rads = TRUE)
-x = rvonmises(40, m = 2, k = 0)
+x <- rvonmises(40, m = 2, k = 0)
 kuiper(x, rads = TRUE)
 watson(x, rads = TRUE)
 }

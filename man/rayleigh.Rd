@@ -62,8 +62,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 
 \examples{
-x <- rvmf(100, rnorm(5), 1)  ## Fisher distribution with low
-## concentration
+x <- rvmf(100, rnorm(5), 1)  ## Fisher distribution with low concentration
 rayleigh(x)
 }
 

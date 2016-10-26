@@ -1,4 +1,4 @@
-\name{Random values simulation from a mixture of von Mises-Fisher distributions}
+\name{Simulation of random values from a mixture of von Mises-Fisher distributions}
 \alias{rmixvmf}
 \title{
 Random values simulation from a mixture of von Mises-Fisher distributions

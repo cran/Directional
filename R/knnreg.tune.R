@@ -18,8 +18,8 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
   y <- as.matrix(y)
   x <- as.matrix(x)
-  n <- nrow(y)
-  d <- ncol(y)
+  n <- dim(y)[1]
+  d <- dim(y)[2]
   ina <- 1:n
 
   if ( is.null(mat) ) {
@@ -38,13 +38,11 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
   if (type == "spher") {
 
     runtime <- proc.time()
-    x <- x / sqrt( rowSums(x^2) )  ## makes sure x are unit vectors
+    x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
     apostasi <- tcrossprod( x )
-    apostasi <- as.matrix(apostasi)
     diag(apostasi) <- 1
     apostasi[ apostasi >= 1 ] <- 1
     apostasi <- acos(apostasi)
-    diag(apostasi) <- 0
 
     ## The k-NN algorithm is calculated R times. For every repetition a
     ## test sample is chosen and its observations are classified
@@ -67,7 +65,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
             yb <- as.matrix( y[a, ] )
-            est[i, ] <- as.vector( Rfast::colmeans( yb ) )
+            est[i, ] <- Rfast::colmeans( yb ) 
           }
 
         } else if (estim == "harmonic") {
@@ -76,13 +74,13 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
             yb <- as.matrix( y[a, ] )
-            est[i, ] <- k / as.vector( Rfast::colsums( yb ) )
+            est[i, ] <- k / Rfast::colsums( yb ) 
           }
         }
 
         if (res == "spher") {
-          est <- est / sqrt( rowSums(est^2) )
-          ytest <- ytest / sqrt( rowSums(ytest^2) )
+          est <- est / sqrt( Rfast::rowsums(est^2) ) 
+          ytest <- ytest / sqrt( Rfast::rowsums(ytest^2) ) 
           per[vim, l] <- 1 - sum( est * ytest )  / rmat
         } else  {
           per[vim, l] <- sum( (est - ytest)^2 ) / rmat
@@ -90,11 +88,11 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
       }
     }
 
-    mspe <- as.vector( Rfast::colmeans(per) )
+    mspe <- Rfast::colmeans(per) 
     bias <- per[ ,which.min(mspe)] - apply(per, 1, min)  ## TT estimate of bias
     estb <- mean( bias )  ## TT estimate of bias
     performance <- c( 1 - min(mspe) + estb, estb)
-    mspe <- 1 - as.vector( Rfast::colmeans(per) )
+    mspe <- 1 - Rfast::colmeans(per) 
     runtime <- proc.time() - runtime
 
   } else {
@@ -124,7 +122,8 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
       registerDoParallel(cl)
       pe <- numeric(A - 1)
 
-      per <- foreach(i = 1:M, .combine = rbind, .export = "knn.reg") %dopar% {
+      per <- foreach(i = 1:M, .combine = rbind, .packages = "Rfast", 
+	  .export = c("knn.reg", "rowsums", "colmeans", "colVars", "colsums") ) %dopar% {
         ytest <- as.matrix( y[mat[, i], ] )  ## test set dependent vars
         ytrain <- as.matrix( y[-mat[, i], ] )  ## train set dependent vars
         xtrain <- as.matrix( x[-mat[, i], ] )  ## train set independent vars
@@ -141,7 +140,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
     }
 
-    mspe <- colMeans(per)
+    mspe <- Rfast::colmeans(per)
     bias <- per[ ,which.min(mspe)] - apply(per, 1, min)  ## TT estimate of bias
     estb <- mean( bias )  ## TT estimate of bias
     names(mspe) <- paste("k=", 2:A, sep = "")

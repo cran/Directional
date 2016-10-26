@@ -27,7 +27,7 @@ wood.mle <- function(y) {
     down <- sqrt( 1 - a3^2 )
     v <- sum( ( a1^2 - a2^2 ) / down )
     w <- 2 * sum( a1 * a2  / down )
-    f <-  - ( u^2 + v^2 + w^2 )
+    f <-  - u^2 - v^2 - w^2
     f
   }
 
@@ -36,10 +36,10 @@ wood.mle <- function(y) {
     k * ( u * cos(a) + ( v * cos(b) + w * sin(b) ) * sin(a) )
   }
 
-  ini <- as.vector( Rfast::colmeans(y) )
+  ini <- Rfast::colmeans(y) 
   mod <- optim( ini, mle )
   mod <- optim(mod$par, mle, hessian = TRUE)
-  gam <- mod$par[1]   ;   del <- mod$par[2]
+  gam <- mod$par[1]     ;     del <- mod$par[2]
   m1 <- c( cos(gam) * cos(del), cos(gam) * sin(del), - sin(gam) )
   m2 <- c( - sin(del), cos(del), 0 )
   m3 <- c( sin(gam) * cos(del), sin(gam) * sin(del), cos(gam) )
@@ -53,14 +53,14 @@ wood.mle <- function(y) {
   w <- 2 * sum( a1 * a2  / down )
   a <- atan2( sqrt(v^2 + w^2), u )
   b <- atan2( w, v )
-  n <- nrow(y)
+  n <- dim(y)[1]
 
   ka <- optimize( lik, c(0, 1000), maximum = TRUE )
   k <- ka$maximum
   info <- c( c( mod$par, b) / pi * 180, ka$objective)
   names(info) <- c("gamma", "delta", "beta", "log-lik")
   se.mod <- sqrt( diag( solve(mod$hessian) ) )
-  se.a <- sqrt( (1 - exp( - 2 * k)) / (1 + exp(- 2* k ) ) *( 1 / (n * k) ) )
+  se.a <- sqrt( (1 - exp( - 2 * k)) / (1 + exp(- 2* k ) ) / (n * k) )
   se.b <- 1 / ( k * ( 1 + exp(-2 * k) ) / ( 1 - exp(- 2 * k) ) * sin(a)^2 )
   se.k <- sqrt( 1 / ( 1 / k^2 - 2 / ( exp(k) - exp(- k) ) ) ) / sqrt(n)
 

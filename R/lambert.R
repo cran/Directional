@@ -10,7 +10,7 @@ lambert <- function(y) {
   ## y contains the data in degrees, latitude and longitude
 
   u <- euclid(y)  ## transform the data into euclidean coordinates
-  m <- as.vector( Rfast::colmeans(u) )
+  m <- Rfast::colmeans(u)
   m <- m / sqrt(sum( m^2) )  ## the mean direction
   b <- c(0, 0, 1)  ## the north pole
   H <- rotation(m, b)  ## the rotation matrix

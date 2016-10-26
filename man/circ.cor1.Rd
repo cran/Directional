@@ -67,8 +67,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 
 \examples{
-y <- runif(50, 0, 2*pi)
-x <- runif(50, 0, 2*pi)
+y <- runif(50, 0, 2 * pi)
+x <- runif(50, 0, 2 * pi)
 circ.cor1(x, y, rads = TRUE)
 circ.cor2(x, y, rads = TRUE)
 }

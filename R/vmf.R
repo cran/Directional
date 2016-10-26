@@ -13,15 +13,15 @@ vmf <- function(x, tol = 1e-06) {
   ## when estimating the concentration parameter
 
   x <- as.matrix(x)
-  x <- x / sqrt( rowSums(x^2) )
-  p <- ncol(x)  ## dimensionality of the data
-  n <- nrow(x)  ## sample size of the data
+  x <- x / sqrt( Rfast::rowsums(x^2) )
+  p <- dim(x)[2]  ## dimensionality of the data
+  n <- dim(x)[1]  ## sample size of the data
 
   Apk <- function(p, k) {
-    besselI(k, p/2, expon.scaled = TRUE)/besselI(k, p/2 - 1, expon.scaled = TRUE)
+    besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
   }
 
-  m1 <- colSums(x)
+  m1 <- Rfast::colsums(x)
   R <- sqrt( sum(m1^2) )/n  ## mean resultant length
   m <- m1 / (n * R)
   k <- numeric(4)
@@ -35,7 +35,7 @@ vmf <- function(x, tol = 1e-06) {
     apk <- Apk(p, k[i - 1])
     k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
 
-    while (abs(k[i] - k[i - 1]) > tol) {
+    while ( abs(k[i] - k[i - 1]) > tol ) {
       i <- i + 1
       apk <- Apk(p, k[i - 1])
       k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )

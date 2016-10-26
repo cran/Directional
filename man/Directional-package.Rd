@@ -12,8 +12,8 @@ Circular-linear regression, spherical-spherical regression, discriminant analysi
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 2.2\cr
-Date: \tab 2016-08-01\cr
+Version: \tab 2.3\cr
+Date: \tab 2016-10-26\cr
 License: \tab GPL-2\cr
 }
 }
@@ -22,7 +22,7 @@ Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <athineou@csd.uoc.gr> and 
 }
 
 \section{Maintainers }{
-Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
+Michail Tsagris <mtsagris@yahoo.gr>
 }
 
 \references{

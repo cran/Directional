@@ -1,4 +1,4 @@
-\name{Random values simulation from a von Mises-Fisher distribution}
+\name{Simulation of random values from a von Mises-Fisher distribution}
 \alias{rvmf}
 \title{
 Random values simulation from a von Mises-Fisher distribution
@@ -25,7 +25,7 @@ The concentration parameter. If k = 0, random values from the spherical uniform 
 }
 
 \details{
-It uses a rejection smapling as suggested by Andrew Wood (1994). I have mentioned the description of the algorithm as I found it in Dhillon and Sra in 2003.
+It uses a rejection smapling as suggested by Andrew Wood (1994). 
 }
 
 \value{

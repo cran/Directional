@@ -49,7 +49,6 @@ R implementation and documentation: Anamul Sajib<pmxahsa@nottingham.ac.uk>
 }
 
 \examples{
-
 # three euler angles
 
 theta.12 <- sample( seq(-3, 3, 0.3), 1 )
@@ -68,5 +67,4 @@ theta.23 <- e[2]
 theta.13 <- e[1]
 
 theta.12 ; theta.23 ; theta.13
-
 }

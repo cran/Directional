@@ -12,7 +12,7 @@ conc.test <- function(u, ina, rads = FALSE) {
   n <- length(u)  ## sample size
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
-  ni <- as.vector(table(ina))
+  ni <- as.vector( table(ina) )
   if (rads == FALSE)  u <- u * pi/180
 
   ## if the data are in degrees we transform them into radians
@@ -30,7 +30,7 @@ conc.test <- function(u, ina, rads = FALSE) {
   if (Rb < 0.45) {
     ## case 1
     g1 <- wi <- numeric(g)
-    wi <- (4 * (ni - 4))/3
+    wi <- 4 * (ni - 4)/3
     g1 <- asin( sqrt(3/8) * 2 * Rbi )
     U1 <- sum(wi * g1^2) - ( sum(wi * g1) )^2 / sum(wi)
     pvalue <- pchisq(U1, g - 1, lower.tail = FALSE)
@@ -39,9 +39,9 @@ conc.test <- function(u, ina, rads = FALSE) {
   } else if (Rb >= 0.45 & Rb <= 0.7) {
     ## case 2
     g2 <- wi <- numeric(g)
-    wi <- (ni - 3)/0.798
+    wi <- (ni - 3) / 0.798
     g2 <- asinh( (Rb - 1.089) / 0.258 )
-    U2 <- sum( wi * g2^2) - (sum(wi * g2) )^2/sum(wi)
+    U2 <- sum( wi * g2^2) - (sum(wi * g2) )^2 / sum(wi)
     pvalue <- pchisq(U2, g - 1, lower.tail = FALSE)
     mess <- paste('The mean resultant length is between 0.45 and 0.7.
                   U3 was calculated')
@@ -51,8 +51,8 @@ conc.test <- function(u, ina, rads = FALSE) {
     Ri <- Rbi * ni
     vi <- ni - 1
     v <- n - g
-    d <- 1/(3 * (g - 1)) * (sum(1/vi) - 1/v)
-    U3 <- 1/(1 + d) * (v * log((n - sum(Ri))/v) - sum(vi * log((ni - Ri)/vi)))
+    d <-  ( sum(1/vi) - 1/v ) / ( 3 * (g - 1) )
+    U3 <- ( v * log( (n - sum(Ri))/v ) - sum( vi * log((ni - Ri)/vi) ) ) / (1 + d)
     pvalue <- pchisq(U3, g - 1, lower.tail = FALSE)
     mess <- paste('The mean resultant length is more than 0.7. U3 was calculated')
   }

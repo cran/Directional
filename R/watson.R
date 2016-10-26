@@ -11,13 +11,13 @@ watson <- function(u, rads = FALSE, R = 1) {
   ## if data are in rads set it to TRUE
   ## R is for Monte Carlo estimate of the p-value
 
-  if (rads == FALSE)  u <- u / 180 * pi
+  if ( rads == FALSE )  u <- u / 180 * pi
   u <- sort(u) / (2 * pi)
   n <- length(u)
   i <- 1:n
   Wn <- sum( ( ( u - (i - 0.5)/n ) - ( sum(u) / n - 0.5 ) )^2 ) + 1 / ( 12 * n )
 
-  if (R == 1) {  ## asymptotic p-value is returned
+  if ( R == 1 ) {  ## asymptotic p-value is returned
     m <- 1:20
     pvalue <- 2 * sum( ( - 1 )^( m - 1 ) * exp(-2 * m^2 * pi^2 * Wn) )
 
@@ -27,7 +27,7 @@ watson <- function(u, rads = FALSE, R = 1) {
     for (j in 1:R) {
       x <- runif(n, 0, 2 * pi)
       x <- sort(x) / (2 * pi)
-      bwn[j] <- ( max(x - (i - 1)/n) + max(i/n - x) )
+      bwn[j] <- max(x - (i - 1)/n) + max(i/n - x)
     }
 
     pvalue <- ( sum(bwn > Wn) + 1 ) / (R + 1)

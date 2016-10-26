@@ -1,22 +1,16 @@
 # Visual assessment whether matrix Fisher samples is correctly generated or not
-
-visual.check <- function(n, F) {
-
-    l1 <- numeric(n)
-    l2 <- numeric(n)
-
-    for ( i in 1:n ) {
-
-	  X1 <- habeck.rot(F)                   # Habeck Method
-      X2 <- rmatrixfisher(1, F)              # Kent Method
-      l1[i] <- sum( diag( t(F) %*% X1 ) )
-      l2[i] <- sum( diag( t(F) %*% X2[, , 1] ) )
-
-    }
-
-    list(l1 = l1, l2 = l2)
-
+visual.check <- function(x, Fa) {
+ 
+  n <- dim(x)[3]
+  l <- numeric(n)
+ 
+  for ( i in 1:n ) {
+    l[i] <- sum( Fa * x[, , i] )  # Kent Method
+  }
+ 
+  plot( 1:n, l, type = "l", col = "red" )
+  abline(h = 20.4, lty = "solid", col = "blue")
+ 
+  l
+ 
 }
-
-
-

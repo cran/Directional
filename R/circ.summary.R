@@ -12,7 +12,7 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
   ## u is an angular variable
   n <- length(u)  ## sample size
   ## if the data are in degrees we transform them into radians
-  if (rads == FALSE)  u <- u * pi/180
+  if ( rads == FALSE )   u <- u * pi/180
   ## mesos contains the sample mean
   ## direction
 
@@ -25,12 +25,12 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
   } else  mesos <- atan(S/C) + pi
   MRL <- Rbar  ## mean resultant length
   circv <- 1 - Rbar
-  circs <- sqrt(-2 * log(Rbar))  ## sample cicrular standard deviation
+  circs <- sqrt( -2 * log(Rbar) )  ## sample cicrular standard deviation
 
   ## lik is the von Mises likelihood
    lik <- function(k) {
      f <- k * sum( cos(u - mesos) ) - n * log(2 * pi) -
-     n * (log(besselI( k, 0, expon.scaled = TRUE) ) + k)
+     n * ( log(besselI( k, 0, expon.scaled = TRUE) ) + k )
      f
    }
 
@@ -39,11 +39,11 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
 
   R <- n * Rbar
   if (Rbar < 2/3) {
-    fact <- sqrt(2 * n * (2 * R^2 - n * qchisq(0.05, 1))/
-    (R^2 * (4 * n - qchisq(0.05, 1))))
+    fact <- sqrt(2 * n * ( 2 * R^2 - n * qchisq(0.05, 1) )/
+    ( R^2 * ( 4 * n - qchisq(0.05, 1)) ) )
     ci <- c(mesos - acos(fact), mesos + acos(fact))
   } else  {
-    fact <- sqrt(n^2 - (n^2 - R^2) * exp(qchisq(0.05, 1)/n))/R
+    fact <- sqrt( n^2 - (n^2 - R^2) * exp( qchisq(0.05, 1)/n ) )/R
     ci <- c(mesos - acos(fact), mesos + acos(fact))
   }
 

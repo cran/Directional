@@ -29,7 +29,7 @@ fb.saddle <- function(gam, lam) {
    }
 
   low <- lam[1] - 0.25 * p - 0.5 * sqrt(0.25 * p^2 + p * max(gam)^2)  ## lower bound
-  up <- lam[1] - 0.25 - 0.5 * sqrt(0.25 + min(gam)^2)  ## not the exact upper
+  up <- lam[1] - 0.25 - 0.5 * sqrt( 0.25 + min(gam)^2 )  ## not the exact upper
   ## bound but a bit higher
   ela <- uniroot(saddle.equat, c(low, up), para = para, tol = 1e-08)
   tau <- ela$root  ## tau which solves the saddlepoint equation
@@ -47,7 +47,7 @@ fb.saddle <- function(gam, lam) {
 
   rho3 <- kfb(3, gam, lam, tau)/kfb(2, gam, lam, tau)^1.5
   rho4 <- kfb(4, gam, lam, tau)/kfb(2, gam, lam, tau)^2
-  T <- rho4/8 - 5/24 * rho3^2
+  Ta <- rho4/8 - 5/24 * rho3^2
 
   c1 <- 0.5 * log(2) + 0.5 * (p - 1) * log(pi) -
         0.5 * log( kfb(2, gam, lam, tau) ) - 0.5 * sum( log(lam - tau) ) -
@@ -55,8 +55,8 @@ fb.saddle <- function(gam, lam) {
   ## c1 <- sqrt(2) * pi^(0.5 * (p - 1) ) * kfb(2, gam, lam, tau)^(-0.5) *
   ## prod(lam - tau)^(-0.5) * exp( -tau + 0.25 * sum( gam^2/(lam - tau) ) )
 
-  c2 <- c1 + log(1 + T)
-  c3 <- c1 + T
+  c2 <- c1 + log(1 + Ta)
+  c3 <- c1 + Ta
 
   ## the next multiplications brings the modification with the negative
   ## values in the lambdas back

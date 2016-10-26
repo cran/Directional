@@ -14,9 +14,9 @@ spher.reg <- function(y, x, rads = FALSE) {
 
   x <- as.matrix(x)
   y <- as.matrix(y)
-  n <- nrow(x)  ## sample size
+  n <- dim(x)[1]  ## sample size
 
-  if ( ncol(x) == 2  &  ncol(y) == 2 ) {
+  if ( dim(x)[2] == 2  &  dim(y)[2] == 2 ) {
     if (rads == FALSE) {
       x <- pi * x / 180  ## from degrees to rads
       y <- pi * y / 180
@@ -27,7 +27,7 @@ spher.reg <- function(y, x, rads = FALSE) {
     cosx1 <- cos(x[, 1])   ;  cosy1 <- cos(y[, 1])
     X <- cbind( cosx1 * cos(x[, 2]), cosx1 * sin(x[, 2]), sin(x[, 1]) )
     Y <- cbind( cosy1 * cos(y[, 2]), cosy1 * sin(y[, 2]), sin(y[, 1]) )
-  } else if ( ncol(x) == 3  &  ncol(y) == 3 ) {
+  } else if ( dim(x)[2] == 3  &  dim(y)[2] == 3 ) {
     X <- x
     Y <- y
   }

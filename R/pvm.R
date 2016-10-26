@@ -1,4 +1,4 @@
-## Probability density function of the 
+## Probability density function of the
 ## von Mises-Fisher distribution
 ## May 2016
 ## References: Arthur Pewsey, Markus Neuhauser, and Graeme D. Ruxton (2013)
@@ -14,16 +14,16 @@ pvm <- function(theta, m, k, rads = FALSE) {
 
    theta <- theta %% (2 * pi)
 
-   if ( k > 0 ) { 
+   if ( k > 0 ) {
      theta <- theta %% (2 * pi)
-     f <- 1 / (2 * pi * besselI(k, 0) )
+     f <- 2 * pi * besselI(k, 0)
      funa <- function(u)  exp(k * cos(u - m) )
-     prob <- f * as.numeric( integrate(funa, 0, theta)$value )
-   
+     prob <- as.numeric( integrate(funa, 0, theta)$value ) / f
+
    } else {
-     prob <- theta / ( 2 * pi ) 
+     prob <- theta / ( 2 * pi )
    }
-  
+
   prob
- 
-} 
+
+}

@@ -43,7 +43,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \examples{
 x <- rvmf(10, rnorm(3), 10)
 euclid.inv(x)
-euclid(euclid.inv(x))
+euclid( euclid.inv(x) )
 x
 }
 

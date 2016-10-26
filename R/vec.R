@@ -32,8 +32,11 @@ vec <- function(x, n = 1, deg = 90) {
     crit <- numeric(n)
 
     for (i in 1:n) {
+
+      ini <- rnorm(p)
+
       options(warn = -1)
-      pa <- nlm(fu, rnorm(p), x = x)
+      pa <- nlm(fu, ini, x = x)
       y <- pa$estimate
       y <- y / sqrt( sum(y^2) )
       ca <- acos( sum(x * y) ) / pi * 180

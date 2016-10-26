@@ -11,14 +11,14 @@ spher.cor <- function(x, y) {
   
   x <- as.matrix(x)
   y <- as.matrix(y)
-  x <- x / sqrt( rowSums(x^2) )
-  y <- y / sqrt( rowSums(y^2) )
+  x <- x / sqrt( Rfast::rowsums(x^2) )
+  y <- y / sqrt( Rfast::rowsums(y^2) )
   
-  p <- ncol(x)  ## dimension of x
-  q <- ncol(y)  ## dimension of y
-  n <- nrow(x)  ## sample size
-  x <-  t(x) - as.vector( Rfast::colmeans(x) )    ## subtract the mean
-  y <-  t(y) - as.vector(Rfast::colmeans(y) )  ## subtract the mean
+  p <- dim(x)[2]  ## dimension of x
+  q <- dim(y)[2]  ## dimension of y
+  n <- dim(x)[1]  ## sample size
+  x <- t(x) - Rfast::colmeans(x)     ## subtract the mean
+  y <- t(y) - Rfast::colmeans(y)   ## subtract the mean
 
   s11 <- tcrossprod(x) / n
   s12 <- tcrossprod( x, y ) / n

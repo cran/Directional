@@ -16,8 +16,8 @@ ggvm <- function(phi, rads = FALSE) {
   n <- length(phi)
 
   likel <- function(pa, phi) {
-    z <- abs( pa[1] )   ;   k <- exp( pa[2] )
-    m <- pa[3]   ;   a <- pa[4]
+    z <- abs( pa[1] )    ;    k <- exp( pa[2] )
+    m <- pa[3]    ;    a <- pa[4]
 
     phia <- phi - a
     ma <- m - a

@@ -59,7 +59,6 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 }
 
 \examples{
-fb.saddle( c(0, 0, 0), c(1, 2, 3) )
 p <- 3  ;  k <- 1
 0.5 * p * log(2 * pi) - (p/2 - 1) * log(k) + log( besselI(k, p/2 - 1, expon.scaled = TRUE) ) + k
 ## normalising constant of the

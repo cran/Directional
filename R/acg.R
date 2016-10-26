@@ -10,9 +10,9 @@
 acg <- function(x) {
 
   x <- as.matrix(x)
-  x <- x /sqrt( rowSums(x^2) )
-  p <- ncol(x)
-  n <- nrow(x)
+  x <- x / sqrt( Rfast::rowsums(x^2) ) 
+  p <- dim(x)[2]
+  n <- dim(x)[1]
   mu <- numeric(p)
 
   lam1 <- cov(x)
@@ -20,13 +20,11 @@ acg <- function(x) {
   down <- sum( 1 / maha )
   tx <- up <- array( dim = c(n, p, p) )
 
-  for (j in 1:n) {
-    tx[j, , ] <- crossprod( t( x[j, ] ) )
-  }
+  for (j in 1:n)   tx[j, , ] <- tcrossprod( x[j, ] )
   up <- tx / maha
 
 
-  up2 <- apply(up, 2:3, sum)
+  up2 <- colSums(up)
   lam2 <- p * up2 / down
   i <- 2
 
@@ -36,12 +34,12 @@ acg <- function(x) {
     i <- i + 1
     lam1 <- lam2
     sa <- solve(lam1)
-    maha <- as.vector( Rfast::colsums( y * crossprod(sa, y) ) )
+    maha <- Rfast::colsums( y * crossprod(sa, y) ) 
     down <- sum( 1 / maha )
 
     up <- tx / maha
 
-    up2 <- apply(up, 2:3, sum)
+    up2 <- colSums(up)
     lam2 <- p * up2 / down
   }
 

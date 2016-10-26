@@ -17,17 +17,15 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   u <- cbind( cos(y), sin(y) )  ## bring the data onto the circle
   n <- nrow(u)
   x <- cbind(1, x)
-  x <- as.matrix(x)
   csx <- crossprod(x)
   XX <- solve( csx, t(x) )
   tXX <- t(XX)
-  p <- ncol(x)
+  p <- dim(x)[2]
 
   funa <- function(be) {
     mu <- x %*% be
     tau <- rowSums(u * mu)
-    ell <-  -0.5 * sum( mu * mu ) +
-      sum( log( 1 + tau * pnorm(tau) / dnorm(tau) ) ) - n * log(2 * pi)
+    ell <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * pnorm(tau) / dnorm(tau) ) )
     ell
   }
 
@@ -39,7 +37,7 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   B <- matrix(para, ncol = 2)
   lik1 <- funa(B)
   mu <- x %*% B
-  tau <- rowSums(u * mu)
+  tau <- Rfast::rowsums(u * mu)
   ptau <- pnorm(tau)
   psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
   B <- crossprod( tXX * psit, u)
@@ -50,14 +48,14 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
     i <- i + 1
     lik1 <- lik2
     mu <- x %*% B
-    tau <- rowSums(u * mu)
+    tau <- Rfast::rowsums(u * mu)
     ptau <- pnorm(tau)
     psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
     B <- crossprod( tXX * psit, u)
     lik2 <- funa(B)
   }
 
-  loglik <- lik2
+  loglik <- lik2 - n * log(2 * pi)
   mu <- x %*% B
 
   if ( seb == TRUE ) {
@@ -67,7 +65,7 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
 
     frac <-  ptau/( dtau + pdtau )
     psit <- tau + frac
-    psit2 <- 2 - pdtau / (dtau + pdtau)  - ( frac )^2
+    psit2 <- 2 - pdtau / (dtau + pdtau)  - frac^2
 
     C <- u[, 1]    ;    S <- u[, 2]
 
@@ -102,7 +100,6 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
 
   if ( !is.null(xnew) ) {  ## predict new values?
     xnew <- cbind(1, xnew)
-    xnew <- as.matrix(xnew)
     est <- xnew %*% B
     est <- ( atan(est[, 2]/est[, 1]) + pi * I(est[, 1] < 0) ) %% (2 * pi)
 
@@ -110,7 +107,7 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
     est <- ( atan(mu[, 2]/mu[, 1]) + pi * I(mu[, 1] < 0) ) %% (2 * pi)
   }
 
-  if (rads == F)  est = est * 180 /pi
+  if ( rads == FALSE )  est = est * 180 / pi
 
   list(runtime = runtime, beta = B, seb = seb, loglik = loglik, est = est)
 

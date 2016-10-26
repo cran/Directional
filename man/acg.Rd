@@ -56,7 +56,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 m <- c(0, 0, 0, 0)
 s <- cov(iris[, 1:4])
 x <- MASS::mvrnorm(500, m, s)
-x <- x / sqrt( rowSums(x^2) )
+x <- x / sqrt( Rfast::rowsums(x^2) )
 mod <- acg(x)
 mod
 cov2cor(mod$cova)  ## estimated covariance matrix turned into a correlation matrix

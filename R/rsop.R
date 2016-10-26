@@ -18,10 +18,10 @@ rsop <- function(n, p) {
     B <- tcrossprod(b, ca)
     B <- B - t(B)
     theta <- acos( b[1] )
-    A[, , i] <- Ip + sin(theta) * B + ( cos(theta) - 1) * ( tcrossprod(b) +
+    A[, , i] <- Ip + sin(theta) * B + ( cos(theta) - 1 ) * ( tcrossprod(b) +
                 tcrossprod(ca) )
 
-      }
+  }
 
   if (n == 1)  A <- as.matrix( A[, , 1] )
 

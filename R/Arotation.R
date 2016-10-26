@@ -16,7 +16,7 @@ Arotation <- function(A) {
 
   } else {
     tr <- sum( diag(A) )
-    rad <- acos(0.5 * (tr - 1))
+    rad <- acos( 0.5 * (tr - 1) )
     angle <- rad * 180 / pi  ## from rads to degrees
     ksi <- c(A[3, 2] - A[2, 3], A[1, 3] - A[3, 1], A[2, 1] - A[1, 2])/
     sqrt( (3 - tr) * (1 + tr) )

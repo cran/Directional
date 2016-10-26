@@ -13,9 +13,9 @@ mix.vmf <- function(x, g) {
   ## g is the number of clusters
 
   x <- as.matrix(x)
-  x <- x / sqrt( rowSums(x^2) )
-  p <- ncol(x)  ## dimensionality of the data
-  n <- nrow(x)  ## sample size of the data
+  x <- x / sqrt( Rfast::rowsums(x^2) )
+  p <- dim(x)[2]  ## dimensionality of the data
+  n <- dim(x)[1]  ## sample size of the data
   lik <- NULL
 
 
@@ -30,11 +30,11 @@ mix.vmf <- function(x, g) {
   runtime <- proc.time()
   ## Step 1
   l <- 1
-  mesa <- array(dim = c(g, p, 100))
-  crit <- numeric(100)
-  cl <- matrix(nrow = n, ncol = 100)
+  mesa <- array(dim = c(g, p, 50))
+  crit <- numeric(50)
+  cl <- matrix(nrow = n, ncol = 50)
 
-  for (vim in 1:100) {
+  for (vim in 1:50) {
     ini <- kmeans(x, g)  ## initially a k-means for starting values
     mesa[, , vim] <- ini$centers
     cl[, vim] <- ini$cluster
@@ -52,7 +52,7 @@ mix.vmf <- function(x, g) {
 
     w <- as.vector( table(cl[, epi]) )/n  #'# initial weights
     m1 <- mesa[, , epi]
-    Rk <- sqrt( rowSums(m1^2) )  ## mean resultant lengths of the initical clusters
+    Rk <- sqrt( Rfast::rowsums(m1^2) )  ## mean resultant lengths of the initical clusters
     mat <- m1/Rk  ## initial mean directions
 
     for (j in 1:g) {
@@ -70,21 +70,21 @@ mix.vmf <- function(x, g) {
       }
       ka[j] <- k[i] ## initial concentration parameters
       lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-        ( log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE))  + ka[j]) +
+        log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] +
         ka[j] * (x %*% mat[j, ])
     }
 
     wlika <- w * exp(lika)
-    rswlika <- rowSums(wlika)
+    rswlika <- Rfast::rowsums(wlika)
     lik[1] <- sum( log( rswlika ) )  ## initial log-likelihood
 
     l <- 2
     ## Step 2
     pij <- wlika / rswlika  ## weights at step 2
-    w <- as.vector( Rfast::colmeans(pij) ) ## weights for step 2
+    w <- Rfast::colmeans(pij) ## weights for step 2
 
     for (j in 1:g) {
-      m1 <- as.vector( Rfast::colsums(pij[, j] * x) )
+      m1 <- Rfast::colsums(pij[, j] * x)
       mat[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step 2
       R <- sqrt( sum(m1^2) ) / sum( pij[, j] )  ## mean resultant lengths at step 2
       k <- numeric(4)
@@ -101,22 +101,22 @@ mix.vmf <- function(x, g) {
       }
       ka[j] <- k[i]
       lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-        ( log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) + ka[j]) +
+        log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] +
         ka[j] * (x %*% mat[j, ])
     }
 
     wexplika <- w * exp( lika)
-    lik[2] <- sum( log( rowSums( wexplika ) ) )  ## log-likelihood at step 2
+    lik[2] <- sum( log( Rfast::rowsums( wexplika ) ) )  ## log-likelihood at step 2
 
     ## Step 3 and beyond
     while ( lik[l] - lik[l - 1] > 1e-05 ) {
       l <- l + 1
 
-      pij <- wexplika / rowSums( wexplika )  ## weights
-      w <- as.vector( Rfast::colmeans(pij) )
+      pij <- wexplika / Rfast::rowsums( wexplika )  ## weights
+      w <- Rfast::colmeans(pij)
 
       for (j in 1:g) {
-        m1 <- as.vector( Rfast::colsums(pij[, j] * x) )
+        m1 <- Rfast::colsums(pij[, j] * x)
         mat[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step l
         R <- sqrt( sum(m1^2) ) / sum(pij[, j])  ## mean resultant lengths at step l
         k <- numeric(4)
@@ -134,12 +134,12 @@ mix.vmf <- function(x, g) {
 
         ka[j] <- k[i]
         lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-          ( log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) + ka[j]) +
+          log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] +
           ka[j] * (x %*% mat[j, ])
       }
 
       wexplika <- w * exp( lika)
-      lik[l] <- sum( log( rowSums( wexplika ) ) )
+      lik[l] <- sum( log( Rfast::rowsums( wexplika ) ) )
     }  ## log-likelihood at step l
 
     ta <- max.col(pij)  ## estimated cluster of each observation

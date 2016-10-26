@@ -14,22 +14,22 @@ spherconc.test <- function(x, ina) {
   g <- max(ina)  ## how many groups are there
   ni <- as.vector(table(ina))
   x <- as.matrix(x)
-  x <- x/sqrt(rowSums(x^2))  ## makes sure x are unit vectors
+  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
   p <- ncol(x)  ## dimensionality of the data
   n <- nrow(x)  ## sample size of the data
 
   if (p == 3) {
     S <- rowsum(x, ina) / ni
-    Rbi <- sqrt( rowSums(S^2) )    ## the mean resultant length of each group
-    S <- as.vector( Rfast::colmeans(x) )
+    Rbi <- sqrt( Rfast::rowsums(S^2) )    ## the mean resultant length of each group
+    S <- Rfast::colmeans(x) 
     Rb <- sqrt( sum(S^2) )  ## the mean resultant length of all the data
 
     if ( Rb < 0.44 ) {
       ## case 1
       g1 <- wi <- numeric(g)
-      wi <- ( 5 * (ni - 5) ) / 3
+      wi <- 5 * (ni - 5) / 3
       g1 <- asin(3 * Rbi/sqrt(5))
-      U1 <- sum(wi * g1^2) - ( sum(wi * g1) )^2/sum(wi)
+      U1 <- sum(wi * g1^2) - sum(wi * g1)^2/sum(wi)
       stat <- U1
       pvalue <- pchisq(stat, g - 1, lower.tail = FALSE)
       mess <- paste('The mean resultant length is less than 0.44. U1 was calculated')
@@ -37,9 +37,9 @@ spherconc.test <- function(x, ina) {
     } else if ( Rb >= 0.44 & Rb <= 0.67 ) {
       ## case 2
       g2 <- wi <- numeric(g)
-      wi <- (ni - 4)/0.394
+      wi <- (ni - 4) / 0.394
       g2 <- asin( (Rbi + 0.176)/1.029 )
-      U2 <- sum(wi * g2^2) - ( sum(wi * g2) )^2/sum(wi)
+      U2 <- sum(wi * g2^2) - sum(wi * g2)^2/sum(wi)
       stat <- U2
       pvalue <- pchisq(stat, g - 1, lower.tail = FALSE)
       mess <- paste('The mean resultant length is between 0.44 and 0.67.
@@ -50,8 +50,8 @@ spherconc.test <- function(x, ina) {
       Ri <- Rbi * ni
       vi <- 2 * (ni - 1)
       v <- 2 * (n - g)
-      d <- 1/(3 * (g - 1)) * ( sum(1/vi) - 1/v )
-      U3 <- 1/(1 + d) * ( v * log( (n - sum(Ri) )/v ) - sum( vi * log( (ni - Ri)/vi) ) )
+      d <- ( sum(1/vi) - 1/v ) / (3 * (g - 1))
+      U3 <- ( v * log( (n - sum(Ri) )/v ) - sum( vi * log( (ni - Ri)/vi) ) ) / ( 1 + d )
       stat <- U3
       pvalue <- pchisq(U3, g - 1, lower.tail = FALSE)
       mess <- paste('The mean resultant length is more than 0.67. U3 was calculated')

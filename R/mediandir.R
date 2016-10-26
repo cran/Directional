@@ -13,22 +13,22 @@
 mediandir = function(x) {
   ## x is the directional data
   x <- as.matrix(x)
-  x <- x / sqrt( rowSums(x^2) )
-  n <- nrow(x)
-  p <- ncol(x)
+  x <- x / sqrt( Rfast::rowsums(x^2) )
+  n <- dim(x)[1]
+  p <- dim(x)[2]
 
-  pa <- as.vector( Rfast::colMedians(x) )
+  pa <- Rfast::colMedians(x) 
   u1 <- pa / sqrt( sum(pa^2) )
   ww <- as.vector( sqrt( 1 - ( x %*% u1 )^2 ) )
-  u2 <- as.vector( Rfast::colsums(x / ww ) )
+  u2 <- Rfast::colsums(x / ww ) 
   u2 <- u2 / sqrt( sum( u2^2 ) )
 
   i <- 2
   while ( sum( abs (u2 - u1 ) ) > 1e-10 ) {
-    i <- i +1
-    u1<- u2
+    i <- i + 1
+    u1 <- u2
     ww <- as.vector( sqrt( 1 - ( x %*% u1 )^2 ) )
-    u2 <- as.vector( Rfast::colsums (x / ww ) )
+    u2 <- Rfast::colsums (x / ww ) 
     u2 <- u2 / sqrt( sum( u2^2 ) )
   }
 

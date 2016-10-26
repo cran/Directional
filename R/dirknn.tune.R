@@ -19,10 +19,10 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
 
   runtime <- proc.time()
   z <- as.matrix(z)  ## makes sure the x is a matrix
-  z <- z / sqrt( rowSums(z^2) )  ## makes sure the the data are unit vectors
-  n <- nrow(z)  ## sample size
+  z <- z / sqrt( Rfast::rowsums(z^2) ) ## makes sure the the data are unit vectors
+  n <- dim(z)[1]  ## sample size
   ina <- as.numeric(ina)
-  if ( A >= min(table(ina)) )  A <- min(table(ina)) - 3  ## The maximum
+  if ( A >= min( table(ina) ) )   A <- min(table(ina)) - 3  ## The maximum
   ## number  of nearest neighbours to use
   ina <- as.numeric(ina) ## makes sure ina is numeric
   ng <- max(ina)  ## The number of groups
@@ -53,7 +53,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
     ina2 <- as.vector( ina[ -mat[, vim] ] )   ## groups of training sample
     aba <- as.vector( mat[, vim] )
     aba <- aba[aba > 0]
-    apo <- dis[aba, -aba]
+    apo <- dis[-aba, aba]
     ta <- matrix(nrow = rmat, ncol = ng)
 
     if (type == "NS") {
@@ -61,15 +61,15 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
       for ( j in 1:c(A - 1) ) {
         knn <- j + 1
         for (l in 1:ng) {
-          dista <- apo[, ina2 == l]
-          dista <- t( apply(dista, 1, sort) )
+          dista <- apo[ina2 == l, ]
+          dista <- Rfast::sort_mat(dista)
           if (mesos == TRUE) {
-            ta[, l] <- rowMeans( dista[, 1:knn] )
+            ta[, l] <- Rfast::colmeans( dista[1:knn, ] ) 
           } else {
-            ta[, l] <- knn / rowSums( 1 / dista[, 1:knn] )
+            ta[, l] <- knn / Rfast::colsums( 1 / dista[1:knn, ] ) 
           }
         }
-        g <- apply(ta, 1, which.min)
+        g <- max.col(-ta)
         per[vim, j] <- sum( g == id ) / rmat
       }
 
@@ -79,7 +79,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
       for ( j in 1:c(A - 1) ) {
         knn <- j + 1
         for (k in 1:rmat) {
-          xa <- cbind(ina2, apo[k, ])
+          xa <- cbind(ina2, apo[, k])
           qan <- xa[order(xa[, 2]), ]
           sa <- qan[1:knn, 1]
           tab <- table(sa)
@@ -90,7 +90,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
     }
   }
 
-  ela <- colMeans(per)
+  ela <- Rfast::colmeans(per) 
   bias <- per[ , which.max(ela)] - apply(per, 1, max)  ## TT estimate of bias
   estb <- mean( bias )  ## TT estimate of bias
   runtime <- proc.time() - runtime

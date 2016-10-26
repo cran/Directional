@@ -12,9 +12,9 @@ vmf.kde <- function(x, h = NULL, thumb = "none") {
   ## x is the data
   ## h is the bandwidth you want
   x <- as.matrix(x)  ## makes sure x is a matrix
-  x <- x/sqrt(rowSums(x^2))  ## makes sure x is directional data
-  p <- ncol(x)  ## dimensionality of the data
-  n <- nrow(x)  ## sample size of the data
+  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x is directional data
+  p <- dim(x)[2]  ## dimensionality of the data
+  n <- dim(x)[1]  ## sample size of the data
   ## thumb is either 'none' (defualt), or 'rot' (Garcia-Portugues, 2013)
   if ( !is.null(h) ) {
 
@@ -22,8 +22,8 @@ vmf.kde <- function(x, h = NULL, thumb = "none") {
       k <- vmf(x)$kappa  ## concentration parameter
       q <- p - 1
       if (q == 2) {
-        h <- ( (8 * sinh(k)^2)/(k * n * ((1 + 4 * k^2) * sinh(2 * k) -
-        2 * k * cosh(2 * k))) )^(1/6)
+        h <- ( 8 * sinh(k)^2 / ( k * n * ( (1 + 4 * k^2) * sinh(2 * k) -
+        2 * k * cosh(2 * k) ) ) )^(1/6)
       }
 
       if (q >= 3) {
@@ -40,7 +40,7 @@ vmf.kde <- function(x, h = NULL, thumb = "none") {
   } else h <- h
 
   d <- tcrossprod( x )/h^2
-  cpk <- ( (1/h^2)^( p/2 - 1) )/( (2 * pi) ^ (p/2) * besselI(1/h^2, p/2 - 1) )
-  f <- rowMeans( exp( d + log(cpk) ) ) 
-  list( h = h, f = as.vector(f) )
+  cpk <- (1/h^2)^( p/2 - 1) / ( (2 * pi) ^ (p/2) * besselI(1/h^2, p/2 - 1) )
+  f <- Rfast::rowmeans( exp( d + log(cpk) ) )
+  list( h = h, f = f )
 }

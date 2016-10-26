@@ -27,7 +27,7 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
 
   sj <- cumsum(ni - n * p)
   sjbar <- sum(p * sj)
-  ug <- 1/n * sum(p * (sj - sjbar)^2 )
+  ug <- sum(p * (sj - sjbar)^2 ) / n
 
   if (ncores <= 1) {
 

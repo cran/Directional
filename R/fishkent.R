@@ -13,7 +13,7 @@ fishkent <- function(x, B = 999) {
   ## B is by default eaual to 999 bootstrap re-samples
   ## If B==1 then no bootstrap is performed
 
-  n <- nrow(x)  ## sample size
+  n <- dim(x)[1]  ## sample size
   estim <- vmf(x)
   k <- estim$k  ## the estimated concentration parameter
   ## under the H0, that the Fisher distribution is true
@@ -23,19 +23,19 @@ fishkent <- function(x, B = 999) {
   P <- i3 -  tcrossprod(e1 - mu) / (1 - mu[1])
   y <- tcrossprod(x, P)[, 2:3]
   lam <- eigen( crossprod(y) / n )$values
-  rat <- besselI(k, 0.5, expon.scaled = T)/besselI(k, 2.5, expon.scaled = T)
-  Ta <- n * (k/2)^2 * rat * (lam[1] - lam[2])^2
+  rat <- besselI(k, 0.5, expon.scaled = TRUE) / besselI(k, 2.5, expon.scaled = TRUE)
+  Ta <- n * (k / 2)^2 * rat * (lam[1] - lam[2])^2
 
   if (B == 1) {
-    pvalue <- 1 - pchisq(T, 2)
+    pvalue <- pchisq(Ta, 2, lower.tail = FALSE)
     res <- c(Ta, pvalue)
     names(res) <- c('test', 'p-value')
 
   } else {
     Tb <- numeric(B)
     for (i in 1:B) {
-      nu <- sample(1:n, n, replace = T)
-      z <- x[nu, ] 
+      nu <- sample(1:n, n, replace = TRUE)
+      z <- x[nu, ]
       estim <- vmf(z)
       k <- estim$k  ## the estimated concentration parameter
       ## under the H0, that the Fisher distribution is true
@@ -43,13 +43,13 @@ fishkent <- function(x, B = 999) {
       P <- i3 -  tcrossprod(e1 - mu) / (1 - mu[1])
       y <- tcrossprod(z, P)[, 2:3]
       lam <- eigen( crossprod(y) / n )$values
-      rat <- besselI(k, 0.5, expon.scaled = T)/besselI(k, 2.5, expon.scaled = T)
-      Tb[i] <- n * (k/2)^2 * rat * (lam[1] - lam[2])^2
+      rat <- besselI(k, 0.5, expon.scaled = TRUE) / besselI(k, 2.5, expon.scaled = TRUE)
+      Tb[i] <- n * ( k / 2 )^2 * rat * (lam[1] - lam[2])^2
     }
 
-    res <- c( Ta, (sum(Tb > Ta) + 1)/(B + 1) )
+    res <- c( Ta, (sum(Tb > Ta) + 1) / (B + 1) )
     names(res) <- c('test', 'Bootstrap p-value')
   }
 
-  res 
+  res
 }

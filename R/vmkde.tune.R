@@ -11,7 +11,7 @@ vmkde.tune <- function(u, low = 0.1, up = 1, rads = TRUE) {
   n <- length(u)  ## sample size
 
   ## if the data are in degrees we transform them into radians
-  if (rads == FALSE)  u <- u/180 * pi
+  if ( rads == FALSE )  u <- u/180 * pi
   x <- cbind( cos(u), sin(u) )
   disa <- tcrossprod(x)
   diag(disa) <- 1
@@ -20,7 +20,7 @@ vmkde.tune <- function(u, low = 0.1, up = 1, rads = TRUE) {
 
    funa <- function(h) {
     A <- expa^( 1 / h^2 )
-    f <- rowSums( A, na.rm = TRUE )/( (n - 1) * 2 * pi * besselI(1/h^2, 0) ) 
+    f <- rowSums( A, na.rm = TRUE ) / ( (n - 1) * 2 * pi * besselI(1/h^2, 0) ) 
     sum( log(f) ) / n
    }
 

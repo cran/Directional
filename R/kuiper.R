@@ -11,17 +11,17 @@ kuiper <- function(u, rads = FALSE, R = 1) {
   ## if data are in rads set it to TRUE
   ## R is for Monte Carlo estimate of the p-value
 
-  if (rads == FALSE)  u <- u / 180 * pi
+  if (rads == FALSE)   u <- u / 180 * pi
   u <- sort(u) / (2 * pi)
   n <- length(u)
   i <- 1:n
   f <- sqrt(n)
   Vn <- f * ( max(u - (i - 1)/n ) + max(i/n - u) )
 
-  if (R == 1) {  ## asymptotic p-value is returned
+  if ( R == 1 ) {  ## asymptotic p-value is returned
     m2 <- (1:50)^2
     a1 <- 4 * m2 * Vn^2
-    a2 <- exp(-2 * m2 * Vn^2)
+    a2 <- exp( -2 * m2 * Vn^2 )
     b1 <- 2 * ( a1 - 1 ) * a2
     b2 <- 8 * Vn / ( 3 * f ) * m2 * (a1 - 3) * a2
     pvalue <- sum(b1 - b2)

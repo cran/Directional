@@ -17,14 +17,14 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
   ## the non-standard algorithm, that is when type='NS'
 
   x <- as.matrix(x)  ## makes sure the x is a matrix
-  x <- x / sqrt( rowSums(x^2) )  ## makes sure x are unit vectors
-  xnew <- matrix(xnew, ncol = ncol(x))  ## makes sure xnew is a matrix
-  xnew <- xnew / sqrt( rowSums(xnew^2) ) ## makes sure xnew are unit vectors
-  n <- nrow(x)  ## sample size
+  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
+  xnew <- matrix(xnew, ncol = dim(x)[2])  ## makes sure xnew is a matrix
+  xnew <- xnew / sqrt( Rfast::rowsums(xnew^2) ) ## makes sure xnew are unit vectors
+  n <- dim(x)[1]  ## sample size
   ina <- as.numeric(ina) ## makes sure ina is numeric
   nc <- max(ina)  ## The number of groups
   nu <- nrow(xnew)
-  apo <- tcrossprod(xnew, x)
+  apo <- tcrossprod(x, xnew)
   apo <- acos(apo)
   g <- numeric(nu)
   ta <- matrix(nrow = nu, ncol = nc)
@@ -32,20 +32,20 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
   if (type == "NS") {
     ## Non Standard algorithm
     for (m in 1:nc) {
-      dista <- apo[, ina == m]
-      dista <- t( apply(dista, 1, sort) )
+      dista <- apo[ina == m, ]
+      dista <- Rfast::sort_mat(dista)
       if (mesos == TRUE) {
-        ta[, m] <- rowMeans( dista[, 1:k] )
+        ta[, m] <- Rfast::colmeans( dista[1:k, ] ) 
       } else {
-        ta[, m] <- k / rowSums( 1 / dista[, 1:k] )
+        ta[, m] <- k / Rfast::colsums( 1 / dista[1:k, ] ) 
       }
     }
-    g <- apply(ta, 1, which.min)
+    g <- max.col(-ta)
 
   } else {
     ## Standard algorithm
     for (l in 1:nu) {
-      xa <- cbind(ina, apo[l, ])
+      xa <- cbind(ina, apo[, l])
       qan <- xa[order(xa[, 2]), ]
       sa <- qan[1:k, 1]
       tab <- table(sa)
@@ -53,5 +53,5 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
     }
   }
 
-  return(g)
+  g
 }

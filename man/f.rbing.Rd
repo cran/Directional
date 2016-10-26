@@ -1,4 +1,4 @@
-\name{Simulating from a Bingham distribution}
+\name{Simulation of random values from a Bingham distribution}
 \alias{f.rbing}
 \title{
 Simulating from a Bingham distribution}

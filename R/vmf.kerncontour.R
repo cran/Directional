@@ -24,21 +24,20 @@ vmf.kerncontour <- function(u, thumb = "none") {
   if (thumb == "rot") {
     k <- vmf(x)$kappa
     h <- ( (8 * sinh(k)^2) / (k * n * ( (1 + 4 * k^2) * sinh(2 * k) -
-    2 * k * cosh(2 * k)) ) )^(1/6)
+    2 * k * cosh(2 * k)) ) ) ^ ( 1/6 )
   }
 
-  n1 <- 100
-  n2 <- 100  ## n1 and n2 specify the number of points taken at each axis
-  x1 <- seq( min(u[, 1]) - 5, max(u[, 1]) + 5, length = n1 )  ## latitude
-  x2 <- seq( min(u[, 2]) - 5, max(u[, 2]) + 5, length = n2 )  ## longitude
+  n <- 100  ## n specifies the number of points taken at each axis
+  x1 <- seq( min(u[, 1]) - 5, max(u[, 1]) + 5, length = n )  ## latitude
+  x2 <- seq( min(u[, 2]) - 5, max(u[, 2]) + 5, length = n )  ## longitude
   cpk <- 1 / (  ( h^2)^0.5 *(2 * pi)^1.5 * besselI(1/h^2, 0.5) )
-  mat <- matrix(nrow = n1, ncol = n2)
+  mat <- matrix(nrow = n, ncol = n)
 
-  for (i in 1:n1) {
-    for (j in 1:n2) {
+  for (i in 1:n) {
+    for (j in 1:n) {
       y <- euclid( c(x1[i], x2[j]) )
       a <- as.vector( tcrossprod(x, y / h^2) )
-      can <- sum( exp(a + log(cpk)) ) / n1
+      can <- sum( exp(a + log(cpk)) ) / n
 
       if (abs(can) < Inf) {
         mat[i, j] <- can

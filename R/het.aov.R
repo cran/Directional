@@ -13,9 +13,9 @@ het.aov <- function(x, ina) {
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
   x <- as.matrix(x)
-  x <- x/sqrt(rowSums(x^2))  ## makes sure x are unit vectors
-  p <- ncol(x)  ## dimensionality of the data
-  n <- nrow(x)  ## sample size of the data
+  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
+  p <- dim(x)[2]  ## dimensionality of the data
+  n <- dim(x)[1]  ## sample size of the data
   ni <- as.vector(table(ina))  ## group sample sizes
 
   kappa <- numeric(g)
@@ -25,8 +25,8 @@ het.aov <- function(x, ina) {
     kappa[i] <- vmf( x[ina == i, ] )$kappa
   }
 
-  tw <- as.vector( Rfast::colsums(kappa * ni * mi) )
-  Tt <- 2 * ( sum( kappa * ni * sqrt( rowSums(mi^2) ) ) - sqrt( sum(tw^2) ) )
+  tw <- Rfast::colsums(kappa * ni * mi)
+  Tt <- 2 * ( sum( kappa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
   pvalue <- pchisq(Tt, (p - 1) * (g - 1), lower.tail = FALSE)
   res <- c(Tt, pvalue)
   names(res) <- c('test', 'p-value')
