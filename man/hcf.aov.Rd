@@ -24,7 +24,7 @@ het.aov(x, ina)
 
 \arguments{
   \item{x}{
-  The data in Euclidean coordinates, i.e. unit vectors.
+  A matrix with the data in Euclidean coordinates, i.e. unit vectors.
 }
   \item{ina}{
   A numerical variable or a factor indicating the group of each vector.

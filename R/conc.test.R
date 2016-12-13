@@ -9,11 +9,12 @@
 conc.test <- function(u, ina, rads = FALSE) {
   ## u contains all the circular data in rads or degrees
   ## ina is an indicator variable of each sample
+
   n <- length(u)  ## sample size
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
-  ni <- as.vector( table(ina) )
-  if (rads == FALSE)  u <- u * pi/180
+  ni <- tabulate(ina)
+  if ( !rads )  u <- u * pi/180
 
   ## if the data are in degrees we transform them into radians
   x1 <- cos(u)

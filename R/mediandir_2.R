@@ -8,22 +8,18 @@
 #### Statistical analysis of spherical data. Cambridge university press.
 ################################
 
-mediandir_2 = function(x) {
+mediandir_2 <- function(x) {
   ## x is the directional data
-  x = as.matrix(x)
-  x = x / sqrt( Rfast::rowsums(x^2) )
 
-   funa = function(pa) {
-    pa = pa / sqrt( sum(pa^2) )
+  funa <- function(pa) {
+    pa <- pa / sqrt( sum(pa^2) )
     mean( acos( x %*% pa ) )
-   }
+  }
 
-  pa = Rfast::colMedians(x)
-  bar = optim( pa, funa, control = list(maxit = 10000) )
-  bar = optim( bar$par, funa, control = list(maxit = 10000) )
-  bar = optim( bar$par, funa, control = list(maxit = 10000) )
-  bar = optim( bar$par, funa, control = list(maxit = 10000) )
-  med = bar$par
+  bar <- nlm( funa, Rfast::colMedians(x), iterlim = 10000 )
+  bar <- nlm( funa, bar$estimate, iterlim = 10000 )
+  bar <- optim( bar$estimate, funa, control = list(maxit = 10000) )
+  med <- bar$par
   med / sqrt( sum(med^2) )
 
 }

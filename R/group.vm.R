@@ -1,7 +1,7 @@
 group.vm <- function(group, fi, rads = FALSE) {
 
   group <- as.matrix(group)
-  if ( rads == FALSE )   group <- group / 180 * pi
+  if ( !rads )   group <- group / 180 * pi
   u <- Rfast::rowmeans(group) ## mid points of the classes
   u <- rep(u, fi)
 

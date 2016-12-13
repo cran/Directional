@@ -18,8 +18,6 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
   ## the non-standard algorithm, that is when type='NS'
 
   runtime <- proc.time()
-  z <- as.matrix(z)  ## makes sure the x is a matrix
-  z <- z / sqrt( Rfast::rowsums(z^2) ) ## makes sure the the data are unit vectors
   n <- dim(z)[1]  ## sample size
   ina <- as.numeric(ina)
   if ( A >= min( table(ina) ) )   A <- min(table(ina)) - 3  ## The maximum
@@ -36,9 +34,9 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
     mat <- matrix( nu, ncol = M )
   } else  mat <- mat
 
-  M <- ncol(mat)
+  M <- dim(mat)[2]
   per <- matrix(nrow = M, ncol = A - 1)
-  rmat <- nrow(mat)
+  rmat <- dim(mat)[1]
 
   dis <- tcrossprod( z )
   diag(dis) <- 1
@@ -63,13 +61,13 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
         for (l in 1:ng) {
           dista <- apo[ina2 == l, ]
           dista <- Rfast::sort_mat(dista)
-          if (mesos == TRUE) {
-            ta[, l] <- Rfast::colmeans( dista[1:knn, ] ) 
+          if ( mesos ) {
+            ta[, l] <- Rfast::colmeans( dista[1:knn, ] )
           } else {
-            ta[, l] <- knn / Rfast::colsums( 1 / dista[1:knn, ] ) 
+            ta[, l] <- knn / Rfast::colsums( 1 / dista[1:knn, ] )
           }
         }
-        g <- max.col(-ta)
+        g <- Rfast::rowMins(ta)
         per[vim, j] <- sum( g == id ) / rmat
       }
 
@@ -90,8 +88,8 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
     }
   }
 
-  ela <- Rfast::colmeans(per) 
-  bias <- per[ , which.max(ela)] - apply(per, 1, max)  ## TT estimate of bias
+  ela <- Rfast::colmeans(per)
+  bias <- per[ , which.max(ela)] - Rfast::rowMaxs(per, value = TRUE)   ##apply(per, 1, max)  ## TT estimate of bias
   estb <- mean( bias )  ## TT estimate of bias
   runtime <- proc.time() - runtime
   names(ela) <- paste("k=", 2:A, sep = "")

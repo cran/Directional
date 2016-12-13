@@ -11,7 +11,7 @@ watson <- function(u, rads = FALSE, R = 1) {
   ## if data are in rads set it to TRUE
   ## R is for Monte Carlo estimate of the p-value
 
-  if ( rads == FALSE )  u <- u / 180 * pi
+  if ( !rads )  u <- u / 180 * pi
   u <- sort(u) / (2 * pi)
   n <- length(u)
   i <- 1:n

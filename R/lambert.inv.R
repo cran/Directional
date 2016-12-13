@@ -9,7 +9,6 @@ lambert.inv <- function(z, mu) {
   ## mu is the initial mean direction to which we will
   ## rotate the data after bringing them on the sphere
 
-  z <- as.matrix(z)
   long <- ( atan(z[, 2]/z[, 1]) + pi * I(z[, 1] < 0) ) %% (2 * pi)
   lat <- 2 * asin( 0.5 * sqrt( Rfast::rowsums(z^2) ) )
   u <- cbind(lat, long)  ## the data on the sphere in radians

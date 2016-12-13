@@ -15,44 +15,27 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
   ## harmonic mean of the closest observations
 
   y <- as.matrix(y)
-  d <- dim(y)[2]  ## dimensions of y
   x <- as.matrix(x)
+  d <- dim(y)[2]  ## dimensions of y
+  xnew <- as.matrix(xnew)
   p <- dim(x)[2]  ## dimensions of x
   n <- dim(y)[1]
-  xnew <- as.matrix(xnew)
-  xnew <- matrix(xnew, ncol = p)
-  nu <- nrow(xnew)
+  nu <- dim(xnew)[1]
 
   if ( type == "spher" ) {
     ## calculates distance matrix for (hyper-)spherical data
-    x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
-    xnew <- xnew / sqrt( Rfast::rowsums(xnew^2) )  ## makes sure x are unit vectors
 
     dis <- tcrossprod(xnew, x)
     dis[ dis >= 1 ] <- 1
     disa <- acos(dis)
 
   } else if ( type =="euclidean" || type == "manhattan" ) {
-    m <- Rfast::colmeans(x) 
-    s <- Rfast::colVars(x, std = TRUE) 
-    x <- ( t(x) - m ) / s ## standardize the independent variables
-    x <- t(x)
+    m <- Rfast::colmeans(x)
+    s <- Rfast::colVars(x, std = TRUE)
+    x <- t( ( t(x) - m ) / s )  ## standardize the independent variable
 
-    if (p == 1) {
-      xnew <- as.vector(xnew)
-      xnew <- (xnew - m) / s
-    } else if ( p > 1 ) {
-      xnew <- ( t(xnew) - m ) / s  ## standardize the xnew values
-      xnew <- t(xnew)
-    }
-
+    xnew <- t( ( t(xnew) - m ) / s )  ## standardize the xnew values
     ## calculates distance matrix for the Euclidean data
-    if (p == 1) {
-      x <- as.matrix(x)
-      x <- matrix(x, ncol = p)
-      xnew <- as.matrix(x)
-      xnew <- matrix(xnew, ncol = p)
-    }
 
     disa <- matrix( 0, nu, n )
 
@@ -61,7 +44,7 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
 
        for (i in 1:nu) {
          zz <- z - xnew[i, ]
-         disa[i, ] <- sqrt( Rfast::colsums( zz^2 ) ) 
+         disa[i, ] <- sqrt( Rfast::colsums( zz^2 ) )
        }
 
     } else if (type == "manhattan") {
@@ -93,13 +76,9 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
       qan <- xa[order(xa[, 2]), ]
       a <- qan[1:k, 1]
       yb <- as.matrix( y[a, ] )
-      est[i, ] <- k / Rfast::colsums( yb ) 
+      est[i, ] <- k / Rfast::colsums( yb )
     }
   }
-
-  if (res == "spher") {
-    y <- y / sqrt( Rfast::rowsums(y^2) ) 
-  } else  y <- y
 
   if ( is.null(colnames(y)) ) {
      colnames(est) <- paste("yhat", 1:d, sep = "" )

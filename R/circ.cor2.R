@@ -12,7 +12,7 @@ circ.cor2 <- function(theta, phi, rads = FALSE) {
   n <- length(theta)  ## sample size
   ## if the data are in degrees we transform them into radians
 
-  if ( rads == FALSE ) {
+  if ( !rads ) {
     theta <- theta * pi/180
     phi <- phi * pi/180
   }

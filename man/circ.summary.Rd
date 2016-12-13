@@ -11,7 +11,7 @@ circ.summary(u, rads = FALSE, plot = TRUE)
 }
 \arguments{
   \item{u}{
-  The circular data.
+  A vector with circular data.
 }
   \item{rads}{
 If the data are in rads, then this should be TRUE, otherwise FALSE.

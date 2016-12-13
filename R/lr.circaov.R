@@ -14,12 +14,12 @@ lr.circaov <- function(u, ina, rads = FALSE) {
   g <- max(ina)  ## how many groups are there
   
   ## if the data are in degrees we transform them into radians
-  if ( rads == FALSE )   u <- u * pi/180
+  if ( !rads )   u <- u * pi/180
   x <- cbind(cos(u), sin(u))
   rsi <- rowsum(x, ina)
   Ri <- sqrt( Rfast::rowsums(rsi^2) )   ## the resultant length of each group
   
-  ni <- as.vector( table(ina) )
+  ni <- tabulate(ina)
   mi <- rowsum(x, ina) / ni
   mi <- mi / sqrt( Rfast::rowsums(mi^2) )  ## mean direction of each group
   

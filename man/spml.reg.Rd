@@ -14,7 +14,7 @@ spml.reg(y, x, rads = TRUE, xnew = NULL, seb = TRUE)
 
 \arguments{
 \item{y}{
-The dependent variable,  it can be in radians or degrees.
+The dependent variable,  a numerical vector, it can be in radians or degrees.
 }
 \item{x}{
 The independent variable(s). Can be Euclidean or categorical (factor variables).
@@ -38,6 +38,9 @@ The E-M algorithm is fitted in this regression as described in Presnell et al. (
 A list including:
 \item{runtime}{
 The runtime of the procedure.
+}
+\item{iters}{
+The number of iterations required until convergence of the EM algorithm.
 }
 \item{beta}{
 The regression coefficients.
@@ -73,7 +76,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 
 \examples{
 x <- rnorm(100)
-z <- cbind(3+ 2 * x, 1 -3 * x)
+z <- cbind(3 + 2 * x, 1 -3 * x)
 y <- cbind( rnorm(100,z[ ,1], 1), rnorm(100, z[ ,2], 1) )
 y <- y / sqrt( rowSums(y^2) )
 y <- ( atan( y[, 2] / y[, 1] ) + pi * I(y[, 1] < 0) ) \%\% (2 * pi)

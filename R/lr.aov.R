@@ -12,14 +12,12 @@ lr.aov <- function(x, ina) {
 
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
-  x <- as.matrix(x)
-  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
 
   S <- rowsum(x, ina)
   Ri <- sqrt( Rfast::rowsums(S^2) )  ## the resultant length of each group
-  S <- Rfast::colsums(x) 
+  S <- Rfast::colsums(x)
   R <- sqrt( sum(S^2) )  ## the resultant length based on all the data
 
   ## Next we stimate the common concentration parameter kappa under H0 and H1
@@ -33,12 +31,12 @@ lr.aov <- function(x, ina) {
   k[j] <- Rk * (p - Rk^2)/(1 - Rk^2)
   j <- 2
   k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 -
-                                                (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
+          (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
 
   while (abs(k[j] - k[j - 1]) > 1e-07) {
     j <- j + 1
     k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 -
-                                                  (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
+            (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
   }
 
   k0 <- k[j]  ## concentration parameter under H0
@@ -48,12 +46,12 @@ lr.aov <- function(x, ina) {
   k[j] <- Rk * (p - Rk^2)/(1 - Rk^2)
   j <- 2
   k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 -
-                                                (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
+          (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
 
   while (abs(k[j] - k[j - 1]) > 1e-07) {
     j <- j + 1
     k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 -
-                                                  (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
+            (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
   }
 
   k1 <- k[j]  ## concentration parameter under H1

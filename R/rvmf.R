@@ -18,22 +18,23 @@ rvmf <- function(n, mu, k) {
   if (k > 0) {
     mu <- mu / sqrt( sum(mu^2) )  ## the mean direction
     ini <- c(numeric(d - 1), 1)  ## mean direction is set to (0, ..., 0, 1)
-    b <- ( -2 * k + sqrt(4 * k^2 + (d - 1)^2) ) / (d - 1)
+    d1 <- d - 1
+    b <- ( -2 * k + sqrt(4 * k^2 + d1^2) ) / d1
     x0 <- (1 - b)/(1 + b)
     S <- matrix(nrow = n, ncol = d)
-    m <- 0.5 * (d - 1)
+    m <- 0.5 * d1
     c <- k * x0 + (d - 1) * log(1 - x0^2)
 
     for (i in 1:n) {
       ta <-  -1000
       u <- 1
-      while (ta - c < log(u)) {
+      while ( ta - c < log(u) ) {
         z <- rbeta(1, m, m)
         u <- runif(1)
         w <- ( 1 - (1 + b) * z ) / ( 1 - (1 - b) * z )
-        ta <- k * w + (d - 1) * log(1 - x0 * w)
+        ta <- k * w + d1 * log(1 - x0 * w)
       }
-      v1 <- rnorm(d - 1)
+      v1 <- rnorm(d1)
       v <- v1 / sqrt( sum(v1^2) )
       S[i, ] <- c(sqrt(1 - w^2) * v, w)
     }

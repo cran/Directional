@@ -9,13 +9,14 @@
 het.circaov <- function(u, ina, rads = FALSE) {
   ## u contains all the circular data in radians or degrees
   ## ina is an indicator variable of each sample
+
   n <- length(u)  ## sample size
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
-  ni <- as.vector( table(ina) )
+  ni <- tabulate(ina)
   ## if the data are in degrees we transform them into radians
 
-  if ( rads == FALSE )  u <- u * pi/180
+  if ( !rads )  u <- u * pi/180
   kappa <- numeric(g)
   x1 <- cos(u)
   x2 <- sin(u)

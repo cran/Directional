@@ -10,17 +10,17 @@ kent.datacontour <- function(x) {
   ## the first column is the latitude and the
   ## second column is the longitude
 
-  x <- as.matrix(x)  ## makes sure u is a matrix
   ## if u are eucliean coordinates turn them into
   ## latitude and longitude
-  if ( ncol(x) == 3 ) {
+  dm <- dim(x)
+  if ( dm[2] == 3 ) {
     u <- euclid.inv(x)
-  } else if ( ncol(x) == 2 ) {
+  } else if ( dm[2] == 2 ) {
     u <- x
     x <- euclid(x) ## Euclidean coordinates used by Kent (1982)
   }
 
-  n <- nrow(x)  ## sample size
+  n <- dm[1]  ## sample size
   a <- kent.mle(x) ## MLE estimation of the Kent distribution
   G <- a$G ## G matrix, the mean direction and the major-minor axes
   k <- a$para[1] ## kappa, concentration parameter

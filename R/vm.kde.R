@@ -1,5 +1,3 @@
-
-
 ################################
 #### Kernel density estimation of circular data with a von Mises kernel
 #### Tsagris Michail 2/2015

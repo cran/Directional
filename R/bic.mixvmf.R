@@ -13,10 +13,8 @@ bic.mixvmf <- function(x, A = 3) {
   ## A is the maximum number of clusters, set to 3 by default
 
   runtime <- proc.time()
-  x <- as.matrix(x)  ## make sure the x is a matrix
   n <- dim(x)[1]  ## sample size of the data
   p <- dim(x)[2]  ## dimensionality of the data
-  x <- x/sqrt( Rfast::rowsums(x^2) )  ## makes sure the data are directional
   bic <- 1:A
   mod <- vmf(x)
   bic[1] <-  - 2 * mod$loglik+ p * log(n)  ## BIC assuming one cluster

@@ -17,26 +17,24 @@ hcf.circaov <- function(u, ina, rads = FALSE) {
   g <- max(ina)  ## how many groups are there
 
   ## if the data are in degrees we transform them into radians
-  if ( rads == FALSE )  u <- u * pi/180
+  if ( !rads )  u <- u * pi/180
 
   x1 <- cos(u)
   x2 <- sin(u)
   Ci <- rowsum(x1, ina)
   Si <- rowsum(x2, ina)
-
   Ri <- sqrt( Ci^2 + Si^2 )
   ## Ri is the resultant length of each group
   V <- sum(Ri)
   C <- sum(x1)
   S <- sum(x2)
-
   R <- sqrt(C^2 + S^2)  ## the resultant length based on all the data
   ## Next we stimate the common concentration parameter kappa
 
   kappa <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
   ## kappa is the estimated concentration parameter based on all the data
   if (kappa > 2) {
-    Ft <- (n - g) * (V - R) / (g - 1) / (n - V) 
+    Ft <- (n - g) * (V - R) / (g - 1) / (n - V)
     pvalue <- pf(Ft, g - 1, n - g, lower.tail = FALSE)
 
   } else  if (kappa < 2 & kappa > 1) {

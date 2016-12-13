@@ -12,11 +12,10 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   ## pred is either TRUE (xnew is new data) or
   ## FALSE (xnew is the same as x)
   ## if the data are in degrees we transform them into radians
-
-  if ( rads == FALSE )   y <- y/180 * pi
+  x <- model.matrix(~., data.frame(x) )
+  if ( !rads )   y <- y/180 * pi
   u <- cbind( cos(y), sin(y) )  ## bring the data onto the circle
   n <- nrow(u)
-  x <- cbind(1, x)
   csx <- crossprod(x)
   XX <- solve( csx, t(x) )
   tXX <- t(XX)
@@ -30,43 +29,41 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   }
 
   tic <- proc.time()
-
   para <- as.vector( coef( lm.fit(x, u) ) )  ## starting values
   ### E-M algorithm is implemented below
-
   B <- matrix(para, ncol = 2)
-  lik1 <- funa(B)
   mu <- x %*% B
   tau <- Rfast::rowsums(u * mu)
   ptau <- pnorm(tau)
+  lik1 <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * ptau / dnorm(tau) ) )
   psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
   B <- crossprod( tXX * psit, u)
-  lik2 <- funa(B)
-  i <- 2
+  mu <- x %*% B
+  tau <- Rfast::rowsums(u * mu)
+  ptau <- pnorm(tau)
+  lik2 <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * ptau / dnorm(tau) ) )
 
-  while ( lik2 - lik1 > 1e-06 ) {
+  i <- 2
+  while ( lik2 - lik1 > 1e-07 ) {
     i <- i + 1
     lik1 <- lik2
+    psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
+    B <- crossprod( tXX * psit, u)
     mu <- x %*% B
     tau <- Rfast::rowsums(u * mu)
     ptau <- pnorm(tau)
-    psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
-    B <- crossprod( tXX * psit, u)
-    lik2 <- funa(B)
+    lik2 <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * ptau / dnorm(tau) ) )
   }
 
   loglik <- lik2 - n * log(2 * pi)
-  mu <- x %*% B
 
-  if ( seb == TRUE ) {
+  if ( seb ) {
 
     dtau <- dnorm(tau)
     pdtau <- tau * ptau
-
     frac <-  ptau/( dtau + pdtau )
     psit <- tau + frac
     psit2 <- 2 - pdtau / (dtau + pdtau)  - frac^2
-
     C <- u[, 1]    ;    S <- u[, 2]
 
     A1 <-  - csx
@@ -82,33 +79,25 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
     se <- sqrt( diag(se) )  ## standard errors of the coefficients
     seb <- matrix(se, ncol = 2)
     colnames(seb) <- c("Cosinus of y", "Sinus of y")
+    rownames(seb) <- colnames(x)
 
-    if ( is.null( colnames(x) ) )  {
-      rownames(seb) <- c( "Intercept", paste("X", 1:c(p - 1), sep = "") )
-    } else rownames(seb) <- colnames(x)
-
-  } else seb = NULL
+  } else seb <- NULL
 
   colnames(B) <- c("Cosinus of y", "Sinus of y")
+  rownames(B) <- colnames(x)
 
   runtime <- proc.time() - tic
 
-  if ( is.null( colnames(x) ) )  {
-    rownames(B) <- c( "Intercept", paste("X", 1:c(p - 1), sep = "") )
-  } else rownames(B) <- colnames(x)
-
-
   if ( !is.null(xnew) ) {  ## predict new values?
-    xnew <- cbind(1, xnew)
+    xnew <-  model.matrix(~., data.frame(xnew) )
     est <- xnew %*% B
     est <- ( atan(est[, 2]/est[, 1]) + pi * I(est[, 1] < 0) ) %% (2 * pi)
 
-  } else {
-    est <- ( atan(mu[, 2]/mu[, 1]) + pi * I(mu[, 1] < 0) ) %% (2 * pi)
-  }
+  } else  est <- ( atan(mu[, 2]/mu[, 1]) + pi * I(mu[, 1] < 0) ) %% (2 * pi)
 
-  if ( rads == FALSE )  est = est * 180 / pi
+  if ( !rads )  est = est * 180 / pi
 
-  list(runtime = runtime, beta = B, seb = seb, loglik = loglik, est = est)
+  list(runtime = runtime, iters = i, beta = B, seb = seb, loglik = loglik, est = est)
 
 }
+

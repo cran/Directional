@@ -9,10 +9,7 @@
 
 ggvm <- function(phi, rads = FALSE) {
 
-  if (rads == FALSE) {
-    phi <- phi / 180 * pi
-  }
-
+  if ( !rads )  phi <- phi / 180 * pi
   n <- length(phi)
 
   likel <- function(pa, phi) {

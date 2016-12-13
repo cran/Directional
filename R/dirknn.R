@@ -16,10 +16,7 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
   ## If not, then the harmonic mean will be used. Both of these apply for
   ## the non-standard algorithm, that is when type='NS'
 
-  x <- as.matrix(x)  ## makes sure the x is a matrix
-  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
   xnew <- matrix(xnew, ncol = dim(x)[2])  ## makes sure xnew is a matrix
-  xnew <- xnew / sqrt( Rfast::rowsums(xnew^2) ) ## makes sure xnew are unit vectors
   n <- dim(x)[1]  ## sample size
   ina <- as.numeric(ina) ## makes sure ina is numeric
   nc <- max(ina)  ## The number of groups
@@ -34,13 +31,11 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
     for (m in 1:nc) {
       dista <- apo[ina == m, ]
       dista <- Rfast::sort_mat(dista)
-      if (mesos == TRUE) {
-        ta[, m] <- Rfast::colmeans( dista[1:k, ] ) 
-      } else {
-        ta[, m] <- k / Rfast::colsums( 1 / dista[1:k, ] ) 
-      }
+      if ( mesos ) {
+        ta[, m] <- Rfast::colmeans( dista[1:k, ] )
+      } else  ta[, m] <- k / Rfast::colsums( 1 / dista[1:k, ] )
     }
-    g <- max.col(-ta)
+    g <- Rfast::rowMins(ta)
 
   } else {
     ## Standard algorithm

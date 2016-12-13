@@ -11,10 +11,10 @@ spher.cor(x, y)
 }
 \arguments{
   \item{x}{
-  A spherical variable.
+  A spherical variable. A matrix with thre columns, each row is a unit vector.
 }
   \item{y}{
-  A spherical variable
+  A spherical variable. A matrix with thre columns, each row is a unit vector.
 }
 }
 \details{

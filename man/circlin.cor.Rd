@@ -11,7 +11,7 @@ circlin.cor(theta, x, rads = FALSE)
 }
 \arguments{
   \item{theta}{
-  The circualr variable.
+  The circular variable.
 }
   \item{x}{
   The linear variable or a matrix containing many linear variables.

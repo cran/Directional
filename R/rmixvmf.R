@@ -20,18 +20,12 @@ rmixvmf <- function(n, prob, mu, k) {
   g <- length(k)  ## how many clusters are there
   ina <- as.numeric( cut(u, breaks = p2) )  ## the cluster of each observation
   ina <- sort(ina)
-  nu <- as.vector( table(ina) )  ## frequency table of each cluster
+  nu <- tabulate(ina)  ## frequency table of each cluster
   y <- array( dim = c(n, p, g) )
 
-  for (j in 1:g) {
-    y[1:nu[j], , j] <- rvmf(nu[j], mu[j, ], k[j])
-  }
-
+  for (j in 1:g)  y[1:nu[j], , j] <- rvmf(nu[j], mu[j, ], k[j])
   x <- y[1:nu[1], , 1]
-
-  for (j in 2:g) {
-    x <- rbind(x, y[1:nu[j], , j])  ## simulated data
-  }
+  for (j in 2:g)  x <- rbind(x, y[1:nu[j], , j])  ## simulated data
 
   ## data come from the first cluster, then from the second and so on
   list(id = ina, x = x)

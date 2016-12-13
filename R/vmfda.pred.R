@@ -12,12 +12,8 @@ vmfda.pred <- function(xnew, x, ina) {
   ## x is the data set
   ## ina is the group indicator variable
 
-  x <- as.matrix(x)
-  x <- x / sqrt( Rfast::rowsums(x ^ 2) ) 
   xnew <- as.matrix(xnew)
-
   if ( ncol(xnew) == 1 )   xnew <- t(xnew)
-  xnew <- xnew / sqrt( Rfast::rowsums(xnew ^ 2) ) 
 
   p <- dim(x)[2]  ## dimensonality of the data
   ina <- as.numeric(ina)
@@ -38,5 +34,5 @@ vmfda.pred <- function(xnew, x, ina) {
     log(2 * pi) - log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]
   }
 
-  max.col(mat)
+  Rfast::rowMaxs(mat)
 }

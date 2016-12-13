@@ -8,9 +8,7 @@
 
 group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 1) {
 
-  if ( rads == FALSE )  {
-     m <- m * pi / 180
-  }
+  if ( !rads )  m <- m * pi / 180
 
   d <- length(ni) ##  number of groups
   p <- numeric(d)

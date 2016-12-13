@@ -12,8 +12,6 @@ vmf <- function(x, tol = 1e-06) {
   ## tol specifies the tolerance value for convergence
   ## when estimating the concentration parameter
 
-  x <- as.matrix(x)
-  x <- x / sqrt( Rfast::rowsums(x^2) )
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
 
@@ -23,8 +21,8 @@ vmf <- function(x, tol = 1e-06) {
 
   m1 <- Rfast::colsums(x)
   R <- sqrt( sum(m1^2) )/n  ## mean resultant length
-  m <- m1 / (n * R)
-  k <- numeric(4)
+  m <- m1 / n / R
+  k <- numeric(10)
   i <- 1
   k[i] <- R * (p - R^2)/(1 - R^2)
 

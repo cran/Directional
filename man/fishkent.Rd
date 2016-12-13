@@ -14,7 +14,7 @@ fishkent(x, B = 999)
 
 \arguments{
 \item{x}{
-A numeric matrix containing the data as unit vectors, i.e. in Euclidean coordinates.
+A numeric matrix containing the data as unit vectors in Euclidean coordinates.
 }
 \item{B}{
 The number of bootstrap re-samples. By default is set to 999. If it is equal to 1, no bootstrap is performed and the p-value is obtained throught the asymptotic distribution.

@@ -11,8 +11,7 @@
 vmf.kde <- function(x, h = NULL, thumb = "none") {
   ## x is the data
   ## h is the bandwidth you want
-  x <- as.matrix(x)  ## makes sure x is a matrix
-  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x is directional data
+
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
   ## thumb is either 'none' (defualt), or 'rot' (Garcia-Portugues, 2013)

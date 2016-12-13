@@ -14,7 +14,7 @@ kent.mle(x)
 
 \arguments{
   \item{x}{
-A matrix containing spherical data; in Euclidean coordinates.
+A matrix containing spherical data in Euclidean coordinates.
 }
 }
 

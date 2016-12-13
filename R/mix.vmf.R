@@ -12,12 +12,9 @@ mix.vmf <- function(x, g) {
   ## x contains the data
   ## g is the number of clusters
 
-  x <- as.matrix(x)
-  x <- x / sqrt( Rfast::rowsums(x^2) )
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
   lik <- NULL
-
 
   lika <- matrix(nrow = n, ncol = g)
   pij <- matrix(nrow = n, ncol = g)
@@ -34,7 +31,7 @@ mix.vmf <- function(x, g) {
   crit <- numeric(50)
   cl <- matrix(nrow = n, ncol = 50)
 
-  for (vim in 1:50) {
+  for (vim in 1:30) {
     ini <- kmeans(x, g)  ## initially a k-means for starting values
     mesa[, , vim] <- ini$centers
     cl[, vim] <- ini$cluster
@@ -142,7 +139,7 @@ mix.vmf <- function(x, g) {
       lik[l] <- sum( log( Rfast::rowsums( wexplika ) ) )
     }  ## log-likelihood at step l
 
-    ta <- max.col(pij)  ## estimated cluster of each observation
+    ta <- Rfast::rowMaxs(pij)  ## estimated cluster of each observation
     param <- cbind( mat, ka, table(ta)/n )
     runtime <- proc.time() - runtime
     colnames(param) <- c( paste("mu", 1:p, sep = ""), 'kappa', 'probs' )

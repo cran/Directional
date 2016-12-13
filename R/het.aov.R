@@ -12,18 +12,13 @@ het.aov <- function(x, ina) {
 
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
-  x <- as.matrix(x)
-  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
-  ni <- as.vector(table(ina))  ## group sample sizes
-
+  ni <- tabulate(ina)  ## group sample sizes
   kappa <- numeric(g)
   mi <- rowsum(x, ina) / ni
 
-  for (i in 1:g) {
-    kappa[i] <- vmf( x[ina == i, ] )$kappa
-  }
+  for (i in 1:g)  kappa[i] <- vmf( x[ina == i, ] )$kappa
 
   tw <- Rfast::colsums(kappa * ni * mi)
   Tt <- 2 * ( sum( kappa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )

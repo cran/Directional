@@ -19,7 +19,7 @@ acg(x)
 }
 
 \details{
-There is a constraint on the estimated covariance matrix, that its trace is equal to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
+There is a constraint on the estimated covariance matrix; its trace is equal to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
 }
 
 \value{

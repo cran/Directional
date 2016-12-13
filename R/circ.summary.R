@@ -12,7 +12,7 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
   ## u is an angular variable
   n <- length(u)  ## sample size
   ## if the data are in degrees we transform them into radians
-  if ( rads == FALSE )   u <- u * pi/180
+  if ( !rads )   u <- u * pi/180
   ## mesos contains the sample mean
   ## direction
 
@@ -47,12 +47,12 @@ circ.summary <- function(u, rads = FALSE, plot = TRUE) {
     ci <- c(mesos - acos(fact), mesos + acos(fact))
   }
 
-  if (rads == FALSE) {
+  if ( !rads ) {
     mesos <- mesos * 180/pi
     ci <- ci * 180/pi
   }
 
-  if (plot == TRUE) {
+  if ( plot ) {
     r <- seq(0, 2 * pi, by = 0.01)
     plot(cos(r), sin(r), type = "l", xlab = "Cosinus", ylab = "Sinus")
     xx <- seq(-1, 1, by = 0.1)

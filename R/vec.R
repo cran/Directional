@@ -6,7 +6,6 @@ vec <- function(x, n = 1, deg = 90) {
   ## if the user gives more than 180 degrees (in absolute value) make it less than 180
 
   p <- length(x)  ## number of dimensions
-  x <- x / sqrt( sum(x^2) )  ## make sure x is a unit vector
 
   ### this is for orthogonal vectors
    fu <- function(y, x) {
@@ -41,7 +40,7 @@ vec <- function(x, n = 1, deg = 90) {
       y <- y / sqrt( sum(y^2) )
       ca <- acos( sum(x * y) ) / pi * 180
 
-      while( abs(ca - deg) > 1e-06 ) {
+      while( abs(ca - deg) > 1e-07 ) {
         options(warn = -1)
         pa <- nlm(fu, rnorm(p), x = x)
         y <- pa$estimate

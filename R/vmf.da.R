@@ -15,8 +15,6 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   ## R is the number of cross validations
 
   runtime <- proc.time()
-  x <- as.matrix(x)
-  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x is unit vectors
   p <- dim(x)[2]  ## p is the dimensionality of the data
   per <- numeric(R)
   n <- dim(x)[1]  ## sample size
@@ -26,7 +24,7 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   mesi <- matrix(nrow = g, ncol = p)
   k <- numeric(g)
   ## if seed==TRUE then the results will always be the same
-  if ( seed == TRUE )  set.seed(1234567)
+  if ( seed )  set.seed(1234567)
 
   for (i in 1:R) {
     mat <- matrix(nrow = frac, ncol = g)
@@ -37,15 +35,15 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
     train <- x[-nu, ]
 
     for (j in 1:g) {
-      da <- vmf(train[id == j, ])  ## estimates the parameters of the vMF
+      da <- vmf( train[id == j, ] )  ## estimates the parameters of the vMF
       mesi[j, ] <- da$mu  ## mean direction of each group
       k[j] <- da$kappa ## concentration of each group
-      mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * test %*% mesi[j, ] - 
+      mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * test %*% mesi[j, ] -
 	  log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]
-	  # - 0.5 * p * log(2 * pi) 
+	  # - 0.5 * p * log(2 * pi)
     }
-	
-    est <- max.col(mat)
+
+    est <- Rfast::rowMaxs(mat)
     per[i] <- sum( est == ina[nu] ) / frac
   }
 

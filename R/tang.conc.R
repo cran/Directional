@@ -11,13 +11,12 @@ tang.conc <- function(u, ina, rads = FALSE) {
   ## ina is an indicator variable of each sample
 
   n <- length(u)  ## sample size
-  ni <- as.vector( table(ina) )
   ina <- as.numeric(ina)
-
+  ni <- tabulate(ina)
   g <- max(ina)  ## how many groups are there
   ## if the data are in degrees we transform them into radians
 
-  if ( rads == FALSE )   u <- u * pi/180
+  if ( !rads )   u <- u * pi/180
   d <- NULL  ## will store the absolute sinus centred data here
   d2 <- dmi <- numeric(g)
   x1 <- cos(u)

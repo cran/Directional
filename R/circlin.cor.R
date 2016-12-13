@@ -10,9 +10,8 @@ circlin.cor <- function(theta, x, rads = FALSE) {
   ## theta is a angular variable in degrees by default
   ## x is euclidean variable or a matrix containing euclidean variables
 
-  x <- as.matrix(x)
   n <- length(theta)  ## sample size
-  if ( rads == FALSE )  theta <- theta * pi/180
+  if ( !rads )  theta <- theta * pi/180
   costheta <- cos(theta)
   sintheta <- sin(theta)
 

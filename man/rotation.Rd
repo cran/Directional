@@ -5,7 +5,7 @@ Rotation matrix to rotate a spherical vector along the direction of another
 }
 
 \description{
-A rotation matrix is calcualted to rotate a spherical vector along the direction of another.
+A rotation matrix is calculated to rotate a unit vector along the direction of another.
 }
 
 \usage{
@@ -14,10 +14,10 @@ rotation(a, b)
 
 \arguments{
 \item{a}{
-The initial spherical unit vector.
+The initial unit vector.
 }
 \item{b}{
-The target spherical unit vector.
+The target unit vector.
 }
 }
 
@@ -25,7 +25,7 @@ The target spherical unit vector.
 The function calcualtes a rotation matrix given two vectors. This rotation matrix is the connection between the two spherical only, vectors.
 }
 \value{
-A 3 x 3 matrix with a rotation matrix.
+A rotation matrix whose dimension is equal to the length of the unit vectors. 
 }
 
 \references{
@@ -51,6 +51,15 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 a <- rnorm(3)
 a <- a/sqrt(sum(a^2))
 b <- rnorm(3)
+b <- b/sqrt(sum(b^2))
+A <- rotation(a, b)
+A
+a  ;  b
+a \%*\% t(A)
+
+a <- rnorm(7)
+a <- a/sqrt(sum(a^2))
+b <- rnorm(7)
 b <- b/sqrt(sum(b^2))
 A <- rotation(a, b)
 A

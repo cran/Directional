@@ -14,7 +14,7 @@ vec(x, n = 1, deg = 90)
 
 \arguments{
 \item{x}{
-A unit vector. If it is not a unit vector it becomes a unit vector.
+A unit vector. If it is not a unit vector it becomes one.
 }
 \item{n}{
 The number of unit vectors to return.
@@ -59,6 +59,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 
 \examples{
 x <- rnorm(10)
+x <- x / sqrt( sum(x^2) )
 a <- vec(x, 20, 90)
 }
 

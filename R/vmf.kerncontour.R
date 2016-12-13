@@ -13,15 +13,14 @@ vmf.kerncontour <- function(u, thumb = "none") {
   ## the first column is the latitude and the
   ## second column is the longitude
   ## thumb is either 'none' (defualt), or 'rot' (Garcia-Portugues, 2013)
-  u <- as.matrix(u)  ## makes sure u is a matrix
-  n <- nrow(u)  ## sample size
+
+  n <- dim(u)[1]  ## sample size
   x <- euclid(u)
 
   if (thumb == "none") {
     h <- as.numeric( vmfkde.tune(x, low = 0.1, up = 1)[1] )
-  }
-
-  if (thumb == "rot") {
+	
+  } else if (thumb == "rot") {
     k <- vmf(x)$kappa
     h <- ( (8 * sinh(k)^2) / (k * n * ( (1 + 4 * k^2) * sinh(2 * k) -
     2 * k * cosh(2 * k)) ) ) ^ ( 1/6 )

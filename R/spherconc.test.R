@@ -12,16 +12,14 @@ spherconc.test <- function(x, ina) {
 
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
-  ni <- as.vector(table(ina))
-  x <- as.matrix(x)
-  x <- x / sqrt( Rfast::rowsums(x^2) )  ## makes sure x are unit vectors
-  p <- ncol(x)  ## dimensionality of the data
-  n <- nrow(x)  ## sample size of the data
+  ni <- tabulate(ina)
+  p <- dim(x)[2]  ## dimensionality of the data
+  n <- dim(x)[1]  ## sample size of the data
 
   if (p == 3) {
     S <- rowsum(x, ina) / ni
     Rbi <- sqrt( Rfast::rowsums(S^2) )    ## the mean resultant length of each group
-    S <- Rfast::colmeans(x) 
+    S <- Rfast::colmeans(x)
     Rb <- sqrt( sum(S^2) )  ## the mean resultant length of all the data
 
     if ( Rb < 0.44 ) {

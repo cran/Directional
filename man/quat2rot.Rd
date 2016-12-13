@@ -14,7 +14,7 @@ quat2rot(x)
 
 \arguments{
 \item{x}{
-An unsigned unite quaternion in \eqn{S^3}.
+An unsigned unit quaternion in \eqn{S^3}.
 }
 }
 

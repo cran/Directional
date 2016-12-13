@@ -14,7 +14,7 @@ lambert.inv(z, mu)
 
 \arguments{
   \item{z}{
-  A two- column matrix containing the Lambert's equal rea projected dtaa.
+  A two- column matrix containing the Lambert's equal rea projected data.
 }
   \item{mu}{
 The mean direction of the data on the sphere.

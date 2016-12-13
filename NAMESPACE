@@ -6,7 +6,8 @@ importFrom("stats", "aggregate", "coef", "cor", "dist", "dnorm", "kmeans",
            "lm", "optim", "optimize", "pchisq", "pf", "pnorm", "qchisq",
            "quantile", "rbeta", "rnorm", "runif", "sd", "uniroot", "qnorm",
             "cov", "model.matrix", "nlm", "integrate", "lm.fit", "rbinom")
-importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums, sort_mat, colMedians)
+importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
+           sort_mat, colMedians, rowMins, rowMaxs)
 
 import("doParallel")
 import("parallel")
