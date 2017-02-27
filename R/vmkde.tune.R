@@ -9,7 +9,6 @@
 vmkde.tune <- function(u, low = 0.1, up = 1, rads = TRUE) {
   ## u is the data
   n <- length(u)  ## sample size
-
   ## if the data are in degrees we transform them into radians
   if ( !rads )  u <- u/180 * pi
   x <- cbind( cos(u), sin(u) )

@@ -15,7 +15,6 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
   ## points will be used.
   ## If not, then the harmonic mean will be used. Both of these apply for
   ## the non-standard algorithm, that is when type='NS'
-
   xnew <- matrix(xnew, ncol = dim(x)[2])  ## makes sure xnew is a matrix
   n <- dim(x)[1]  ## sample size
   ina <- as.numeric(ina) ## makes sure ina is numeric

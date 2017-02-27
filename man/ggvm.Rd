@@ -1,11 +1,11 @@
-\name{MLe of the generalised von Mises distribution}
+\name{MLE of the generalised von Mises distribution}
 \alias{ggvm}
 \title{
-MLe of the geometrically generalised von Mises distribution
+MLE of the geometrically generalised von Mises distribution
 }
 
 \description{
-MLe of the geometrically generalised von Mises distribution.
+MLE of the geometrically generalised von Mises distribution.
 }
 
 \usage{

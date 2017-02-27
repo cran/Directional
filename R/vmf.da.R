@@ -67,5 +67,4 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   percent <- c(percent, s1, s2)
   names(percent) <- c('percent', 'sd1', 'sd2')
   list(percent = percent, ci = ci, runtime = runtime)
-
 }

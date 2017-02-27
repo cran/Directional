@@ -55,7 +55,7 @@ fb.saddle <- function(gam, lam) {
   ## c1 <- sqrt(2) * pi^(0.5 * (p - 1) ) * kfb(2, gam, lam, tau)^(-0.5) *
   ## prod(lam - tau)^(-0.5) * exp( -tau + 0.25 * sum( gam^2/(lam - tau) ) )
 
-  c2 <- c1 + log(1 + Ta)
+  c2 <- c1 + log1p(Ta)
   c3 <- c1 + Ta
 
   ## the next multiplications brings the modification with the negative

@@ -8,7 +8,6 @@
 
 vmfkde.tune <- function(x, low = 0.1, up = 1) {
   ## x is the data
-
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
   d <- tcrossprod( x )

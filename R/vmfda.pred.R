@@ -11,7 +11,6 @@ vmfda.pred <- function(xnew, x, ina) {
   ## xnew is the new observation(s)
   ## x is the data set
   ## ina is the group indicator variable
-
   xnew <- as.matrix(xnew)
   if ( ncol(xnew) == 1 )   xnew <- t(xnew)
 
@@ -27,11 +26,8 @@ vmfda.pred <- function(xnew, x, ina) {
     da <- vmf( x[ina == j, ] )  ## estimates the parameters of the vMF
     mesi[j, ] <- da$mu  ## mean direction
     k[j] <- da$k  ## concentration
-  }
-
-  for (j in 1:g) {
-    mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * xnew %*% mesi[j, ] - 0.5 * p *
-    log(2 * pi) - log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]
+    mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * xnew %*% mesi[j, ] -
+	log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]          ##- 0.5 * p * log(2 * pi)
   }
 
   Rfast::rowMaxs(mat)

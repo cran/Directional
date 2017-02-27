@@ -9,13 +9,11 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
   ## res is the type of response, Euclidean ("eucl") or spherical ("spher")
   ## ncores specifies how many cores to use
   ## type is for the distance, Euclidean or Manhattan distance.
-  ## The function dist()  allows for more distance types
   ## which can of course use here.
   ## Type ?dist so see more
   ## estim is either 'arithmetic', 'harmonic'. How to calculate the
   ## estimated value of the Y using the arithmetic mean or the
   ## harmonic mean of the closest observations.
-
   y <- as.matrix(y)
   x <- as.matrix(x)
   n <- dim(y)[1]
@@ -42,14 +40,12 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
     diag(apostasi) <- 1
     apostasi[ apostasi >= 1 ] <- 1
     apostasi <- acos(apostasi)
-
     ## The k-NN algorithm is calculated R times. For every repetition a
     ## test sample is chosen and its observations are classified
     for (vim in 1:M) {
 
       ytest <- as.matrix( y[mat[, vim], ] )  ## test set dependent vars
       ytrain <- as.matrix( y[-mat[, vim], ] )  ## train set dependent vars
-
       aba <- as.vector( mat[, vim] )
       aba <- aba[aba > 0]
       apo <- apostasi[aba, -aba]
@@ -146,11 +142,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
   }
 
-  if ( graph ) {
-    plot(2:c(length(mspe) + 1), mspe, xlab = "Nearest neighbours",
-    ylab = "MSPE", type = "b")
-  }
-
+  if ( graph )  plot(2:c(length(mspe) + 1), mspe, xlab = "Nearest neighbours", ylab = "MSPE", type = "b")
   list(crit = mspe, best_k = which.min(mspe) + 1, performance = performance, runtime = runtime)
 }
 

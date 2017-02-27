@@ -24,24 +24,24 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   funa <- function(be) {
     mu <- x %*% be
     tau <- rowSums(u * mu)
-    ell <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * pnorm(tau) / dnorm(tau) ) )
+    ell <-  - 0.5 * sum( mu * mu ) + sum( log1p( tau * pnorm(tau) / dnorm(tau) ) )
     ell
   }
 
   tic <- proc.time()
-  para <- as.vector( coef( lm.fit(x, u) ) )  ## starting values
+  para <- .lm.fit(x, u)$coefficients  ## starting values
   ### E-M algorithm is implemented below
   B <- matrix(para, ncol = 2)
   mu <- x %*% B
   tau <- Rfast::rowsums(u * mu)
   ptau <- pnorm(tau)
-  lik1 <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * ptau / dnorm(tau) ) )
+  lik1 <-  - 0.5 * sum( mu * mu ) + sum( log1p( tau * ptau / dnorm(tau) ) )
   psit <- tau + ptau / ( dnorm(tau) + tau * ptau )
   B <- crossprod( tXX * psit, u)
   mu <- x %*% B
   tau <- Rfast::rowsums(u * mu)
   ptau <- pnorm(tau)
-  lik2 <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * ptau / dnorm(tau) ) )
+  lik2 <-  - 0.5 * sum( mu * mu ) + sum( log1p( tau * ptau / dnorm(tau) ) )
 
   i <- 2
   while ( lik2 - lik1 > 1e-07 ) {
@@ -52,7 +52,7 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
     mu <- x %*% B
     tau <- Rfast::rowsums(u * mu)
     ptau <- pnorm(tau)
-    lik2 <-  - 0.5 * sum( mu * mu ) + sum( log( 1 + tau * ptau / dnorm(tau) ) )
+    lik2 <-  - 0.5 * sum( mu * mu ) + sum( log1p( tau * ptau / dnorm(tau) ) )
   }
 
   loglik <- lik2 - n * log(2 * pi)
@@ -65,7 +65,6 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
     psit <- tau + frac
     psit2 <- 2 - pdtau / (dtau + pdtau)  - frac^2
     C <- u[, 1]    ;    S <- u[, 2]
-
     A1 <-  - csx
     A2 <-  t( x * psit2 )
     s11 <-  A1 + A2 %*% tcrossprod(C) %*% x
@@ -96,8 +95,6 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   } else  est <- ( atan(mu[, 2]/mu[, 1]) + pi * I(mu[, 1] < 0) ) %% (2 * pi)
 
   if ( !rads )  est = est * 180 / pi
-
   list(runtime = runtime, iters = i, beta = B, seb = seb, loglik = loglik, est = est)
-
 }
 

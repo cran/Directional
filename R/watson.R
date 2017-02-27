@@ -10,7 +10,6 @@ watson <- function(u, rads = FALSE, R = 1) {
   ## u is a vector with circular data
   ## if data are in rads set it to TRUE
   ## R is for Monte Carlo estimate of the p-value
-
   if ( !rads )  u <- u / 180 * pi
   u <- sort(u) / (2 * pi)
   n <- length(u)
@@ -23,13 +22,11 @@ watson <- function(u, rads = FALSE, R = 1) {
 
   } else {
     bwn <- numeric(R)
-
     for (j in 1:R) {
       x <- runif(n, 0, 2 * pi)
       x <- sort(x) / (2 * pi)
       bwn[j] <- max(x - (i - 1)/n) + max(i/n - x)
     }
-
     pvalue <- ( sum(bwn > Wn) + 1 ) / (R + 1)
   }
 

@@ -9,21 +9,16 @@
 lr.aov <- function(x, ina) {
   ## x contains all the data
   ## ina is an indicator variable of each sample
-
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
-
   S <- rowsum(x, ina)
   Ri <- sqrt( Rfast::rowsums(S^2) )  ## the resultant length of each group
   S <- Rfast::colsums(x)
   R <- sqrt( sum(S^2) )  ## the resultant length based on all the data
-
   ## Next we stimate the common concentration parameter kappa under H0 and H1
-  Apk <- function(p, k) {
-    besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
-  }
+  Apk <- function(p, k)  besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
 
   Rk <- R/n
   k <- numeric(4)
@@ -32,13 +27,11 @@ lr.aov <- function(x, ina) {
   j <- 2
   k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 -
           (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
-
   while (abs(k[j] - k[j - 1]) > 1e-07) {
     j <- j + 1
     k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 -
             (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
   }
-
   k0 <- k[j]  ## concentration parameter under H0
   Rk <- sum(Ri)/n
   k <- numeric(4)
@@ -65,6 +58,5 @@ lr.aov <- function(x, ina) {
   res <- c(w, pvalue)
   names(res) <- c('w', 'p-value')
   res
-
 }
 

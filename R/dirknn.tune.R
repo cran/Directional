@@ -5,8 +5,7 @@
 #### mtsagris@yahoo.gr
 ################################
 
-dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
-                        mesos = TRUE, mat = NULL) {
+dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = NULL) {
   ## x is the matrix containing the data
   ## M is the number of folds, set to 10 by default
   ## A is the maximum number of neighbours to use
@@ -16,15 +15,12 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
   ## points will be used.
   ## If not, then the harmonic mean will be used. Both of these apply for
   ## the non-standard algorithm, that is when type='NS'
-
   runtime <- proc.time()
   n <- dim(z)[1]  ## sample size
-  ina <- as.numeric(ina)
-  if ( A >= min( table(ina) ) )   A <- min(table(ina)) - 3  ## The maximum
-  ## number  of nearest neighbours to use
   ina <- as.numeric(ina) ## makes sure ina is numeric
+  if ( A >= min( table(ina) ) )   A <- min( table(ina) ) - 3  ## The maximum
+  ## number  of nearest neighbours to use
   ng <- max(ina)  ## The number of groups
-
   if ( is.null(mat) ) {
     nu <- sample(1:n, min( n, round(n / M) * M ) )
     ## It may be the case this new nu is not exactly the same
@@ -33,20 +29,16 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
     options(warn = -1)
     mat <- matrix( nu, ncol = M )
   } else  mat <- mat
-
   M <- dim(mat)[2]
   per <- matrix(nrow = M, ncol = A - 1)
   rmat <- dim(mat)[1]
-
-  dis <- tcrossprod( z )
+  dis <- tcrossprod(z)
   diag(dis) <- 1
   dis[ dis > 1 ] <- 1
   dis <- acos(dis)
-
   ## The k-NN algorith is calculated M times. For every repetition a
   ## fold is chosen and its observations are classified
   for (vim in 1:M) {
-
     id <- as.vector( ina[ mat[, vim] ] )  ## groups of test sample
     ina2 <- as.vector( ina[ -mat[, vim] ] )   ## groups of training sample
     aba <- as.vector( mat[, vim] )
@@ -63,9 +55,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
           dista <- Rfast::sort_mat(dista)
           if ( mesos ) {
             ta[, l] <- Rfast::colmeans( dista[1:knn, ] )
-          } else {
-            ta[, l] <- knn / Rfast::colsums( 1 / dista[1:knn, ] )
-          }
+          } else  ta[, l] <- knn / Rfast::colsums( 1 / dista[1:knn, ] )
         }
         g <- Rfast::rowMins(ta)
         per[vim, j] <- sum( g == id ) / rmat
@@ -97,6 +87,5 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S",
        pch = 9, ylab = "Estimated percentage of correct classification")
   percent <- c( max(ela) + estb)
   names(percent) <- c("Bias corrected estimated percentage")
-
   list( per = ela, percent = percent, runtime = runtime )
 }

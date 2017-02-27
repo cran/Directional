@@ -10,15 +10,11 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
   ## x contains the data in Euclidean coordinates
   ## B is by default eaual to 999 bootstrap samples
   ## If B==1 then no bootstrap is performed
-
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
   m <- Rfast::colsums(x)
   test <- sum( m^2 ) * p / n
-
-  if ( modif ) {
-    test <- ( 1 - 1/(2 * n) ) * test + test^2 / ( 2 * n * (p + 2) )
-  }
+  if ( modif )  test <- ( 1 - 1/(2 * n) ) * test + test^2 / ( 2 * n * (p + 2) )
 
   if (B == 1) {
     pvalue <- pchisq(test, p, lower.tail = FALSE)
@@ -39,5 +35,4 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
   }
 
   res
-
 }

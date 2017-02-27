@@ -13,7 +13,6 @@ rmixvmf <- function(n, prob, mu, k) {
   ## prob is a vector with the mixing probabilities
   ## mu is a matrix with with the mean directions
   ## k is a vector with the concentration parameters
-
   p2 <- c( 0, cumsum(prob) )
   p <- ncol(mu)  ## dimensionality of the data
   u <- runif(n)
@@ -22,11 +21,9 @@ rmixvmf <- function(n, prob, mu, k) {
   ina <- sort(ina)
   nu <- tabulate(ina)  ## frequency table of each cluster
   y <- array( dim = c(n, p, g) )
-
   for (j in 1:g)  y[1:nu[j], , j] <- rvmf(nu[j], mu[j, ], k[j])
   x <- y[1:nu[1], , 1]
   for (j in 2:g)  x <- rbind(x, y[1:nu[j], , j])  ## simulated data
-
   ## data come from the first cluster, then from the second and so on
   list(id = ina, x = x)
 }

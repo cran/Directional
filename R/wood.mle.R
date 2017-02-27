@@ -9,7 +9,6 @@
 wood.mle <- function(y) {
   ## y is a two column matrix, where the first column is the latitude and
   ## the second is the longitude, all expressed in degrees
-
   y[, 1] <- 90 - y[, 1] ## we want the co-latitude
   y <- y / 180 * pi
   siny1 <- sin( y[, 1] )
@@ -81,7 +80,5 @@ wood.mle <- function(y) {
   colnames(modes) <- c("co-latitude", "longitude")
   unitvectors <- cbind(m1, m2, m3)
   colnames(unitvectors) <- c("mu 1", "mu 2", "mu 3")
-
   list( info = info, modes = modes, unitvectors = unitvectors, loglik = ka$objective - n * log(2 * pi)  )
-
 }

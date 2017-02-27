@@ -9,21 +9,25 @@
 #### Cabrera, J., & Watson, G. S. (1990). On a spherical median related distribution.
 #### Communications in Statistics-Theory and Methods, 19(6): 1973-1986.
 ################################
-
-mediandir = function(x) {
+mediandir <- function(x) {
   ## x is the directional data
   n <- dim(x)[1]
   p <- dim(x)[2]
-  pa <- Rfast::colMedians(x)
-  u1 <- pa / sqrt( sum(pa^2) )
-  ww <- as.vector( sqrt( 1 - ( x %*% u1 )^2 ) )
-  u2 <- Rfast::colsums(x / ww )
+  u1 <- Rfast::colMedians(x)
+  u1 <- u1 / sqrt( sum(u1^2) )
+  ww <- as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
+  if ( min(ww) == 0 ) {
+    u2 <- u1
+  }  else  u2 <- Rfast::colsums(x / ww )
   u2 <- u2 / sqrt( sum( u2^2 ) )
-
+  j <- 2
   while ( sum( abs (u2 - u1 ) ) > 1e-10 ) {
     u1 <- u2
-    ww <- as.vector( sqrt( 1 - ( x %*% u1 )^2 ) )
-    u2 <- Rfast::colsums (x / ww )
+    j <- j + 1
+    ww <- as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
+    if ( min(ww) == 0 ) {
+       u2 <- u1
+    }  else  u2 <- colSums(x / ww )
     u2 <- u2 / sqrt( sum( u2^2 ) )
   }
 

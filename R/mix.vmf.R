@@ -8,21 +8,15 @@
 ################################
 
 mix.vmf <- function(x, g) {
-
   ## x contains the data
   ## g is the number of clusters
-
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
   lik <- NULL
-
   lika <- matrix(nrow = n, ncol = g)
   pij <- matrix(nrow = n, ncol = g)
   ka <- numeric(g)
-
-  Apk <- function(p, k) {
-    besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
-  }
+  Apk <- function(p, k)   besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
 
   runtime <- proc.time()
   ## Step 1
@@ -70,7 +64,6 @@ mix.vmf <- function(x, g) {
         log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] +
         ka[j] * (x %*% mat[j, ])
     }
-
     wlika <- w * exp(lika)
     rswlika <- Rfast::rowsums(wlika)
     lik[1] <- sum( log( rswlika ) )  ## initial log-likelihood
@@ -98,8 +91,7 @@ mix.vmf <- function(x, g) {
       }
       ka[j] <- k[i]
       lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-        log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] +
-        ka[j] * (x %*% mat[j, ])
+        log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
 
     wexplika <- w * exp( lika)
@@ -131,8 +123,7 @@ mix.vmf <- function(x, g) {
 
         ka[j] <- k[i]
         lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-          log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] +
-          ka[j] * (x %*% mat[j, ])
+          log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
       }
 
       wexplika <- w * exp( lika)
@@ -144,11 +135,8 @@ mix.vmf <- function(x, g) {
     runtime <- proc.time() - runtime
     colnames(param) <- c( paste("mu", 1:p, sep = ""), 'kappa', 'probs' )
     rownames(param) <- paste("Cluster", 1:g, sep = " ")
-
     res <- list(param = param, loglik = lik[l], pred = ta, runtime = runtime)
 
   }
-
   res
-
 }

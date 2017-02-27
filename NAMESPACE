@@ -1,18 +1,18 @@
 #useDynLib(Directional, .registration = TRUE)
 
 importFrom("MASS", mvrnorm)
-importFrom("graphics", "contour", "lines", "plot", "points", "abline")
-importFrom("stats", "aggregate", "coef", "cor", "dist", "dnorm", "kmeans",
-           "lm", "optim", "optimize", "pchisq", "pf", "pnorm", "qchisq",
-           "quantile", "rbeta", "rnorm", "runif", "sd", "uniroot", "qnorm",
-            "cov", "model.matrix", "nlm", "integrate", "lm.fit", "rbinom")
+importFrom("graphics", contour, lines, plot, points, abline)
+importFrom("stats", aggregate, coef, cor, dnorm, kmeans,
+           .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
+           quantile, rbeta, rnorm, runif, sd, uniroot, qnorm,
+            cov, model.matrix, nlm, integrate, rbinom)
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            sort_mat, colMedians, rowMins, rowMaxs)
 
 import("doParallel")
 import("parallel")
 import("foreach")
-importFrom("RcppZiggurat", "zrnorm")
+importFrom("RcppZiggurat", zrnorm)
 #importFrom("sphereplot", rgl.sphgrid, rgl.sphpoints)
 
 exportPattern("^[[:alpha:]]+")

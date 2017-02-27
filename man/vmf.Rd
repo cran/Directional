@@ -1,15 +1,15 @@
-\name{MLe of the von Mises-Fisher distribution}
+\name{MLE of the von Mises-Fisher distribution}
 \alias{vmf}
 \title{
-MLe of von Mises-Fisher distribution
+MLE of von Mises-Fisher distribution
 }
 
 \description{
-MLe of the von Mises-Fisher distribution.
+MLE of the von Mises-Fisher distribution.
 }
 
 \usage{
-vmf(x, tol = 1e-06)
+vmf(x, tol = 1e-07)
 }
 
 \arguments{

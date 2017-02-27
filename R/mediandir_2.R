@@ -10,16 +10,13 @@
 
 mediandir_2 <- function(x) {
   ## x is the directional data
-
   funa <- function(pa) {
     pa <- pa / sqrt( sum(pa^2) )
     mean( acos( x %*% pa ) )
   }
-
+  options(warn = -1)
   bar <- nlm( funa, Rfast::colMedians(x), iterlim = 10000 )
-  bar <- nlm( funa, bar$estimate, iterlim = 10000 )
   bar <- optim( bar$estimate, funa, control = list(maxit = 10000) )
   med <- bar$par
   med / sqrt( sum(med^2) )
-
 }

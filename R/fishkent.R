@@ -12,7 +12,6 @@ fishkent <- function(x, B = 999) {
   ## x contains the data
   ## B is by default eaual to 999 bootstrap re-samples
   ## If B==1 then no bootstrap is performed
-
   n <- dim(x)[1]  ## sample size
   estim <- vmf(x)
   k <- estim$k  ## the estimated concentration parameter
@@ -30,7 +29,6 @@ fishkent <- function(x, B = 999) {
     pvalue <- pchisq(Ta, 2, lower.tail = FALSE)
     res <- c(Ta, pvalue)
     names(res) <- c('test', 'p-value')
-
   } else {
     Tb <- numeric(B)
     for (i in 1:B) {
@@ -50,6 +48,5 @@ fishkent <- function(x, B = 999) {
     res <- c( Ta, (sum(Tb > Ta) + 1) / (B + 1) )
     names(res) <- c('test', 'Bootstrap p-value')
   }
-
   res
 }
