@@ -1,7 +1,7 @@
 Package: Directional
 Type: Package
 Title: Directional Statistics
-Version: 2.5
+Version: 2.6
 URL:
 Date: 2016-02-27
 Author: Michail Tsagris, Giorgos Athineou, Anamul Sajib
@@ -10,6 +10,6 @@ Description: A collection of R functions for directional data analysis.
 License: GPL-2
 Imports: MASS, doParallel, parallel, foreach, Rfast, RcppZiggurat
 NeedsCompilation: no
-Packaged: 2017-02-27 15:21:21 UTC; user
+Packaged: 2017-02-27 16:30:55 UTC; user
 Repository: CRAN
-Date/Publication: 2017-02-27 18:10:43
+Date/Publication: 2017-02-27 18:25:48

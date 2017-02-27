@@ -1,4 +1,4 @@
-83b3d9dd9d41607d4e92b6e6291a911b *DESCRIPTION
+838797ebd24697e2413ad4a28bb7a2b1 *DESCRIPTION
 5cfa04866348b8eee44c01532aa82991 *NAMESPACE
 6796be1ea6c722f79d62201ebe305205 *R/Arotation.R
 d13b72d1bc7d8b07b1a669030927a865 *R/acg.R
@@ -39,8 +39,8 @@ fb202a56cdcdb3e46f875719ad04c6e8 *R/lambert.inv.R
 b71d214354d0040aa569b541a785329d *R/lr.circaov.R
 1fb36de2d33dd8beb75e56c880163647 *R/matrixfisher.mle.R
 6a8009a1f718d1cd070137acdc1a3a54 *R/meandir.test.R
-3a82b8d1d6191d15a39795dbb704691d *R/mediandir.R
-3a4547a80189ba69330bba6f7a74878f *R/mediandir_2.R
+200e9e6b5dd7c630e302dac627308473 *R/mediandir.R
+5b2e83d936a627de84657c7b9d5d546c *R/mediandir_2.R
 6e893c594888df4d7e9f4f83bf7c7976 *R/mix.vmf.R
 a83749363590030f3e4dee10a7e72efa *R/mixvmf.contour.R
 793e7fc608ca1e5b4ec82a1ff40b70c8 *R/pvm.R
@@ -63,7 +63,7 @@ a75bc002895c8cf89f7259ab8b7d46a9 *R/rot2eul.R
 174a5b3ce81b39f9c13af88ccf29092c *R/spherconc.test.R
 5b6d4ce34a83e3e3f9ffe4dc85ea33d4 *R/spml.reg.R
 853ed662acde40e9945e69cf07dab7c1 *R/tang.conc.R
-325b5f20ffa78531bdb0965929aabd41 *R/vec.R
+09c16686e80c0b31abed14d3fa324107 *R/vec.R
 eaa5ab2bc5d7d2ceb7d966fac44c46c6 *R/visual.check.R
 6762d00859ba4229e16eba9fc397ccd1 *R/vm.kde.R
 1d14d8cc623f4abac42615754eeeda9f *R/vmf.R
@@ -77,7 +77,7 @@ cdb35fd2a544d41d21278a81dfdcc25f *R/vmfda.pred.R
 e62ca49f715e42cbfe174b00ad9a00cb *R/watson.R
 73aebf014bc8785df076c031733fe11a *R/wood.mle.R
 f16f5fd28326402e8eb3fae2046b79a6 *man/Arotation.Rd
-0e5bc4a4864ddc9e98d2cb3b44ac3d42 *man/Directional-package.Rd
+10ba35e712c166ff333d38adc9f1a362 *man/Directional-package.Rd
 2e8ac42abe248f8e4763c82a9e7a70a6 *man/acg.Rd
 ce296c4dca26b981e38ec66e7d2a7362 *man/bic.mixvmf.Rd
 dc45b59f21bba56a9e223f90446566e5 *man/circ.cor1.Rd

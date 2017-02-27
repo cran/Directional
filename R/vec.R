@@ -5,7 +5,7 @@ vec <- function(x, n = 1, deg = 90) {
   ## if the user gives more than 180 degrees (in absolute value) make it less than 180
   ### this is for orthogonal vectors
    fu <- function(y, x) {
-     y < y / sqrt( sum(y^2) )
+     y < y / sqrt( sum(y^2) ) 
      abs( deg / 180 * pi - acos( sum( x * y ) ) )
    }
    p <- length(x)  ## number of dimensions

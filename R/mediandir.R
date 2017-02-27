@@ -15,19 +15,17 @@ mediandir <- function(x) {
   p <- dim(x)[2]
   u1 <- Rfast::colMedians(x)
   u1 <- u1 / sqrt( sum(u1^2) )
-  ww <- as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
-  if ( min(ww) == 0 ) {
+  ww <- 1 /as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
+  if ( max(ww) == Inf ) {
     u2 <- u1
-  }  else  u2 <- Rfast::colsums(x / ww )
+  }  else  u2 <- Rfast::colsums(x * ww )
   u2 <- u2 / sqrt( sum( u2^2 ) )
-  j <- 2
-  while ( sum( abs (u2 - u1 ) ) > 1e-10 ) {
+  while ( sum( abs (u2 - u1 ) ) > 1e-8 ) {
     u1 <- u2
-    j <- j + 1
-    ww <- as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
-    if ( min(ww) == 0 ) {
+    ww <- 1/as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
+    if ( max(ww) == Inf ) {
        u2 <- u1
-    }  else  u2 <- colSums(x / ww )
+    }  else  u2 <- colSums(x * ww )
     u2 <- u2 / sqrt( sum( u2^2 ) )
   }
 
