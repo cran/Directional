@@ -5,7 +5,6 @@
 #### References: Mardia K.V., Kent J.T. and Bibby J.M. (1979) pg 439-440.  Multivariate analaysis
 #### Mardia Kanti V. and Jupp Peter E. (2000) pg. 94-95. Directional statistics
 ################################
-
 rayleigh <- function(x, modif = TRUE, B = 999) {
   ## x contains the data in Euclidean coordinates
   ## B is by default eaual to 999 bootstrap samples
@@ -20,7 +19,6 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
     pvalue <- pchisq(test, p, lower.tail = FALSE)
     res <- c(test, pvalue)
     names(res) <- c('test', 'p-value')
-
   } else {
     tb <- numeric(B)
     for (i in 1:B) {
@@ -29,10 +27,8 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
       mb <- Rfast::colsums(x)
       tb[i] <- p * sum( mb^2 ) / n
     }
-
     res <- c( test, (sum(tb > test) + 1)/(B + 1) )
     names(res) <- c('test', 'Bootstrap p-value')
   }
-
   res
 }

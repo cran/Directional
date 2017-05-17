@@ -12,7 +12,6 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
   ## estim is either 'arithmetic', 'harmonic'. How to calculate the
   ## estimated value of the Y using the arithmetic mean or the
   ## harmonic mean of the closest observations
-
   y <- as.matrix(y)
   x <- as.matrix(x)
   d <- dim(y)[2]  ## dimensions of y
@@ -49,7 +48,6 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
         disa[i, ] <- Rfast::colsums( abs(a) )
       }
     }
-
   }
 
   ina <- 1:n

@@ -8,7 +8,6 @@ kent.contour <- function(k, b) {
   ## k is the concentration parameter
   ## b is the ovalness parameter
   ## b must be less than k/2
-
   gam <- c(0, k, 0)
   lam <- c(0, -b, b)
   con <- fb.saddle(gam, lam)[3]
@@ -19,11 +18,9 @@ kent.contour <- function(k, b) {
   mat2 <- t(mat1)
   z <- sqrt( mat1 + mat2 )
   ind <- ( z^2 < rho^2 )  ## checks if x^2+y^2 < rho^2
-
-  ind[ ind == FALSE ] <- NA
+  ind[ !ind ] <- NA
   theta <- 2 * asin(0.5 * z)
   xa <- k * cos(theta) + b * (mat1 - mat2) - con
   mat <- exp(xa) * ind   
   contour(x, x, mat)
-
 }

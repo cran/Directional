@@ -9,22 +9,18 @@
 tang.conc <- function(u, ina, rads = FALSE) {
   ## u contains all the circular data in radians or degrees
   ## ina is an indicator variable of each sample
-
   n <- length(u)  ## sample size
   ina <- as.numeric(ina)
   ni <- tabulate(ina)
   g <- max(ina)  ## how many groups are there
   ## if the data are in degrees we transform them into radians
-
   if ( !rads )   u <- u * pi/180
   d <- NULL  ## will store the absolute sinus centred data here
   d2 <- dmi <- numeric(g)
   x1 <- cos(u)
   x2 <- sin(u)
-
   C <- rowsum(x1, ina)
   S <- rowsum(x2, ina)
-
   mi <- atan(S/C) + pi * as.numeric(C<0)
   for (i in 1:g) {
     b <- abs( sin( u[ ina == i ] - mi[i] ) )
@@ -42,5 +38,4 @@ tang.conc <- function(u, ina, rads = FALSE) {
   res <- c(Ft, pvalue)
   names(res) <- c('test', 'p-value')
   res
-
 }

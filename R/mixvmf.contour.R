@@ -23,19 +23,14 @@ mixvmf.contour <- function(u, mod) {
   p <- mod$param[, 5]  ## mixing probabilities
   g <- length(p)  ## how many clusters
   lika <- con <- numeric(g)
-  for (l in 1:g) {
-  con[l] <- 0.5 * log(k[l]) - 1.5 * log(2 * pi) - log(besselI(k[l], 0.5,
-  expon.scaled = TRUE)) - k[l]
-  }
+  for (l in 1:g)  con[l] <- 0.5 * log(k[l]) - 1.5 * log(2 * pi) - log(besselI(k[l], 0.5, expon.scaled = TRUE)) - k[l]
   for (i in 1:n1) {
     for (j in 1:n1) {
       #x <- c( cos(x1[i]) * cos(x2[j]), cos(x1[i]) * sin(x2[j]), sin(x2[j]) )
       x <- euclid( c(x1[i], x2[j]) )
       lika <- con + k * ( x %*% tmu )
       can <- sum( p * exp(lika) )
-      if (abs(can) < Inf) {
-        mat[i, j] <- can
-      } else  mat[i, j] <- NA
+      if (abs(can) < Inf)   mat[i, j] <- can
     }
   }
   contour(x1, x2, mat, nlevels = 8, col = 4, xlab = "Latitude",

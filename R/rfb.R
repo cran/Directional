@@ -13,7 +13,6 @@ rfb <- function(n, k, m, A) {
   ## k is the concentration parameter, the Fisher part
   ## m is the mean vector, the Fisher part
   ## A is the symmetric matrix, the Bingham part
-
   m <- m / sqrt( sum(m^2) )
   m0 <- c(0, 1, 0)
   mu <- c(0, 0, 0)
@@ -25,7 +24,6 @@ rfb <- function(n, k, m, A) {
   V <- eig$vectors
   lam <- lam - lam[q]
   lam <- lam[-q]
-
   x1 <- matrix( 0, n, 3 )
   i <- 1
 

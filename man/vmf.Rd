@@ -9,12 +9,15 @@ MLE of the von Mises-Fisher distribution.
 }
 
 \usage{
-vmf(x, tol = 1e-07)
+vmf(x, fast = FALSE, tol = 1e-07)
 }
 
 \arguments{
 \item{x}{
 A matrix with the data expressed in Euclidean coordinates, i.e. unit vectors.
+}
+\item{fast}{
+A boolean variable to do a faster implementation.
 }
 \item{tol}{
 The tolerance to accept that the E-M algorithm used to estimate the concentration parameter has converged.
@@ -26,7 +29,7 @@ The mean direction and concentration of a fitted von Mises-Fisher distribution a
 }
 
 \value{
-A list including:
+If fast = FALSE a list including all the following. If fast = TRUE less items are returned.
 \item{mu}{
 The mean direction.
 }
@@ -60,7 +63,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{rvmf}, \link{kent.mle}, \link{vmf.kde}, \link{wood.mle}
+\code{\link{iag.mle}, \link{rvmf}, \link{kent.mle}, \link{vmf.kde}, \link{wood.mle}
 }
 }
 

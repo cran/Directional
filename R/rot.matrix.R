@@ -10,12 +10,10 @@ rot.matrix <- function(ksi, theta, rads = FALSE) {
   ## ksi is the rotation axis, where the first element is the
   ## latitude and the second is the longitude
   ## theta is the angle of rotation
-
   if ( rads ) {
     lat <- ksi[1]
     long <- ksi[2]
     the <- theta
-
   } else {
     lat <- ksi[1] * pi / 180
     long <- ksi[2] * pi / 180

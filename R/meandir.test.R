@@ -5,7 +5,6 @@
 #### References: Mardia Kanti V. and Jupp Peter E. (2000)
 #### Directional statistics, pg. 212
 ################################
-
 meandir.test <- function(x, mu, B = 999) {
   ## x is the sample
   ## mu is the hypothesized mean direction under H0
@@ -14,13 +13,11 @@ meandir.test <- function(x, mu, B = 999) {
   k1 <- vmf(x)$k  ## concentration parameter under H1
   xbar <- Rfast::colmeans(x)  ## x-bar
   m1 <- xbar / sqrt( sum(xbar^2) )
+  sxm <- sum(x %*% mu)
 
-  lik <- function(k, x) {
-    n * (p/2 - 1) * log(k) - 0.5 * n * p * log(2 * pi) + k * sum(x %*% mu) -
-      n * ( log( besselI(k, p/2 - 1, expon.scaled = TRUE) ) + k )
-  }
+  lik <- function(k, x, sxm)  n * (p/2 - 1) * log(k) + k * sxm -  n * ( log( besselI(k, p/2 - 1, expon.scaled = TRUE) ) + k )
 
-  qa0 <- optimize(lik, c(0, 100000), x = x, maximum = TRUE)  ## log-likelihood under H0
+  qa0 <- optimize(lik, c(0, 100000), x = x, sxm = sxm, maximum = TRUE)
   k0 <- qa0$maximum  ## concentration parameter under H0
   apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI(k0, p/2 - 1, expon.scaled = TRUE) ) + k0
   apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI(k1, p/2 - 1, expon.scaled = TRUE) ) + k1
@@ -36,8 +33,8 @@ meandir.test <- function(x, mu, B = 999) {
       z <- y[nu, ]
       k1 <- vmf(z)$k  ## concentration parameter under H1
       zbar <- Rfast::colmeans(z)  ## z-bar
-
-      qa0 <- optimize(lik, c(0, 100000), x = z, maximum = TRUE)  ## log-likelihood under H0
+      sxm <- sum(z %*% mu)
+      qa0 <- optimize(lik, c(0, 100000), x = z, sxm = sxm, maximum = TRUE)
       k0 <- qa0$maximum  ## concentration parameter under H0
       apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI(k0, p/2 - 1, expon.scaled = TRUE) ) + k0
       apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI(k1, p/2 - 1, expon.scaled = TRUE) ) + k1
@@ -45,7 +42,6 @@ meandir.test <- function(x, mu, B = 999) {
     }
     pvalue <- (sum(wb > w) + 1)/(B + 1)
   } else  pvalue <- pchisq(w, p - 1, lower.tail = FALSE)
-
 
   list(mean.dir = m1, pvalue = pvalue)
 }

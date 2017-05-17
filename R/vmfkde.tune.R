@@ -5,7 +5,6 @@
 #### mtsagris@yahoo.gr
 #### Tuning the bandwidth
 ################################
-
 vmfkde.tune <- function(x, low = 0.1, up = 1) {
   ## x is the data
   p <- dim(x)[2]  ## dimensionality of the data
@@ -18,11 +17,11 @@ vmfkde.tune <- function(x, low = 0.1, up = 1) {
     A <- d/h^2
     cpk <- (1/h^2)^(p/2 - 1) / con / besselI(1/h^2, p/2 - 1)
     f <- rowSums( exp(A + log(cpk)), na.rm = TRUE )/(n - 1)
-    mean( log(f) )
+    sum( log(f) )
   }
 
   a <- optimize(funa, c(low, up), maximum = TRUE)
-  res <- c(a$maximum, a$objective)
+  res <- c(a$maximum, a$objective/n)
   names(res) <- c("Optimal h", "cv")
   res
 }

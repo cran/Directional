@@ -7,7 +7,8 @@ importFrom("stats", aggregate, coef, cor, dnorm, kmeans,
            quantile, rbeta, rnorm, runif, sd, uniroot, qnorm,
             cov, model.matrix, nlm, integrate, rbinom)
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
-           sort_mat, colMedians, rowMins, rowMaxs)
+           sort_mat, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle, 
+		   rvonmises, acg.mle, racg, vm.mle, iag.mle)
 
 import("doParallel")
 import("parallel")

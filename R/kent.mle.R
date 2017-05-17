@@ -9,7 +9,6 @@
 
 kent.mle <- function(x) {
   ## x is the data in Euclidean coordinates
-
   tic <- proc.time()
   n <- dim(x)[1]  ## sample size
   xbar <- Rfast::colmeans(x)  ## mean vector
@@ -23,14 +22,12 @@ kent.mle <- function(x) {
   sintheta <- sin(theta)
   cosphi <- cos(phi)
   sinphi <- sin(phi)
-  H <- matrix( c(costheta, sintheta * cosphi,
-       sintheta * sinphi, -sintheta, costheta * cosphi,
+  H <- matrix( c(costheta, sintheta * cosphi, sintheta * sinphi, -sintheta, costheta * cosphi,
        costheta * sinphi, 0, -sinphi, cosphi), ncol = 3)
   S <- crossprod(x) / n
   B <- crossprod(H, S) %*% H
   psi <- 0.5 * atan(2 * B[2, 3]/(B[2, 2] - B[3, 3]))
-  K <- matrix(c(1, 0, 0, 0, cos(psi), sin(psi), 0,
-       -sin(psi), cos(psi)), ncol = 3)
+  K <- matrix( c(1, 0, 0, 0, cos(psi), sin(psi), 0, -sin(psi), cos(psi) ), ncol = 3)
   G <- H %*% K  ## The G matrix Kent describes, the A in our notation
   r1 <- sqrt( sum(xbar^2) )
   lam <- eigen(B[-1, -1])$values

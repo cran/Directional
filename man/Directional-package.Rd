@@ -12,8 +12,8 @@ Circular-linear regression, spherical-spherical regression, discriminant analysi
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 2.6\cr
-Date: \tab 2016-02-27\cr
+Version: \tab 2.7\cr
+Date: \tab 2017-05-17\cr
 License: \tab GPL-2\cr
 }
 }

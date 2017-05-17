@@ -12,19 +12,14 @@ rsop <- function(n, p) {
   for (i in 1:n) {
     b <- rnorm(p)
     b <- b / sqrt( sum(b^2) )
-
     ca <- a - b * b[1]
     ca <- ca / sqrt( sum(ca^2) )
     B <- tcrossprod(b, ca)
     B <- B - t(B)
     theta <- acos( b[1] )
-    A[, , i] <- Ip + sin(theta) * B + ( cos(theta) - 1 ) * ( tcrossprod(b) +
-                tcrossprod(ca) )
-
+    A[, , i] <- Ip + sin(theta) * B + ( cos(theta) - 1 ) * ( tcrossprod(b) + tcrossprod(ca) )
   }
 
   if (n == 1)  A <- as.matrix( A[, , 1] )
-
   A
-
 }

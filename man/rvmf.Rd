@@ -50,7 +50,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{vmf}, \link{rfb}, \link{rvonmises}, \link{rmixvmf}
+\code{\link{vmf}, \link{rfb}, \link{racg}, \link{rvonmises}, \link{rmixvmf}
 }
 }
 

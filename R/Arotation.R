@@ -10,7 +10,6 @@ Arotation <- function(A) {
   ## A is a 3x3 rotation matrix
   con1 <- round(det(A), 15)
   con2 <- round( mean( abs( A %*% t(A) - diag(3) ) ), 15 )
-
   if ( con1 != 1 |  con2 > .Machine$double.eps ) {
     res <- paste("This is not a rotation matrix")
 
@@ -22,12 +21,10 @@ Arotation <- function(A) {
     sqrt( (3 - tr) * (1 + tr) )
     axis <- c( asin(ksi[3]), atan2(ksi[2], ksi[1]) )
     axis <- c(axis / pi * 180)  ## from degrees to rads
-
     ## if the latitude or longitude are negative add 360 (degrees)
     axis[ axis < 0 ] <- axis[ axis < 0 ] + 360
     names(axis) <- c("latitude", "longitude")
     res <- list(angle = angle, axis = axis)
   }
   res
-
 }

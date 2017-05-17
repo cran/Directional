@@ -12,24 +12,22 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE) {
   ## pred is either TRUE (xnew is new data) or
   ## FALSE (xnew is the same as x)
   ## if the data are in degrees we transform them into radians
+    funa <- function(be) {
+      mu <- x %*% be
+      tau <- rowSums(u * mu)
+       - 0.5 * sum( mu^2 ) + sum( log1p( tau * pnorm(tau) / dnorm(tau) ) )
+    }
+
+  tic <- proc.time()
   x <- model.matrix(~., data.frame(x) )
   if ( !rads )   y <- y/180 * pi
   u <- cbind( cos(y), sin(y) )  ## bring the data onto the circle
-  n <- nrow(u)
+  n <- dim(u)[1]
   csx <- crossprod(x)
-  XX <- solve( csx, t(x) )
-  tXX <- t(XX)
+  tXX <- solve( csx, t(x) )
+  para <- tXX %*% u ## starting values
+  tXX <- t(tXX)
   p <- dim(x)[2]
-
-  funa <- function(be) {
-    mu <- x %*% be
-    tau <- rowSums(u * mu)
-    ell <-  - 0.5 * sum( mu * mu ) + sum( log1p( tau * pnorm(tau) / dnorm(tau) ) )
-    ell
-  }
-
-  tic <- proc.time()
-  para <- .lm.fit(x, u)$coefficients  ## starting values
   ### E-M algorithm is implemented below
   B <- matrix(para, ncol = 2)
   mu <- x %*% B

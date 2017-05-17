@@ -1,4 +1,4 @@
-\name{MLe of the Kent distribution}
+\name{MLE of the Kent distribution}
 \alias{kent.mle}
 \title{
 MLe of the Kent distribution
@@ -13,7 +13,7 @@ kent.mle(x)
 }
 
 \arguments{
-  \item{x}{
+\item{x}{
 A matrix containing spherical data in Euclidean coordinates.
 }
 }
@@ -71,4 +71,4 @@ vmf(x)
 }
 
 \keyword{ Kent distribution }
-\keyword{ Maximum likelihood estimation }
+\keyword{ maximum likelihood estimation }

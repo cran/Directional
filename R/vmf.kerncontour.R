@@ -13,13 +13,11 @@ vmf.kerncontour <- function(u, thumb = "none") {
   ## the first column is the latitude and the
   ## second column is the longitude
   ## thumb is either 'none' (defualt), or 'rot' (Garcia-Portugues, 2013)
-
   n <- dim(u)[1]  ## sample size
   x <- euclid(u)
 
   if (thumb == "none") {
     h <- as.numeric( vmfkde.tune(x, low = 0.1, up = 1)[1] )
-	
   } else if (thumb == "rot") {
     k <- vmf(x)$kappa
     h <- ( (8 * sinh(k)^2) / (k * n * ( (1 + 4 * k^2) * sinh(2 * k) -
@@ -37,11 +35,7 @@ vmf.kerncontour <- function(u, thumb = "none") {
       y <- euclid( c(x1[i], x2[j]) )
       a <- as.vector( tcrossprod(x, y / h^2) )
       can <- sum( exp(a + log(cpk)) ) / n
-
-      if (abs(can) < Inf) {
-        mat[i, j] <- can
-      } else  mat[i, j] <- NA
-
+      if (abs(can) < Inf)   mat[i, j] <- can
     }
   }
 

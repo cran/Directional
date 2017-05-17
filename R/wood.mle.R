@@ -13,7 +13,7 @@ wood.mle <- function(y) {
   y <- y / 180 * pi
   siny1 <- sin( y[, 1] )
   x <- cbind( siny1 * cos(y[, 2]), siny1 * sin(y[, 2]), cos(y[, 1]) )
-
+  #################
     mle <- function(param) {
       gam <- param[1]  ;  del <- param[2]
       m1 <- c( cos(gam) * cos(del), cos(gam) * sin(del), - sin(gam) )
@@ -28,12 +28,12 @@ wood.mle <- function(y) {
       w <- 2 * sum( a1 * a2  / down )
       - u^2 - v^2 - w^2
     }
-
+    ############# 
     lik <- function(k) {
       - n * log( ( exp(k) - exp(-k) ) / k ) +
       k * ( u * cos(a) + ( v * cos(b) + w * sin(b) ) * sin(a) )
     }
-
+  ##############
   ini <- Rfast::colmeans(y)
   mod <- optim( ini, mle )
   mod <- optim(mod$par, mle, hessian = TRUE)
@@ -70,8 +70,7 @@ wood.mle <- function(y) {
   confb <- confb / pi * 180
   confk <- c(k - qnorm(0.975) * se.k, k + qnorm(0.975) * se.k )
 
-  info <- rbind( c(gam / pi * 180, confgam), c(del / pi * 180, confdel),
-                 c(a / pi * 180, confa), c(b / pi * 180, confb),  c(k, confk) )
+  info <- rbind( c(gam / pi * 180, confgam), c(del / pi * 180, confdel), c(a / pi * 180, confa), c(b / pi * 180, confb),  c(k, confk) )
   rownames(info) <- c("gamma", "delta", "alpha", "beta", "kappa")
   colnames(info) <- c("estimate", "2.5%", "97.5%")
   modes <- rbind( c(a, b/2), c(a, b/2 + pi) )

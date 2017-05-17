@@ -83,8 +83,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = N
   estb <- mean( bias )  ## TT estimate of bias
   runtime <- proc.time() - runtime
   names(ela) <- paste("k=", 2:A, sep = "")
-  plot(2:A, ela, type = "b", xlab = "k nearest neighbours",
-       pch = 9, ylab = "Estimated percentage of correct classification")
+  plot(2:A, ela, type = "b", xlab = "k nearest neighbours", pch = 9, ylab = "Estimated percentage of correct classification")
   percent <- c( max(ela) + estb)
   names(percent) <- c("Bias corrected estimated percentage")
   list( per = ela, percent = percent, runtime = runtime )

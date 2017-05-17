@@ -7,7 +7,6 @@
 #### References: Mardia Kanti V. and Jupp Peter E. (2000)
 #### Directional statistics, page 135
 ################################
-
 hcf.circaov <- function(u, ina, rads = FALSE) {
   ## u contains all the circular data in radians or degrees
   ## ina is an indicator variable of each sample

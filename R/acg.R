@@ -8,32 +8,5 @@
 ################################
 
 acg <- function(x) {
-
-  p <- dim(x)[2]
-  n <- dim(x)[1]
-  mu <- numeric(p)
-  lam1 <- cov(x)
-  maha <- Rfast::mahala(x, mu, lam1)
-  down <- sum( 1 / maha )
-  tx <- up <- array( dim = c(n, p, p) )
-  for (j in 1:n)   tx[j, , ] <- tcrossprod( x[j, ] )
-  up <- tx / maha
-  up2 <- colSums(up)
-  lam2 <- p * up2 / down
-  i <- 2
-  while ( sum( abs(lam2 - lam1 ) ) > 1e-10 ) {
-    i <- i + 1
-    lam1 <- lam2
-    maha <- Rfast::mahala(x, mu, lam1)
-    down <- sum( 1 / maha )
-    up <- tx / maha
-    up2 <- colSums(up)
-    lam2 <- p * up2 / down
-  }
-
-  A <- lam2
-  if ( is.null( colnames(x) ) ) {
-    colnames(A) <- rownames(A) <- paste("X", 1:p, sep = "")
-  } else  colnames(A) <- rownames(A) <- colnames(x)
-  list(iter = i, cova = A)
+ Rfast::acg.mle(x)
 }

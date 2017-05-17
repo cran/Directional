@@ -5,7 +5,6 @@
 #### References: Mardia Kanti V. and Jupp Peter E. (2000)
 #### Directional statistics, page 138-139
 ################################
-
 embed.circaov <- function(u, ina, rads = FALSE) {
   ## u contains all the circular data in radians or degrees
   ## ina is an indicator variable of each sample
@@ -26,8 +25,7 @@ embed.circaov <- function(u, ina, rads = FALSE) {
   ## Next we estimate the common concentration parameter kappa
   kappa <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
   ## kappa is the estimated concentration parameter based on all the data
-  Fb <- ( (sum(ni * Rbi) - n * Rbar^2 )/(g - 1) ) /
-    ( (n - sum(ni * Rbi) )/(n - g) )
+  Fb <- ( (sum(ni * Rbi) - n * Rbar^2 )/(g - 1) ) / ( (n - sum(ni * Rbi) )/(n - g) )
   Fc <- ( 1 - 1/(5 * kappa) - 1/(10 * kappa^2) ) * Fb
   pvalue <- pf(Fc, g - 1, n - g, lower.tail = FALSE)
   res <- c(Fc, pvalue, kappa)

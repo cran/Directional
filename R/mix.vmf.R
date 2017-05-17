@@ -17,7 +17,6 @@ mix.vmf <- function(x, g) {
   pij <- matrix(nrow = n, ncol = g)
   ka <- numeric(g)
   Apk <- function(p, k)   besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
-
   runtime <- proc.time()
   ## Step 1
   l <- 1
@@ -40,7 +39,6 @@ mix.vmf <- function(x, g) {
     res <- list(mess = mess, loglik = NA)
 
   } else {
-
     w <- as.vector( table(cl[, epi]) )/n  #'# initial weights
     m1 <- mesa[, , epi]
     Rk <- sqrt( Rfast::rowsums(m1^2) )  ## mean resultant lengths of the initical clusters
@@ -60,9 +58,7 @@ mix.vmf <- function(x, g) {
         k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
       }
       ka[j] <- k[i] ## initial concentration parameters
-      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-        log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] +
-        ka[j] * (x %*% mat[j, ])
+      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
     wlika <- w * exp(lika)
     rswlika <- Rfast::rowsums(wlika)
@@ -90,17 +86,14 @@ mix.vmf <- function(x, g) {
         k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
       }
       ka[j] <- k[i]
-      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-        log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
+      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
 
     wexplika <- w * exp( lika)
     lik[2] <- sum( log( Rfast::rowsums( wexplika ) ) )  ## log-likelihood at step 2
-
     ## Step 3 and beyond
     while ( lik[l] - lik[l - 1] > 1e-05 ) {
       l <- l + 1
-
       pij <- wexplika / Rfast::rowsums( wexplika )  ## weights
       w <- Rfast::colmeans(pij)
 
@@ -114,16 +107,13 @@ mix.vmf <- function(x, g) {
         i <- 2
         apk <- Apk(p, k[i - 1])
         k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
-
         while (abs(k[i] - k[i - 1]) > 1e-07) {
           i <- i + 1
           apk <- Apk(p, k[i - 1])
           k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
         }
-
         ka[j] <- k[i]
-        lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-          log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
+        lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
       }
 
       wexplika <- w * exp( lika)

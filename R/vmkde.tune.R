@@ -1,11 +1,9 @@
-
 ################################
 #### Kernel density estimation of circular data with a von Mises kernel
 #### Tsagris Michail 2/2015
 #### mtsagris@yahoo.gr
 #### Tuning the bandwidth
 ################################
-
 vmkde.tune <- function(u, low = 0.1, up = 1, rads = TRUE) {
   ## u is the data
   n <- length(u)  ## sample size
@@ -21,11 +19,11 @@ vmkde.tune <- function(u, low = 0.1, up = 1, rads = TRUE) {
    funa <- function(h) {
     A <- expa^( 1 / h^2 )
     f <- rowSums( A, na.rm = TRUE ) / con / besselI(1/h^2, 0)
-    sum( log(f) ) / n
+    sum( log(f) )
    }
 
   bar <- optimize(funa, c(low, up), maximum = TRUE)
-  res <- c( bar$maximum, bar$objective )
+  res <- c( bar$maximum, bar$objective/n )
   names(res) <- c("Optimal h", "cv")
   res
 }

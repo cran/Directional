@@ -9,8 +9,7 @@ euclid.inv <- function(U) {
   ## the cartesian coordinates
   U <- as.matrix(U)
   if ( ncol(U) == 1 )   U <- t(U)
-  u <- cbind( acos(U[, 1]), ( atan(U[, 3]/U[, 2]) + pi * I(U[, 2]<0) )
-  %% (2 * pi) )
+  u <- cbind( acos(U[, 1]), ( atan(U[, 3]/U[, 2]) + pi * I(U[, 2]<0) ) %% (2 * pi) )
   u <- u * 180/pi  ## from rads to degrees
   colnames(u) <- c("Lat", "Long")
   ## u is a matrix of two columns

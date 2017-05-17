@@ -7,16 +7,22 @@ Summary statistics for circular data
 It produces a few summary measures for circular data.
 }
 \usage{
-circ.summary(u, rads = FALSE, plot = TRUE)
+circ.summary(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE)
 }
 \arguments{
-  \item{u}{
-  A vector with circular data.
+\item{u}{
+A vector with circular data.
 }
-  \item{rads}{
+\item{rads}{
 If the data are in rads, then this should be TRUE, otherwise FALSE.
 }
-  \item{plot}{
+\item{fast}{
+A boolean variable to do a faster implementation.
+}
+\item{tol}{
+The tolerance level to stop the Newton-Raphson algorithm for fidning kappa.
+}
+\item{plot}{
 If you want to see the data plotted on a cicrle make this TRUE.
 }
 }
@@ -25,7 +31,7 @@ It returns the circular mean, mean resultant length, variance, standard deviatio
 }
 
 \value{
-A list including:
+If fast = FALSE a list including all the following. If fast = TRUE less items are returned.
 \item{mesos}{
 The circular mean direction.
 }

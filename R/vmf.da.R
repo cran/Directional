@@ -7,13 +7,11 @@
 #### References: J. E. Morris and P. J. Laycock (1974)
 #### Discriminant Analysis of Directional Data (Biometrika)
 ################################
-
 vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   ## x is the data set
   ## ina is the group indicator variable
   ## fraction denotes the percentage of the sample to be used as the test sample
   ## R is the number of cross validations
-
   runtime <- proc.time()
   p <- dim(x)[2]  ## p is the dimensionality of the data
   per <- numeric(R)
@@ -35,7 +33,7 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
     train <- x[-nu, ]
 
     for (j in 1:g) {
-      da <- vmf( train[id == j, ] )  ## estimates the parameters of the vMF
+      da <- Rfast::vmf.mle( train[id == j, ] )  ## estimates the parameters of the vMF
       mesi[j, ] <- da$mu  ## mean direction of each group
       k[j] <- da$kappa ## concentration of each group
       mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * test %*% mesi[j, ] -
@@ -52,7 +50,6 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   s2 <- sqrt( percent * (1 - percent) / R )
   conf1 <- c(percent - 1.96 * s1, percent + 1.96 * s1)  ## 1st way of a CI
   conf2 <- c(percent - 1.96 * s2, percent + 1.96 * s2)  ## 2nd way of a CI
-
   ## next we check if the confidence limits exceeds the allowed limits
   if (conf1[2] > 1) conf1[2] <- 1
   if (conf1[1] < 0) conf1[1] <- 0

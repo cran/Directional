@@ -25,7 +25,7 @@ mediandir <- function(x) {
     ww <- 1/as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
     if ( max(ww) == Inf ) {
        u2 <- u1
-    }  else  u2 <- colSums(x * ww )
+    }  else  u2 <- colsums(x * ww )
     u2 <- u2 / sqrt( sum( u2^2 ) )
   }
 

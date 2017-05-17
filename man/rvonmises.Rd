@@ -52,7 +52,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{circ.summary}, \link{rvmf}
+\code{\link{circ.summary}, \link{rvmf}, \link{racg}
 }
 }
 

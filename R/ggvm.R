@@ -27,9 +27,7 @@ ggvm <- function(phi, rads = FALSE) {
     sinzphia <- sinpha / ( z * nzphia )
     coszma <- cosma / nzma
     sinzma <- sinma / ( z * nzma )
-    - k * sum( coszphia * coszma + sinzphia * sinzma) +
-    2 * sum( log(nzphia) ) + n * log(2 * pi * z) +
-    n * ( log( besselI(k, 0, expon.scaled = TRUE) ) + k )
+    - k * sum( coszphia * coszma + sinzphia * sinzma) + 2 * sum( log(nzphia) ) + n * log(2 * pi * z) + n * ( log( besselI(k, 0, expon.scaled = TRUE) ) + k )
   }
 
   qa <- optim( c(rnorm(3, 0, 0.1), runif(1, 0, pi) ), likel, phi = phi, control = list(maxit = 5000) )

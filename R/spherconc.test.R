@@ -9,7 +9,6 @@
 spherconc.test <- function(x, ina) {
   ## x contains all the data
   ## ina is an indicator variable of each sample
-
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
   ni <- tabulate(ina)
@@ -40,8 +39,7 @@ spherconc.test <- function(x, ina) {
       U2 <- sum(wi * g2^2) - sum(wi * g2)^2/sum(wi)
       stat <- U2
       pvalue <- pchisq(stat, g - 1, lower.tail = FALSE)
-      mess <- paste('The mean resultant length is between 0.44 and 0.67.
-                    U2 was calculated')
+      mess <- paste('The mean resultant length is between 0.44 and 0.67. U2 was calculated')
 
     } else if ( Rb > 0.67 ) {
       ## case 3

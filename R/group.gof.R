@@ -9,30 +9,23 @@
 group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 1) {
 
   if ( !rads )  m <- m * pi / 180
-
   d <- length(ni) ##  number of groups
   p <- numeric(d)
   n <- sum(ni)
 
   if ( dist == "vm" ) {
-    for ( i in 1:d ) {
-      p[i] <- pvm( g[i + 1], m, k, rads = TRUE ) -  pvm( g[i], m, k, rads = TRUE )
-    }
-
+    for ( i in 1:d )  p[i] <- pvm( g[i + 1], m, k, rads = TRUE ) -  pvm( g[i], m, k, rads = TRUE )  
   } else if ( dist == "uniform" ) {
-      p[i] <- ( g[i + 1] - g[i] ) / (2 * pi)
+    for ( i in 1:d )  p[i] <- ( g[i + 1] - g[i] ) / (2 * pi)
   }
-
+  
   sj <- cumsum(ni - n * p)
   sjbar <- sum(p * sj)
   ug <- sum(p * (sj - sjbar)^2 ) / n
 
   if (ncores <= 1) {
-
     tic <- proc.time()
-
     ub <- numeric(R)
-
     for (i in 1:R) {
       x <- rvonmises(n, m, k, rads = TRUE)
       sim <- as.vector( table( cut(x, breaks = g) ) )
@@ -40,13 +33,10 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
       sjbarb <- sum(p * sjb)
       ub[i] <- sum( p * (sjb - sjbarb)^2 ) / n
     }
-
     runtime <- proc.time() - tic
 
   } else {
-
     tic <- proc.time()
-
      cl <- makePSOCKcluster(ncores)
      registerDoParallel(cl)
      ub <- foreach(vim = 1:R, .combine = rbind, .export = "rvonmises") %dopar% {
@@ -57,17 +47,12 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
        a <- sum( p * (sjb - sjbarb)^2 ) / n
        return(a)
      }
-
      stopCluster(cl)
-
      runtime <- proc.time() - tic
-
   }
 
   pval <- ( sum(ub > ug) + 1 ) / ( R + 1 )
-
   info <- c(ug, pval)
   names(info) <- c("statistic", "p-value")
   list(info = info, runtime = runtime)
-
 }

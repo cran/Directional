@@ -7,7 +7,6 @@
 #### Kent J.T., Ganeiber A.M. and Mardia K.V. (2013)
 #### http://arxiv.org/pdf/1310.8110v1.pdf
 ################################
-
 rkent <- function(n, k, m, b) {
   ## n is the required sample size
   ## k is the concentration parameter, the Fisher part

@@ -4,7 +4,6 @@
 #### Tsagris Michail 01/2016
 #### mtsagris@yahoo.gr
 ################################
-
 dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
   ## x is the matrix containing the data
   ## xnew is the new data

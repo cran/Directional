@@ -11,9 +11,7 @@ spher.reg <- function(y, x, rads = FALSE) {
   ## y is the dependent variable
   ## The first row of both matrices is the latitude
   ## and the second is the longitude
-
   n <- dim(x)[1]  ## sample size
-
   if ( dim(x)[2] == 2  &  dim(y)[2] == 2 ) {
     if ( !rads ) {
       x <- pi * x / 180  ## from degrees to rads

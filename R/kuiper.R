@@ -5,12 +5,10 @@
 #### References: Jammalamadaka, S. Rao and SenGupta, A. (2001).
 #### Topics in Circular Statistics, pg. 153-155
 ################################
-
 kuiper <- function(u, rads = FALSE, R = 1) {
   ## u is a vector with circular data
   ## if data are in rads set it to TRUE
   ## R is for Monte Carlo estimate of the p-value
-
   if ( !rads )   u <- u / 180 * pi
   u <- sort(u) / (2 * pi)
   n <- length(u)
@@ -25,14 +23,10 @@ kuiper <- function(u, rads = FALSE, R = 1) {
     b1 <- 2 * ( a1 - 1 ) * a2
     b2 <- 8 * Vn / ( 3 * f ) * m2 * (a1 - 3) * a2
     pvalue <- sum(b1 - b2)
-
   } else {
-    bvn <- numeric(R)
-    for (j in 1:R) {
-      x <- runif(n, 0, 2 * pi)
-      x <- sort(x) / (2 * pi)
-      bvn[j] <- f * ( max(x - (i - 1)/n) + max(i/n - x) )
-    }
+    x <- matrix( runif(n * R, 0, 2 * pi), ncol = R)
+    x <- Rfast::sort_mat(x) / (2 * pi)
+    bvn <- f * ( Rfast::colMaxs(x - (i - 1)/n, value = TRUE) + Rfast::colMaxs(i/n - x, value = TRUE) )
     pvalue <- ( sum(bvn > Vn) + 1 ) / (R + 1)
   }
 

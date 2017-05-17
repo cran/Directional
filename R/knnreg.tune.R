@@ -34,7 +34,6 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
   per <- matrix(nrow = M, ncol = A - 1)
 
   if (type == "spher") {
-
     runtime <- proc.time()
     apostasi <- tcrossprod( x )
     diag(apostasi) <- 1
@@ -53,7 +52,6 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
       for ( l in 1:c(A - 1) ) {
         k <- l + 1
-
         if (estim == "arithmetic") {
           for (i in 1:rmat) {
             xa <- cbind(ina, apo[i, ])
@@ -77,10 +75,8 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
           est <- est / sqrt( Rfast::rowsums(est^2) )
           per[vim, l] <- 1 - sum( est * ytest )  / rmat
         } else  per[vim, l] <- sum( (est - ytest)^2 ) / rmat
-
       }
     }
-
     mspe <- Rfast::colmeans(per)
     bias <- per[ , which.min(mspe)] - Rfast::rowMins(per, value = TRUE) ## apply(per, 1, min)  ## TT estimate of bias
     estb <- mean( bias )  ## TT estimate of bias
@@ -93,7 +89,6 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
     if (ncores == 1) {
 
       runtime <- proc.time()
-
       for (vim in 1:M) {
         ytest <- as.matrix( y[mat[, vim], ] )  ## test set dependent vars
         ytrain <- as.matrix( y[-mat[, vim], ] )  ## train set dependent vars
@@ -114,7 +109,6 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
       cl <- makePSOCKcluster(ncores)
       registerDoParallel(cl)
       pe <- numeric(A - 1)
-
       per <- foreach(i = 1:M, .combine = rbind, .packages = "Rfast",
 	     .export = c("knn.reg", "rowsums", "colmeans", "colVars", "colsums") ) %dopar% {
         ytest <- as.matrix( y[mat[, i], ] )  ## test set dependent vars
@@ -130,7 +124,6 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
       }
       stopCluster(cl)
       runtime <- proc.time() - runtime
-
     }
 
     mspe <- Rfast::colmeans(per)
@@ -139,7 +132,6 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
     names(mspe) <- paste("k=", 2:A, sep = "")
     performance <- c( min(mspe) + estb, estb)
     names(performance) <- c("mspe", "estimated bias")
-
   }
 
   if ( graph )  plot(2:c(length(mspe) + 1), mspe, xlab = "Nearest neighbours", ylab = "MSPE", type = "b")

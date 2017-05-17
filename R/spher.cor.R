@@ -14,20 +14,16 @@ spher.cor <- function(x, y) {
   n <- dim(x)[1]  ## sample size
   x <- t(x) - Rfast::colmeans(x)     ## subtract the mean
   y <- t(y) - Rfast::colmeans(y)   ## subtract the mean
-
   s11 <- tcrossprod(x) / n
   s12 <- tcrossprod( x, y ) / n
   s21 <- t( s12 )
   s22 <- tcrossprod(y) / n
-
   a1 <- solve(s11, s12)
   a2 <- solve(s22, s21)
   rsq <- sum( t(a1) * a2)
   test <- n * rsq
   pvalue <- pchisq(test, p * q, lower.tail = FALSE)
   res <- c(rsq, pvalue)
-
   names(res) <- c('R-squared', 'p-value')
   res
-
 }
