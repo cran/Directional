@@ -7,7 +7,6 @@
 #### Fisher, N. I., Lewis, T., & Embleton, B. J. (1987).
 #### Statistical analysis of spherical data. Cambridge university press.
 ################################
-
 mediandir_2 <- function(x) {
   ## x is the directional data
   funa <- function(pa) {

@@ -5,7 +5,6 @@
 #### References: Chang Ted (1986)
 #### Spherical egession. Annals of statistics, 14(3): 907-924
 ################################
-
 rot.matrix <- function(ksi, theta, rads = FALSE) {
   ## ksi is the rotation axis, where the first element is the
   ## latitude and the second is the longitude

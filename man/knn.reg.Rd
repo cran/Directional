@@ -30,7 +30,12 @@ The number of nearest neighbours, set to 5 by default.
 The type of the response variable. If it is Euclidean, set this argument equal to "res".  If it is a unit vector set it to res="spher".
 }
 \item{type}{
-The type of distance to be used. This determines the nature of the predictor variables. This is actually the argument "method" of the distance function in R. The default value is "euclidean". If you use the Euclidean distance, the package "fields" is used. The "rdist" function of that packages is about 3 times faster than the standard built-in "dist". R has several options the type of the distance. Just type ?dist in R and see the methods. Any method can be given here. If you have unit vectors in general, you should put type="spher", so that the cosinus distance is calculated.
+The type of distance to be used. This determines the nature of the predictor variables. This is actually
+the argument "method" of the distance function in R. The default value is "euclidean". 
+If you use the Euclidean distance, the package "Rfast" is used. The "dista" function of that package
+is about 3 times faster than the standard built-in "dist". R has several options the type of the distance. 
+Just type ?Rfast::Dist in R and see the methods. Any method can be given here. If you have 
+unit vectors in general, you should put type="spher", so that the cosinus distance is calculated.
 }
 \item{estim}{
 Once the k observations whith the smallest distance are discovered, what should the prediction be? The arithmetic average of the corresponding y values be used estim="arithmetic" or their harmonic average estim="harmonic".
@@ -38,7 +43,7 @@ Once the k observations whith the smallest distance are discovered, what should 
 }
 
 \details{
-This funciton covers a broad range of data, Euclidean and spherical, along with their combinations.
+This function covers a broad range of data, Euclidean and spherical, along with their combinations.
 }
 
 \value{

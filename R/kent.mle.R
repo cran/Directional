@@ -6,7 +6,6 @@
 #### JRSSB, 44(1): 71-80.
 #### The Fisher-Bingham distribution on the sphere
 ################################
-
 kent.mle <- function(x) {
   ## x is the data in Euclidean coordinates
   tic <- proc.time()
@@ -29,13 +28,13 @@ kent.mle <- function(x) {
   psi <- 0.5 * atan(2 * B[2, 3]/(B[2, 2] - B[3, 3]))
   K <- matrix( c(1, 0, 0, 0, cos(psi), sin(psi), 0, -sin(psi), cos(psi) ), ncol = 3)
   G <- H %*% K  ## The G matrix Kent describes, the A in our notation
-  r1 <- sqrt( sum(xbar^2) )
   lam <- eigen(B[-1, -1])$values
-  r2 <- lam[1] - lam[2]
   ## the next function will be used to estimate the kappa and beta
-  xg1 <- sum( x %*% G[, 1] )
-  xg2 <- sum( ( x %*% G[, 2] )^2 )
-  xg3 <- sum( ( x %*% G[, 3] )^2 )
+  xg <- x %*% G
+  xg1 <- sum(xg[, 1])
+  a <- colsums(xg^2)
+  xg2 <- a[2]
+  xg3 <- a[3]
 
   mle <- function(para) {
     ## maximization w.r.t. to k and b
@@ -44,11 +43,11 @@ kent.mle <- function(x) {
     gam <- c(0, k, 0)
     lam <- c(0, -b, b)
     ckb <- fb.saddle(gam, lam)[3]
-    g <-  n * ckb - k * xg1 - b * ( xg2 - xg3 ) 
+    g <-  n * ckb - k * xg1 - b * ( xg2 - xg3 )
     g
   }
 
-  ini <- vmf(x)$k
+  ini <- Rfast::vmf.mle(x)$kappa
   ini <- c(ini, ini/2.1)  ## initial values for kappa and beta
   qa <- optim(ini, mle)
   para <- qa$par

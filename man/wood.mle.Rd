@@ -1,4 +1,4 @@
-\name{MLe of the Wood bimodal distribution on the sphere}
+\name{MLE of the Wood bimodal distribution on the sphere}
 \alias{wood.mle}
 \title{
 MLe of the Wood bimodal distribution on the sphere
@@ -13,7 +13,7 @@ wood.mle(y)
 }
 
 \arguments{
-  \item{y}{
+\item{y}{
 A matrix containing two columns. The first one is the latitude and the second is the longitude, both expressed in degrees.
 }
 }

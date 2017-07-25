@@ -42,8 +42,8 @@ lr.aov <- function(x, ina) {
     j <- j + 1
     k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 - (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
   }
-
   k1 <- k[j]  ## concentration parameter under H1
+  
   apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI( k0, p/2 - 1, expon.scaled = TRUE ) ) + k0
   apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI( k1, p/2 - 1, expon.scaled = TRUE ) ) + k1
   w <- 2 * (k1 * sum(Ri) - k0 * R - n * apk1 + n * apk0)

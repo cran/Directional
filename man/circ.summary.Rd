@@ -20,7 +20,7 @@ If the data are in rads, then this should be TRUE, otherwise FALSE.
 A boolean variable to do a faster implementation.
 }
 \item{tol}{
-The tolerance level to stop the Newton-Raphson algorithm for fidning kappa.
+The tolerance level to stop the Newton-Raphson algorithm for finding kappa.
 }
 \item{plot}{
 If you want to see the data plotted on a cicrle make this TRUE.
@@ -49,6 +49,9 @@ The circular variance.
 }
 \item{circstd}{
 The circular standard deviation.
+}
+\item{loglik}{
+The log-likelihood of the fitted von Mises distribution. 
 }
 }
 

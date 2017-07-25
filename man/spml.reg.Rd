@@ -9,7 +9,7 @@ Regression with circualr dependent variable and Euclidean or categorical indepen
 }
 
 \usage{
-spml.reg(y, x, rads = TRUE, xnew = NULL, seb = TRUE)
+spml.reg(y, x, rads = TRUE, xnew = NULL, seb = TRUE, tol = 1e-07)
 }
 
 \arguments{
@@ -29,10 +29,13 @@ If they are categorical, the user must provide them as dummy variables. It does 
 \item{seb}{
 a boolean variable. If TRUE, the standard error of the coefficients willbe be returned. Set to FALSE in case of simulation studies or in other cases such as a forward regression setting for example. In these cases, it can save some time.
 }
+\item{tol}{
+The tolerance value to terminate the Newton-Raphson algorithm.
+}
 }
 
 \details{
-The E-M algorithm is fitted in this regression as described in Presnell et al. (1998).
+The Newton-Raphson algorithm is fitted in this regression as described in Presnell et al. (1998).
 }
 \value{
 A list including:

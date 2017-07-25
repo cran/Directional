@@ -17,7 +17,7 @@ spherconc.test <- function(x, ina) {
 
   if (p == 3) {
     S <- rowsum(x, ina) / ni
-    Rbi <- sqrt( Rfast::rowsums(S^2) )    ## the mean resultant length of each group
+    Rbi <- sqrt( Rfast::rowmeans(S^2) )    ## the mean resultant length of each group
     S <- Rfast::colmeans(x)
     Rb <- sqrt( sum(S^2) )  ## the mean resultant length of all the data
 

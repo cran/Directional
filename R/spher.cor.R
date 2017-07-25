@@ -8,7 +8,6 @@
 
 spher.cor <- function(x, y) {
   ## x and y are two (hyper-)spherical variables
-
   p <- dim(x)[2]  ## dimension of x
   q <- dim(y)[2]  ## dimension of y
   n <- dim(x)[1]  ## sample size

@@ -25,23 +25,11 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
   if ( seed )  set.seed(1234567)
 
   for (i in 1:R) {
-    mat <- matrix(nrow = frac, ncol = g)
-    est <- numeric(frac)
     nu <- sample(1:n, frac)
-    test <- x[nu, ]
-    id <- ina[-nu]
-    train <- x[-nu, ]
-
-    for (j in 1:g) {
-      da <- Rfast::vmf.mle( train[id == j, ] )  ## estimates the parameters of the vMF
-      mesi[j, ] <- da$mu  ## mean direction of each group
-      k[j] <- da$kappa ## concentration of each group
-      mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * test %*% mesi[j, ] -
-	  log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]
-	  # - 0.5 * p * log(2 * pi)
-    }
-
-    est <- Rfast::rowMaxs(mat)
+    mod <- Rfast::multivmf.mle(x[-nu, ], ina[-nu], ell = FALSE)
+    ki <- mod$ki
+    mat <- (p/2 - 1) * log(ki) + ki * tcrossprod(mod$mi, x[nu, ]) - log( besselI(ki, p/2 - 1, expon.scaled = TRUE) ) - ki
+    est <- Rfast::colMaxs(mat)
     per[i] <- sum( est == ina[nu] ) / frac
   }
 

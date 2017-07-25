@@ -1,5 +1,4 @@
 ### Code for converting unsigned unit quaternion in R4 to (3 x 3) rotation matrix on SO(3)  ###
-
 quat2rot <-function(x) {
   x1 <- x[1]
   x2 <- x[2]

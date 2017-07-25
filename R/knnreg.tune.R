@@ -14,11 +14,10 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
   ## estim is either 'arithmetic', 'harmonic'. How to calculate the
   ## estimated value of the Y using the arithmetic mean or the
   ## harmonic mean of the closest observations.
-  y <- as.matrix(y)
   x <- as.matrix(x)
+  y <- as.matrix(y)
   n <- dim(y)[1]
   d <- dim(y)[2]
-  ina <- 1:n
 
   if ( is.null(mat) ) {
     nu <- sample(1:n, min( n, round(n / M) * M ) )
@@ -35,26 +34,30 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
   if (type == "spher") {
     runtime <- proc.time()
-    apostasi <- tcrossprod( x )
-    diag(apostasi) <- 1
-    apostasi[ apostasi >= 1 ] <- 1
-    apostasi <- acos(apostasi)
     ## The k-NN algorithm is calculated R times. For every repetition a
     ## test sample is chosen and its observations are classified
     for (vim in 1:M) {
 
-      ytest <- as.matrix( y[mat[, vim], ] )  ## test set dependent vars
-      ytrain <- as.matrix( y[-mat[, vim], ] )  ## train set dependent vars
-      aba <- as.vector( mat[, vim] )
-      aba <- aba[aba > 0]
-      apo <- apostasi[aba, -aba]
+      ytest <- y[mat[, vim], , drop = FALSE]  ## test set dependent vars
+      ytrain <- y[-mat[, vim], drop = FALSE]  ## train set dependent vars
+      apo <- tcrossprod(x[mat[, vim], ], x[-mat[, vim], ] )
+      apo[ apo >= 1 ] <- 1
+      apo <- acos(apo)
+	    ina <- as.vector( mat[, -vim] )
       est <- matrix(nrow = rmat, ncol = d)
-
+      bb <- Rfast::colnth(apo, rep(A, rmat) )
+      poies <- matrix(0, nrow = A, ncol = rmat)
+      disa <- matrix(0, nrow = A, ncol = rmat)
+      for ( l in 1:rmat ) {
+        sel <- which( apo[, l] <= bb[l] )[1:A]
+        disa[, l] <- apo[ sel, l]
+        poies[, l] <- ina[ sel ]
+      }
       for ( l in 1:c(A - 1) ) {
         k <- l + 1
         if (estim == "arithmetic") {
           for (i in 1:rmat) {
-            xa <- cbind(ina, apo[i, ])
+            xa <- cbind(poies[1:k, i], disa[1:k, i])
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
             yb <- as.matrix( y[a, ] )
@@ -63,11 +66,11 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
         } else if (estim == "harmonic") {
           for (i in 1:rmat) {
-            xa <- cbind(ina, apo[i, ])
+            xa <- cbind(poies[1:k, i], disa[1:k, i])
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
             yb <- as.matrix( y[a, ] )
-            est[i, ] <- k / Rfast::colsums( yb )
+            est[i, ] <- Rfast::colhameans( yb )
           }
         }
 
@@ -78,10 +81,10 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
       }
     }
     mspe <- Rfast::colmeans(per)
-    bias <- per[ , which.min(mspe)] - Rfast::rowMins(per, value = TRUE) ## apply(per, 1, min)  ## TT estimate of bias
+    bias <- per[ , which.min(mspe)] - Rfast::rowMins(per, value = TRUE) ## apply(per, 1, min)
     estb <- mean( bias )  ## TT estimate of bias
-    performance <- c( 1 - min(mspe) + estb, estb)
-    mspe <- 1 - Rfast::colmeans(per)
+    performance <- c( min(mspe) + estb, estb)
+    mspe <- Rfast::colmeans(per)
     runtime <- proc.time() - runtime
 
   } else {
@@ -90,15 +93,44 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
       runtime <- proc.time()
       for (vim in 1:M) {
-        ytest <- as.matrix( y[mat[, vim], ] )  ## test set dependent vars
-        ytrain <- as.matrix( y[-mat[, vim], ] )  ## train set dependent vars
-        xtrain <- as.matrix( x[-mat[, vim], ] )  ## train set independent vars
-        xtest <- as.matrix( x[mat[, vim], ] )  ## test set independent vars
-
+        ytest <- y[mat[, vim], , drop = FALSE]  ## test set dependent vars
+        ytrain <- y[-mat[, vim], drop = FALSE]  ## train set dependent vars
+        apo <- Rfast::dista( x[mat[, vim], , drop = FALSE], x[-mat[, vim], , drop = FALSE], type = type )
+	    ina <- as.vector( mat[, -vim] )
+        est <- matrix(nrow = rmat, ncol = d)
+        bb <- Rfast::colnth(apo, rep(A, rmat) )
+        poies <- matrix(0, nrow = A, ncol = rmat)
+        disa <- matrix(0, nrow = A, ncol = rmat)
+        for ( l in 1:rmat ) {
+          sel <- which( apo[, l] <= bb[l] )[1:A]
+          disa[, l] <- apo[ sel, l]
+          poies[, l] <- ina[ sel ]
+        }
         for ( l in 1:c(A - 1) ) {
-          knn <- l + 1
-          est <- knn.reg(xtest, ytrain, xtrain, knn, res = res, type = type, estim = estim)
-          per[vim, l] <- sum( (ytest - est)^2 ) / rmat
+          k <- l + 1
+          if (estim == "arithmetic") {
+            for (i in 1:rmat) {
+              xa <- cbind(poies[1:k, i], disa[1:k, i])
+              qan <- xa[order(xa[, 2]), ]
+              a <- qan[1:k, 1]
+              yb <- as.matrix( y[a, ] )
+              est[i, ] <- Rfast::colmeans( yb )
+            }
+
+          } else if (estim == "harmonic") {
+            for (i in 1:rmat) {
+              xa <- cbind(poies[1:k, i], disa[1:k, i])
+              qan <- xa[order(xa[, 2]), ]
+              a <- qan[1:k, 1]
+              yb <- as.matrix( y[a, ] )
+              est[i, ] <- Rfast::colhameans( yb )
+            }
+          }
+
+          if (res == "spher") {
+            est <- est / sqrt( Rfast::rowsums(est^2) )
+            per[vim, l] <- 1 - sum( est * ytest )  / rmat
+          } else  per[vim, l] <- sum( (est - ytest)^2 ) / rmat
         }
       }
       runtime <- proc.time() - runtime
@@ -109,25 +141,54 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
       cl <- makePSOCKcluster(ncores)
       registerDoParallel(cl)
       pe <- numeric(A - 1)
-      per <- foreach(i = 1:M, .combine = rbind, .packages = "Rfast",
-	     .export = c("knn.reg", "rowsums", "colmeans", "colVars", "colsums") ) %dopar% {
-        ytest <- as.matrix( y[mat[, i], ] )  ## test set dependent vars
-        ytrain <- as.matrix( y[-mat[, i], ] )  ## train set dependent vars
-        xtrain <- as.matrix( x[-mat[, i], ] )  ## train set independent vars
-        xtest <- as.matrix( x[mat[, i], ] )  ## test set independent vars
+      per <- foreach(vim = 1:M, .combine = rbind, .packages = "Rfast",
+	     .export = c("knn.reg", "dista", "rowsums", "colmeans", "colVars", "colsums") ) %dopar% {
+        ytest <- y[mat[, vim], , drop = FALSE]  ## test set dependent vars
+        ytrain <- y[-mat[, vim], , drop = FALSE]  ## train set dependent vars
+        apo <- Rfast::dista(x[mat[, vim], , drop = FALSE], x[-mat[, vim], , drop = FALSE], type = type )
+	    ina <- as.vector( mat[, -vim] )
+        est <- matrix(nrow = rmat, ncol = d)
+        bb <- Rfast::colnth(apo, rep(A, rmat) )
+        poies <- matrix(0, nrow = A, ncol = rmat)
+        disa <- matrix(0, nrow = A, ncol = rmat)
+        for ( l in 1:rmat ) {
+          sel <- which( apo[, l] <= bb[l] )[1:A]
+          disa[, l] <- apo[ sel, l]
+          poies[, l] <- ina[ sel ]
+        }
         for ( l in 1:c(A - 1) ) {
-          knn <- l + 1
-          est <- knn.reg(xtest, ytrain, xtrain, knn, res = res, type = type, estim = estim)
-          pe[l] <- sum( (ytest - est)^2 ) / rmat
+          k <- l + 1
+          if (estim == "arithmetic") {
+            for (i in 1:rmat) {
+              xa <- cbind(poies[1:k, i], disa[1:k, i])
+              qan <- xa[order(xa[, 2]), ]
+              a <- qan[1:k, 1]
+              yb <- as.matrix( y[a, ] )
+              est[i, ] <- Rfast::colmeans( yb )
+            }
+
+          } else if (estim == "harmonic") {
+            for (i in 1:rmat) {
+              xa <- cbind(poies[1:k, i], disa[1:k, i])
+              qan <- xa[order(xa[, 2]), ]
+              a <- qan[1:k, 1]
+              yb <- as.matrix( y[a, ] )
+              est[i, ] <- Rfast::colhameans( yb )
+            }
+          }
+
+          if (res == "spher") {
+            est <- est / sqrt( Rfast::rowsums(est^2) )
+            pe[l] <- 1 - sum( est * ytest )  / rmat
+          } else  pe[l] <- sum( (est - ytest)^2 ) / rmat
         }
         return(pe)
       }
       stopCluster(cl)
       runtime <- proc.time() - runtime
     }
-
     mspe <- Rfast::colmeans(per)
-    bias <- per[ ,which.min(mspe)] - Rfast::rowMins(per, value = TRUE)## apply(per, 1, min)  ## TT estimate of bias
+    bias <- per[ ,which.min(mspe)] - Rfast::rowMins(per, value = TRUE)
     estb <- mean( bias )  ## TT estimate of bias
     names(mspe) <- paste("k=", 2:A, sep = "")
     performance <- c( min(mspe) + estb, estb)

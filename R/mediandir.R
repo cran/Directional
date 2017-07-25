@@ -10,24 +10,5 @@
 #### Communications in Statistics-Theory and Methods, 19(6): 1973-1986.
 ################################
 mediandir <- function(x) {
-  ## x is the directional data
-  n <- dim(x)[1]
-  p <- dim(x)[2]
-  u1 <- Rfast::colMedians(x)
-  u1 <- u1 / sqrt( sum(u1^2) )
-  ww <- 1 /as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
-  if ( max(ww) == Inf ) {
-    u2 <- u1
-  }  else  u2 <- Rfast::colsums(x * ww )
-  u2 <- u2 / sqrt( sum( u2^2 ) )
-  while ( sum( abs (u2 - u1 ) ) > 1e-8 ) {
-    u1 <- u2
-    ww <- 1/as.vector( sqrt( abs( 1 - ( x %*% u1 )^2 ) ) )
-    if ( max(ww) == Inf ) {
-       u2 <- u1
-    }  else  u2 <- colsums(x * ww )
-    u2 <- u2 / sqrt( sum( u2^2 ) )
-  }
-
-  u2
+  Rfast::mediandir(x)
 }

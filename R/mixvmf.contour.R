@@ -7,7 +7,6 @@
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 #### http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 ################################
-
 mixvmf.contour <- function(u, mod) {
   ## u contains the data in latitude and longitude the first column is
   ## the latitude and the second column is the longitude

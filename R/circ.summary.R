@@ -11,7 +11,8 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE
   ## u is an angular variable
   if ( !rads )   u <- u * pi/180
   if (fast) {
-    res <- vm.mle(u, tol = tol)
+    mod <- Rfast::vm.mle(u, tol = tol)
+    res <- list(mesos = mod$param[1], kappa = mod$param[2], loglik = mod$loglik)
   } else {
     n <- length(u)  ## sample size
     ## if the data are in degrees we transform them into radians
@@ -27,8 +28,9 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE
     circv <- 1 - Rbar
     circs <- sqrt( -2 * log(Rbar) )  ## sample cicrular standard deviation
     ## lik is the von Mises likelihood
-     lik <- function(k)   k * sum( cos(u - mesos) ) - n * log(2 * pi) - n * ( log(besselI( k, 0, expon.scaled = TRUE) ) + k )
-    kappa <- optimize(lik, c(0, 100000), maximum = TRUE, tol = tol)$maximum
+    lik <- function(k)   k * sum( cos(u - mesos) ) - n * ( log(besselI( k, 0, expon.scaled = TRUE) ) + k )
+	mod <- optimize(lik, c(0, 50000), maximum = TRUE, tol = tol)  
+    kappa <- mod$maximum
     ## kappa is the estimated concentration (kappa)
     R <- n * Rbar
     if (Rbar < 2/3) {
@@ -52,7 +54,7 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE
       lines(yy, ta, lty = 2)
       points(cos(u), sin(u))
     }
-    res <- list(mesos = mesos, confint = ci, kappa = kappa, MRL = MRL, circvariance = circv, circstd = circs)
+    res <- list( mesos = mesos, confint = ci, kappa = kappa, MRL = MRL, circvariance = circv, circstd = circs, loglik = mod$objective - n * log(2 * pi) )
   }
   res
 }

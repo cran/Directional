@@ -5,16 +5,19 @@ MLE of the angular central Gaussian distribution
 }
 
 \description{
-MLE of the angular central Gaussian distribution
+MLE of the angular central Gaussian distribution.
 }
 
 \usage{
-acg(x)
+acg(x, tol = 1e-07)
 }
 
 \arguments{
-  \item{x}{
-  A matrix with directional data, i.e. unit vectors.
+\item{x}{
+A matrix with directional data, i.e. unit vectors.
+}
+\item{tol}{
+The tolerance value at which to terminate the iterations.  
 }
 }
 
@@ -64,4 +67,4 @@ cov2cor(s)  ## true covariance matrix turned into a correlation matrix
 }
 
 \keyword{ projected normal }
-\keyword{ spherical data }
+\keyword{ directional data }

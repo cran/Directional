@@ -9,10 +9,11 @@ It calculates, very fast, the (hyper-)spherical median of a sample.
 }
 \usage{
 mediandir(x)
+mediandir_2(x)
 }
 \arguments{
-  \item{x}{
-  The data, a numeric matrix with unit vectors.
+\item{x}{
+The data, a numeric matrix with unit vectors.
 }
 }
 \details{
@@ -38,7 +39,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf}, \link{kent.mle}, \link{mediandir}
+\code{\link{vmf}, \link{kent.mle}
 }
 }
 \examples{

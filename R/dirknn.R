@@ -31,7 +31,7 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
       dista <- Rfast::sort_mat(dista)
       if ( mesos ) {
         ta[, m] <- Rfast::colmeans( dista[1:k, ] )
-      } else  ta[, m] <- k / Rfast::colsums( 1 / dista[1:k, ] )
+      } else  ta[, m] <- Rfast::colhameans( dista[1:k, ] )  
     }
     g <- Rfast::rowMins(ta)
 

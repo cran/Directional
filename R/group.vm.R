@@ -5,7 +5,7 @@ group.vm <- function(group, fi, rads = FALSE) {
   u <- rep(u, fi)
   mod <- circ.summary(u, rads = TRUE, plot = FALSE)
   h <- mean( apply(group, 1, diff) ) ## mean range of the classes
-  ah <-  h / 2  / sin( h / 2 )
+  ah <-  0.5 * h / sin( 0.5 * h )
   mod$MRL <- ah * mod$MRL ## grouped data correction of the MRL
   mod
 }

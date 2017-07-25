@@ -59,7 +59,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>
 %}
 
 \seealso{
-\code{\link{vmf}, \link{acg}, \link{circ.summary}
+\code{ \link{ESAGmle}, \link{spml.mle}, \link{acg}, \link{circ.summary}
 }
 }
 

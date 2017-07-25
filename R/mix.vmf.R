@@ -16,7 +16,8 @@ mix.vmf <- function(x, g) {
   lika <- matrix(nrow = n, ncol = g)
   pij <- matrix(nrow = n, ncol = g)
   ka <- numeric(g)
-  Apk <- function(p, k)   besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
+  Apk <- function(p, k)   besselI(k, p/2, expon.scaled = TRUE) / 
+         besselI(k, p/2 - 1, expon.scaled = TRUE)
   runtime <- proc.time()
   ## Step 1
   l <- 1
@@ -32,14 +33,14 @@ mix.vmf <- function(x, g) {
   }
 
   epi <- which.max(crit)
-  w <- as.vector( table(cl[, epi]) )
+  w <- tabulate(cl[, epi])
 
   if ( min(w) <= 3 ) {
     mess <- paste( "Too many clusters to fit for this data. Try one less" )
     res <- list(mess = mess, loglik = NA)
 
   } else {
-    w <- as.vector( table(cl[, epi]) )/n  #'# initial weights
+    w <- tabulate( cl[, epi] )/n  #'# initial weights
     m1 <- mesa[, , epi]
     Rk <- sqrt( Rfast::rowsums(m1^2) )  ## mean resultant lengths of the initical clusters
     mat <- m1/Rk  ## initial mean directions
@@ -58,7 +59,8 @@ mix.vmf <- function(x, g) {
         k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
       }
       ka[j] <- k[i] ## initial concentration parameters
-      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] + ka[j] * (x %*% mat[j, ])
+      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - 
+      log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
     wlika <- w * exp(lika)
     rswlika <- Rfast::rowsums(wlika)
@@ -86,7 +88,8 @@ mix.vmf <- function(x, g) {
         k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
       }
       ka[j] <- k[i]
-      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
+      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - 
+      log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
 
     wexplika <- w * exp( lika)
@@ -113,7 +116,8 @@ mix.vmf <- function(x, g) {
           k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
         }
         ka[j] <- k[i]
-        lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
+        lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - 
+        log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
       }
 
       wexplika <- w * exp( lika)

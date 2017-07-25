@@ -28,7 +28,7 @@ f.rbing <- function(n, lam) {
   while (nsamp < n) {
     x.samp <- FALSE
     while ( !x.samp ) {
-      yp <- rnorm(qa, mu , SigACG)
+      yp <- rnorm(qa, mu, SigACG)
       y <- yp / sqrt( sum(yp^2) )
       lratio <-  - sum( y^2 * lam.full ) - qa/2 * log(qa) + 0.5 * (qa - 1) + qa/2 * log( sum(y^2 * sigacginv ) )
 

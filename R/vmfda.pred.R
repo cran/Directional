@@ -12,20 +12,9 @@ vmfda.pred <- function(xnew, x, ina) {
   ## ina is the group indicator variable
   xnew <- as.matrix(xnew)
   if ( ncol(xnew) == 1 )   xnew <- t(xnew)
-  p <- dim(x)[2]  ## dimensonality of the data
-  ina <- as.numeric(ina)
-  g <- max(ina)
-  mesi <- matrix(nrow = g, ncol = p)
-  k <- numeric(g)
-  nu <- nrow(xnew)
-  mat <- matrix(nrow = nu, ncol = g)
-
-  for (j in 1:g) {
-    da <- Rfast::vmf.mle( x[ina == j, ] )  ## estimates the parameters of the vMF
-    mesi[j, ] <- da$mu  ## mean direction
-    k[j] <- da$kappa  ## concentration
-    mat[, j] <- (p/2 - 1) * log(k[j]) + k[j] * xnew %*% mesi[j, ] - log( besselI(k[j], p/2 - 1, expon.scaled = TRUE) ) - k[j]   ##- 0.5 * p * log(2 * pi)
-  }
-
-  Rfast::rowMaxs(mat)
+  mod <- Rfast::multivmf.mle(x, ina, ell = FALSE)
+  ki <- mod$ki
+  p <- dim(x)[2]
+  mat <- (p/2 - 1) * log(ki) + ki * tcrossprod(mod$mi, xnew) - log( besselI(ki, p/2 - 1, expon.scaled = TRUE) ) - ki
+  Rfast::colMaxs(mat)
 }

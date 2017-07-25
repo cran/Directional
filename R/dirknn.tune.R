@@ -4,7 +4,6 @@
 #### Tsagris Michail 01/2016
 #### mtsagris@yahoo.gr
 ################################
-
 dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = NULL) {
   ## x is the matrix containing the data
   ## M is the number of folds, set to 10 by default
@@ -32,18 +31,14 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = N
   M <- dim(mat)[2]
   per <- matrix(nrow = M, ncol = A - 1)
   rmat <- dim(mat)[1]
-  dis <- tcrossprod(z)
-  diag(dis) <- 1
-  dis[ dis > 1 ] <- 1
-  dis <- acos(dis)
   ## The k-NN algorith is calculated M times. For every repetition a
   ## fold is chosen and its observations are classified
   for (vim in 1:M) {
-    id <- as.vector( ina[ mat[, vim] ] )  ## groups of test sample
-    ina2 <- as.vector( ina[ -mat[, vim] ] )   ## groups of training sample
-    aba <- as.vector( mat[, vim] )
-    aba <- aba[aba > 0]
-    apo <- dis[-aba, aba]
+    id <- ina[ mat[, vim] ]  ## groups of test sample
+    ina2 <- ina[ -mat[, vim] ]   ## groups of training sample
+    apo <- tcrossprod(z[-mat[, vim], ], z[mat[, vim], ] )
+    apo[ apo >= 1 ] <- 1
+    apo <- acos(apo)
     ta <- matrix(nrow = rmat, ncol = ng)
 
     if (type == "NS") {
@@ -67,11 +62,9 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = N
       for ( j in 1:c(A - 1) ) {
         knn <- j + 1
         for (k in 1:rmat) {
-          xa <- cbind(ina2, apo[, k])
-          qan <- xa[order(xa[, 2]), ]
-          sa <- qan[1:knn, 1]
-          tab <- table(sa)
-          g[k] <- as.integer( names(tab)[ which.max(tab) ] )
+          bb <- Rfast::nth(apo[, k], knn)
+          ge <- tabulate( ina2[ which(apo[, k] <= bb) ] )
+          g[k] <- which.max(ge)
         }
         per[vim, j] <- sum( g == id ) / rmat
       }
