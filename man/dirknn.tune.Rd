@@ -61,7 +61,7 @@ Tibshirani, Ryan J., and Robert Tibshirani. A bias correction for the minimum er
 
 \author{
 Michail Tsagris
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
+R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
 }
 
 %\note{

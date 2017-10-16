@@ -5,7 +5,6 @@
 #### References: Howard E Haber couse webpage
 #### http://scipp.ucsc.edu/~haber/ph216/rotation_12.pdf
 ################################
-
 Arotation <- function(A) {
   ## A is a 3x3 rotation matrix
   con1 <- round(det(A), 15)

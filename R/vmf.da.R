@@ -7,7 +7,7 @@
 #### References: J. E. Morris and P. J. Laycock (1974)
 #### Discriminant Analysis of Directional Data (Biometrika)
 ################################
-vmf.da <- function(x, ina, fraction = 0.2, R = 1000, seed = FALSE) {
+vmf.da <- function(x, ina, fraction = 0.2, R = 200, seed = FALSE) {
   ## x is the data set
   ## ina is the group indicator variable
   ## fraction denotes the percentage of the sample to be used as the test sample

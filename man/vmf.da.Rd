@@ -9,7 +9,7 @@ Cross validation for estimating the classification rate of a discrminant analysi
 }
 
 \usage{
-vmf.da(x, ina, fraction = 0.2, R = 1000, seed = FALSE)
+vmf.da(x, ina, fraction = 0.2, R = 200, seed = FALSE)
 }
 
 \arguments{
@@ -51,7 +51,7 @@ Morris, J. E., & Laycock, P. J. (1974). Discriminant analysis of directional dat
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
+R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
 }
 
 %\note{

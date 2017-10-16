@@ -5,7 +5,6 @@
 #### References: Andrew T.A. Wood (1982), JRSSC, 31(1): 52-58
 #### A bimodal distribution on the sphere
 ################################
-
 wood.mle <- function(y) {
   ## y is a two column matrix, where the first column is the latitude and
   ## the second is the longitude, all expressed in degrees

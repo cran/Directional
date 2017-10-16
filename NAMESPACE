@@ -8,8 +8,9 @@ importFrom("stats", aggregate, coef, cor, dnorm, kmeans,
             cov, model.matrix, nlm, integrate, rbinom)
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            sort_mat, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
-		   rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans, multivmf.mle,
-		   Sort, spml.reg, spml.mle, mediandir)
+		       rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans, multivmf.mle,
+		       Sort, spml.reg, spml.mle, mediandir, circlin.cor, Table, colnth,
+		       wrapcauchy.mle, colOrder)
 
 import("doParallel")
 import("parallel")

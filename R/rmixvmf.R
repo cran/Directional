@@ -1,4 +1,3 @@
-
 ################################
 #### Simulation from a model based clustering using mixtures of von Mises-Fisher distributions
 #### Tsagris Michail 4/2015

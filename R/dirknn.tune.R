@@ -18,8 +18,6 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = N
   n <- dim(z)[1]  ## sample size
   ina <- as.numeric(ina) ## makes sure ina is numeric
   if ( A >= min( table(ina) ) )   A <- min( table(ina) ) - 3  ## The maximum
-  ## number  of nearest neighbours to use
-  ng <- max(ina)  ## The number of groups
   if ( is.null(mat) ) {
     nu <- sample(1:n, min( n, round(n / M) * M ) )
     ## It may be the case this new nu is not exactly the same
@@ -30,54 +28,21 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = N
   } else  mat <- mat
   M <- dim(mat)[2]
   per <- matrix(nrow = M, ncol = A - 1)
-  rmat <- dim(mat)[1]
-  ## The k-NN algorith is calculated M times. For every repetition a
-  ## fold is chosen and its observations are classified
   for (vim in 1:M) {
     id <- ina[ mat[, vim] ]  ## groups of test sample
     ina2 <- ina[ -mat[, vim] ]   ## groups of training sample
-    apo <- tcrossprod(z[-mat[, vim], ], z[mat[, vim], ] )
-    apo[ apo >= 1 ] <- 1
-    apo <- acos(apo)
-    ta <- matrix(nrow = rmat, ncol = ng)
-
-    if (type == "NS") {
-      ## Non Standard algorithm
-      for ( j in 1:c(A - 1) ) {
-        knn <- j + 1
-        for (l in 1:ng) {
-          dista <- apo[ina2 == l, ]
-          dista <- Rfast::sort_mat(dista)
-          if ( mesos ) {
-            ta[, l] <- Rfast::colmeans( dista[1:knn, ] )
-          } else  ta[, l] <- knn / Rfast::colsums( 1 / dista[1:knn, ] )
-        }
-        g <- Rfast::rowMins(ta)
-        per[vim, j] <- sum( g == id ) / rmat
-      }
-
-    } else {
-      ## Standard algorithm
-      g <- numeric( rmat )
-      for ( j in 1:c(A - 1) ) {
-        knn <- j + 1
-        for (k in 1:rmat) {
-          bb <- Rfast::nth(apo[, k], knn)
-          ge <- tabulate( ina2[ which(apo[, k] <= bb) ] )
-          g[k] <- which.max(ge)
-        }
-        per[vim, j] <- sum( g == id ) / rmat
-      }
-    }
+    aba <- as.vector( mat[, vim] )
+    aba <- aba[aba > 0]
+    g <- dirknn(x = z[-aba, ], xnew = z[aba, ,drop = FALSE], k = 2:A, ina = ina2, type = type, mesos = mesos)
+    be <- g - id
+    per[vim, ] <- Rfast::colmeans(be == 0)
   }
 
   ela <- Rfast::colmeans(per)
-  bias <- per[ , which.max(ela)] - Rfast::rowMaxs(per, value = TRUE)   ##apply(per, 1, max)  ## TT estimate of bias
-  estb <- mean( bias )  ## TT estimate of bias
   runtime <- proc.time() - runtime
   names(ela) <- paste("k=", 2:A, sep = "")
   plot(2:A, ela, type = "b", xlab = "k nearest neighbours", pch = 9, ylab = "Estimated percentage of correct classification")
-  percent <- c( max(ela) + estb)
-  names(percent) <- c("Bias corrected estimated percentage")
+  percent <- max(ela)
+  names(percent) <- c("Estimated percentage")
   list( per = ela, percent = percent, runtime = runtime )
 }

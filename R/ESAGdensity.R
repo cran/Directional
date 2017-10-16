@@ -16,7 +16,7 @@ ESAGdensity <- function(y, param, logden = FALSE) {
   y <- as.matrix(y)
   if   ( dim(y)[2] == 1 )   y <- t(y)
   g2 <- as.vector( y %*% m )
-  g1 <- as.vector( y %*% va * y )
+  g1 <- Rfast::rowsums( y %*% va * y )
   a <- g2 / sqrt(g1)
   M2 <- ( 1 + a^2 ) * pnorm(a) + a * dnorm(a)
   l <-  - log(2 * pi) + 0.5 * a^2 - 0.5 * sum(m^2) - 1.5 * log(g1) + log(M2)

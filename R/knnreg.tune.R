@@ -1,21 +1,7 @@
 knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
   type = "euclidean", estim = "arithmetic", mat = NULL, graph = FALSE) {
-
-  ## y is the multivariate (or univariate) dependent variable
-  ## x contains the independent variables(s)
-  ## M is the number of folds, set to 10 by default
-  ## it is assumed that the training set contains at least 11 observations
-  ## A is the highest number of nearest neighbours
-  ## res is the type of response, Euclidean ("eucl") or spherical ("spher")
-  ## ncores specifies how many cores to use
-  ## type is for the distance, Euclidean or Manhattan distance.
-  ## which can of course use here.
-  ## Type ?dist so see more
-  ## estim is either 'arithmetic', 'harmonic'. How to calculate the
-  ## estimated value of the Y using the arithmetic mean or the
-  ## harmonic mean of the closest observations.
-  x <- as.matrix(x)
   y <- as.matrix(y)
+  x <- as.matrix(x)
   n <- dim(y)[1]
   d <- dim(y)[2]
 
@@ -34,10 +20,8 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
 
   if (type == "spher") {
     runtime <- proc.time()
-    ## The k-NN algorithm is calculated R times. For every repetition a
-    ## test sample is chosen and its observations are classified
-    for (vim in 1:M) {
 
+    for (vim in 1:M) {
       ytest <- y[mat[, vim], , drop = FALSE]  ## test set dependent vars
       ytrain <- y[-mat[, vim], drop = FALSE]  ## train set dependent vars
       apo <- tcrossprod(x[mat[, vim], ], x[-mat[, vim], ] )
@@ -60,7 +44,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
             xa <- cbind(poies[1:k, i], disa[1:k, i])
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
-            yb <- as.matrix( y[a, ] )
+            yb <- y[a, , drop = FALSE]
             est[i, ] <- Rfast::colmeans( yb )
           }
 
@@ -69,7 +53,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
             xa <- cbind(poies[1:k, i], disa[1:k, i])
             qan <- xa[order(xa[, 2]), ]
             a <- qan[1:k, 1]
-            yb <- as.matrix( y[a, ] )
+            yb <- y[a, , drop = FALSE]
             est[i, ] <- Rfast::colhameans( yb )
           }
         }
@@ -96,7 +80,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
         ytest <- y[mat[, vim], , drop = FALSE]  ## test set dependent vars
         ytrain <- y[-mat[, vim], drop = FALSE]  ## train set dependent vars
         apo <- Rfast::dista( x[mat[, vim], , drop = FALSE], x[-mat[, vim], , drop = FALSE], type = type )
-	    ina <- as.vector( mat[, -vim] )
+	      ina <- as.vector( mat[, -vim] )
         est <- matrix(nrow = rmat, ncol = d)
         bb <- Rfast::colnth(apo, rep(A, rmat) )
         poies <- matrix(0, nrow = A, ncol = rmat)
@@ -113,7 +97,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
               xa <- cbind(poies[1:k, i], disa[1:k, i])
               qan <- xa[order(xa[, 2]), ]
               a <- qan[1:k, 1]
-              yb <- as.matrix( y[a, ] )
+              yb <- y[a,, drop = FALSE ]
               est[i, ] <- Rfast::colmeans( yb )
             }
 
@@ -122,7 +106,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
               xa <- cbind(poies[1:k, i], disa[1:k, i])
               qan <- xa[order(xa[, 2]), ]
               a <- qan[1:k, 1]
-              yb <- as.matrix( y[a, ] )
+              yb <- y[a, , drop = FALSE]
               est[i, ] <- Rfast::colhameans( yb )
             }
           }
@@ -163,7 +147,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
               xa <- cbind(poies[1:k, i], disa[1:k, i])
               qan <- xa[order(xa[, 2]), ]
               a <- qan[1:k, 1]
-              yb <- as.matrix( y[a, ] )
+              yb <- y[a, , drop = FALSE]
               est[i, ] <- Rfast::colmeans( yb )
             }
 
@@ -172,7 +156,7 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
               xa <- cbind(poies[1:k, i], disa[1:k, i])
               qan <- xa[order(xa[, 2]), ]
               a <- qan[1:k, 1]
-              yb <- as.matrix( y[a, ] )
+              yb <- y[a, , drop = FALSE]
               est[i, ] <- Rfast::colhameans( yb )
             }
           }

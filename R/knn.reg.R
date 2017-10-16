@@ -1,63 +1,56 @@
 knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim = "arithmetic") {
-  ## xnew is the new observation
-  ## y is the multivariate or univariate dependent variable
-  ## x contains the independent variable(s)
-  ## k is the number of nearest neighbours to use
-  ## res is for the response variable, is it Euclidean or spherical
-  ## res = "eucl" for Euclidean, or a real valued one and
-  ## res = "spher" for spherical or hyper-spherical
-  ## type is for the distance, Euclidean or Manhattan distance.
-  ## which can of course use here.
-  ## Type ?dist so see more
-  ## estim is either 'arithmetic', 'harmonic'. How to calculate the
-  ## estimated value of the Y using the arithmetic mean or the
-  ## harmonic mean of the closest observations
   y <- as.matrix(y)
   x <- as.matrix(x)
-  d <- dim(y)[2]  ## dimensions of y
+  dm <- dim(y)  ## dimensions of y
+  d <- dm[2]
   xnew <- as.matrix(xnew)
-  n <- dim(y)[1]
   nu <- dim(xnew)[1]
+  klen <- length(k)
+  est <- list()
 
-  if ( type == "spher" ) {
-    ## calculates distance matrix for (hyper-)spherical data
-    dis <- tcrossprod(xnew, x)
-    dis[ dis >= 1 ] <- 1
-    disa <- acos(dis)
+  if (d == 1  & type == "euclidean") {
+    if (estim == "arithmetic") {
+      method = "average"
+    } else  method = "harmonic"
+    g <- Rfast::knn(xnew = xnew, y = y, x = x, k = k, type = "R", method = method)
+    for (i in 1:klen)  est[[ i ]] <- g[, i]
+
   } else {
-    #m <- Rfast::colmeans(x)
-    #s <- Rfast::colVars(x, std = TRUE)
-    #x <- t( ( t(x) - m ) / s )  ## standardize the independent variable
-    #xnew <- t( ( t(xnew) - m ) / s )  ## standardize the xnew values
-    ## calculates distance matrix for the Euclidean data
-    disa <- Rfast::dista(xnew, x, type = type)
-  }
+    if ( type == "spher" ) {
+      dis <- tcrossprod(x, xnew)
+      dis[ dis >= 1 ] <- 1
+      disa <- acos(dis)
+    } else   disa <- Rfast::dista(xnew, x, trans = FALSE)
 
-  ina <- 1:n
-  est <- matrix(nrow = nu, ncol = d)
+    disa <- Rfast::colOrder(disa)[1:max(k), ]
 
-  if (estim == "arithmetic") {
-    for (i in 1:nu) {
-      xa <- cbind(ina, disa[i, ])
-      qan <- xa[order(xa[, 2]), ]
-      a <- qan[1:k, 1]
-      yb <- y[a, , drop = FALSE]
-      est[i, ] <- Rfast::colmeans( yb )
-    }
-  } else if (estim == "harmonic") {
-    for (i in 1:nu) {
-      xa <- cbind(ina, disa[i, ])
-      qan <- xa[order(xa[, 2]), ]
-      a <- qan[1:k, 1]
-      yb <- y[a, , drop = FALSE]
-      est[i, ] <- Rfast::colhameans( yb )
-    }
-  }
+	if ( estim == "arithmetic" ) {
+      for (j in 1:klen) {
+        g <- matrix(nrow = nu, ncol = d)
+        knn <- k[j]
+        for (i in 1:nu) {
+          ind <- disa[1:knn, i]
+          g[i, ] <- Rfast::colmeans( y[ind, , drop = FALSE] )
+        }
+        if (res == "spher") {
+          est[[ j ]] <- g / sqrt( Rfast::rowsums(g^2) )
+        } else  est[[ j ]] <- g
+      }  ## end for (j in klen)
 
-  if ( is.null(colnames(y)) ) {
-     colnames(est) <- paste("yhat", 1:d, sep = "" )
-   } else  colnames(est) <- colnames(y)
-  if (d == 1)  est <- as.vector(est)
-  if (res == "spher")  est <- est / sqrt( rowsums(est^2) )
+    } else {
+      for (j in 1:klen) {
+        g <- matrix(nrow = nu, ncol = d)
+        knn <- k[j]
+        for (i in 1:nu) {
+          ind <- disa[1:knn, i]
+          g[i, ] <- Rfast::colhameans( y[ind, , drop = FALSE] )
+        }
+        if (res == "spher") {
+          est[[ j ]] <- g / sqrt( Rfast::rowsums(g^2) )
+        } else  est[[ j ]] <- g
+      }  ## end for (j in klen)
+    }   ## end if ( estim == "arithmetic" )
+  }  ## end if (d == 1  & type == "euclidean")
+  names(est) <- paste("k=", k, sep = "")
   est
 }

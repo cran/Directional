@@ -20,6 +20,6 @@ rsop <- function(n, p) {
     A[, , i] <- Ip + sin(theta) * B + ( cos(theta) - 1 ) * ( tcrossprod(b) + tcrossprod(ca) )
   }
 
-  if (n == 1)  A <- as.matrix( A[, , 1] )
+  if (n == 1)   A <- as.matrix( A[, , 1] )
   A
 }

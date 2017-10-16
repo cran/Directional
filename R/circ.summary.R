@@ -29,7 +29,7 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE
     circs <- sqrt( -2 * log(Rbar) )  ## sample cicrular standard deviation
     ## lik is the von Mises likelihood
     lik <- function(k)   k * sum( cos(u - mesos) ) - n * ( log(besselI( k, 0, expon.scaled = TRUE) ) + k )
-	mod <- optimize(lik, c(0, 50000), maximum = TRUE, tol = tol)  
+	  mod <- optimize(lik, c(0, 50000), maximum = TRUE, tol = tol)
     kappa <- mod$maximum
     ## kappa is the estimated concentration (kappa)
     R <- n * Rbar

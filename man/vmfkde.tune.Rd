@@ -45,7 +45,7 @@ Wand M. P.,  and Jones M. C. (1994). Kernel smoothing. Crc Press.
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
+R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
 }
 %\note{
 %%  ~~further notes~~

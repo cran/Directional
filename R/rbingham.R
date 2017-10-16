@@ -13,7 +13,6 @@
 ################################
 
 ######### Simulation using any symmetric A matrix
-
 rbingham <- function(n, A) {
   p <- ncol(A)  ## dimensionality of A
   eig <- eigen(A)

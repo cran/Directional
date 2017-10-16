@@ -13,23 +13,23 @@ dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE)
 }
 
 \arguments{
-  \item{x}{
-  The data, a numeric matrix with unit vectors.
+\item{x}{
+The data, a numeric matrix with unit vectors.
 }
-  \item{xnew}{
-  The new data whose membership is to be predicted, a numeric matrix with unit vectors.
+\item{xnew}{
+The new data whose membership is to be predicted, a numeric matrix with unit vectors.
 }
-  \item{k}{
-  The number of nearest neighbours, set to 5 by default.
+\item{k}{
+The number of nearest neighbours, set to 5 by default. It can also be a vector with many values.
 }
-  \item{ina}{
-  A variable indicating the groups of the data x.
+\item{ina}{
+A variable indicating the groups of the data x.
 }
-  \item{type}{
-  If type is "S", the standard k-NN algorithm is to be used, else "NS" for the non standard one. See below (details) for more information.
+\item{type}{
+If type is "S", the standard k-NN algorithm is to be used, else "NS" for the non standard one. See below (details) for more information.
 }
-  \item{mesos}{
-  A boolean variable used only in the case of the non standard algorithm (type="NS"). Should the average of the distances be calculated (TRUE) or not (FALSE)? If it is FALSE, the harmonic mean is calculated.
+\item{mesos}{
+A boolean variable used only in the case of the non standard algorithm (type="NS"). Should the average of the distances be calculated (TRUE) or not (FALSE)? If it is FALSE, the harmonic mean is calculated.
 }
 }
 
@@ -39,7 +39,7 @@ The standard algorithm is to keep the k nearest observations and see the groups 
 \value{
 A vector including:
 \item{g}{
-The predicted group.
+A matrix with the predicted group(s). It has as many columns as the values of k.
 }
 }
 
@@ -51,7 +51,7 @@ http://scipp.ucsc.edu/~haber/ph216/rotation_12.pdf
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <athineou@csd.uoc.gr>
+R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
 }
 %\note{
 %%  ~~further notes~~

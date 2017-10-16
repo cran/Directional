@@ -5,7 +5,6 @@
 #### References: S Rao Jammalamadaka and A SenGupta (2001)
 #### Topics in circular statistics
 ################################
-
 circ.cor1 <- function(theta, phi, rads = FALSE) {
   ## theta and phi are angular data in degrees or radians
   ## by default they are in degrees
@@ -16,8 +15,8 @@ circ.cor1 <- function(theta, phi, rads = FALSE) {
     phi <- phi * pi/180
   }
   ## We calculate the mean of each vector
-  m1 <- circ.summary( theta, rads = TRUE, plot = FALSE )$mesos
-  m2 <- circ.summary( phi, rads = TRUE, plot = FALSE )$mesos
+  m1 <- circ.summary( theta, rads = TRUE, fast = TRUE, plot = FALSE )$mesos
+  m2 <- circ.summary( phi, rads = TRUE, fast = TRUE, plot = FALSE )$mesos
   sintheta <- sin(theta - m1)
   sinphi <- sin(phi - m2)
   up <- sum( sintheta * sinphi )
