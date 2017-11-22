@@ -12,13 +12,13 @@ Circular-linear regression, spherical-spherical regression, discriminant analysi
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 2.9\cr
-Date: \tab 2017-10-17\cr
+Version: \tab 3.0\cr
+Date: \tab 2017-11-05\cr
 License: \tab GPL-2\cr
 }
 }
 \author{
-Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <gioathineou@gmail.com> and Anamul Sajib <pmxahsa@nottingham.ac.uk>
+Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <gioathineou@gmail.com>, Anamul Sajib <pmxahsa@nottingham.ac.uk> and Eli Amson <eli.amson1988@gmail.com>
 }
 
 \section{Maintainers }{
@@ -54,8 +54,6 @@ Phillip Paine (postdoc at the university of Nottingham) spotted that the functio
 Professor Kurt Hornik from the Vienna university of economics and business is greatly acknowledged for his patience and contast help with this (and not only) R package.
 
 Manos Papadakis, undergraduate student in the department of computer science at university of Crete, is also acknowledged for his programming tips.
-
-Dr Eli Amson, postdoctoral fellow at Alexander von Humboldt Foundation found a bug in the \code{\link{spherconc.test}} and he is greatly acknowledged for that.
 
 Dr Mojgan Golzy spotted a mistake in the \code{\link{ESAGdensity}} and Michail is very happy for that.
 }

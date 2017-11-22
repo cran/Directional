@@ -27,16 +27,16 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
 
     if (thumb == "tay") {
       k <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
-      h <- ( 4 * pi^0.5 * besselI(k, 0)^2 / (3 * n * k^2 * besselI(2 * k, 2)) )^0.2
+      h <- ( (3 * n * k^2 * besselI(2 * k, 2)) / ( 4 * pi^0.5 * besselI(k, 0)^2 ) )^0.4
     } else if (thumb == "rot") {
       k <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
-      h <- ( 4 * pi^0.5 * besselI(k, 0)^2 / ( k * n * ( 2 * besselI(2 * k, 1) + 3 * k * besselI(2 * k, 2)) ) )^0.2
+      h <- ( ( k * n * ( 2 * besselI(2 * k, 1) + 3 * k * besselI(2 * k, 2)) ) / ( 4 * pi^0.5 * besselI(k, 0)^2 ) )^0.4
     } else if (thumb == "none") {
       h <- as.numeric( vmkde.tune(u, low = 0.1, up = 1)[1] )
     }
 
   } else h <- h
 
-  f <- Rfast::rowsums( expa^( 1 / h^2 ) ) / ( n * 2 * pi * besselI(1/h^2, 0) )
+  f <- Rfast::rowsums( expa^h ) / ( n * 2 * pi * besselI(h, 0) )
   list( h = h, f = f )
 }

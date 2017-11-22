@@ -17,11 +17,11 @@ het.circaov <- function(u, ina, rads = FALSE) {
   kappa <- numeric(g)
   x1 <- cos(u)
   x2 <- sin(u)
-  C <- rowsum(x1, ina)
-  S <- rowsum(x2, ina)
+  C <- Rfast::group.sum(x1, ina)  ## rowsum(x1, ina)
+  S <- Rfast::group.sum(x2, ina)  ## rowsum(x2, ina)
   mi <- atan(S/C) + pi * as.numeric(C<0)
   Ri <- sqrt(C^2 + S^2)  ## the resultant length of each group
-  for (i in 1:g)  kappa[i] <- circ.summary( u[ina == i], rads = TRUE, plot = FALSE )$kappa
+  for (i in 1:g)  kappa[i] <- circ.summary( u[ina == i], rads = TRUE, plot = FALSE, fast = TRUE )$kappa
   ## kappa contains the estimated concentration parameters of each group
   Rw <- sqrt( sum( kappa * Ri * cos(mi) )^2 + sum( kappa * Ri * sin(mi) )^2 )
   Ta <- 2 * ( sum(kappa * Ri) - Rw )

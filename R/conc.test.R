@@ -16,12 +16,12 @@ conc.test <- function(u, ina, rads = FALSE) {
   ## if the data are in degrees we transform them into radians
   x1 <- cos(u)
   x2 <- sin(u)
-  Ci <- rowsum(x1, ina) / ni
-  Si <- rowsum(x2, ina) / ni
+  Ci <- Rfast::group.mean(x1, ina)  ## rowsum(x1, ina) / ni
+  Si <- Rfast::group.mean(x2, ina)  ## rowsum(x2, ina) / ni
   Rbi <- sqrt( Ci^2 + Si^2 )
   ## Ri is the mean resultant length of each group
-  C <- sum(x1)/n
-  S <- sum(x2)/n
+  C <- sum( Ci * ni ) / n   ### sum(x1)/n
+  S <- sum( Si * ni ) / n   ### sum(x2)/n
   Rb <- sqrt(C^2 + S^2)  ## the mean resultant length of all the data
 
   if (Rb < 0.45) {

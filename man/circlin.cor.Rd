@@ -10,14 +10,14 @@ It calculates the squared correlation between a circular and one or more linear 
 circlin.cor(theta, x, rads = FALSE)
 }
 \arguments{
-  \item{theta}{
-  The circular variable.
+\item{theta}{
+The circular variable.
 }
-  \item{x}{
-  The linear variable or a matrix containing many linear variables.
+\item{x}{
+The linear variable or a matrix containing many linear variables.
 }
-  \item{rads}{
-  If the circualr variable is in rads, this should be TRUE and FALSE otherwise.
+\item{rads}{
+If the circualr variable is in rads, this should be TRUE and FALSE otherwise.
 }
 }
 

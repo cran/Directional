@@ -16,8 +16,8 @@ embed.circaov <- function(u, ina, rads = FALSE) {
   if ( !rads )  u <- u * pi/180
   x1 <- cos(u)
   x2 <- sin(u)
-  Ci <- rowsum(x1, ina)
-  Si <- rowsum(x2, ina)
+  Ci <- Rfast::group.sum(x1, ina)  ## rowsum(x1, ina)
+  Si <- Rfast::group.sum(x2, ina) ## rowsum(x2, ina)
   Rbi <- ( Ci^2 + Si^2 )/ni^2
   C <- sum(Ci)
   S <- sum(Si)

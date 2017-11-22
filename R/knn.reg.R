@@ -19,10 +19,11 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
     if ( type == "spher" ) {
       dis <- tcrossprod(x, xnew)
       dis[ dis >= 1 ] <- 1
+      dis[ dis <=  -1 ] <-  -1
       disa <- acos(dis)
     } else   disa <- Rfast::dista(xnew, x, trans = FALSE)
 
-    disa <- Rfast::colOrder(disa)[1:max(k), ]
+    disa <- Rfast::colOrder(disa)[1:max(k), , drop = FALSE]
 
 	if ( estim == "arithmetic" ) {
       for (j in 1:klen) {

@@ -18,18 +18,20 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
   ina <- as.numeric(ina) ## makes sure ina is numeric
   nc <- max(ina)  ## The number of groups
   nu <- dim(xnew)[1]
-  klen <- length(k)
-  g <- matrix(0, nu, klen)
+
 
   if (type == "NS") {
     ## Non Standard algorithm
+    klen <- length(k)
+    g <- matrix(0, nu, klen)
     ta <- matrix(nrow = nu, ncol = nc)
     apo <- list()
     for (m in 1:nc) {
-	  disa <- tcrossprod(x[ina == m, ], xnew)
+	    disa <- tcrossprod(x[ina == m, ], xnew)
       disa[ disa >= 1 ] <- 1
+      disa[ disa <=  -1 ] <-  -1
       disa <- acos(disa)
-      apo[[ m ]] <- Rfast::sort_mat(disa)[1:max(k), ]
+      apo[[ m ]] <- Rfast::sort_mat(disa)[1:max(k), , drop = FALSE]
     }
     for (j in 1:klen) {
       for (m in 1:nc) {
@@ -41,18 +43,7 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
     }
 
   } else {   ## if type is "S"   ## Standard algorithm
-    disa <- tcrossprod(x, xnew)
-    disa[ disa >= 1 ] <- 1
-    disa <- acos(disa)
-    for (j in 1:klen) {
-      g1 <- Rfast::colnth( disa, rep( k[j], nu) )
-      for (l in 1:nu) {
-        ind <- which(disa[, l] <= g1[l] )
-        a <- Rfast::Table( ina[ind] )
-        b <- as.numeric( names(a) )
-        g[l, j] <- b[which.max(a)]
-      }  ## end inner for
-    } ## end outer for
+    g <- Rfast::dirknn(xnew, x, ina, k = k, type = "C", parallel = FALSE)
   }  ## end if (type == "NS")
   colnames(g) <- paste("k=", k, sep = "")
   g

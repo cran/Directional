@@ -7,7 +7,6 @@
 #### Modified Kent's statistics for testing goodness of fit for the
 #### Fisher distribution in small concentrated samples
 ################################
-
 fishkent <- function(x, B = 999) {
   ## x contains the data
   ## B is by default eaual to 999 bootstrap re-samples
@@ -21,7 +20,7 @@ fishkent <- function(x, B = 999) {
   i3 <- diag(3)
   P <- i3 -  tcrossprod(e1 - mu) / (1 - mu[1])
   y <- tcrossprod(x, P)[, 2:3]
-  lam <- eigen( crossprod(y) / n )$values
+  lam <- eigen( crossprod(y) )$values / n
   rat <- besselI(k, 0.5, expon.scaled = TRUE) / besselI(k, 2.5, expon.scaled = TRUE)
   Ta <- n * (k / 2)^2 * rat * (lam[1] - lam[2])^2
 
@@ -40,7 +39,7 @@ fishkent <- function(x, B = 999) {
       mu <- estim$mu  ## the estimated mean direction under H0
       P <- i3 -  tcrossprod(e1 - mu) / (1 - mu[1])
       y <- tcrossprod(z, P)[, 2:3]
-      lam <- eigen( crossprod(y) / n )$values
+      lam <- eigen( crossprod(y) )$values/n
       rat <- besselI(k, 0.5, expon.scaled = TRUE) / besselI(k, 2.5, expon.scaled = TRUE)
       Tb[i] <- n * ( k / 2 )^2 * rat * (lam[1] - lam[2])^2
     }

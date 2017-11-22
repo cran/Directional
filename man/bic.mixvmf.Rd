@@ -13,11 +13,11 @@ bic.mixvmf(x, A)
 }
 
 \arguments{
-  \item{x}{
-  A matrix containing directional data.
+\item{x}{
+A matrix containing directional data.
 }
-  \item{A}{
-  The maximum number of clusters to be tested. Default value is 3.
+\item{A}{
+The maximum number of clusters to be tested. Default value is 3.
 }
 }
 

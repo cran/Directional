@@ -20,11 +20,11 @@ The currently available data, the response variables values. A matrix with eithe
 \item{x}{
 The currently available data, the predictor variables values. A matrix with either euclidean (univariate or multivariate) or (hyper-)spherical data. If you have a circular response, say u, transform it to a unit vector via (cos(u), sin(u)).
 }
-  \item{M}{
-  The number of folds for the m-fold cross validation, set to 10 by default.
+\item{M}{
+The number of folds for the m-fold cross validation, set to 10 by default.
 }
 \item{A}{
-The maximum number of nearest neighbours, set to 5 by default. The maximum is actually A + 1, since 1 nearest neighbour is not used.
+The maximum number of nearest neighbours, set to 5 by default, starting from the 1 nearest neighbor.
 }
 \item{ncores}{
 How many cores to use. This is taken into account only when the predictor variables are spherical.
@@ -33,7 +33,7 @@ How many cores to use. This is taken into account only when the predictor variab
 The type of the response variable. If it is Euclidean, set this argument equal to "res".  If it is a unit vector set it to res="spher".
 }
 \item{type}{
-The type of distance to be used. This determines the nature of the predictor variables. This is actually the argument "method" of the distance function in R. The default value is "euclidean". R has several options the type of the distance. Just type ?dist in R and see the methods. Any method can be given here. If you have unit vectors in general, 
+The type of distance to be used. This determines the nature of the predictor variables. This is actually the argument "method" of the distance function in R. The default value is "euclidean". R has several options the type of the distance. Just type ?dist in R and see the methods. Any method can be given here. If you have unit vectors in general,
 you should put type="spher", so that the cosinus distance is calculated.
 }
 \item{estim}{
@@ -67,9 +67,8 @@ The run time of the algorithm. A numeric vector. The first element is the user t
 }
 }
 
-\references{
-Tibshirani, Ryan J., and Robert Tibshirani. A bias correction for the minimum error rate in cross-validation. The Annals of Applied Statistics (2009), 3(2): 822-829.
-}
+%\references{
+%}
 
 \author{
 Michail Tsagris

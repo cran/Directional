@@ -16,13 +16,13 @@ circ.cor2(theta, phi, rads = FALSE)
 }
 
 \arguments{
-  \item{theta}{
-  The first cirular variable.
+\item{theta}{
+The first cirular variable.
 }
-  \item{phi}{
+\item{phi}{
 The other cirular variable.
 }
-  \item{rads}{
+\item{rads}{
 If the data are expressed in rads, then this should be TRUE. If the data are in degrees, then this is FALSE.
 }
 }

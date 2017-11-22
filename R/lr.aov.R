@@ -20,29 +20,23 @@ lr.aov <- function(x, ina) {
   Apk <- function(p, k)  besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
 
   Rk <- R/n
-  k <- numeric(4)
-  j <- 1
-  k[j] <- Rk * (p - Rk^2)/(1 - Rk^2)
-  j <- 2
-  k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 - (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
-  while (abs(k[j] - k[j - 1]) > 1e-07) {
-    j <- j + 1
-    k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 - (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
+  k1 <- Rk * (p - Rk^2)/(1 - Rk^2)
+  k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
+  while (abs(k2 - k1) > 1e-07) {
+    k1 <- k2
+    k2 <- k1 - (Apk(p, k1) - Rk) / (1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
   }
-  k0 <- k[j]  ## concentration parameter under H0
+  k0 <- k2  ## concentration parameter under H0
   Rk <- sum(Ri)/n
-  k <- numeric(4)
-  j <- 1
-  k[j] <- Rk * (p - Rk^2)/(1 - Rk^2)
-  j <- 2
-  k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 - (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
+  k1 <- Rk * (p - Rk^2)/(1 - Rk^2)
+  k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
 
-  while (abs(k[j] - k[j - 1]) > 1e-07) {
-    j <- j + 1
-    k[j] <- k[j - 1] - (Apk(p, k[j - 1]) - Rk)/(1 - Apk(p, k[j - 1])^2 - (p - 1)/k[j - 1] * Apk(p, k[j - 1]))
+  while (abs(k2 - k1) > 1e-07) {
+    k1 <- k2
+    k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
   }
-  k1 <- k[j]  ## concentration parameter under H1
-  
+  k1 <- k2  ## concentration parameter under H1
+
   apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI( k0, p/2 - 1, expon.scaled = TRUE ) ) + k0
   apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI( k1, p/2 - 1, expon.scaled = TRUE ) ) + k1
   w <- 2 * (k1 * sum(Ri) - k0 * R - n * apk1 + n * apk0)

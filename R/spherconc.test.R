@@ -5,7 +5,6 @@
 #### References: Mardia Kanti V. and Jupp Peter E. (2000)
 #### Directional statistics, page 226-227
 ################################
-
 spherconc.test <- function(x, ina) {
   ## x contains all the data
   ## ina is an indicator variable of each sample

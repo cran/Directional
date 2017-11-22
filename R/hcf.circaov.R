@@ -17,28 +17,28 @@ hcf.circaov <- function(u, ina, rads = FALSE) {
   if ( !rads )  u <- u * pi/180
   x1 <- cos(u)
   x2 <- sin(u)
-  Ci <- rowsum(x1, ina)
-  Si <- rowsum(x2, ina)
+  Ci <- Rfast::group.sum(x1, ina)  ##  rowsum(x1, ina)
+  Si <- Rfast::group.sum(x2, ina)  ## rowsum(x2, ina)
   Ri <- sqrt( Ci^2 + Si^2 )
   ## Ri is the resultant length of each group
   V <- sum(Ri)
-  C <- sum(x1)
-  S <- sum(x2)
+  C <- sum(Ci)
+  S <- sum(Si)
   R <- sqrt(C^2 + S^2)  ## the resultant length based on all the data
   ## Next we stimate the common concentration parameter kappa
-  kappa <- circ.summary(u, rads = TRUE, plot = FALSE)$kappa
+  kapa <- circ.summary(u, rads = TRUE, plot = FALSE, fast = TRUE)$kappa
   ## kappa is the estimated concentration parameter based on all the data
-  if (kappa > 2) {
+  if (kapa > 2) {
     Ft <- (n - g) * (V - R) / (g - 1) / (n - V)
     pvalue <- pf(Ft, g - 1, n - g, lower.tail = FALSE)
-  } else  if (kappa < 2 & kappa > 1) {
-    Ft <- (1 + 3/(8 * kappa)) * (n - g) * (V - R)/( (g - 1) * (n - V) )
+  } else  if (kapa < 2 & kapa > 1) {
+    Ft <- (1 + 3/(8 * kapa)) * (n - g) * (V - R)/( (g - 1) * (n - V) )
     pvalue <- pf(Ft, g - 1, n - g, lower.tail = FALSE)
   } else {
     Ft <- NA
     pvalue <- NA
   }
-  res <- c(Ft, pvalue, kappa)
+  res <- c(Ft, pvalue, kapa)
   names(res) <- c('test', 'p-value', 'kappa')
   res
 }

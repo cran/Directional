@@ -6,7 +6,6 @@
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 #### http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 ################################
-
 mix.vmf <- function(x, g) {
   ## x contains the data
   ## g is the number of clusters
@@ -16,8 +15,7 @@ mix.vmf <- function(x, g) {
   lika <- matrix(nrow = n, ncol = g)
   pij <- matrix(nrow = n, ncol = g)
   ka <- numeric(g)
-  Apk <- function(p, k)   besselI(k, p/2, expon.scaled = TRUE) / 
-         besselI(k, p/2 - 1, expon.scaled = TRUE)
+  Apk <- function(p, k)   besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
   runtime <- proc.time()
   ## Step 1
   l <- 1
@@ -47,19 +45,16 @@ mix.vmf <- function(x, g) {
 
     for (j in 1:g) {
       R <- Rk[j]
-      k <- numeric(4)
-      i <- 1
-      k[i] <- R * (p - R^2)/(1 - R^2)
-      i <- 2
-      apk <- Apk(p, k[i - 1])
-      k[i] <- k[i - 1] - ( apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
-      while (abs(k[i] - k[i - 1]) > 1e-07) {
-        i <- i + 1
-        apk <- Apk(p, k[i - 1])
-        k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
+      k1 <- R * (p - R^2)/(1 - R^2)
+      apk <- Apk(p, k1)
+      k2 <- k1 - ( apk - R)/( 1 - apk^2 - (p - 1)/k1 * apk )
+      while (abs(k2 - k1) > 1e-07) {
+        k1 <- k2
+        apk <- Apk(p, k1)
+        k2 <- k1 - (apk - R)/( 1 - apk^2 - (p - 1)/k1 * apk )
       }
-      ka[j] <- k[i] ## initial concentration parameters
-      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - 
+      ka[j] <- k2  ## initial concentration parameters
+      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
       log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
     wlika <- w * exp(lika)
@@ -75,20 +70,16 @@ mix.vmf <- function(x, g) {
       m1 <- Rfast::colsums(pij[, j] * x)
       mat[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step 2
       R <- sqrt( sum(m1^2) ) / sum( pij[, j] )  ## mean resultant lengths at step 2
-      k <- numeric(4)
-      i <- 1
-      k[i] <- R * (p - R^2)/(1 - R^2)
-      i <- 2
-      apk <- Apk(p, k[i - 1])
-      k[i] <- k[i - 1] - ( apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
-
-      while (abs(k[i] - k[i - 1]) > 1e-07) {
-        i <- i + 1
-        apk <- Apk(p, k[i - 1])
-        k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
+      k1 <- R * (p - R^2)/(1 - R^2)
+      apk <- Apk(p, k1)
+      k2 <- k1 - ( apk - R)/( 1 - apk^2 - (p - 1)/k1 * apk )
+      while (abs(k2 - k1) > 1e-07) {
+        k1 <- k2
+        apk <- Apk(p, k1)
+        k2 <- k1 - (apk - R)/( 1 - apk^2 - (p - 1)/k1 * apk )
       }
-      ka[j] <- k[i]
-      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - 
+      ka[j] <- k2
+      lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
       log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
 
@@ -104,19 +95,16 @@ mix.vmf <- function(x, g) {
         m1 <- Rfast::colsums(pij[, j] * x)
         mat[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step l
         R <- sqrt( sum(m1^2) ) / sum(pij[, j])  ## mean resultant lengths at step l
-        k <- numeric(4)
-        i <- 1
-        k[i] <- R * (p - R^2)/(1 - R^2)
-        i <- 2
-        apk <- Apk(p, k[i - 1])
-        k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
-        while (abs(k[i] - k[i - 1]) > 1e-07) {
-          i <- i + 1
-          apk <- Apk(p, k[i - 1])
-          k[i] <- k[i - 1] - (apk - R)/( 1 - apk^2 - (p - 1)/k[i - 1] * apk )
+        k1 <- R * (p - R^2)/(1 - R^2)
+        apk <- Apk(p, k1)
+        k2 <- k1 - (apk - R)/( 1 - apk^2 - (p - 1)/k1 * apk )
+        while (abs(k2 - k1) > 1e-07) {
+          k1 <- k2
+          apk <- Apk(p, k1)
+          k2 <- k1 - (apk - R)/( 1 - apk^2 - (p - 1)/k1 * apk )
         }
-        ka[j] <- k[i]
-        lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) - 
+        ka[j] <- k2
+        lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
         log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
       }
 

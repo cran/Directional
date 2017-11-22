@@ -7,7 +7,6 @@
 #### density estimation with directional data
 #### Electronic Journal of Statistics
 ################################
-
 vmf.kde <- function(x, h = NULL, thumb = "none") {
   ## x is the data
   ## h is the bandwidth you want
@@ -32,6 +31,6 @@ vmf.kde <- function(x, h = NULL, thumb = "none") {
 
   d <- tcrossprod( x )/h^2
   cpk <- (1/h^2)^( p/2 - 1) / ( (2 * pi) ^ (p/2) * besselI(1/h^2, p/2 - 1) )
-  f <- Rfast::rowmeans( exp( d + log(cpk) ) )
+  f <- Rfast::rowmeans( exp(d) ) * cpk
   list( h = h, f = f )
 }

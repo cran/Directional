@@ -5,7 +5,6 @@
 #### References: Mardia Kanti V. and Jupp Peter E. (2000)
 #### Directional statistics
 ################################
-
 circ.cor2 <- function(theta, phi, rads = FALSE) {
   ## theta and phi are angular data in degrees or radians
   ## by default they are in degrees

@@ -44,14 +44,9 @@ R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk> & Ch
 
 \examples{
 F <- 10^(-1) * matrix( c(85, 11, 41, 78, 39, 60, 43, 64, 48), ncol = 3 )   ### An arbitrary F matrix
-X <- rmatrixfisher(3000, F)
+X <- rmatrixfisher(5000, F)
 matrixfisher.mle(X)
 svd(F)
-## Bigger sample is needed to obtain better results
-## X <- rmatrixfisher(30000, F)
-## matrixfisher.mle(X)
-## svd(F)
-
 }
 
 \keyword{ Matrix Fisher distribution }

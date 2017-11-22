@@ -22,7 +22,8 @@ The parameters of the ESAG distribution, the first three are the mean vector in 
 }
 
 \details{
-MLE of the projected normal distribution, on the sphere, is implemented.
+A random sample from the ESAG distribution is generated. In case the gammas are zeo the sample is dranw from Independent Angular Gaussian (IAG) or 
+projected normal. 
 }
 
 \value{

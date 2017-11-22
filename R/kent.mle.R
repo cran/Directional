@@ -32,7 +32,7 @@ kent.mle <- function(x) {
   ## the next function will be used to estimate the kappa and beta
   xg <- x %*% G
   xg1 <- sum(xg[, 1])
-  a <- colsums(xg^2)
+  a <- Rfast::colsums(xg^2)
   xg2 <- a[2]
   xg3 <- a[3]
 
