@@ -28,7 +28,7 @@ spher.reg <- function(y, x, rads = FALSE) {
 
   XY <- crossprod(X, Y) / n
   b <- svd(XY)  ## SVD of the XY matrix
-  A <- b$v %*% t(b$u)
+  A <- tcrossprod(b$v, b$u )
   if ( det(A) < 0 ) {
     b$u[, 3] <-  - b$u[, 3]
     A <- tcrossprod(b$v, b$u )

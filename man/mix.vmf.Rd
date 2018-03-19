@@ -9,15 +9,18 @@ It performs model based clustering for circualr, spherical and hyperspherical da
 }
 
 \usage{
-mix.vmf(x, g)
+mix.vmf(x, g ,n.start = 20)
 }
 
 \arguments{
-  \item{x}{
-  A matrix with the data expressed as unit vectors.
+\item{x}{
+A matrix with the data expressed as unit vectors.
 }
-  \item{g}{
-  The number of groups to fit. It must be greater than or equal to 2.
+\item{g}{
+The number of groups to fit. It must be greater than or equal to 2.
+}
+\item{n.start}{
+The number of random starts to try. See also R's built-in function \code{\link{kmeans}} for more information about this.
 }
 }
 

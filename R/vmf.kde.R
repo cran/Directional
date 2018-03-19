@@ -13,7 +13,7 @@ vmf.kde <- function(x, h = NULL, thumb = "none") {
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
   ## thumb is either 'none' (defualt), or 'rot' (Garcia-Portugues, 2013)
-  if ( !is.null(h) ) {
+  if ( is.null(h) ) {
 
     if (thumb == "rot") {
       k <- vmf(x)$kappa  ## concentration parameter

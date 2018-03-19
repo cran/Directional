@@ -9,7 +9,7 @@ BIC to choose the number of components in a model based clustering using mixture
 }
 
 \usage{
-bic.mixvmf(x, A)
+bic.mixvmf(x, A, n.start = 20)
 }
 
 \arguments{
@@ -18,6 +18,9 @@ A matrix containing directional data.
 }
 \item{A}{
 The maximum number of clusters to be tested. Default value is 3.
+}
+\item{n.start}{
+The number of random starts to try. See also R's built-in function \code{\link{kmeans}} for more information about this.
 }
 }
 

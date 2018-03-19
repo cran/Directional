@@ -14,16 +14,17 @@ ESAGsim(n, param)
 
 \arguments{
 \item{n}{
-A matrix with the data expressed in Euclidean coordinates, i.e. unit vectors.
+A number; how many vectors you want to generate.
 }
 \item{param}{
-The parameters of the ESAG distribution, the first three are the mean vector in \eqn{R^3} and the next two are the two gammas.
+The parameters of the ESAG distribution, the first three are the mean vector in \eqn{R^3} and the next 
+two are the two gammas.
 }
 }
 
 \details{
-A random sample from the ESAG distribution is generated. In case the gammas are zeo the sample is dranw from Independent Angular Gaussian (IAG) or 
-projected normal. 
+A random sample from the ESAG distribution is generated. In case the gammas are zeo the sample is drawn 
+from Independent Angular Gaussian (IAG) or projected normal. 
 }
 
 \value{
@@ -33,7 +34,8 @@ An nx3 matrix with the simualted unit vectors.
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Paine P.J., Preston S.P., Tsagris M and Wood A.T.A. (2017). An Elliptically Symmetric Angular Gaussian Distribution. Statistics and Computing (Accepted).
+Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2017). An Elliptically Symmetric Angular 
+Gaussian Distribution. Statistics and Computing (Accepted).
 }
 
 \author{

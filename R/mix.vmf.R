@@ -6,7 +6,7 @@
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 #### http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 ################################
-mix.vmf <- function(x, g) {
+mix.vmf <- function(x, g, n.start = 20) {
   ## x contains the data
   ## g is the number of clusters
   p <- dim(x)[2]  ## dimensionality of the data
@@ -19,27 +19,18 @@ mix.vmf <- function(x, g) {
   runtime <- proc.time()
   ## Step 1
   l <- 1
-  mesa <- array(dim = c(g, p, 50))
-  crit <- numeric(50)
-  cl <- matrix(nrow = n, ncol = 50)
 
-  for (vim in 1:30) {
-    ini <- kmeans(x, g)  ## initially a k-means for starting values
-    mesa[, , vim] <- ini$centers
-    cl[, vim] <- ini$cluster
-    crit[vim] <- ini$betweenss/ini$totss
-  }
-
-  epi <- which.max(crit)
-  w <- tabulate(cl[, epi])
+  ini <- kmeans(x, g, nstart = n.start)  ## initially a k-means for starting values
+  cl <- ini$cluster
+  w <- tabulate(cl)
 
   if ( min(w) <= 3 ) {
     mess <- paste( "Too many clusters to fit for this data. Try one less" )
     res <- list(mess = mess, loglik = NA)
 
   } else {
-    w <- tabulate( cl[, epi] )/n  #'# initial weights
-    m1 <- mesa[, , epi]
+    w <- w/n  #'# initial weights
+    m1 <- ini$centers
     Rk <- sqrt( Rfast::rowsums(m1^2) )  ## mean resultant lengths of the initical clusters
     mat <- m1/Rk  ## initial mean directions
 

@@ -3,11 +3,11 @@
 \title{
 Simulating from a Bingham distribution}
 \description{
-It simualtes from a Bingham distribution using the code suggested by Kent et al. (2013).
+It simulates from a Bingham distribution using the code suggested by Kent et al. (2013).
 }
 
 \usage{
-f.rbing(n, lam)
+f.rbing(n, lam, fast = FALSE)
 }
 
 \arguments{
@@ -16,6 +16,9 @@ Sample size.
 }
 \item{lam}{
 Eigenvalues of the diagonal symmetric matrix of the Bingham distribution.
+}
+\item{fast}{
+If you want a fast, efficient simulation set this to TRUE.
 }
 }
 
@@ -30,6 +33,7 @@ The simulated data.
 }
 \item{avtry}{
 The estimate of M in the rejection sampling. The average number of simulated values before a value is accepted.
+If the argument fast is set to TRUE this information will not appear.
 }
 }
 

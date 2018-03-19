@@ -35,7 +35,8 @@ A vector with the density values of y.
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Paine P.J., Preston S.P., Tsagris M and Wood A.T.A. (2017). An Elliptically Symmetric Angular Gaussian Distribution. Statistics and Computing (Accepted).
+Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2017). An Elliptically Symmetric 
+Angular Gaussian Distribution. Statistics and Computing (Accepted).
 }
 
 \author{

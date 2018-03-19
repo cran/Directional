@@ -50,6 +50,9 @@ The norm of the mean vector of the angualr Gaussian distribution.
 \item{mu}{
 The mean vector of the angular Gaussian distribution.
 }
+\item{mumu}{
+In the case of "spml.mle" this is the mean angle in radians.
+}
 }
 
 \references{
@@ -80,8 +83,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>
 }
 
 \examples{
-y <- rcauchy(100, 3, 1)
-x <- y %% (2 * pi)
+x <- rvonmises(1000, 3, 9)
 spml.mle(x)
 wrapcauchy(x)
 }

@@ -25,7 +25,6 @@ tang.conc <- function(u, ina, rads = FALSE) {
     b <- abs( sin( u[ ina == i ] - mi[i] ) )
     d <- c(d, b)
   }
-
   dmi <- Rfast::group.mean(d, ina)
   d2 <- Rfast::group.var(d, ina) * (ni - 1)
   mdm <- mean(d)
