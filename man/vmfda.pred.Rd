@@ -1,11 +1,11 @@
-\name{Prediction in discriminant analysis based on von Mises-Fisher distributions}
+\name{Prediction in discriminant analysis based on von Mises-Fisher distribution}
 \alias{vmfda.pred}
 \title{
-Prediction of a new observation using discriminant analysis based on von Mises-Fisher distributions
+Prediction of a new observation using discriminant analysis based on von Mises-Fisher distribution
 }
 
 \description{
-Prediction of a new observation using discriminant analysis based on von Mises-Fisher distributions.
+Prediction of the class of a new observation using discriminant analysis based on von Mises-Fisher distribution.
 }
 
 \usage{

@@ -14,7 +14,7 @@ vmf.da(x, ina, fraction = 0.2, R = 200, seed = FALSE)
 
 \arguments{
 \item{x}{
-A matrix with the dataset in Eulcidean coordinates, i.e. unit vectors.
+A matrix with the data in Eulcidean coordinates, i.e. unit vectors.
 }
 \item{ina}{
 A variable indicating the groupings.
