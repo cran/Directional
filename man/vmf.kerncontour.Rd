@@ -9,7 +9,7 @@ Contour plot of spherical data using a von Mises-Fisher kernel density estimate.
 }
 
 \usage{
-vmf.kerncontour(u, thumb = "none")
+vmf.kerncontour(u, thumb = "none", den.ret = FALSE, full = FALSE, ngrid = 100)
 }
 
 \arguments{
@@ -19,6 +19,19 @@ A two column matrix. The first coolumn is the latitude and the second is the lon
 \item{thumb}{
 This is either 'none' (defualt), or 'rot' for the rule of thumb suggested by Garcia-Portugues (2013). If it is "none" it is estimated via cross validation, with the fast function "vmfkde.tune_2".
 }
+\item{den.ret}{
+If FALSE (default), plots the contours of the density along with the individual
+points. If TRUE, will instead return a list with the Longitudes, Latitudes and
+Densities. Look at the 'value' section for details.
+}
+\item{full}{
+If FALSE (default), uses the range of positions from 'u' to calculate and
+optionally plot densities. If TRUE, calculates densities covering the entire
+sphere.
+}
+\item{ngrid}{
+Sets the resolution of the density calculation.
+}
 }
 
 \details{
@@ -26,7 +39,19 @@ It calcculates the contour plot using a von Mises-Fisher kernel for spherical da
 }
 
 \value{
-A plot with the data in latitude and longitude along with their kernel density estimate contour lines.
+The contour lines of the data. If "den.ret" was set to TRUE a list including:
+\item{lat}{
+The latitude values.
+}
+\item{long}{
+The longitude values.
+}
+\item{h}{
+The optimal bandwidth.
+}
+\item{den}{
+The kernel density estimate contour points.
+}
 }
 
 \references{
@@ -34,9 +59,10 @@ Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for k
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris and Micah J. Waldstein. 
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <gioathineou@gmail.com> and
+Micah J. Waldstein <micah@waldste.in>.
 }
 
 %\note{

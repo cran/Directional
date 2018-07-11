@@ -6,6 +6,7 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE, tol = 1e-07) {
   ## FALSE (xnew is the same as x)
   ## if the data are in degrees we transform them into radians
   tic <- proc.time()
+  if ( !rads )   y <- y * pi/180
   mod <- Rfast::spml.reg(y, x, tol, seb = seb)
   runtime <- proc.time() - tic
   est <- NULL

@@ -30,12 +30,12 @@ The run time of the procedure.
 \item{G}{
 A 3 x 3 matrix whose first column is the mean direction. The second and third columns are the major and minor axes respectively.
 }
-\item{para}{
-The concentration \eqn{\kappa} and ovalness \eqn{\beta} parameters are stored here.
-%,along with the angle \eqn{\psi} used to rotate \bold{H} and hence estimate \eqn{\textbf{\Gamma}} in Kent (1982).
+\item{param}{
+A vector with the concentration \eqn{\kappa} and ovalness \eqn{\beta} parameters and the angle \eqn{\psi} used to rotate \bold{H}
+and hence estimate \bold{G} as in Kent (1982).
 }
 \item{logcon}{
-The logarithm of the normalising constant, using the third type apprxoimation.
+The logarithm of the normalising constant, using the third type approximation (Kume and Wood, 2005).
 }
 \item{loglik}{
 The value of the log-likelihood.
@@ -44,6 +44,9 @@ The value of the log-likelihood.
 
 \references{
 Kent John (1982). The Fisher-Bingham distribution on the sphere. Journal of the Royal Statistical Society, Series B, 44(1): 71-80.
+
+Kume Alfred and Wood Andrew T.A. (2005). Saddlepoint approximations for the Bingham and Fisher-Bingham normalizing constants.
+Biometrika, 92(2):465-476
 }
 
 \author{

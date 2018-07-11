@@ -58,9 +58,9 @@ kent.mle <- function(x) {
   ckb <- as.numeric( fb.saddle(gam, lam)[3] )
   ## the line below calculates the log-likelihood
   l <-  -n * ckb + k * xg1 + b * ( xg2 - xg3 )
-  para <- c(k, b)
+  param <- c(k, b, psi)
   runtime <- proc.time() - tic
-  names(para) <- c("kappa", "beta")
+  names(param) <- c("kappa", "beta", "psi")
   colnames(G) <- c("mean", "major", "minor")
-  list(G = G, para = para, logcon = ckb, loglik = l, runtime = runtime)
+  list(G = G, param = param, logcon = ckb, loglik = l, runtime = runtime)
 }

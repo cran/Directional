@@ -22,8 +22,8 @@ kent.datacontour <- function(x) {
   n <- dm[1]  ## sample size
   a <- kent.mle(x) ## MLE estimation of the Kent distribution
   G <- a$G ## G matrix, the mean direction and the major-minor axes
-  k <- a$para[1] ## kappa, concentration parameter
-  b <- a$para[2] ## beta, ovalness
+  k <- a$param[1] ## kappa, concentration parameter
+  b <- a$param[2] ## beta, ovalness
   gam <- c(0, k, 0)
   lam <- c(0, -b, b)
   ckb <- fb.saddle(gam, lam)[3] ## logarithm of the normalising constant

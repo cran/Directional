@@ -1,5 +1,5 @@
 dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = FALSE,
-            seed = FALSE, type = c("vmf", "esag", "sknn", "nsknn"), B = 1000) {
+            seed = FALSE, type = c("vmf", "esag", "kent", "sknn", "nsknn"), B = 1000) {
 
     makefolds <- function(target, nfolds = 10, stratified = TRUE, seed = FALSE) {
     names <- paste("Fold", 1:nfolds)
@@ -31,14 +31,15 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
 
   if ( is.null(folds) )  folds <- makefolds(ina, nfolds = nfolds, stratified = stratified, seed = seed)
 
-  est1 <- est2 <- est3 <- est4 <- list()
+  est1 <- est2 <- est3 <- est4 <- est5 <- list()
   for (i in 1:nfolds) {
     est1[[ i ]] <- NA
     est2[[ i ]] <- NA
     est3[[ i ]] <- NA
     est4[[ i ]] <- NA
+	est5[[ i ]] <- NA
   }
-  per1 <- per2 <- per3 <- per4 <- NULL
+  per1 <- per2 <- per3 <- per4 <- per5 <- NULL
   p <- dim(x)[2]
 
   if ( sum( type == "vmf") == 1 ) {
@@ -80,29 +81,56 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
     }
   }
 
-  if ( sum( type == "sknn" ) == 1 ) {
-     per3 <- matrix(0, nfolds, length(k) )
-     colnames(per3) <- paste("sknn", k, sep = " ")
-     g <- max(ina)
-     for (i in 1:nfolds) {
-       nu <- folds[[ i ]]
-       est3[[ i ]] <- Rfast::dirknn(x[nu, ], x[-nu, ], ina[-nu], k = k, type = "C", parallel = FALSE)
-       per3[i, ] <- Rfast::colmeans(est3[[ i ]] == ina[nu])
-     }
+    if ( sum( type == "kent") == 1 ) {
+
+    per3 <- matrix(0, nfolds, 1)
+    colnames(per3) <- "kent"
+    g <- max(ina)
+    if (p == 3) {
+      for (i in 1:nfolds) {
+        nu <- folds[[ i ]]
+        mat <- matrix(0, length(nu), g)
+        xtrain <- x[-nu, ]
+        xtest <- x[nu, ]
+        id <- ina[-nu]
+        for (j in 1:g) {
+          mod <- kent.mle( xtrain[id == j, ])
+          mat[, j] <- kent.density(xtest, G = mod$G, param = mod$param, logden = TRUE )
+        }
+        est3[[ i ]] <- Rfast::rowMaxs(mat)
+        per3[i] <- mean(est3[[ i ]] == ina[nu])
+      }
+    } else {
+      for (i in 1:nfolds) {
+        est3[[ i ]] <- rep(NA, length(folds[[ i ]]) )
+        per3[i] <- NA
+      }
+    }
   }
 
-  if ( sum( type == "nsknn" ) == 1 ) {
+  if ( sum( type == "sknn" ) == 1 ) {
      per4 <- matrix(0, nfolds, length(k) )
-     colnames(per4) <- paste("nsknn", k, sep = " ")
+     colnames(per4) <- paste("sknn", k, sep = " ")
      g <- max(ina)
      for (i in 1:nfolds) {
        nu <- folds[[ i ]]
-       est4[[ i ]] <- Directional::dirknn(x[-nu, ], x[nu, ], k = k, ina[-nu], type = "NS")
+       est4[[ i ]] <- Rfast::dirknn(x[nu, ], x[-nu, ], ina[-nu], k = k, type = "C", parallel = FALSE)
        per4[i, ] <- Rfast::colmeans(est4[[ i ]] == ina[nu])
      }
   }
 
-  per <- cbind(per1, per2, per3, per4)
+  if ( sum( type == "nsknn" ) == 1 ) {
+     per5 <- matrix(0, nfolds, length(k) )
+     colnames(per5) <- paste("nsknn", k, sep = " ")
+     g <- max(ina)
+     for (i in 1:nfolds) {
+       nu <- folds[[ i ]]
+       est5[[ i ]] <- Directional::dirknn(x[-nu, ], x[nu, ], k = k, ina[-nu], type = "NS")
+       per5[i, ] <- Rfast::colmeans(est5[[ i ]] == ina[nu])
+     }
+  }
+
+  per <- cbind(per1, per2, per3, per4, per5)
   perf <- Rfast::colmeans(per)
   names(perf) <- colnames(per)
   best <- perf[ which.max(perf) ]

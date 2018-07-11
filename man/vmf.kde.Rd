@@ -16,10 +16,10 @@ vmf.kde(x, h, thumb = "none")
 \item{x}{
 A matrix with unit vectors, i.e. the data being expressed in Euclidean cordinates.
 }
-  \item{h}{
+\item{h}{
 The bandwidth to be used.
 }
-  \item{thumb}{
+\item{thumb}{
 If this is "none", the given bandwidth is used. If it is "rot" the rule of thumb suggested by Garcia-Portugues (2013) is used.
 }
 }
@@ -60,8 +60,8 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 \examples{
 x <- rvmf(100, rnorm(5), 15)
 h <- vmfkde.tune(x)[1]
-f1 <- vm.kde(x, h = h, thumb = "none")
-f2 <- vm.kde(x, h = h, thumb = "rot")
+f1 <- vmf.kde(x, h = h, thumb = "none")
+f2 <- vmf.kde(x, h = h, thumb = "rot")
 f1$h  ;  f2$h
 }
 

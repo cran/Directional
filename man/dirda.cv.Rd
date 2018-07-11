@@ -10,7 +10,8 @@ Cross validation for estimating the classification rate.
 
 \usage{
 dirda.cv(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = FALSE,
-         seed = FALSE, type = c("vmf", "esag", "sknn", "nsknn"), B = 1000)
+         seed = FALSE, type = c("vmf", "esag", "kent", "sknn", "nsknn"), 
+		 B = 1000)
 }
 
 \arguments{
@@ -36,7 +37,9 @@ Should the folds be created in a stratified way? i.e. keeping the distribution o
 If seed is TRUE, the results will always be the same.
 }
 \item{type}{
-The type of classifier to use. The avaliable options are "vmf" (von Mises-Fisher distribution), "esag" (ESAG distribution), "sknn" (standard k-NN) and "nsknn" (non standard k-NN). you can chose any of them or all of them. Note that "esag" works only with spherical data.
+The type of classifier to use. The avaliable options are "vmf" (von Mises-Fisher distribution), 
+"esag" (ESAG distribution), "kent" (Kent distribution), "sknn" (standard k-NN) and "nsknn" (non standard k-NN). 
+You can chose any of them or all of them. Note that "esag" and "kent" work only with spherical data.
 }
 \item{B}{
 In case you have asked for many classifiers, at least 2, should a bootstrap

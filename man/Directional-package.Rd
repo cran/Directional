@@ -12,13 +12,14 @@ Circular-linear regression, spherical-spherical regression, discriminant analysi
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 3.2\cr
-Date: \tab 2018-06-11\cr
+Version: \tab 3.3\cr
+Date: \tab 2018-07-11\cr
 License: \tab GPL-2\cr
 }
 }
 \author{
-Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <gioathineou@gmail.com>, Anamul Sajib <pmxahsa@nottingham.ac.uk> and Eli Amson <eli.amson1988@gmail.com>
+Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <gioathineou@gmail.com>,
+Anamul Sajib <pmxahsa@nottingham.ac.uk>, Eli Amson <eli.amson1988@gmail.com> and Micah J. Waldstein <micah@waldste.in>.
 }
 
 \section{Maintainers }{
