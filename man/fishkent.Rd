@@ -50,7 +50,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{vmf}, \link{kent.mle}, \link{rkent}
+\code{\link{iagesag}, \link{vmf}, \link{kent.mle}, \link{rkent}
 }
 }
 
@@ -58,6 +58,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 x <- rvmf(100, rnorm(3), 15)
 fishkent(x)
 fishkent(x, B = 1)
+iagesag(x)
 }
 
 \keyword{ Goodness of fit test }

@@ -5,7 +5,6 @@
 ## References: Arthur Pewsey, Markus Neuhauser, and Graeme D. Ruxton (2013)
 ## Circular Statistics in R
 
-
 group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 1) {
 
   if ( !rads )  m <- m * pi / 180

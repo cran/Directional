@@ -8,15 +8,16 @@ importFrom("stats", aggregate, coef, cor, dnorm, kmeans,
             cov, model.matrix, nlm, integrate, rbinom)
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            sort_mat, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
-		       rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans, multivmf.mle,
-		       Sort, spml.reg, spml.mle, mediandir, circlin.cor, Table, colnth,
-		       wrapcauchy.mle, colOrder, group.mean, group.var, dirknn, rbing, rbingham)
+		       rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans, 
+			   multivmf.mle, Sort, spml.reg, spml.mle, mediandir, circlin.cor, 
+			   Table, colnth, wrapcauchy.mle, colOrder, group.mean, group.var, 
+			   dirknn, rbing, rbingham, eachrow)
 
 import("doParallel")
 import("parallel")
 import("foreach")
 importFrom("RcppZiggurat", zrnorm)
-#importFrom("sphereplot", rgl.sphgrid, rgl.sphpoints)
+importFrom("rgl", open3d, points3d, spheres3d)
 
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")

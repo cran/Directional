@@ -1,15 +1,15 @@
 Package: Directional
 Type: Package
 Title: Directional Statistics
-Version: 3.3
+Version: 3.4
 URL:
-Date: 2018-07-11
+Date: 2018-11-10
 Author: Michail Tsagris, Giorgos Athineou, Anamul Sajib, Eli Amson, Micah J. Waldstein
 Maintainer: Michail Tsagris <mtsagris@yahoo.gr>
 Description: A collection of functions for directional data analysis. Hypothesis testing, discriminant and regression analysis, MLE of distributions and more are included. The standard textbook for such data is the "Directional Statistics" by Mardia, K. V. and Jupp, P. E. (2000).
 License: GPL-2
-Imports: MASS, doParallel, parallel, foreach, Rfast, RcppZiggurat
+Imports: MASS, doParallel, parallel, foreach, Rfast, RcppZiggurat, rgl
 NeedsCompilation: no
-Packaged: 2018-07-11 18:54:11 UTC; win7 64bit
+Packaged: 2018-11-10 19:19:11 UTC; win7 64bit
 Repository: CRAN
-Date/Publication: 2018-07-11 20:00:03 UTC
+Date/Publication: 2018-11-12 10:10:13 UTC

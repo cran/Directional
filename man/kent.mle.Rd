@@ -59,7 +59,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{kent.mle}, \link{fb.saddle}, \link{vmf}, \link{wood.mle}
+\code{\link{kent.mle}, \link{fb.saddle}, \link{vmf}, \link{wood.mle}, \link{sphereplot}
 }
 }
 

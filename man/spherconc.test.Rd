@@ -50,7 +50,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{het.aov}, \link{lr.aov}, \link{embed.aov}, \link{hcf.aov}, \link{conc.test}
+\code{\link{het.aov}, \link{lr.aov}, \link{embed.aov}, \link{hcf.aov}, \link{conc.test}, \link{sphereplot}
 }
 }
 

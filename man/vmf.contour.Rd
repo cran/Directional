@@ -37,7 +37,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{rvmf}, \link{vmf}, \link{vmf.kerncontour}, \link{kent.contour}
+\code{\link{rvmf}, \link{vmf}, \link{vmf.kerncontour}, \link{kent.contour}, \link{sphereplot}
 }
 }
 

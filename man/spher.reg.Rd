@@ -52,7 +52,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{spher.cor}, \link{spml.reg}, \link{circ.cor1}, \link{circ.cor2}
+\code{\link{spher.cor}, \link{spml.reg}, \link{circ.cor1}, \link{circ.cor2}, \link{sphereplot}
 }
 }
 

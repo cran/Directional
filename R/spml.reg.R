@@ -1,4 +1,4 @@
-spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = TRUE, tol = 1e-07) {
+spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-07) {
   ## y is the angular dependent variable
   ## x contains the independent variable(s)
   ## xnew is some new data or the current ones

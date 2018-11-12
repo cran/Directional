@@ -10,12 +10,12 @@ spher.cor <- function(x, y) {
   p <- dim(x)[2]  ## dimension of x
   q <- dim(y)[2]  ## dimension of y
   n <- dim(x)[1]  ## sample size
-  x <- t(x) - Rfast::colmeans(x)     ## subtract the mean
-  y <- t(y) - Rfast::colmeans(y)   ## subtract the mean
-  s11 <- tcrossprod(x) / n
-  s12 <- tcrossprod( x, y ) / n
+  x <- Rfast::eachrow( x, Rfast::colmeans(x), oper = "-" )     ## subtract the mean
+  y <- Rfast::eachrow(y, Rfast::colmeans(y), oper = "-" )   ## subtract the mean
+  s11 <- crossprod(x) / n
+  s12 <- crossprod( x, y ) / n
   s21 <- t( s12 )
-  s22 <- tcrossprod(y) / n
+  s22 <- crossprod(y) / n
   a1 <- solve(s11, s12)
   a2 <- solve(s22, s21)
   rsq <- sum( t(a1) * a2)

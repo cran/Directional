@@ -17,7 +17,7 @@ ESAGmle(y, tol = 1e-07)
 A matrix with the data expressed in Euclidean coordinates, i.e. unit vectors.
 }
 \item{tol}{
-The tolerance to accept that the E-M algorithm used to estimate the concentration parameter has converged.
+The tolerance to accept that the Newton-Raphson algorithm used in the IAG distribution has converged.
 }
 }
 
@@ -45,10 +45,10 @@ normal distribution which is rotational symmetric.
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
-
 Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular
-Gaussian Distribution. Statistics and Computing, 28((3):689--697.
+Gaussian Distribution. Statistics and Computing, 28(3):689--697.
+
+Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 }
 
 \author{
@@ -61,7 +61,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>
 %}
 
 \seealso{
-\code{\link{ESAGdensity}, \link{ESAGsim}, \link{iag.mle}, \link{kent.mle}, \link{acg}, \link{circ.summary}
+\code{\link{ESAGdensity}, \link{ESAGsim}, \link{iag.mle}, \link{kent.mle}, \link{acg}, \link{circ.summary}, \link{sphereplot}
 }
 }
 

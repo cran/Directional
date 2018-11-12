@@ -54,7 +54,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 %}
 
 \seealso{
-\code{\link{kent.mle}, \link{vmf}, \link{rvmf}
+\code{\link{kent.mle}, \link{ESAGmle}, \link{vmf}, \link{rvmf}, \link{sphereplot}
 }
 }
 
