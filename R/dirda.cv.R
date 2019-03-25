@@ -1,6 +1,6 @@
 dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = FALSE,
                   type = c("vmf", "iag", "esag", "kent", "sknn", "nsknn"),
-                  seed = FALSE, B = 1000) {
+                  seed = FALSE, B = 1000, parallel = FALSE) {
 
   if ( is.null(folds) )  folds <- Directional::makefolds(ina, nfolds = nfolds, stratified = stratified, seed = seed)
 
@@ -120,7 +120,7 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
     g <- max(ina)
     for (i in 1:nfolds) {
       nu <- folds[[ i ]]
-      est5[[ i ]] <- Rfast::dirknn(x[nu, , drop = FALSE], x[-nu, ], ina[-nu], k = k, type = "C", parallel = FALSE)
+      est5[[ i ]] <- Rfast::dirknn(x[nu, , drop = FALSE], x[-nu, ], ina[-nu], k = k, type = "C", parallel = parallel)
       per5[i, ] <- Rfast::colmeans(est5[[ i ]] == ina[nu])
     }
   }
@@ -171,7 +171,7 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
   } else if ( any( !is.na(est5) ) )  {
 
     est <- est5[[ 1 ]]
-    for (i in 2:nfolds)   est <- rbind( est, est[[ i ]] )
+    for (i in 2:nfolds)   est <- rbind( est, est5[[ i ]] )
     diaf <- est - ina[unlist(folds)]
     n <- dim(est)[1]
     bf <- numeric(B)

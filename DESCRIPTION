@@ -1,15 +1,16 @@
 Package: Directional
 Type: Package
 Title: Directional Statistics
-Version: 3.4
+Version: 3.6
 URL:
-Date: 2018-11-10
+Date: 2019-03-25
 Author: Michail Tsagris, Giorgos Athineou, Anamul Sajib, Eli Amson, Micah J. Waldstein
 Maintainer: Michail Tsagris <mtsagris@yahoo.gr>
-Description: A collection of functions for directional data analysis. Hypothesis testing, discriminant and regression analysis, MLE of distributions and more are included. The standard textbook for such data is the "Directional Statistics" by Mardia, K. V. and Jupp, P. E. (2000).
+Description: A collection of functions for directional data analysis. Hypothesis testing, discriminant and regression analysis, MLE of distributions and more are included. The standard textbook for such data is the "Directional Statistics" by Mardia, K. V. and Jupp, P. E. (2000). Other references include  Phillip J. Paine, Simon P. Preston Michail Tsagris and Andrew T. A. Wood (2018). An elliptically symmetric angular Gaussian distribution. Statistics and Computing 28(3): 689-697. <doi:10.1007/s11222-017-9756-4>.
 License: GPL-2
-Imports: MASS, doParallel, parallel, foreach, Rfast, RcppZiggurat, rgl
+Imports: MASS, doParallel, parallel, foreach, Rfast, RcppZiggurat, rgl,
+        Rfast2
 NeedsCompilation: no
-Packaged: 2018-11-10 19:19:11 UTC; win7 64bit
+Packaged: 2019-03-25 09:21:20 UTC; User
 Repository: CRAN
-Date/Publication: 2018-11-12 10:10:13 UTC
+Date/Publication: 2019-03-25 10:08:31 UTC

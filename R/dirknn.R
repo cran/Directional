@@ -4,7 +4,7 @@
 #### Tsagris Michail 01/2016
 #### mtsagris@yahoo.gr
 ################################
-dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
+dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE, parallel = FALSE) {
   ## x is the matrix containing the data
   ## xnew is the new data
   ## k is the number of neighbours to use
@@ -43,7 +43,7 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE) {
     }
 
   } else {   ## if type is "S"   ## Standard algorithm
-    g <- Rfast::dirknn(xnew, x, ina, k = k, type = "C", parallel = FALSE)
+    g <- Rfast::dirknn(xnew, x, ina, k = k, type = "C", parallel = parallel)
   }  ## end if (type == "NS")
   colnames(g) <- paste("k=", k, sep = "")
   g

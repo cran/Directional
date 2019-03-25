@@ -10,8 +10,8 @@ Cross validation for estimating the classification rate.
 
 \usage{
 dirda.cv(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = FALSE,
-         type = c("vmf", "iag", "esag", "kent", "sknn", "nsknn"), seed = FALSE,
-		 B = 1000)
+         type = c("vmf", "iag", "esag", "kent", "sknn", "nsknn"),
+         seed = FALSE, B = 1000, parallel = FALSE)
 }
 
 \arguments{
@@ -43,6 +43,9 @@ You can chose any of them or all of them. Note that "esag" and "kent" work only 
 }
 \item{B}{
 If you used k-NN, should a bootstrap correction of the bias be applied? If yes, 1000 is a good value.
+}
+\item{parallel}{
+If you want the standard -NN algorithm to take place in parallel set this equal to TRUE.
 }
 }
 
@@ -76,7 +79,8 @@ Paine P.J. Preston S.P. & Tsagris M. and Wood A.T.A. (2018). An Elliptically Sym
 
 Morris J. E. & Laycock P. J. (1974). Discriminant analysis of directional data. Biometrika, 61(2): 335-341.
 
-Tsamardinos I., Greasidou L. & borboudakis G. (2018). Bootstrapping the out-of-sample predictions for efficient and accurate cross-validation. Machine Learning (To appear).
+Tsamardinos I., Greasidou E. & Borboudakis G. (2018). Machince Learning, 107(12): 1895-1922.
+https://doi.org/10.1007/s10994-018-5714-4
 }
 
 \author{

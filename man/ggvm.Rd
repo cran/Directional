@@ -36,7 +36,7 @@ A vector consisting of the \eqn{\zeta}, \eqn{\kappa}, \eqn{\mu} and \eqn{\alpha}
 }
 
 \references{
-Dietrich, T., & Richter, W. D. (2016). Classes of geometrically generalized von Mises distributions. Sankhya B, 1-39.
+Dietrich, T. & Richter, W. D. (2017). Classes of geometrically generalized von Mises distributions. Sankhya B, 79(1): 21-59.
 }
 
 \author{

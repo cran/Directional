@@ -9,7 +9,7 @@ It classifies new observations to some known groups via the k-NN algorithm.
 }
 
 \usage{
-dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE)
+dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE, parallel = FALSE)
 }
 
 \arguments{
@@ -30,6 +30,9 @@ If type is "S", the standard k-NN algorithm is to be used, else "NS" for the non
 }
 \item{mesos}{
 A boolean variable used only in the case of the non standard algorithm (type="NS"). Should the average of the distances be calculated (TRUE) or not (FALSE)? If it is FALSE, the harmonic mean is calculated.
+}
+\item{parallel}{
+If you want the standard -NN algorithm to take place in parallel set this equal to TRUE.
 }
 }
 

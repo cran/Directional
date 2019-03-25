@@ -4,7 +4,7 @@
 #### Tsagris Michail 01/2016
 #### mtsagris@yahoo.gr
 ################################
-dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = NULL) {
+dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = NULL, parallel = FALSE) {
   ## x is the matrix containing the data
   ## M is the number of folds, set to 10 by default
   ## A is the maximum number of neighbours to use
@@ -33,7 +33,7 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = N
     ina2 <- ina[ -mat[, vim] ]   ## groups of training sample
     aba <- as.vector( mat[, vim] )
     aba <- aba[aba > 0]
-    g <- dirknn(x = z[-aba, ], xnew = z[aba, ,drop = FALSE], k = 2:A, ina = ina2, type = type, mesos = mesos)
+    g <- Directional::dirknn(x = z[-aba, ], xnew = z[aba, ,drop = FALSE], k = 2:A, ina = ina2, type = type, mesos = mesos, parallel = parallel)
     be <- g - id
     per[vim, ] <- Rfast::colmeans(be == 0)
   }

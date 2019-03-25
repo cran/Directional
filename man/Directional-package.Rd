@@ -12,8 +12,8 @@ Circular-linear regression, spherical-spherical regression, discriminant analysi
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 3.4\cr
-Date: \tab 2018-11-10\cr
+Version: \tab 3.6\cr
+Date: \tab 2019-03-25\cr
 License: \tab GPL-2\cr
 }
 }
@@ -31,7 +31,7 @@ Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wi
 }
 
 \note{
-Acknowledgments:
+\bold{Acknowledgments:}
 
 Professor Andy Wood and Dr Simon Preston from the university of Nottingham are highly appreciated for being my supervisors during my post-doc in directional data analysis.
 
@@ -57,6 +57,10 @@ Professor Kurt Hornik from the Vienna university of economics and business is gr
 Manos Papadakis, undergraduate student in the department of computer science at university of Crete, is also acknowledged for his programming tips.
 
 Dr Mojgan Golzy spotted a mistake in the \code{\link{ESAGdensity}} and Michail is very happy for that.
+
+If you want more information on many of these algorithms see Chapters 9 and 10 in the following document.
+https://www.researchgate.net/publication/324363311_Multivariate_data_analysis_in_R
+
 }
 
 \keyword{ Directional data }

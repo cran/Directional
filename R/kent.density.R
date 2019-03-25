@@ -8,6 +8,6 @@ kent.density <- function(y, G, param, logden = FALSE ) {
   if ( dim(y)[2] == 1 )  y <- t(y)
   den <-  -ckb + k * y %*% G[, 1] + b * (y %*% G[, 2])^2 - b * (y %*% G[, 3])^2
   den <- as.vector(den)
-  if ( logden )  den <- exp(den) 
-  den 
+  if ( !logden )  den <- exp(den)
+  den
 }

@@ -38,7 +38,7 @@ ESAGmle <- function(y, tol = 1e-07) {
     da <- nlm(mag, da$estimate, z = z, nc = nc, iterlim = 2000 )
     lik2 <-  -da$minimum
    }
-  da <- optim(da$estimate, mag, z = z, nc = nc, control = list(maxit = 10000), hessian = TRUE)
+  da <- optim(da$estimate, mag, z = z, nc = nc, control = list(maxit = 10000) )
   
   list( mu = da$par[1:3], gam = da$par[4:5], loglik = -da$value - n * log(2 * pi), iag.loglik  = mod$param[2] )
 }
