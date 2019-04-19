@@ -9,15 +9,18 @@ MLE of the ESAG distribution.
 }
 
 \usage{
-ESAGmle(y, tol = 1e-07)
+ESAGmle(y, full = FALSE, tol = 1e-06)
 }
 
 \arguments{
 \item{y}{
 A matrix with the data expressed in Euclidean coordinates, i.e. unit vectors.
 }
+\item{full}{
+If you want some extra information, the inverse of the covariance matrix, the \eqn{rho} parameter (smallest eigenvalue of the covariance matrix) and the angle of rotation \eqn{\psi} set this equal to TRUE. Otherwise leave it FALSE.
+}
 \item{tol}{
-The tolerance to accept that the Newton-Raphson algorithm used in the IAG distribution has converged.
+A tolerance value to stop performing successive optimizations.
 }
 }
 
@@ -37,6 +40,15 @@ The two gamma parameters.
 }
 \item{loglik}{
 The log-likelihood value.
+}
+\item{vinv}{
+The inverse of the covariance matrix. It is returned if the argument "full" is TRUE.
+}
+\item{rho}{
+The \eqn{rho} parameter (smallest eigenvalue of the covariance matrix). It is returned if the argument "full" is TRUE.
+}
+\item{psi}{
+The angle of rotation \eqn{\psi} set this equal to TRUE. It is returned if the argument "full" is TRUE.
 }
 \item{iag.loglik}{
 The log-likelihood value of the isotropic angular Gaussian distribution. That is, the projected

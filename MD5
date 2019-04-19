@@ -1,10 +1,10 @@
-a6269454b6c295f3730d737eb914d9f3 *DESCRIPTION
-7049b83d19ef1217bd85a66b4a6fa05b *NAMESPACE
+2203dad408ced5e29d20afe9ba0b0d35 *DESCRIPTION
+4231c42150ba258166a670d391763c02 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 081b1e81478d217044523db1e866a100 *R/ESAG.da.R
 07a078e79c7610ae278502b4eb58391d *R/ESAGda.pred.R
 63deacac6c799548b539435a3f70b403 *R/ESAGdensity.R
-efa2147dd7cc333a683057a6a8be6156 *R/ESAGmle.R
+4fb8dc84fbc761d4d8211c393a02155b *R/ESAGmle.R
 957cc6d06d8e925830718fb2c8ab1236 *R/ESAGsim.R
 f20f47665b20379b224ff0c36bec057b *R/acg.R
 cf2dffaccc7cf7ed5382ff9a9d6e17c3 *R/bic.mixvmf.R
@@ -14,7 +14,7 @@ e96c79cb7b4518cb9790c90bea89a15a *R/circ.cors1.R
 f4af42d1c09559b090232a60db898530 *R/circ.summary.R
 c0fe0c60122afd8a2ac88d9ffb36b6b4 *R/circlin.cor.R
 d4b778cd4a5ab7cdc7d926ca35f58c4a *R/conc.test.R
-e400688b435d64f535f425d2fc86a3f0 *R/cosap.R
+2ef3f07c1171576e4ede1d42968a9ed9 *R/cosap.R
 f84fe8401b5605a95f9fdb7eaf725d84 *R/dirda.cv.R
 a19e50fedaae4f48ff46da359c77320a *R/dirknn.R
 0cb65d20d1a4b9219d904901e2dbc4cc *R/dirknn.tune.R
@@ -35,6 +35,7 @@ ae4ec6eb756f01473c203ca696bc4d38 *R/hcf.circaov.R
 01c0637deafb4e30fb5feafe43a15663 *R/het.aov.R
 6bf5d2ab1131a860384c1995e1627881 *R/het.circaov.R
 7b9b59804a23f77834a277ed54718ad6 *R/iag.mle.R
+bc85801e3320066bc93928875cd1d26c *R/iag.reg.R
 d9bb4300d82f7f468d8b0abd194bce2b *R/iagesag.R
 fa6bd7ee65393fe2c6b948ea307d3fa7 *R/kent.contour.R
 cb671280b06b42043db68d3a113cab6b *R/kent.datacontour.R
@@ -61,7 +62,7 @@ e5e466f3ca8bb590604c818cf44b63ac *R/mix.vmf.R
 59d7732ab77f962935bf19ba4514df8c *R/racg.R
 714af9b42d502f780433f79ac47b512f *R/rayleigh.R
 01d5776c517273ecef3f3dc2261adfa5 *R/rbingham.R
-55d13407475c2eaeda4f8ffa75c173a3 *R/rfb.R
+78e172d6dfe33feb72e693c0060508ff *R/rfb.R
 2828a48d66227e8437a2a247f05443f7 *R/rkent.R
 7705b691e2e5ce68250f98553269efd8 *R/rmatrixfisher.R
 86800ebb13230cea497c63e8bb65e547 *R/rmixvmf.R
@@ -89,6 +90,7 @@ c70e5ab01bc1718af8b8867b6f910a0e *R/vmf.da.R
 ee06c8766caf40a6aef6a5da09d6a20c *R/vmf.density.R
 f3860286e599b96050d8077001e227fa *R/vmf.kde.R
 76cd7aeaf442f4f73c3c132faaecacc3 *R/vmf.kerncontour.R
+70e9c2c5f9d1668c11796a3adcaecc24 *R/vmf.reg.R
 590e7ac338c929dce0b3456dc6627d26 *R/vmfda.pred.R
 69726da582d6f2be3b974aa5aafb70f7 *R/vmfkde.tune.R
 fe69c5161f72450b4bd31d0aef9b2219 *R/vmkde.tune.R
@@ -96,11 +98,11 @@ fe69c5161f72450b4bd31d0aef9b2219 *R/vmkde.tune.R
 4115441ca71890ff34f0d730146ebde6 *R/wood.mle.R
 b68e4f83f8f713d56d74d3b7262dc563 *R/wrapcauchy.R
 714dd52c83b1a8e6193bbb186f0e8182 *man/Arotation.Rd
-40a55ac84438dbe4f3b503e31053d2b4 *man/Directional-package.Rd
+753e0c5b56b661a8fc95afcb19fd68d8 *man/Directional-package.Rd
 51179f3a1dbb519592777fd8dfeccec7 *man/ESAG.da.Rd
 8c3ee483796578b9814944318ec51180 *man/ESAGda.pred.Rd
 f2dab3fb6905b26bd82f4d090b418ebf *man/ESAGdensity.Rd
-6488e5444b786030e67bedab02f5d3fb *man/ESAGmle.Rd
+1da5667eaf7784bf96250d98ebe9ffd5 *man/ESAGmle.Rd
 ff27e7c798ed237918279eee630d9c94 *man/ESAGsim.Rd
 c7df3eeb4e5b3ace7f03aa703a98325f *man/acg.Rd
 db66c7693668b4e648767cb21c7dcecc *man/bic.mixvmf.Rd
@@ -126,6 +128,7 @@ dc6bc70970f2c93d0e2821cdabfb844a *man/group.vm.Rd
 7876a456476e6791094297949368d769 *man/hcf.aov.Rd
 b176306829db0734733ac7bd9b9d0672 *man/hcf.circaov.Rd
 9534882566d110c46454fa0d26afcea5 *man/iag.mle.Rd
+434d72984b7f8b7a28336f9f79f64056 *man/iag.reg.Rd
 c5ea556598072e57fcd97e2234808849 *man/iagesag.Rd
 5206ba5c70bd2e50d9b0b86609c1062a *man/kent.contour.Rd
 c908446fdb2c8a85f2f25fe5d5b28008 *man/kent.datacontour.Rd
@@ -165,7 +168,7 @@ fbc0e8f5e229f239fd09378d3157304a *man/rvmf.Rd
 5bf90a42f4b1ac8c517d93e06ffadee5 *man/spherconc.test.Rd
 8daa71a744ca6b4e1f908b0e6196b762 *man/sphereplot.Rd
 e442aa273d2ede6b28c8851bc64450f7 *man/spml.mle.Rd
-ed6b30e9cf4b16af9250bf7ac4fe7a8e *man/spml.reg.Rd
+e27fab0d0cdf05f221faa8124772a8cc *man/spml.reg.Rd
 61af53c0b81767da0b2f84b65ce757da *man/tang.conc.Rd
 54eaeaf798a420d804ff6cec1cdf0b23 *man/vec.Rd
 56b18eeef5cfe9c1acc3806f73d3b978 *man/visual.check.Rd

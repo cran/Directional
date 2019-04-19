@@ -5,7 +5,7 @@ Circular or angular regression
 }
 
 \description{
-Regression with circualr dependent variable and Euclidean or categorical independent variables.
+Regression with circular dependent variable and Euclidean or categorical independent variables.
 }
 
 \usage{
@@ -27,8 +27,8 @@ The new values of some independent variable(s) whose circular values you want to
 If they are categorical, the user must provide them as dummy variables. It does not accept factor variables. If you have no new x values, leave it NULL (default).
 }
 \item{seb}{
-a boolean variable. If TRUE, the standard error of the coefficients will be be returned. 
-Set to FALSE in case of simulation studies or in other cases such as a forward regression 
+a boolean variable. If TRUE, the standard error of the coefficients will be be returned.
+Set to FALSE in case of simulation studies or in other cases such as a forward regression
 setting for example. In these cases, it can save some time.
 Leave this FALSE as we currently have a problem with this, but will fixt it in our next update.
 }
@@ -52,7 +52,7 @@ The number of iterations required until convergence of the EM algorithm.
 The regression coefficients.
 }
 \item{seb}{
-The standard errors of the coefficients. 
+The standard errors of the coefficients.
 }
 \item{loglik}{
 The value of the maximised log-likelihood.
