@@ -17,7 +17,9 @@ vmf <- function(x, fast = FALSE, tol = 1e-07) {
     p <- dim(x)[2]  ## dimensionality of the data
     n <- dim(x)[1]  ## sample size of the data
     Apk <- function(p, k)  besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
-    m1 <- Rfast::colsums(x)
+	if ( bigmemory::is.big.matrix(x) ) {
+      m1 <- Rfast::colsums(x[])
+    } else  m1 <- Rfast::colsums(x)
     R <- sqrt( sum(m1^2) )/n  ## mean resultant length
     m <- m1 / n / R
     k <- numeric(10)
@@ -39,6 +41,7 @@ vmf <- function(x, fast = FALSE, tol = 1e-07) {
     loglik <- n * (p/2 - 1) * log(k) - 0.5 * n * p * log(2 * pi) - n * ( log( besselI(k, p/2 - 1, expon.scaled = TRUE) ) + k ) + k * sum(x %*% m)
     vark <- 1 / ( n * (1 - Apk(p, k)/k - Apk(p, k)^2) )
     res <- list(mu = m, kappa = k, MRL = R, vark = vark, loglik = loglik)
-  }
+  }   
+  
   res
 }

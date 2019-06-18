@@ -9,16 +9,16 @@ It estimates the percentage of correct classification via an m-fold cross valdia
 }
 
 \usage{
-dirknn.tune(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = NULL,
-parallel = FALSE)
+dirknn.tune(z, nfolds = 10, A = 5, ina, type = "S", mesos = TRUE, folds = NULL,
+parallel = FALSE, stratified = TRUE, seed = FALSE)
 }
 
 \arguments{
 \item{z}{
 The data, a numeric matrix with unit vectors.
 }
-\item{M}{
-The number of folds for the m-fold cross validation, set to 10 by default.
+\item{nfolds}{
+How many folds to create?
 }
 \item{A}{
 The maximum number of nearest neighbours, set to 5 by default. The 1 nearest neighbour is not used.
@@ -32,11 +32,17 @@ If type is "S", the standard k-NN algorithm is to be used, else "NS" for the non
 \item{mesos}{
 A boolean variable used only in the case of the non standard algorithm (type="NS"). Should the average of the distances be calculated (TRUE) or not (FALSE)? If it is FALSE, the harmonic mean is calculated.
 }
-\item{mat}{
-You can specify your own folds by giving a mat, where each column is a fold. Each column contains indices of the observations. You can also leave it NULL and it will create folds.
+\item{folds}{
+Do you already have a list with the folds? If not, leave this NULL.
 }
 \item{parallel}{
 If you want the standard -NN algorithm to take place in parallel set this equal to TRUE.
+}
+\item{stratified}{
+Should the folds be created in a stratified way? i.e. keeping the distribution of the groups similar through all folds?
+}
+\item{seed}{
+If seed is TRUE, the results will always be the same.
 }
 }
 
@@ -84,8 +90,8 @@ mu <- mu / sqrt( rowSums(mu^2) )
 da <- rmixvmf(200, prob, mu, k)
 x <- da$x
 ina <- da$id
-dirknn.tune(x, M = 5, A = 10, ina, type = "S", mesos = TRUE)
-dirknn.tune(x, M = 10, A = 5, ina, type = "S", mesos = TRUE)
+dirknn.tune(x, nfolds = 5, A = 10, ina, type = "S", mesos = TRUE)
+dirknn.tune(x, nfolds = 10, A = 5, ina, type = "S", mesos = TRUE)
 }
 
 \keyword{ Directional k-NN algorithm }

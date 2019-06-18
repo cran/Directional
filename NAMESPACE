@@ -5,13 +5,13 @@ importFrom("graphics", contour, lines, plot, points, abline)
 importFrom("stats", aggregate, coef, cor, dnorm, kmeans,
            .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
            quantile, rbeta, rnorm, runif, sd, uniroot, qnorm,
-            cov, model.matrix, nlm, integrate, rbinom)
+            cov, model.matrix, nlm, integrate, rbinom, rcauchy)
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
-           sort_mat, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
-		       rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans,
-			     multivmf.mle, Sort, spml.reg, spml.mle, mediandir, circlin.cor,
-			     Table, colnth, wrapcauchy.mle, colOrder, group.mean, group.var,
-			     dirknn, rbing, rbingham, eachrow)
+             colSort, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
+		     rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans,
+			 multivmf.mle, Sort, spml.reg, spml.mle, mediandir, circlin.cor,
+			 Table, colnth, wrapcauchy.mle, colOrder, group, dirknn, rbing,
+			 rbingham, eachrow)
 importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1)
 
 import("doParallel")
@@ -19,6 +19,7 @@ import("parallel")
 import("foreach")
 importFrom("RcppZiggurat", zrnorm)
 importFrom("rgl", open3d, points3d, spheres3d)
+importFrom("bigmemory", read.big.matrix, sub.big.matrix, is.big.matrix)
 
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")

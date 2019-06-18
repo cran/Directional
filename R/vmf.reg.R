@@ -13,7 +13,7 @@ vmf.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
   }
   p <- dim(x)[2]
   ini <- solve(crossprod(x), crossprod(x, y))  ## initial values for the beta
-  options(warn = -1)
+  oop <- options(warn = -1) 
   val1 <-  nlm(regvmf, ini, y = y, x = x, iterlim = 1000)
   val2 <-  nlm(regvmf, val1$estimate, y = y, x = x, iterlim = 1000)
   while (val1$minimum - val2$minimum > tol) {
@@ -21,6 +21,7 @@ vmf.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
     val2 <-  nlm(regvmf, val1$estimate, y = y, x = x, iterlim = 1000)
   }
   da <- optim(val2$estimate, regvmf, y = y, x = x, control = list(fmaxit = 10000), hessian = TRUE)
+  on.exit( options(oop) )
   be <- matrix(da$par, ncol = 3)
   seb <- sqrt( diag( solve(da$hessian) ) )
   seb <- matrix(seb, ncol = 3)

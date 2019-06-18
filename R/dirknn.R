@@ -19,7 +19,6 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE, parallel = FAL
   nc <- max(ina)  ## The number of groups
   nu <- dim(xnew)[1]
 
-
   if (type == "NS") {
     ## Non Standard algorithm
     klen <- length(k)
@@ -27,11 +26,12 @@ dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE, parallel = FAL
     ta <- matrix(nrow = nu, ncol = nc)
     apo <- list()
     for (m in 1:nc) {
-	    disa <- tcrossprod(x[ina == m, ], xnew)
-      disa[ disa >= 1 ] <- 1
-      disa[ disa <=  -1 ] <-  -1
-      disa <- acos(disa)
-      apo[[ m ]] <- Rfast::sort_mat(disa)[1:max(k), , drop = FALSE]
+	disa <- tcrossprod(x[ina == m, ], xnew)
+      ## no need to compute the acos
+      #disa[ disa >= 1 ] <- 1
+      #disa[ disa <=  -1 ] <-  -1
+      #adisa <- acos(disa)
+      apo[[ m ]] <-  -Rfast::colSort(disa)[1:max(k), , drop = FALSE]
     }
     for (j in 1:klen) {
       for (m in 1:nc) {

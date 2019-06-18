@@ -9,8 +9,8 @@ Tuning of the k-NN regression with Euclidean or (hyper-)spherical response and o
 }
 
 \usage{
-knnreg.tune(y, x, M = 10, A = 10, ncores = 1, res = "eucl", type = "euclidean",
-estim = "arithmetic", mat = NULL, graph = FALSE)
+knnreg.tune(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl", type = "euclidean",
+estim = "arithmetic", folds = NULL, seed = FALSE, graph = FALSE)
 }
 
 \arguments{
@@ -20,8 +20,8 @@ The currently available data, the response variables values. A matrix with eithe
 \item{x}{
 The currently available data, the predictor variables values. A matrix with either euclidean (univariate or multivariate) or (hyper-)spherical data. If you have a circular response, say u, transform it to a unit vector via (cos(u), sin(u)).
 }
-\item{M}{
-The number of folds for the m-fold cross validation, set to 10 by default.
+\item{nfolds}{
+How many folds to create?
 }
 \item{A}{
 The maximum number of nearest neighbours, set to 5 by default, starting from the 1 nearest neighbor.
@@ -39,8 +39,11 @@ you should put type="spher", so that the cosinus distance is calculated.
 \item{estim}{
 Once the k observations whith the smallest distance are discovered, what should the prediction be? The arithmetic average of the corresponding y values be used estim="arithmetic" or their harmonic average estim="harmonic".
 }
-\item{mat}{
-You can specify your own folds by giving a mat, where each column is a fold. Each column contains indices of the observations.     You can also leave it NULL and it will create folds.
+\item{folds}{
+Do you already have a list with the folds? If not, leave this NULL.
+}
+\item{seed}{
+If seed is TRUE, the results will always be the same.
 }
 \item{graph}{
 If this is TRUE a graph with the results will appear.
@@ -88,14 +91,12 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Gior
 y <- iris[, 1]
 x <- iris[, 2:4]
 x <- x/ sqrt( rowSums(x^2) )  ## Euclidean response and spherical predictors
-knnreg.tune(y, x, A = 5, res = "eucl", type = "spher", estim = "arithmetic",
-mat = NULL, graph = TRUE)
+knnreg.tune(y, x, A = 5, res = "eucl", type = "spher", estim = "arithmetic")
 
 y <- iris[, 1:3]
 y <- y/ sqrt( rowSums(y^2) )  ## Spherical response and Euclidean predictor
 x <- iris[, 2]
-knnreg.tune(y, x, A = 5, res = "spher", type = "euclidean", estim = "arithmetic",
-mat = NULL, graph = TRUE)
+knnreg.tune(y, x, A = 5, res = "spher", type = "euclidean", estim = "arithmetic")
 }
 
 

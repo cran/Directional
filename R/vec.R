@@ -25,14 +25,16 @@ vec <- function(x, n = 1, deg = 90) {
 
     for (i in 1:n) {
       ini <- rnorm(p)
-      options(warn = -1)
+      oop <- options(warn = -1) 
       pa <- nlm(fu, ini, x = x)
+      on.exit( options(oop) )
       y <- pa$estimate
       y <- y / sqrt( sum(y^2) )
       ca <- acos( sum(x * y) ) / pi * 180
       while( abs(ca - deg) > 1e-07 ) {
-        options(warn = -1)
+        oop <- options(warn = -1) 
         pa <- nlm(fu, rnorm(p), x = x)
+		on.exit( options(oop) )
         y <- pa$estimate
         y <- y / sqrt( sum(y^2) )
         ca <- acos( sum(x * y) ) / pi * 180

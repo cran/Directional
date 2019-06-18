@@ -27,7 +27,7 @@ ESAGmle <- function(y, full = FALSE, tol = 1e-06) {
      - 0.5 * sum(a2) + nc * rl + 1.5 * sum( log(g1) ) - sum( log(M2) )
    }
 
-  options(warn = - 1)
+  oop <- options(warn = -1) 
   da <- nlm(mag, rnorm(5), z = z, nc = nc, iterlim = 2000)
   lik1 <-  -da$minimum
   da2 <- nlm(mag, da$estimate, z = z, nc = nc, iterlim = 2000 )
@@ -38,6 +38,7 @@ ESAGmle <- function(y, full = FALSE, tol = 1e-06) {
     lik2 <-  -da$minimum
   }
   da <- optim(da$estimate, mag, z = z, nc = nc, control = list(maxit = 10000) )
+  on.exit( options(oop) )
   if ( full ) {
     mu <- da$par[1:3]
     gam1 <- da$par[4]  ;    gam2 <- da$par[5]

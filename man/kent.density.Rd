@@ -1,17 +1,18 @@
-\name{Density of the von Mises-Fisher and the spherical Kent distributions}
+\name{Density of the spherical Kent and ESAG distributions}
 \alias{kent.density}
-\alias{vmf.density}
+\alias{ESAGdensity}
+
 \title{
-Density of the spherical Kent distribution
+Density of the spherical Kent and ESAG distributions
 }
 
 \description{
-Density of the spherical Kent distribution.
+Density of the spherical Kent and ESAG distributions.
 }
 
 \usage{
 kent.density(y, G, param, logden = FALSE )
-vmf.density(y, k, mu, logden = FALSE)
+ESAGdensity(y, param, logden = FALSE)
 }
 
 \arguments{
@@ -19,16 +20,13 @@ vmf.density(y, k, mu, logden = FALSE)
 A matrix or a vector with the data expressed in Euclidean coordinates, i.e. unit vectors.
 }
 \item{G}{
-A 3 x 3 matrix whose first column is the mean direction. The second and third columns are the major and minor axes respectively.
+For the Kent distribution only, a 3 x 3 matrix whose first column is the mean direction. The second and third columns are the major and minor axes respectively.
 }
 \item{param}{
-A vector with the concentration \eqn{\kappa} and ovalness \eqn{\beta} parameters. The \eqn{\psi} has been absorbed inside the matrix G.
-}
-\item{k}{
-The concentration parameter of the von Mises-Fisher distribution.
-}
-]\item{mu}{
-The mean direction of the von Mises-Fisher distribution.
+For the Kent distribution a vector with the concentration \eqn{\kappa} and ovalness \eqn{\beta} parameters. The \eqn{\psi} has been absorbed inside the matrix G.
+
+For the ESAG distribution, its parameters, the first three are the mean vector in \eqn{R^3} and the next two are the two gammas.
+
 }
 \item{logden}{
 If you the logarithm of the density values set this to TRUE.
@@ -36,11 +34,11 @@ If you the logarithm of the density values set this to TRUE.
 }
 
 \details{
-The density of the von Mises-Fisher or of the spherical Kent distribution is computed.
+The density of the spherical Kent or spherical ESAG distribution is computed.
 }
 
 \value{
-A vector with the density values of y.
+A vector with the (log) density values of y.
 }
 
 \references{
@@ -48,6 +46,9 @@ Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wi
 
 Kent John (1982). The Fisher-Bingham distribution on the sphere. Journal of the Royal Statistical Society,
 Series B, 44(1): 71-80.
+
+Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular
+Gaussian Distribution. Statistics and Computing, 28((3):689--697.
 }
 
 \author{

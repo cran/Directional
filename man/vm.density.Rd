@@ -1,15 +1,19 @@
-\name{Density of the von Mises distribution}
+\name{Density of some circular distributions}
 \alias{vm.density}
+\alias{spml.density}
+\alias{wrapcauchy.density}
 \title{
-Density of the von Mises distribution
+Density of some circular distributions
 }
 
 \description{
-Density of the von Mises distribution.
+Density of some circular distributions.
 }
 
 \usage{
 vm.density(x, k, m, rads = FALSE, logden = FALSE)
+spml.density(x, mu, rads = FALSE, logden = FALSE)
+wrapcauchy.density(x, m, rho, rads = FALSE, logden = FALSE)
 }
 
 \arguments{
@@ -20,7 +24,12 @@ A vector with circular data.
 The concentration parameter.
 }
 \item{m}{
-The mean value.
+The mean value, a scalar.
+}
+\item{mu}{
+The mean vector, a vector with two values.
+}
+\item{rho}{The \eqn{rho} parameter of the wrapped Cauchy distribution.
 }
 \item{rads}{
 If the data are in rads, then this should be TRUE, otherwise FALSE.
@@ -31,11 +40,11 @@ If you the logarithm of the density values set this to TRUE.
 }
 
 \details{
-The density of the von Mises distribution is computed.
+The density of the von Mises, bivariate projected normal or the wrapped Cauchy distributions is computed.
 }
 
 \value{
-A vector with the density values of x.
+A vector with the (log) density values of x.
 }
 
 \references{

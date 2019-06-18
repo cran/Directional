@@ -19,7 +19,7 @@ watson <- function(u, rads = FALSE, R = 1) {
     pvalue <- 2 * sum( ( - 1 )^( m - 1 ) * exp(-2 * m^2 * pi^2 * Wn) )
   } else {
     x <- matrix( runif(n * R, 0, 2 * pi), ncol = R )
-    x <- Rfast::sort_mat(x) / (2 * pi)
+    x <- Rfast::colSort(x) / (2 * pi)
     bwn <- Rfast::colMaxs(x - (i - 1)/n, value = TRUE) + Rfast::colMaxs(i/n - x, value = TRUE)
     pvalue <- ( sum(bwn > Wn) + 1 ) / (R + 1)
   }

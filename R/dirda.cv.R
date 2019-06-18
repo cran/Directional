@@ -3,6 +3,7 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
                   seed = FALSE, B = 1000, parallel = FALSE) {
 
   if ( is.null(folds) )  folds <- Directional::makefolds(ina, nfolds = nfolds, stratified = stratified, seed = seed)
+  nfolds <- length(folds)
 
   est1 <- est2 <- est3 <- est4 <- est5 <- est6 <- list()
   for (i in 1:nfolds) {

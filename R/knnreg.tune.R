@@ -1,35 +1,28 @@
-knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
-  type = "euclidean", estim = "arithmetic", mat = NULL, graph = FALSE) {
+knnreg.tune <- function(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl",
+  type = "euclidean", estim = "arithmetic", folds = NULL, seed = FALSE, graph = FALSE) {
   y <- as.matrix(y)
   x <- as.matrix(x)
   n <- dim(y)[1]
 
-  if ( is.null(mat) ) {
-    nu <- sample(1:n, min( n, round(n / M) * M ) )
-    ## It may be the case this new nu is not exactly the same
-    ## as the one specified by the user
-    ## to a matrix a warning message should appear
-    options(warn = -1)
-    mat <- matrix( nu, ncol = M )
-  } else  mat <- mat
+  ina <- 1:n
+  if ( is.null(folds) )  folds <- Directional::makefolds(ina, nfolds = nfolds, stratified = FALSE, seed = seed)
+  nfolds <- length(folds)
 
-  M <- dim(mat)[2]
-  rmat <- dim(mat)[1]
-  per <- matrix(nrow = M, ncol = A)
+  per <- matrix(nrow = nfolds, ncol = A)
 
-  if (ncores == 1) {
+  if (ncores <= 1) {
 
     runtime <- proc.time()
 
-    for (vim in 1:M) {
-      ytest <- y[mat[, vim], , drop = FALSE]  ## test set dependent vars
-      ytrain <- y[-mat[, vim], , drop = FALSE]  ## train set dependent vars
-      xtest <- x[mat[, vim], , drop = FALSE]  ## test set independent vars
-      xtrain <- x[-mat[, vim], , drop = FALSE]  ## train set independent vars
-      est <- knn.reg(xtest, ytrain, xtrain, k = 1:A, res = res, type = type, estim = estim)
+    for (vim in 1:nfolds) {
+      ytest <- y[ folds[[ vim ]], , drop = FALSE]  ## test set dependent vars
+      ytrain <- y[ -folds[[ vim ]], , drop = FALSE]  ## train set dependent vars
+      xtest <- x[ folds[[ vim ]], , drop = FALSE]  ## test set independent vars
+      xtrain <- x[ -folds[[ vim ]], , drop = FALSE]  ## train set independent vars
+      est <- Directional::knn.reg(xtest, ytrain, xtrain, k = 1:A, res = res, type = type, estim = estim)
       if (res == "spher") {
-        for ( l in 1:A )   per[vim, l] <- 1 - sum( est[[ l ]] * ytest )  / rmat
-      } else  for ( l in 1:A )   per[vim, l] <- sum( (est[[ l ]] - ytest)^2 ) / rmat
+        for ( l in 1:A )   per[vim, l] <- 1 - mean( est[[ l ]] * ytest )
+      } else  for ( l in 1:A )   per[vim, l] <- mean( (est[[ l ]] - ytest)^2 )
     }
     mspe <- Rfast::colmeans(per)
     performance <- min(mspe)
@@ -41,16 +34,16 @@ knnreg.tune <- function(y, x, M = 10, A = 10, ncores = 1, res = "eucl",
     cl <- makePSOCKcluster(ncores)
     registerDoParallel(cl)
     pe <- numeric(A)
-    per <- foreach(vim = 1:M, .combine = rbind, .packages = "Rfast",
+    per <- foreach(vim = 1:nfolds, .combine = rbind, .packages = "Rfast",
 	         .export = c("knn.reg", "knn", "colOrder", "dista", "colmeans", "colhameans", "rowsums") ) %dopar% {
-       ytest <- y[mat[, vim], , drop = FALSE]  ## test set dependent vars
-       ytrain <- y[-mat[, vim], drop = FALSE]  ## train set dependent vars
-       xtest <- y[mat[, vim], , drop = FALSE]  ## test set independent vars
-       xtrain <- x[-mat[, vim], drop = FALSE]  ## train set independent vars
-       est <- knn.reg(xtest, ytrain, xtrain, k = 1:A, res = res, type = type, estim = estim)
+       ytest <- y[ folds[[ vim ]], , drop = FALSE]  ## test set dependent vars
+       ytrain <- y[ -folds[[ vim ]], drop = FALSE]  ## train set dependent vars
+       xtest <- y[ folds[[ vim ]], , drop = FALSE]  ## test set independent vars
+       xtrain <- x[ -folds[[ vim ]], drop = FALSE]  ## train set independent vars
+       est <- Directional::knn.reg(xtest, ytrain, xtrain, k = 1:A, res = res, type = type, estim = estim)
        if (res == "spher") {
-         for ( l in 1:A )   pe[l] <- 1 - sum( est[[ l ]] * ytest )  / rmat
-       } else  for ( l in 1:A )   pe[l] <- sum( (est[[ l ]] - ytest)^2 ) / rmat
+         for ( l in 1:A )   pe[l] <- 1 - mean( est[[ l ]] * ytest )
+       } else  for ( l in 1:A )   pe[l] <- mean( (est[[ l ]] - ytest)^2 )
       return(pe)
     }
     stopCluster(cl)

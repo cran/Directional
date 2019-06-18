@@ -25,8 +25,8 @@ tang.conc <- function(u, ina, rads = FALSE) {
     b <- abs( sin( u[ ina == i ] - mi[i] ) )
     d <- c(d, b)
   }
-  dmi <- Rfast::group.mean(d, ina)
-  d2 <- Rfast::group.var(d, ina) * (ni - 1)
+  dmi <- Rfast::group(d, ina, method = "mean")
+  d2 <- Rfast::group(d, ina, method = "var") * (ni - 1)
   mdm <- mean(d)
   Ft <- (n - g) * sum(ni * (dmi - mdm)^2) / ( (g - 1) * sum(d2) )
   pvalue <- pf(Ft, g - 1, n - g, lower.tail = FALSE)

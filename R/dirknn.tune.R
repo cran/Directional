@@ -4,9 +4,10 @@
 #### Tsagris Michail 01/2016
 #### mtsagris@yahoo.gr
 ################################
-dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = NULL, parallel = FALSE) {
+dirknn.tune <- function(z, nfolds = 10, A = 5, ina, type = "S", mesos = TRUE, folds = NULL,
+                        parallel = FALSE, stratified = TRUE, seed = FALSE) {
   ## x is the matrix containing the data
-  ## M is the number of folds, set to 10 by default
+  ## nfolds is the number of folds, set to 10 by default
   ## A is the maximum number of neighbours to use
   ## ina indicates the groups, numerical variable
   ## type is either 'S' or 'NS'. Should the standard k-NN be use or not
@@ -18,20 +19,14 @@ dirknn.tune <- function(z, M = 10, A = 5, ina, type = "S", mesos = TRUE, mat = N
   n <- dim(z)[1]  ## sample size
   ina <- as.numeric(ina) ## makes sure ina is numeric
   if ( A >= min( table(ina) ) )   A <- min( table(ina) ) - 3  ## The maximum
-  if ( is.null(mat) ) {
-    nu <- sample(1:n, min( n, round(n / M) * M ) )
-    ## It may be the case this new nu is not exactly the same
-    ## as the one specified by the user
-    ## to a matrix a warning message should appear
-    options(warn = -1)
-    mat <- matrix( nu, ncol = M )
-  } else  mat <- mat
-  M <- dim(mat)[2]
-  per <- matrix(nrow = M, ncol = A - 1)
-  for (vim in 1:M) {
-    id <- ina[ mat[, vim] ]  ## groups of test sample
-    ina2 <- ina[ -mat[, vim] ]   ## groups of training sample
-    aba <- as.vector( mat[, vim] )
+  if ( is.null(folds) )  folds <- Directional::makefolds(ina, nfolds = nfolds, stratified = stratified, seed = seed)
+  nfolds <- length(folds)
+
+  per <- matrix(nrow = nfolds, ncol = A - 1)
+  for (vim in 1:nfolds) {
+    id <- ina[ folds[[ vim ]] ]  ## groups of test sample
+    ina2 <- ina[ -folds[[ vim ]] ]   ## groups of training sample
+    aba <- as.vector( folds[[ vim ]] )
     aba <- aba[aba > 0]
     g <- Directional::dirknn(x = z[-aba, ], xnew = z[aba, ,drop = FALSE], k = 2:A, ina = ina2, type = type, mesos = mesos, parallel = parallel)
     be <- g - id
