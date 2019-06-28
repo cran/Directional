@@ -5,8 +5,8 @@ makefolds <- function(ina, nfolds = 10, stratified = TRUE, seed = FALSE) {
 
   if ( !stratified ) {
     oop <- options(warn = -1) 
+	on.exit( options(oop) )
     mat <- matrix(sample(length(ina)), ncol = nfolds)
-    on.exit( options(oop) )
     for (i in 1:c(nfolds - 1)) runs[[i]] <- mat[, i]
     names <- prod(dim(mat)) - length(ina)
     runs[[nfolds]] <- mat[1:c(nrow(mat) - names), nfolds]

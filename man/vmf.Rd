@@ -14,10 +14,10 @@ vmf(x, fast = FALSE, tol = 1e-07)
 
 \arguments{
 \item{x}{
-A matrix with the data expressed in Euclidean coordinates, i.e. unit vectors.
+A matrix or an FBM matrix (Filebacked Big Matrix, for big data) with the data expressed in Euclidean coordinates, i.e. unit vectors.
 }
 \item{fast}{
-A boolean variable to do a faster implementation.
+A boolean variable to do a slightly faster implementation. This does not support Filebacked Big Matrix.
 }
 \item{tol}{
 The tolerance to accept that the E-M algorithm used to estimate the concentration parameter has converged.

@@ -10,13 +10,8 @@ kent.mle <- function(x) {
   ## x is the data in Euclidean coordinates
   tic <- proc.time()
   n <- dim(x)[1]  ## sample size
-  if ( bigmemory::is.big.matrix(x) ) {
-    xbar <- colMeans(x[])
-    S <- crossprod(x[]) / n
-  } else {
-    xbar <- Rfast::colmeans(x)  ## mean vector
-    S <- crossprod(x) / n
-  }
+  xbar <- Rfast::colmeans(x)  ## mean vector
+  S <- crossprod(x) / n
   xbar <- xbar / sqrt( sum(xbar^2) ) ## mean direction
   u <- c( acos(xbar[1]), ( atan(xbar[3] / xbar[2]) + pi * I(xbar[2]<0) )
   %% (2 * pi) )
@@ -35,19 +30,9 @@ kent.mle <- function(x) {
   G <- H %*% K  ## The G matrix Kent describes, the A in our notation
   lam <- eigen(B[-1, -1])$values
   ## the next function will be used to estimate the kappa and beta
-  if ( bigmemory::is.big.matrix(x) ) {
-    options( bigalgebra.mixed_airthmetic_returns_R_matrix = FALSE )
-    xg <- x %*% G
-    xg1 <- bigmemory::sub.big.matrix(xg, firstCol = 1,lastCol = 1)
-    xg1 <- sum(xg1[])
-    xg23 <- bigmemory::sub.big.matrix(xg, firstCol = 2,lastCol = 3)
-    a <- colSums(xg23[]^2)
-    options(bigalgebra.mixed_airthmetic_returns_R_matrix = TRUE)
-  } else {
-    xg <- x %*% G
-    xg1 <- sum(xg[, 1])
-    a <- Rfast::colsums(xg[, 2:3]^2)
-  }
+  xg <- x %*% G
+  xg1 <- sum(xg[, 1])
+  a <- Rfast::colsums(xg[, 2:3]^2)
   xg2 <- a[1]
   xg3 <- a[2]
 

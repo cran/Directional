@@ -46,10 +46,9 @@ A matrix with the predicted group(s). It has as many columns as the values of k.
 }
 }
 
-\references{
-course webpage of Howard E. Haber.
-http://scipp.ucsc.edu/~haber/ph216/rotation_12.pdf
-}
+%\references{
+%
+%}
 
 \author{
 Michail Tsagris

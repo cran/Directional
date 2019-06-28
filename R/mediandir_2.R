@@ -16,10 +16,10 @@ mediandir_2 <- function(x) {
     mean( acos( a ) )
   }
   oop <- options(warn = -1) 
+  on.exit( options(oop) )
   bar <- nlm( funa, Rfast::colMedians(x), iterlim = 10000 )
   ini <- bar$estimate/sqrt( sum(bar$estimate^2) )
   bar <- optim( ini, funa, control = list(maxit = 10000) )
-  on.exit( options(oop) )
   med <- bar$par
   med / sqrt( sum(med^2) )
 }

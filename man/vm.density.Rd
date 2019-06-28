@@ -2,6 +2,7 @@
 \alias{vm.density}
 \alias{spml.density}
 \alias{wrapcauchy.density}
+\alias{circpurka.density}
 \title{
 Density of some circular distributions
 }
@@ -11,25 +12,29 @@ Density of some circular distributions.
 }
 
 \usage{
-vm.density(x, k, m, rads = FALSE, logden = FALSE)
+vm.density(x, m, k, rads = FALSE, logden = FALSE)
 spml.density(x, mu, rads = FALSE, logden = FALSE)
 wrapcauchy.density(x, m, rho, rads = FALSE, logden = FALSE)
+circpurka.density(x, m, a, rads = FALSE, logden = FALSE)
 }
 
 \arguments{
 \item{x}{
 A vector with circular data.
 }
-\item{k}{
-The concentration parameter.
-}
 \item{m}{
-The mean value, a scalar.
+The mean value, a scalar. This is the median for the circular Purkayastha distribution.
 }
 \item{mu}{
 The mean vector, a vector with two values.
 }
+\item{k}{
+The concentration parameter.
+}
 \item{rho}{The \eqn{rho} parameter of the wrapped Cauchy distribution.
+}
+\item{a}{
+The \eqn{alpha} parameter of the circular Purkayastha distribution.
 }
 \item{rads}{
 If the data are in rads, then this should be TRUE, otherwise FALSE.
@@ -40,7 +45,7 @@ If you the logarithm of the density values set this to TRUE.
 }
 
 \details{
-The density of the von Mises, bivariate projected normal or the wrapped Cauchy distributions is computed.
+The density of the von Mises, bivariate projected normal, wrapped Cauchy or the circular Purkayastha distributions is computed.
 }
 
 \value{
@@ -68,7 +73,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>
 \examples{
 x <- rvonmises(500, m = 2.5, k = 10, rads = TRUE)
 mod <- circ.summary(x, rads = TRUE, plot = FALSE)
-den <- vm.density(x, mod$kappa, mod$mesos, rads = TRUE, logden = TRUE )
+den <- vm.density(x, mod$mesos, mod$kappa, rads = TRUE, logden = TRUE )
 mod$loglik
 sum(den)
 }

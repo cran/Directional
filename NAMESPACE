@@ -19,7 +19,7 @@ import("parallel")
 import("foreach")
 importFrom("RcppZiggurat", zrnorm)
 importFrom("rgl", open3d, points3d, spheres3d)
-importFrom("bigmemory", read.big.matrix, sub.big.matrix, is.big.matrix)
+importFrom("bigstatsr", big_apply, big_read)
 
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")

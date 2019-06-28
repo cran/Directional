@@ -22,19 +22,18 @@ vec <- function(x, n = 1, deg = 90) {
   } else if (deg > 0 & deg < 180) {
     mat <- matrix(nrow = n, ncol = p)
     crit <- numeric(n)
-
+	
+    oop <- options(warn = -1) 
+	on.exit( options(oop) )
+	  
     for (i in 1:n) {
       ini <- rnorm(p)
-      oop <- options(warn = -1) 
       pa <- nlm(fu, ini, x = x)
-      on.exit( options(oop) )
       y <- pa$estimate
       y <- y / sqrt( sum(y^2) )
       ca <- acos( sum(x * y) ) / pi * 180
       while( abs(ca - deg) > 1e-07 ) {
-        oop <- options(warn = -1) 
         pa <- nlm(fu, rnorm(p), x = x)
-		on.exit( options(oop) )
         y <- pa$estimate
         y <- y / sqrt( sum(y^2) )
         ca <- acos( sum(x * y) ) / pi * 180

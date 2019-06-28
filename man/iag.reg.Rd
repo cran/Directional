@@ -33,7 +33,7 @@ A tolerance value to decide when to stop the successive optimaizations.
 }
 
 \details{
-The second parametrization of the projected normal and of the von Mies-Fisher regression (Paine et al., 2019) is applied. For more information see the paper by Paine et al. (2019).
+The second parametrization of the projected normal and of the von Mises-Fisher regression (Paine et al., 2019) is applied. For more information see the paper by Paine et al. (2019).
 }
 
 \value{

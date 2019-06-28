@@ -17,8 +17,8 @@ hcf.circaov <- function(u, ina, rads = FALSE) {
   if ( !rads )  u <- u * pi/180
   x1 <- cos(u)
   x2 <- sin(u)
-  Ci <- Rfast::group.sum(x1, ina)  ##  rowsum(x1, ina)
-  Si <- Rfast::group.sum(x2, ina)  ## rowsum(x2, ina)
+  Ci <- Rfast::group(x1, ina)  ##  rowsum(x1, ina)
+  Si <- Rfast::group(x2, ina)  ## rowsum(x2, ina)
   Ri <- sqrt( Ci^2 + Si^2 )
   ## Ri is the resultant length of each group
   V <- sum(Ri)

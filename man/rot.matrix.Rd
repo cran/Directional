@@ -34,6 +34,9 @@ A 3 x 3 rotation matrix.
 }
 
 \references{
+Course webpage of Howard E. Haber.
+http://scipp.ucsc.edu/~haber/ph216/rotation_12.pdf
+
 Ted Chang (1986). Spherical Regression. Annals of Statistics, 14(3): 907-924.
 }
 

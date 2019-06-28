@@ -37,7 +37,7 @@ R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk>
 }
 
 \seealso{
-\code{\link{rot2quat}, \link{rotation}, \link{Arotation} \ link{rot.matrix}
+\code{\link{rot2quat}, \link{rotation}, \link{Arotation} \link{rot.matrix}
 }
 }
 
