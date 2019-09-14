@@ -61,9 +61,6 @@ Michail Tsagris
 
 R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>
 }
-%\note{
-  %%  ~~further notes~~
-    %}
 
 \seealso{
 \code{\link{kent.density}, \link{rvonmises}, \link{ESAGdensity}

@@ -26,7 +26,7 @@ The concentration parameter of the von Mises-Fisher distribution.
 \item{a}{
 The concentration parameter of the Purkayastha distribution.
 }
-]\item{mu}{
+\item{mu}{
 The mean direction (unit vector) of the von Mises-Fisher distribution or the mean direction of the IAG distribution.
 }
 \item{theta}{

@@ -11,8 +11,8 @@ importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
 		     rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans,
 			 multivmf.mle, Sort, spml.reg, spml.mle, mediandir, circlin.cor,
 			 Table, colnth, wrapcauchy.mle, colOrder, group, dirknn, rbing,
-			 rbingham, eachrow)
-importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1)
+			 rbingham, eachrow, colvm.mle)
+importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1, colspml.mle)
 
 import("doParallel")
 import("parallel")

@@ -5,7 +5,8 @@ ESAGsim <- function(n, param) {
   gam1 <- param[4]
   gam2 <- param[5]
   if (gam1 == 0  &  gam2 == 0) {
-    y <- matrix( RcppZiggurat::zrnorm(n * 3, m ), byrow = TRUE, ncol = 3)  ## IAG is used
+    y <- matrix( RcppZiggurat::zrnorm(n * 3), byrow = TRUE, ncol = 3)  ## IAG is used
+    y <- Rfast::eachrow(y, m, oper = "+") 
   } else { 
     m0 <- sqrt( m[2]^2 + m[3]^2 )
     rl <- sqrt( sum( m^2 ) )
