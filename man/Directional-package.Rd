@@ -12,18 +12,18 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 4.0\cr
-Date: \tab 2019-09-14\cr
+Version: \tab 4.1\cr
+Date: \tab 2020-01-07\cr
 License: \tab GPL-2\cr
 }
 }
 \author{
-Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <gioathineou@gmail.com>,
-Anamul Sajib <pmxahsa@nottingham.ac.uk>, Eli Amson <eli.amson1988@gmail.com> and Micah J. Waldstein <micah@waldste.in>.
+Michail Tsagris \email{mtsagris@uoc.gr}, Giorgos Athineou <gioathineou@gmail.com>,
+Anamul Sajib <sajibstat@du.ac.bd>, Eli Amson <eli.amson1988@gmail.com> and Micah J. Waldstein <micah@waldste.in>.
 }
 
 \section{Maintainers }{
-Michail Tsagris <mtsagris@yahoo.gr>
+Michail Tsagris \email{mtsagris@uoc.gr}
 }
 
 \references{

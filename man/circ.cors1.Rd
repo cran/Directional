@@ -1,11 +1,11 @@
-\name{Circurlar correlations between one and many circular variables}
+\name{Circular correlations between one and many circular variables}
 \alias{circ.cors1}
 
-\title{Circurlar correlations between two circular variables
+\title{Circular correlations between two circular variables
 }
 
 \description{
-Circurlar correlations between two circular variables.
+Circular correlations between two circular variables.
 }
 
 \usage{
@@ -33,13 +33,13 @@ A matrix with two columns, the correlations and the p-values.
 \references{
 Jammalamadaka, R. S. and Sengupta, A. (2001). Topics in circular statistics. World Scientific.
 
-Jammalamadaka, S. R. and Sarma, Y. R. (1988) . A correlation coefficient for angular variables. Statistical Theory and Data Analysis, 2:349--364.
+Jammalamadaka, S. R. and Sarma, Y. R. (1988). A correlation coefficient for angular variables. Statistical Theory and Data Analysis, 2:349--364.
 }
 
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> 
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} 
 }
 
 %\note{

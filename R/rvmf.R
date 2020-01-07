@@ -24,8 +24,8 @@ rvmf <- function(n, mu, k) {
 #     mu <- mu / sqrt( sum(mu^2) )  ## the mean direction
 #     ini <- c(numeric(d - 1), 1)  ## mean direction is set to (0, ..., 0, 1)
 #     d1 <- d - 1
-#     v1 <- matrix( RcppZiggurat::zrnorm(n * d1), ncol = d1)
-#     v <- v1 / sqrt( rowsums(v1^2) )
+#     v1 <- Rfast::matrnorm(n, d1) 
+#     v <- v1 / sqrt( Rfast::rowsums(v1^2) )
 #     b <- ( -2 * k + sqrt(4 * k^2 + d1^2) ) / d1
 #     x0 <- (1 - b)/(1 + b)
 #     w <- numeric(n)
@@ -47,8 +47,7 @@ rvmf <- function(n, mu, k) {
 #     ## in order to rotate the initial mean direction from ini to mu
 #     x <- tcrossprod(S, A)  ## the x has direction mu
 #   } else {  ## uniform distribution
-#     ## requires MASS if k = 0
-#     x1 <- matrix( RcppZiggurat::zrnorm(n * d), ncol = d )
+#     x1 <- Rfast::matrnorm(n, d) 
 #     x <- x1 / sqrt( Rfast::rowsums(x1^2) )
 #   }
 #   x

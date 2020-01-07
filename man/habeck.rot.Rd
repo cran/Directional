@@ -34,9 +34,9 @@ Habeck M (2009). Generation of three-dimensional random rotations in fitting and
 }
 
 \author{
-Anamul Sajib<pmxahsa@nottingham.ac.uk>
+Anamul Sajib<sajibstat@du.ac.bd>
 
-R implementation and documentation: Anamul Sajib<pmxahsa@nottingham.ac.uk>
+R implementation and documentation: Anamul Sajib<sajibstat@du.ac.bd>
 }
 
 \examples{

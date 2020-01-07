@@ -34,7 +34,7 @@ Prentice M. J. (1986). Orientation statistics without parametric assumptions.Jou
 \author{
 Anamul Sajib & Chris Fallaize.
 
-R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk> & Chris Fallaize.
+R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> & Chris Fallaize.
 }
 
 \seealso{

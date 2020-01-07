@@ -37,7 +37,7 @@ Royal Statistical Society. Series B: Methodological 48(2).  //http://www.euclide
 \author{
 Anamul Sajib
 
-R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk>
+R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd>
 }
 
 \seealso{

@@ -38,9 +38,9 @@ http://www.staff.city.ac.uk/~sbbh653/publications/euler.pdf
 
 \author{
 
-Anamul Sajib<pmxahsa@nottingham.ac.uk>
+Anamul Sajib<sajibstat@du.ac.bd>
 
-R implementation and documentation: Anamul Sajib<pmxahsa@nottingham.ac.uk>
+R implementation and documentation: Anamul Sajib<sajibstat@du.ac.bd>
 }
 
 \seealso{

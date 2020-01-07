@@ -5,9 +5,9 @@ ESAGsim <- function(n, param) {
   gam1 <- param[4]
   gam2 <- param[5]
   if (gam1 == 0  &  gam2 == 0) {
-    y <- matrix( RcppZiggurat::zrnorm(n * 3), byrow = TRUE, ncol = 3)  ## IAG is used
-    y <- Rfast::eachrow(y, m, oper = "+") 
-  } else { 
+    y <- Rfast::matrnorm(n, 3)  ## IAG is used
+    y <- Rfast::eachrow(y, m, oper = "+")
+  } else {
     m0 <- sqrt( m[2]^2 + m[3]^2 )
     rl <- sqrt( sum( m^2 ) )
     x1b <- c( -m0^2, m[1] * m[2], m[1] * m[3] ) / (m0 * rl)
@@ -20,5 +20,5 @@ ESAGsim <- function(n, param) {
     y <- Rfast::rmvnorm(n, m, va)  ## sample from a multivariate normal in R^3
   }
   colnames(y) <- c("X", "Y", "Z")
-  y / sqrt( Rfast::rowsums(y^2) )  ## ESAG simulated values 
+  y / sqrt( Rfast::rowsums(y^2) )  ## ESAG simulated values
 }

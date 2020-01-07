@@ -42,7 +42,7 @@ Gaussian Distribution. Statistics and Computing, 28((3):689--697.
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>.
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 %\note{
   %%  ~~further notes~~

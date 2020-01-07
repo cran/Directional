@@ -42,7 +42,7 @@ Dietrich, T. & Richter, W. D. (2017). Classes of geometrically generalized von M
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 }
 
 %\note{

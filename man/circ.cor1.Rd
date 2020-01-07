@@ -1,12 +1,12 @@
-\name{Circurlar correlations between two circular variables}
+\name{Circular correlations between two circular variables}
 \alias{circ.cor1}
 \alias{circ.cor2}
 
-\title{Circurlar correlations between two circular variables
+\title{Circular correlations between two circular variables
 }
 
 \description{
-Circurlar correlations between two circular variables.
+Circular correlations between two circular variables.
 }
 
 \usage{
@@ -54,7 +54,7 @@ Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wi
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
 }
 
 %\note{

@@ -6,7 +6,6 @@
 #### A short note on parameter approximation for von Mises-Fisher distributions:
 #### and a fast implementation of Is(x)
 ################################
-
 vmf <- function(x, fast = FALSE, tol = 1e-07) {
   ## x contains the data
   ## tol specifies the tolerance value for convergence

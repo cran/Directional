@@ -59,7 +59,7 @@ Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wi
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 }
 
 \seealso{

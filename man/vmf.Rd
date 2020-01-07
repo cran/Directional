@@ -1,81 +1,132 @@
-\name{MLE of the von Mises-Fisher distribution}
+\name{MLE of (hyper-)spherical distributions}
 \alias{vmf}
+\alias{multivmf}
+\alias{acg}
+\alias{iag.mle}
 \title{
-MLE of von Mises-Fisher distribution
+MLE of (hyper-)spherical distributions
 }
 
 \description{
-MLE of the von Mises-Fisher distribution.
+MLE of (hyper-)spherical distributions.
 }
 
 \usage{
 vmf(x, fast = FALSE, tol = 1e-07)
+multivmf(x, ina, tol = 1e-07, ell = FALSE)
+acg(x, tol = 1e-07)
+iag.mle(x, tol = 1e-07)
 }
 
 \arguments{
 \item{x}{
-A matrix or an FBM matrix (Filebacked Big Matrix, for big data) with the data expressed in Euclidean coordinates, i.e. unit vectors.
+A matrix with directional data, i.e. unit vectors.
 }
 \item{fast}{
-A boolean variable to do a slightly faster implementation. This does not support Filebacked Big Matrix.
+IF you want a faster version, but with fewer information returned, set this equal to TRUE.
+}
+\item{ina}{
+A numerical vector with discrete numbers starting from 1, i.e. 1, 2, 3, 4,... or a factor variable. Each number denotes a sample or group.
+If you supply a continuous valued vector the function will obviously provide wrong results.
+}
+\item{ell}{
+This is for the multivmf.mle only. Do you want the log-likelihood returned? The default value is TRUE.
 }
 \item{tol}{
-The tolerance to accept that the E-M algorithm used to estimate the concentration parameter has converged.
+The tolerance value at which to terminate the iterations.
 }
 }
 
 \details{
-The mean direction and concentration of a fitted von Mises-Fisher distribution are estimated.
+The vm estimates the mean direction and concentration of a fitted von Mises-Fisher distribution.
+
+The von Mises-Fisher distribution for groups of data is also implemented.
+
+The acg.mle fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal to the number of variables.
+An iterative algorithm takes place and convergence is guaranteed.
+
+The iag.mle implements MLE of the projected normal distribution, on the sphere.
 }
 
 \value{
-If fast = FALSE a list including all the following. If fast = TRUE less items are returned.
+For the von Mises-Fisher a list including:
+\item{loglik}{
+The maximum log-likelihood value.
+}
 \item{mu}{
 The mean direction.
 }
 \item{kappa}{
 The concentration parameter.
 }
-\item{MRL}{
-The mean resultant length.
-}
-\item{vark}{
-The variance of the concentration parameter.
-}
+For the multi von Mises-Fisher a list including:
 \item{loglik}{
-The maximum log-likelihood value.
+A vector with the maximum log-likelihood values if ell is set to TRUE. Otherwise NULL is returned.
+}
+\item{mi}{
+A matrix with the group mean directions.
+}
+\item{ki}{
+A vector with the group concentration parameters.
+}
+For the angular central Gaussian a list including:
+\item{iter}{
+The number if iterations required by the algorithm to converge to the solution.
+}
+\item{cova}{
+The estimated covariance matrix.
+}
+For the spherical projected normal a list including:
+\item{iters}{
+The number of iteration required by the Newton-Raphson.
+}
+\item{mesi}{
+A matrix with two rows. The first row is the mean direction and the second is the mean vector.
+The first comes from the second by normalising to have unit length.
+}
+\item{param}{
+A vector with the elements, the norm of mean vector, the log-likelihood and the log-likelihood of the spherical uniform distribution.
+The third value helps in case you want to do a log-likleihood ratio test for uniformity.
 }
 }
 
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Sra, S. (2012). A short note on parameter approximation for von Mises-Fisher distributions: and a fast implementation of Is(x). Computational Statistics, 27(1): 177--190.
+Sra, S. (2012). A short note on parameter approximation for von Mises-Fisher distributions: and a fast implementation of Is(x).
+Computational Statistics, 27(1): 177--190.
+
+Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere.
+Biometrika 74(3): 579-589.
+
+Paine P.J., Preston S.P., Tsagris M and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution.
+Statistics and Computing, 28: 689-697.
 }
 
 \author{
 Michail Tsagris
-
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
+
 %\note{
 %%  ~~further notes~~
 %}
 
 \seealso{
-\code{\link{iag.mle}, \link{rvmf}, \link{kent.mle}, \link{vmf.kde}, \link{wood.mle}
+\code{ \link{racg}, \link{vm.mle}, \link{rvmf}
 }
 }
 
 \examples{
-m <- rnorm(3)
-m <- m/sqrt(sum(m^2))
-m
-x <- rvmf(100, m, 7)
+m <- c(0, 0, 0, 0)
+s <- cov(iris[, 1:4])
+x <- racg(100, s)
+mod <- acg(x)
+mod
+cov2cor(mod$cova)  ## estimated covariance matrix turned into a correlation matrix
+cov2cor(s)  ## true covariance matrix turned into a correlation matrix
 vmf(x)
-x <- rvmf(500, m, 7)
-vmf(x)
+x <- rbind( rvmf(100,rnorm(4), 10), rvmf(100,rnorm(4), 20) )
+a <- multivmf(x, rep(1:2, each = 100) )
 }
 
-\keyword{ Maximum likelihood estimation }
-\keyword{ von Mises-Fisher distribution }

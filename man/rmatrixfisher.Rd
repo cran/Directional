@@ -37,7 +37,7 @@ distributions in directional data analysis with applications. http://arxiv.org/p
 \author{
 Anamul Sajib & Chris Fallaize
 
-R implementation and documentation: Anamul Sajib <pmxahsa@nottingham.ac.uk> & Chris Fallaize
+R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> & Chris Fallaize
 }
 
 \examples{

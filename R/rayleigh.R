@@ -22,7 +22,7 @@ rayleigh <- function(x, modif = TRUE, B = 999) {
   } else {
     tb <- numeric(B)
     for (i in 1:B) {
-      x <- matrix( RcppZiggurat::zrnorm(n * p), ncol = p )
+      x <- Rfast::matrnorm(n, p)
       x <- x / sqrt( Rfast::rowsums(x^2) )
       mb <- Rfast::colsums(x)
       tb[i] <- p * sum( mb^2 ) / n

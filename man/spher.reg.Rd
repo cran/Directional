@@ -45,7 +45,7 @@ Ted Chang (1986). Spherical Regression. Annals of Statistics, 14(3): 907--924.
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr> and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
 }
 %\note{
 %%  ~~further notes~~

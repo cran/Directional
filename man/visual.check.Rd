@@ -38,9 +38,9 @@ Computational Statistics, 24(4):719--731.
 }
 \author{
 
-Anamul Sajib<pmxahsa@nottingham.ac.uk>
+Anamul Sajib<sajibstat@du.ac.bd>
 
-R implementation and documentation: Anamul Sajib<pmxahsa@nottingham.ac.uk>
+R implementation and documentation: Anamul Sajib<sajibstat@du.ac.bd>
 }
 
 \examples{

@@ -61,7 +61,7 @@ Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for k
 \author{
 Michail Tsagris and Micah J. Waldstein. 
 
-R implementation and documentation: Michail Tsagris <mtsagris@yahoo.gr>, Giorgos Athineou <gioathineou@gmail.com> and
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}, Giorgos Athineou <gioathineou@gmail.com> and
 Micah J. Waldstein <micah@waldste.in>.
 }
 
