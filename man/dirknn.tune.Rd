@@ -65,8 +65,9 @@ The run time of the algorithm. A numeric vector. The first element is the user t
 }
 }
 
-%\references{
-%}
+\references{
+Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere. Communications in Statistics: Case Studies, Data Analysis and Applications, 5(4), 467--491.
+}
 
 \author{
 Michail Tsagris

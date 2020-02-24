@@ -1,12 +1,12 @@
-\name{Column-wise MLE of the angular Gaussian and the von Mises fisher distributions}
+\name{Column-wise MLE of the angular Gaussian and the von Mises Fisher distributions}
 \alias{colspml.mle}
 \alias{colvm.mle}
 \title{
-Column-wise MLE of the angular Gaussian distribution
+Column-wise MLE of the angular Gaussian and the von Mises Fisher distributions
 }
 
 \description{
-Column-wise MLE of the angular Gaussian distribution.
+Column-wise MLE of the angular Gaussian and the von Mises Fisher distributions.
 }
 
 \usage{

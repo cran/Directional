@@ -12,8 +12,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 4.1\cr
-Date: \tab 2020-01-07\cr
+Version: \tab 4.2\cr
+Date: \tab 2020-02-24\cr
 License: \tab GPL-2\cr
 }
 }
@@ -60,7 +60,6 @@ Dr Mojgan Golzy spotted a mistake in the \code{\link{ESAGdensity}} and Michail i
 
 If you want more information on many of these algorithms see Chapters 9 and 10 in the following document.
 https://www.researchgate.net/publication/324363311_Multivariate_data_analysis_in_R
-
 }
 
 \keyword{ Directional data }

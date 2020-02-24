@@ -46,9 +46,9 @@ A matrix with the predicted group(s). It has as many columns as the values of k.
 }
 }
 
-%\references{
-%
-%}
+\references{
+Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere. Communications in Statistics: Case Studies, Data Analysis and Applications, 5(4), 467--491.
+}
 
 \author{
 Michail Tsagris
