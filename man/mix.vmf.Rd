@@ -9,7 +9,7 @@ It performs model based clustering for circualr, spherical and hyperspherical da
 }
 
 \usage{
-mix.vmf(x, g ,n.start = 20)
+mix.vmf(x, g, n.start = 10)
 }
 
 \arguments{
@@ -38,6 +38,9 @@ The value of the maximised log-likelihood.
 }
 \item{pred}{
 The predicted group of each observation.
+}
+\item{iter}{
+The number of iteration required by the EM algorithm.
 }
 \item{runtime}{
 The run time of the algorithm. A numeric vector. The first element is the user time, the second element is the system time and the third element is the elapsed time.

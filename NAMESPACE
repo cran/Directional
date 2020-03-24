@@ -17,6 +17,8 @@ importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
 importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1, colspml.mle, hcf.circaov,
            lr.circaov, het.circaov, embed.circaov, vm.nb, vmnb.pred, spml.nb, spmlnb.pred)
 
+importFrom("RANN", nn2)
+
 import("doParallel")
 import("parallel")
 import("foreach")

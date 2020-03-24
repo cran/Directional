@@ -6,7 +6,7 @@
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 #### http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 ################################
-mix.vmf <- function(x, g, n.start = 20) {
+mix.vmf <- function(x, g, n.start = 10) {
   ## x contains the data
   ## g is the number of clusters
   p <- dim(x)[2]  ## dimensionality of the data
@@ -46,7 +46,7 @@ mix.vmf <- function(x, g, n.start = 20) {
       }
       ka[j] <- k2  ## initial concentration parameters
       lika[, j] <- (p/2 - 1) * log(ka[j]) - 0.5 * p * log(2 * pi) -
-      log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE)) - ka[j] + ka[j] * (x %*% mat[j, ])
+      log( besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
     wlika <- w * exp(lika)
     rswlika <- Rfast::rowsums(wlika)
@@ -58,7 +58,7 @@ mix.vmf <- function(x, g, n.start = 20) {
     w <- Rfast::colmeans(pij) ## weights for step 2
 
     for (j in 1:g) {
-      m1 <- Rfast::colsums(pij[, j] * x)
+      m1 <- Rfast::eachcol.apply(x, pij[, j])   ## Rfast::colsums(pij[, j] * x)
       mat[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step 2
       R <- sqrt( sum(m1^2) ) / sum( pij[, j] )  ## mean resultant lengths at step 2
       k1 <- R * (p - R^2)/(1 - R^2)
@@ -74,7 +74,7 @@ mix.vmf <- function(x, g, n.start = 20) {
       log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
 
-    wexplika <- w * exp( lika)
+    wexplika <- w * exp(lika)
     lik[2] <- sum( log( Rfast::rowsums( wexplika ) ) )  ## log-likelihood at step 2
     ## Step 3 and beyond
     while ( lik[l] - lik[l - 1] > 1e-05 ) {
@@ -83,7 +83,7 @@ mix.vmf <- function(x, g, n.start = 20) {
       w <- Rfast::colmeans(pij)
 
       for (j in 1:g) {
-        m1 <- Rfast::colsums(pij[, j] * x)
+        m1 <- Rfast::eachcol.apply(x, pij[, j])   ## Rfast::colsums(pij[, j] * x)
         mat[j, ] <- m1 / sqrt( sum(m1^2) )  ## mean directions at step l
         R <- sqrt( sum(m1^2) ) / sum(pij[, j])  ## mean resultant lengths at step l
         k1 <- R * (p - R^2)/(1 - R^2)
@@ -99,7 +99,7 @@ mix.vmf <- function(x, g, n.start = 20) {
         log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
       }
 
-      wexplika <- w * exp( lika)
+      wexplika <- w * exp(lika)
       lik[l] <- sum( log( Rfast::rowsums( wexplika ) ) )
     }  ## log-likelihood at step l
 
@@ -108,7 +108,7 @@ mix.vmf <- function(x, g, n.start = 20) {
     runtime <- proc.time() - runtime
     colnames(param) <- c( paste("mu", 1:p, sep = ""), 'kappa', 'probs' )
     rownames(param) <- paste("Cluster", 1:g, sep = " ")
-    res <- list(param = param, loglik = lik[l], pred = ta, runtime = runtime)
+    res <- list(param = param, loglik = lik[l], pred = ta, iter = l, runtime = runtime)
 
   }
   res

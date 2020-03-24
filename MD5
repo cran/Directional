@@ -1,5 +1,5 @@
-7b5e13a593b13a7a8afb0aea0777dca7 *DESCRIPTION
-dddf67db4c2a5bfcc89eece804d213a2 *NAMESPACE
+f638218d2be297b41fe11df85773b050 *DESCRIPTION
+418c6ea6a59aa280169623d2bc57b6a3 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 081b1e81478d217044523db1e866a100 *R/ESAG.da.R
 07a078e79c7610ae278502b4eb58391d *R/ESAGda.pred.R
@@ -7,7 +7,7 @@ dddf67db4c2a5bfcc89eece804d213a2 *NAMESPACE
 9773f67e7bfec2afe19cc6aa2b51025c *R/ESAGmle.R
 d82868fc722667174b0b75d9b5866782 *R/ESAGsim.R
 f20f47665b20379b224ff0c36bec057b *R/acg.R
-cf2dffaccc7cf7ed5382ff9a9d6e17c3 *R/bic.mixvmf.R
+6890c7e312f17e51fa8be95df01592ba *R/bic.mixvmf.R
 8c53f6ba573112ec590652b3fab9694e *R/circ.cor1.R
 98618b20f9a421d702ca2fb72a069196 *R/circ.cor2.R
 e96c79cb7b4518cb9790c90bea89a15a *R/circ.cors1.R
@@ -18,9 +18,10 @@ f9dd43dabf5be2143703c03c6a930fb3 *R/colspml.mle.R
 d8db2f1072598a886cbe504a9ceaaff7 *R/colvm.mle.R
 0ec586e312e174c22cbcf9f0f2a3e9f8 *R/conc.test.R
 2ef3f07c1171576e4ede1d42968a9ed9 *R/cosap.R
+eea02a524bca57717e894931c65cc6d9 *R/cosnn.R
 4ca2da25b0d00afce56de4681ad94af3 *R/dirda.cv.R
-138c4220c57d42722d17d21824bdaee5 *R/dirknn.R
-8172d5457bb464ef7ac8aff11b9102e6 *R/dirknn.tune.R
+3e64ebef9c703e285525775875a52123 *R/dirknn.R
+b0d2a1e092f11f7d98a0976022251ea3 *R/dirknn.tune.R
 5c24b664c3fd2a68a21ee8c2591203d1 *R/embed.aov.R
 6a0f2daf016059c1bb608ed14c18274c *R/embed.circaov.R
 db07e4388d528c23c01914008f5f0d9d *R/embedcirc.perm.R
@@ -63,7 +64,7 @@ e501645b81ade18815fb1ab8e0515270 *R/lr.circaov.R
 32ae6f1eef107fbc0ada3a6599f83151 *R/meandir.test.R
 634d0477c67a4e6a52bab6cd29992068 *R/mediandir.R
 32206c666de1c747dcf861706ef546da *R/mediandir_2.R
-e5e466f3ca8bb590604c818cf44b63ac *R/mix.vmf.R
+5dc5d1f86478a8307c5c7586c87f64fe *R/mix.vmf.R
 510f2c93ab917dbb63eced14f7e73409 *R/mixvmf.contour.R
 bf81cdb2c75bb8c962e976014cd0df96 *R/multispml.mle.R
 2b20ad8eb132bc8047650bf706af8365 *R/multivm.mle.R
@@ -121,7 +122,7 @@ f414b6c45017583fd2ea112e6ea98769 *R/vmnb.pred.R
 b68e4f83f8f713d56d74d3b7262dc563 *R/wrapcauchy.R
 37104af93fea4774241060bb18a3e3db *R/wrapcauchy.density.R
 c4a9b752ced9a264c17935b4a6171278 *man/Arotation.Rd
-219e2560b15ca9c33d235c0d100db1eb *man/Directional-package.Rd
+80f09dd3447d53dc3b434eb035156747 *man/Directional-package.Rd
 eae176da5a13c3fd1224593fe4a59819 *man/ESAG.da.Rd
 3328e6f41f7d7bbe4864e8aa2c46766f *man/ESAGda.pred.Rd
 2edb4ad33b82663b26723a87daac1ab6 *man/ESAGmle.Rd
@@ -134,9 +135,10 @@ c7f370cf6d3acc1c96d31164ecf6a22a *man/circ.cor1.Rd
 cec8141f1643b9ab04dfa882321ce957 *man/colspml.mle.Rd
 efe557c3289fc475d21e0e403df779d3 *man/conc.test.Rd
 15d4f5e09f03d732799d62bd60794a58 *man/cosap.Rd
+4c5380a65c91d27b8e98bf7b1deb0f43 *man/cosnn.Rd
 6e07604250566d177a3de14def94d8c1 *man/dirda.cv.Rd
-4f634c20a2c2ab29de916f37adaf591a *man/dirknn.Rd
-6f63806d2e648c9c24d47a50a79c896e *man/dirknn.tune.Rd
+00af7021b0d49f95bf9e2b8763eb091c *man/dirknn.Rd
+179a08ee7099151edbd7dd43c1f62357 *man/dirknn.tune.Rd
 92a56da7ba599a29be3b07f8a64cce57 *man/etoa.Rd
 7d5eeb68fa0733a57d124fbfb71e2435 *man/euclid.Rd
 dc392caf8583e24995f1fcc3297a7ffc *man/euclid.inv.Rd
@@ -167,7 +169,7 @@ bee30cb1ef9f760b464ede0b790d87df *man/lambert.Rd
 8d7c2f0728b1f5c5d075925d7a1875d5 *man/matrixfisher.mle.Rd
 db51e583b50a6daa9f9f24ecebe3fa25 *man/meandir.test.Rd
 7566ada119dc5abacdd88baa650a60da *man/mediandir.Rd
-d7e1189b6baf85c23353d62580854e2d *man/mix.vmf.Rd
+89153c4edc1aa6c97e09cdd069bdcfda *man/mix.vmf.Rd
 07d38e4fb99818f17fdaa3408cb6564a *man/mixvmf.contour.Rd
 488d963ca2d6c2d783e25e18c77c226f *man/multivm.mle.Rd
 117d87e874d6758bc90f27dcfd1f49cf *man/purka.mle.Rd

@@ -9,7 +9,7 @@ It classifies new observations to some known groups via the k-NN algorithm.
 }
 
 \usage{
-dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE, parallel = FALSE)
+dirknn(x, xnew, k = 5, ina, type = "S", mesos = TRUE, parallel = FALSE, rann = FALSE)
 }
 
 \arguments{
@@ -34,6 +34,9 @@ A boolean variable used only in the case of the non standard algorithm (type="NS
 \item{parallel}{
 If you want the standard -NN algorithm to take place in parallel set this equal to TRUE.
 }
+\item{rann}{
+If you have large scale datasets and want a faster k-NN search, you can use kd-trees implemented in the R package "RANN". In this case you must set this argument equal to TRUE.
+}
 }
 
 \details{
@@ -53,7 +56,7 @@ Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on
 \author{
 Michail Tsagris
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 %\note{
 %%  ~~further notes~~
