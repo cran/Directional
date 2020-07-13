@@ -26,7 +26,7 @@ mixvmf.contour <- function(u, mod) {
   for (i in 1:n1) {
     for (j in 1:n1) {
       #x <- c( cos(x1[i]) * cos(x2[j]), cos(x1[i]) * sin(x2[j]), sin(x2[j]) )
-      x <- euclid( c(x1[i], x2[j]) )
+      x <- Directional::euclid( c(x1[i], x2[j]) )
       lika <- con + k * ( x %*% tmu )
       can <- sum( p * exp(lika) )
       if (abs(can) < Inf)   mat[i, j] <- can

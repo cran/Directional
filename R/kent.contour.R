@@ -1,6 +1,6 @@
 ################################
 #### Contour plots of the Kent distribution on the sphere
-#### Tsagris Michail 06/2014 
+#### Tsagris Michail 06/2014
 #### mtsagris@yahoo.gr
 ################################
 
@@ -10,7 +10,7 @@ kent.contour <- function(k, b) {
   ## b must be less than k/2
   gam <- c(0, k, 0)
   lam <- c(0, -b, b)
-  con <- fb.saddle(gam, lam)[3]
+  con <- Directional::fb.saddle(gam, lam)[3]
   rho <- sqrt(2)
   x <- seq(-rho, rho, by = 0.01)
   n <- length(x)
@@ -21,6 +21,6 @@ kent.contour <- function(k, b) {
   ind[ !ind ] <- NA
   theta <- 2 * asin(0.5 * z)
   xa <- k * cos(theta) + b * (mat1 - mat2) - con
-  mat <- exp(xa) * ind   
+  mat <- exp(xa) * ind
   contour(x, x, mat)
 }

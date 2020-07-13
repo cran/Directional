@@ -1,7 +1,7 @@
-\name{Mle of the Matrix Fisher distribution on SO(3)}
+\name{MlE of the Matrix Fisher distribution on SO(3)}
 \alias{matrixfisher.mle}
 \title{
-Mle of the Matrix Fisher distribution on SO(3)
+MlE of the Matrix Fisher distribution on SO(3)
 }
 
 \description{

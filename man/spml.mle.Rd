@@ -1,6 +1,7 @@
 \name{MLE of some circular distributions}
 \alias{spml.mle}
 \alias{wrapcauchy}
+\alias{circexp.mle}
 \title{
 MLE of some circular distributions
 }
@@ -12,6 +13,7 @@ MLE of some circular distributions.
 \usage{
 spml.mle(x, rads = FALSE, tol = 1e-07)
 wrapcauchy(x, rads = FALSE, tol = 1e-07)
+circexp.mle(x, rads = FALSE, tol = 1e-06)
 }
 
 \arguments{
@@ -45,13 +47,16 @@ A vector consisting of the estimates of the two parameters, the mean direction f
 and the concentration parameter kappa and the rho for the von Mises and wrapped Cauchy respectively.
 }
 \item{gamma}{
-The norm of the mean vector of the angualr Gaussian distribution.
+The norm of the mean vector of the angular Gaussian distribution.
 }
 \item{mu}{
 The mean vector of the angular Gaussian distribution.
 }
 \item{mumu}{
 In the case of "spml.mle" this is the mean angle in radians.
+}
+\item{lambda}{
+The lambda parameter of the circular exponential distribution.
 }
 }
 
@@ -84,8 +89,9 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 
 \examples{
 x <- rvonmises(1000, 3, 9)
-spml.mle(x)
-wrapcauchy(x)
+spml.mle(x, rads = TRUE)
+wrapcauchy(x, rads = TRUE)
+circexp.mle(x, rads = TRUE)
 }
 
 \keyword{ bivariate angular Gaussian }

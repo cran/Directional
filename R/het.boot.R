@@ -1,0 +1,46 @@
+het.boot <- function(x1, x2, B = 999) {
+
+  n1 <- dim(x1)[1]    ;  n2 <- dim(x2)[1]
+  x <- rbind(x1, x2)
+  ina <- c( rep(1, n1), rep(2, n2) )
+  ni <- c(n1, n2)
+  p <- dim(x)[2]
+  n <- n1 + n2
+  kapa <- numeric(2)
+  mi <- rowsum(x, ina) / ni
+  Ri <- sqrt( Rfast::rowsums(mi^2) )
+  m <- mi/Ri
+  m1 <- m[1, ]    ;   m2 <- m[2, ]
+  S <- Rfast::colsums(x)
+  R <- sqrt( sum(S^2) )
+  m <- S/R
+
+  kapa[1] <- Directional::vmf( x1, fast = TRUE )$kappa
+  kapa[2] <- Directional::vmf( x2, fast = TRUE )$kappa
+  tw <- Rfast::colsums(kapa * ni * mi)
+  Tt <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
+
+  tb <- numeric(B)
+  rot1 <- t( Directional::rotation(m1, m) )
+  rot2 <- t( Directional::rotation(m2, m) )
+  y1 <- x1 %*% rot1
+  y2 <- x2 %*% rot2
+
+  for (i in 1:B) {
+
+    b1 <- sample(n1, n1, replace = TRUE)
+    b2 <- sample(n2, n2, replace = TRUE)
+    yb1 <- y1[b1, ]   ;   yb2 <- y1[b2, ]
+    yb <- rbind(y1[b1, ], y2[b2, ])
+    mi <- rowsum(yb, ina) / ni
+    kapa[1] <- Directional::vmf(yb1, fast = TRUE )$kappa
+    kapa[2] <- Directional::vmf(yb2, fast = TRUE )$kappa
+    tw <- Rfast::colsums(kapa * ni * mi)
+    tb[i] <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
+  }
+
+  pvalue <- ( sum(tb > Tt) + 1 ) / (B + 1)
+  res <- c(Tt, pvalue)
+  names(res) <- c('test', 'p-value')
+  res
+}

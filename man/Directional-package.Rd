@@ -6,14 +6,13 @@ This is an R package that provides methods for the statistical analysis of direc
 }
 \description{
 Circular-linear regression, spherical-spherical regression, spherical regression, discriminant analysis, ANOVA for circular and (hyper-)spherical data, tests for eaquality of conentration parameters, fitting distributions, random values generation, contour plots and many more functions are included in this package.
-
 }
 \details{
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 4.3\cr
-Date: \tab 2020-03-24\cr
+Version: \tab 4.4\cr
+Date: \tab 2020-07-13\cr
 License: \tab GPL-2\cr
 }
 }

@@ -10,11 +10,11 @@ Contour lines are produced of mixture model for spherical data only.
 mixvmf.contour(u, mod)
 }
 \arguments{
-  \item{u}{
-  A two column matrix. The first column is the longitude and the second is the latitude.
+\item{u}{
+A two column matrix. The first column is the longitude and the second is the latitude.
 }
-  \item{mod}{
-  This is mix.vmf object. Run a mixture model and save it as mod for example, mod = mix.vmf(x, 3).
+\item{mod}{
+This is mix.vmf object, actually it is a list. Run a mixture model and save it as mod for example, mod = mix.vmf(x, 3).
 }
 }
 \details{

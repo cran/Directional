@@ -2,10 +2,10 @@
 
 importFrom("graphics", contour, lines, plot, points, abline)
 
-importFrom("stats", aggregate, coef, cor, dnorm, kmeans,
+importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
            .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
            quantile, rbeta, rnorm, runif, sd, uniroot, qnorm,
-            cov, model.matrix, nlm, integrate, rbinom, rcauchy)
+           cov, model.matrix, nlm, integrate, rbinom, rcauchy)
 
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            colSort, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,

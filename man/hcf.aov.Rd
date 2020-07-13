@@ -35,7 +35,8 @@ het.aov(x, ina)
 }
 
 \details{
-The high concentration (hcf.aov), log-likelihood ratio (lr.aov), embedding approach (embed.aov) or the non equal concentration parameters approach (het.aov) is used.}
+The high concentration (hcf.aov), log-likelihood ratio (lr.aov), embedding approach (embed.aov) or the non equal concentration parameters approach (het.aov) is used.
+}
 
 \value{
 A vector including:
@@ -64,7 +65,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{lr.aov}, \link{embed.aov}, \link{het.aov}, \link{spherconc.test}, \link{conc.test}
+\code{\link{hcf.boot}, \link{spherconc.test}, \link{conc.test}
 }
 }
 
@@ -78,7 +79,4 @@ embed.aov(x, ina)
 het.aov(x, ina)
 }
 
-\keyword{ Analysis of variance }
-\keyword{ (Hyper-)spherical data }
-\keyword{ high concentration F test }
 
