@@ -1,8 +1,7 @@
 ###  Simulates from Matrix Fisher distribution on SO(3) using any parameter F (3X3)
-
 rmatrixfisher <- function(n, F) {
    ## Decompose F into UDV' form and find the corresponding between Matrix Fisher parameter F and Bingham parameter A ##
-   convertP_SO3_S3<-function(F)  {
+   convertP_SO3_S3 <- function(F)  {
      anal <- svd(F)
      U <- anal$u
      V <- anal$v
@@ -42,7 +41,7 @@ rmatrixfisher <- function(n, F) {
   A <- S$A
   U <- S$U
   tV <- t( S$V )
-  z <- rbingham(n, A)
+  z <- Directional::rbingham(n, A)
   for (i in 1:n)  X[, , i] <- ( U %*% convert.X( z[i, ] ) ) %*% tV   ## convert Bingham samples to Matrix Fisher samples
   X
 }

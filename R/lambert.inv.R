@@ -12,11 +12,11 @@ lambert.inv <- function(z, mu) {
   lat <- 2 * asin( 0.5 * sqrt( Rfast::rowsums(z^2) ) )
   u <- cbind(lat, long)  ## the data on the sphere in radians
   u <- u * 180 / pi  ## from radians to degrees
-  y <- euclid(u)  ## the data in euclidean coordinates
+  y <- Directional::euclid(u)  ## the data in euclidean coordinates
   ## their mean direction is not exactly the north pole
   b <- c(0, 0, 1)  ## the north pole from which we will rotate the data
   mu <- mu / sqrt( sum(mu^2) )  ## make sure that mu is a unit vector
   H <- rotation(b, mu)  ## rotate the data so that their mean direction is mu
   u <- tcrossprod(y, H)
-  euclid.inv(u)
+  Directional::euclid.inv(u)
 }

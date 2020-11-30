@@ -1,5 +1,4 @@
 sphereplot <- function(x, col = NULL) {
-  
   if ( is.null(col) )  col <- rep(1, dim(x)[1])
   rgl::open3d()
   y1 <- x[, 1]

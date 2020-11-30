@@ -10,7 +10,7 @@ meandir.test <- function(x, mu, B = 999) {
   ## mu is the hypothesized mean direction under H0
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
-  k1 <- vmf(x)$k  ## concentration parameter under H1
+  k1 <- Directional::vmf(x)$k  ## concentration parameter under H1
   xbar <- Rfast::colmeans(x)  ## x-bar
   m1 <- xbar / sqrt( sum(xbar^2) )
   sxm <- sum(x %*% mu)
@@ -31,7 +31,7 @@ meandir.test <- function(x, mu, B = 999) {
     for (i in 1:B) {
       nu <- sample(1:n, n, replace = TRUE)
       z <- y[nu, ]
-      k1 <- vmf(z)$k  ## concentration parameter under H1
+      k1 <- Directional::vmf(z)$k  ## concentration parameter under H1
       zbar <- Rfast::colmeans(z)  ## z-bar
       sxm <- sum(z %*% mu)
       qa0 <- optimize(lik, c(0, 100000), x = z, sxm = sxm, maximum = TRUE)

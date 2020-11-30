@@ -1,5 +1,4 @@
 ## Constructing a rotation matrix on SO(3) from the three euler angles
-
 eul2rot <- function(theta.12, theta.23, theta.13) {
   x.12 <- theta.12
   x.23 <- theta.23

@@ -33,7 +33,7 @@ rfb <- function(n, k, m, A) {
   n1 <- dim(x1)[1]
 
   while (n1 < n) {
-    x <- f.rbing(n - n1, lam, fast = TRUE)$X  ## Chris and Theo's code
+    x <- Directional::f.rbing(n - n1, lam, fast = TRUE)$X  ## Chris and Theo's code
     x <- tcrossprod(x, V) ## simulated data
     u <- log( runif(n - n1) )
     ffb <- k * x[, 2]  - Rfast::rowsums( x %*% A * x )

@@ -33,7 +33,7 @@ fishkent <- function(x, B = 999) {
     for (i in 1:B) {
       nu <- sample(n, n, replace = TRUE)
       z <- x[nu, ]
-      estim <- vmf(z, fast = TRUE)
+      estim <- Directional::vmf(z, fast = TRUE)
       k <- estim$kappa  ## the estimated concentration parameter
       ## under the H0, that the Fisher distribution is true
       mu <- estim$mu  ## the estimated mean direction under H0

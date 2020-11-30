@@ -46,7 +46,7 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE
     }
     if ( plot ) {
       r <- seq(0, 2 * pi, by = 0.01)
-      plot(cos(r), sin(r), type = "l", xlab = "Cosinus", ylab = "Sinus")
+      plot(cos(r), sin(r), type = "l", xlab = "Cosinus", ylab = "Sinus", cex.lab = 1.2)
       xx <- seq(-1, 1, by = 0.1)
       yy <- seq(-1, 1, by = 0.1)
       ta <- numeric(length(xx))

@@ -4,7 +4,7 @@ ESAGsim <- function(n, param) {
   m <- param[1:3]
   gam1 <- param[4]
   gam2 <- param[5]
-  if (gam1 == 0  &  gam2 == 0) {
+  if ( gam1 == 0  &  gam2 == 0 ) {
     y <- Rfast::matrnorm(n, 3)  ## IAG is used
     y <- Rfast::eachrow(y, m, oper = "+")
   } else {

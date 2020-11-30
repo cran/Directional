@@ -74,8 +74,8 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
         xtest <- x[nu, ]
         id <- ina[-nu]
         for (j in 1:g) {
-          mod <- ESAGmle( xtrain[id == j, ] )
-          mat[, j] <- ESAGdensity(xtest, c(mod$mu, mod$gam), logden = TRUE )
+          mod <- Directional::ESAGmle( xtrain[id == j, ] )
+          mat[, j] <- Directional::ESAGdensity(xtest, c(mod$mu, mod$gam), logden = TRUE )
         }
         est3[[ i ]] <- Rfast::rowMaxs(mat)
         per3[i] <- mean(est3[[ i ]] == ina[nu])
@@ -101,8 +101,8 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
         xtest <- x[nu, ]
         id <- ina[-nu]
         for (j in 1:g) {
-          mod <- kent.mle( xtrain[id == j, ])
-          mat[, j] <- kent.density(xtest, G = mod$G, param = mod$param[1:2] )
+          mod <- Directional::kent.mle( xtrain[id == j, ])
+          mat[, j] <- Directional::kent.density(xtest, G = mod$G, param = mod$param[1:2] )
         }
         est4[[ i ]] <- Rfast::rowMaxs(mat)
         per4[i] <- mean(est4[[ i ]] == ina[nu])

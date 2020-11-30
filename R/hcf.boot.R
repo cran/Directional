@@ -14,14 +14,14 @@ hcf.boot <- function(x1, x2, fc = TRUE, B = 999) {
   S <- Rfast::colsums(x)
   R <- sqrt( sum(S^2) )  ## the resultant length based on all the data
   ## Next we stimate the common concentration parameter kappa
-  kappa <- vmf(x)$kappa
+  kapaa <- Directional::vmf(x, fast = TRUE)$kappa
   m <- S / R
-  ## kappa is the estimated concentration parameter based on all the data
-  Ft <- (n - 2) * (p - 1) * ( sum(Ri) - R) /( (p - 1) * (n - sum(Ri)) )
+  ## kapaa is the estimated concentration parameter based on all the data
+  Ft <- (n - 2) * ( sum(Ri) - R) / ( n - sum(Ri) )
   if (fc) {  ## correction is used
     if (p == 3) {
-      Ft <- kappa * (1/kappa - 1/(5 * kappa^3)) * Ft
-    } else if (p > 3)  Ft <- kappa * ( 1/kappa - (p - 3)/(4 * kappa^2) - (p - 3)/(4 * kappa^3) ) * Ft
+      Ft <- kapaa * (1/kapaa - 1/(5 * kapaa^3)) * Ft
+    } else if (p > 3)  Ft <- kapaa * ( 1/kapaa - (p - 3)/(4 * kapaa^2) - (p - 3)/(4 * kapaa^3) ) * Ft
   }
 
   rot1 <- t( Directional::rotation(m1, m) )
@@ -38,17 +38,17 @@ hcf.boot <- function(x1, x2, fc = TRUE, B = 999) {
     Ri <- sqrt( Rfast::rowsums(S^2) )
     S <- Rfast::colsums(yb)
     R <- sqrt( sum(S^2) )
-    kappa <- vmf(x)$kappa
-    ftb[i] <- (n - 2) * (p - 1) * ( sum(Ri) - R) /( (p - 1) * (n - sum(Ri)) )
+    kapa <- Directional::vmf(x, fast = TRUE)$kappa
+    ftb[i] <- (n - 2) * ( sum(Ri) - R) / ( n - sum(Ri) )
     if (fc) {  ## correction is used
       if (p == 3) {
-        ftb[i] <- kappa * (1/kappa - 1/(5 * kappa^3)) * ftb[i]
-      } else if (p > 3)  ftb[i] <- kappa * ( 1/kappa - (p - 3)/(4 * kappa^2) - (p - 3)/(4 * kappa^3) ) * ftb[i]
+        ftb[i] <- kapa * (1/kapa - 1/(5 * kapa^3)) * ftb[i]
+      } else if (p > 3)  ftb[i] <- kapa * ( 1/kapa - (p - 3)/(4 * kappa^2) - (p - 3)/(4 * kapa^3) ) * ftb[i]
     }
   }
 
   pvalue <- ( sum(ftb > Ft) + 1 ) / (B + 1)
-  res <- c(Ft, pvalue, kappa)
+  res <- c(Ft, pvalue, kapaa)
   names(res) <- c('test', 'p-value', 'kappa')
   res
 }

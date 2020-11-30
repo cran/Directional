@@ -4,7 +4,6 @@
 ## May 2016
 ## References: Arthur Pewsey, Markus Neuhauser, and Graeme D. Ruxton (2013)
 ## Circular Statistics in R
-
 group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 1) {
 
   if ( !rads )  m <- m * pi / 180
@@ -13,7 +12,7 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
   n <- sum(ni)
 
   if ( dist == "vm" ) {
-    for ( i in 1:d )  p[i] <- pvm( g[i + 1], m, k, rads = TRUE ) -  pvm( g[i], m, k, rads = TRUE )  
+    for ( i in 1:d )  p[i] <- Directional::pvm( g[i + 1], m, k, rads = TRUE ) -  Directional::pvm( g[i], m, k, rads = TRUE )  
   } else if ( dist == "uniform" ) {
     for ( i in 1:d )  p[i] <- ( g[i + 1] - g[i] ) / (2 * pi)
   }
@@ -26,7 +25,7 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
     tic <- proc.time()
     ub <- numeric(R)
     for (i in 1:R) {
-      x <- rvonmises(n, m, k, rads = TRUE)
+      x <- Directional::rvonmises(n, m, k, rads = TRUE)
       sim <- as.vector( table( cut(x, breaks = g) ) )
       sjb <- cumsum(sim - n * p)
       sjbarb <- sum(p * sjb)
@@ -36,17 +35,17 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
 
   } else {
     tic <- proc.time()
-     cl <- makePSOCKcluster(ncores)
-     registerDoParallel(cl)
-     ub <- foreach(vim = 1:R, .combine = rbind, .export = "rvonmises") %dopar% {
-       x <- rvonmises(n, m, k, rads = TRUE)
+     cl <- parallel::makePSOCKcluster(ncores)
+     doParallel::registerDoParallel(cl)
+     ub <- foreach::foreach(vim = 1:R, .combine = rbind, .export = "rvonmises") %dopar% {
+       x <- Directional::rvonmises(n, m, k, rads = TRUE)
        sim <- as.vector( table( cut(x, breaks = g) ) )
        sjb <- cumsum(sim - n * p)
        sjbarb <- sum(p * sjb)
        a <- sum( p * (sjb - sjbarb)^2 ) / n
        return(a)
      }
-     stopCluster(cl)
+     parallel::stopCluster(cl)
      runtime <- proc.time() - tic
   }
 

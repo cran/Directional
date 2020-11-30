@@ -8,19 +8,21 @@ embed.boot <- function(x1, x2, B = 999) {
   p <- dim(x)[2]  ## dimensionality of the data
   n <- n1 + n2  ## sample size of the data
   S <- rowsum(x, ina) / ni
-  m1 <- S[1, ]   ;   m2 <- S[2, ]
-  m1 <- m1 / sqrt( sum(m1^2) )
-  m2 <- m2 / sqrt( sum(m2^2) )
   Rbi <- sqrt( Rfast::rowsums(S^2) ) ## the mean resultant length of each group
   S <- Rfast::colmeans(x)
   Rbar <- sqrt( sum(S^2) )  ## the mean resultant length based on all the data
-  Ft <-  (n - 2) * (p - 1) * ( sum(ni * Rbi^2) - n * Rbar^2) / ( (p - 1) * ( n - sum(ni * Rbi^2) ) )
+  Ft <- (n - 2) * ( sum(ni * Rbi^2) - n * Rbar^2) / ( n - sum(ni * Rbi^2) )
+
+  m1 <- S[1, ]   ;   m2 <- S[2, ]
+  m1 <- m1 / sqrt( sum(m1^2) )
+  m2 <- m2 / sqrt( sum(m2^2) )
   m <- S / Rbar
   rot1 <- t( Directional::rotation(m1, m) )
   rot2 <- t( Directional::rotation(m2, m) )
   y1 <- x1 %*% rot1
   y2 <- x2 %*% rot2
   ftb <- numeric(B)
+
   for (i in 1:B) {
     b1 <- sample(n1, n1, replace = TRUE)
     b2 <- sample(n2, n2, replace = TRUE)
@@ -29,10 +31,10 @@ embed.boot <- function(x1, x2, B = 999) {
     Rbi <- sqrt( Rfast::rowsums(S^2) ) ## the mean resultant length of each group
     S <- Rfast::colmeans(yb)
     Rbar <- sqrt( sum(S^2) )  ## the mean resultant length based on all the data
-    ftb[i] <-  (n - 2) * (p - 1) * ( sum(ni * Rbi^2) - n * Rbar^2) / ( (p - 1) * ( n - sum(ni * Rbi^2) ) )
+    ftb[i] <-  (n - 2) * ( sum(ni * Rbi^2) - n * Rbar^2) / ( n - sum(ni * Rbi^2) )
   }
   pvalue <- ( sum(ftb > Ft) + 1 ) / (B + 1)
   res <- c(Ft, pvalue)
-  names(res) <- c('F', 'p-value')
+  names(res) <- c('test', 'p-value')
   res
 }

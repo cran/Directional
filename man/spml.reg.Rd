@@ -30,7 +30,6 @@ If they are categorical, the user must provide them as dummy variables. It does 
 a boolean variable. If TRUE, the standard error of the coefficients will be be returned.
 Set to FALSE in case of simulation studies or in other cases such as a forward regression
 setting for example. In these cases, it can save some time.
-Leave this FALSE as we currently have a problem with this, but will fixt it in our next update.
 }
 \item{tol}{
 The tolerance value to terminate the Newton-Raphson algorithm.

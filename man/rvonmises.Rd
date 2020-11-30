@@ -1,6 +1,7 @@
 \name{Random values simulation from some circular distributions}
 \alias{rvonmises}
 \alias{rwrapcauchy}
+\alias{rspml}
 \title{
 Random values simulation from some circular distributions
 }
@@ -12,7 +13,9 @@ Random values simulation from some circular distributions.
 \usage{
 rvonmises(n, m, k, rads = TRUE)
 rwrapcauchy(n, m, rho, rads = TRUE)
+rspml(n, mu, rads = TRUE)
 }
+
 
 \arguments{
 \item{n}{
@@ -20,6 +23,9 @@ The sample size.
 }
 \item{m}{
 The mean angle expressed in radians or degrees.
+}
+\item{mu}{
+The mean vector of the SPML in \eqn{R^2}.
 }
 \item{k}{
 The concentration parameter of the von Mises distribution. If k is zero the sample will be generated from the uniform distribution over \eqn{(0, 2\pi)}.
@@ -53,6 +59,7 @@ https://dspace.library.uvic.ca/bitstream/handle/1828/2698/zhengsun_master_thesis
 
 Lai, M. (1994). Some results in the statistical analysis of directional data. Master thesis, University of Hong Kong.
 
+Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data. Journal of the American Statistical Association, 93(443): 1068-1077.
 }
 
 \author{

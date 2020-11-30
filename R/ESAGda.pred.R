@@ -8,8 +8,8 @@ ESAGda.pred <- function(ynew, y, ina) {
   g <- max(ina)
   mat <- matrix(0, dim(ynew)[1], g)
   for (j in 1:g) {
-    mod <- ESAGmle( y[ina == j, ] )
-    mat[, j] <- ESAGdensity(ynew, c(mod$mu, mod$gam), logden = TRUE )
+    mod <- Directional::ESAGmle( y[ina == j, ] )
+    mat[, j] <- Directional::ESAGdensity(ynew, c(mod$mu, mod$gam), logden = TRUE )
   }
   Rfast::rowMaxs(mat)
 }

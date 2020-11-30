@@ -1,25 +1,25 @@
-\name{Permutation based 2-sample mean test for circular data}
-\alias{hcfcirc.perm}
-\alias{hetcirc.perm}
-\alias{lrcirc.perm}
-\alias{embedcirc.perm}
+\name{Bootstrap 2-sample mean test for circular data}
+\alias{hcfcirc.boot}
+\alias{lrcirc.boot}
+\alias{embedcirc.boot}
+\alias{hetcirc.boot}
 
 \title{
-Permutation based 2-sample mean test for circular data
+Bootstrap 2-sample mean test for circular data
 }
 
 \description{
-Permutation based 2-sample mean test for circular data.
+Bootstrap 2-sample mean test for circular data.
 }
 
 \usage{
-hcfcirc.perm(u1, u2, rads = TRUE, B = 999)
+hcfcirc.boot(u1, u2, rads = TRUE, B = 999)
 
-hetcirc.perm(u1, u2, rads = TRUE, B = 999)
+lrcirc.boot(u1, u2, rads = TRUE, B = 999)
 
-lrcirc.perm(u1, u2, rads = TRUE, B = 999)
+embedcirc.boot(u1, u2, rads = TRUE, B = 999)
 
-embedcirc.perm(u1, u2, rads = TRUE, B = 999)
+hetcirc.boot(u1, u2, rads = TRUE, B = 999)
 }
 
 \arguments{
@@ -33,12 +33,12 @@ A numeric vector containing the data of the first sample.
 If the data are in radians, this should be TRUE and FALSE otherwise.
 }
 \item{B}{
-The number of permutations to perform.
+The number of bootstraps to perform.
 }
 }
 
 \details{
-The high concentration (hcf.circaov), log-likelihood ratio (lr.circaov), embedding approach (embed.circaov) or the non equal concentration parameters approach (het.circaov) is used.
+The high concentration (hcfcirc.boot), the log-likelihood ratio test (lrcirc.boot) or the non equal concentration parameters approach (hetcirc.boot) is used.
 }
 
 \value{
@@ -75,8 +75,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 \examples{
 u1 <- rvonmises(20, 2.4, 5)
 u2 <- rvonmises(20, 2.4, 10)
-hcfcirc.perm(u1, u2)
-lrcirc.perm(u1, u2)
+hcfcirc.boot(u1, u2)
 }
 
 

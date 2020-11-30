@@ -1,7 +1,5 @@
 ## Computing Euler angles from a rotation matrix on SO(3) ##
-
-rot2eul <- function(X) {
-                
+rot2eul <- function(X) {  
    v1 <- numeric(3)
    v2 <- numeric(3)              
    x1.13 <- asin( X[3, 1] )

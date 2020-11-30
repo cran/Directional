@@ -10,9 +10,9 @@ hcf.aov <- function(x, ina, fc = TRUE) {
   S <- Rfast::colsums(x)
   R <- sqrt( sum(S^2) )  ## the resultant length based on all the data
   ## Next we stimate the common concentration parameter kappa
-  kappa <- vmf(x)$kappa
+  kappa <- Directional::vmf(x, fast = TRUE)$kappa
   ## kappa is the estimated concentration parameter based on all the data
-  Ft <- (n - g) * (p - 1) * (sum(Ri) - R) /( (g - 1) * (p - 1) * (n - sum(Ri)) )
+  Ft <- (n - g) * (sum(Ri) - R) /( (g - 1) * (n - sum(Ri)) )
   if (fc) {  ## correction is used
     if (p == 3) {
       Ft <- kappa * (1/kappa - 1/(5 * kappa^3)) * Ft

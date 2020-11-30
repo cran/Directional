@@ -1,37 +1,31 @@
-################################
-#### ANOVA for hyper-spherical data (Log-likelihood ratio test)
-#### Tsagris Michail 1/2015
-#### mtsagris@yahoo.gr
-#### References: Mardia Kanti V. and Jupp Peter E. (2000)
-#### Directional statistics, page 224
-################################
 lr.aov <- function(x, ina) {
-  ## x contains all the data
-  ## ina is an indicator variable of each sample
+
   ina <- as.numeric(ina)
   g <- max(ina)  ## how many groups are there
   p <- dim(x)[2]  ## dimensionality of the data
   n <- dim(x)[1]  ## sample size of the data
   S <- rowsum(x, ina)
   Ri <- sqrt( Rfast::rowsums(S^2) )  ## the resultant length of each group
-  S <- Rfast::colsums(x)
+  S <- Rfast::colsums(S)
   R <- sqrt( sum(S^2) )  ## the resultant length based on all the data
-  ## Next we stimate the common concentration parameter kappa under H0 and H1
+
   Apk <- function(p, k)  besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
 
+  ## Next we stimate the common concentration parameter kappa under H0 and H1
   Rk <- R/n
   k1 <- Rk * (p - Rk^2)/(1 - Rk^2)
   k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
-  while (abs(k2 - k1) > 1e-07) {
+  while ( abs(k2 - k1) > 1e-07 ) {
     k1 <- k2
     k2 <- k1 - (Apk(p, k1) - Rk) / (1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
   }
   k0 <- k2  ## concentration parameter under H0
+
   Rk <- sum(Ri)/n
   k1 <- Rk * (p - Rk^2)/(1 - Rk^2)
   k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
 
-  while (abs(k2 - k1) > 1e-07) {
+  while ( abs(k2 - k1) > 1e-07 ) {
     k1 <- k2
     k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
   }

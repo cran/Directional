@@ -30,8 +30,8 @@ het.boot <- function(x1, x2, B = 999) {
 
     b1 <- sample(n1, n1, replace = TRUE)
     b2 <- sample(n2, n2, replace = TRUE)
-    yb1 <- y1[b1, ]   ;   yb2 <- y1[b2, ]
-    yb <- rbind(y1[b1, ], y2[b2, ])
+    yb1 <- y1[b1, ]   ;   yb2 <- y2[b2, ]
+    yb <- rbind(yb1, yb2)
     mi <- rowsum(yb, ina) / ni
     kapa[1] <- Directional::vmf(yb1, fast = TRUE )$kappa
     kapa[2] <- Directional::vmf(yb2, fast = TRUE )$kappa

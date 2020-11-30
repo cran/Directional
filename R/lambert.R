@@ -8,14 +8,14 @@
 
 lambert <- function(y) {
   ## y contains the data in degrees, latitude and longitude
-  u <- euclid(y)  ## transform the data into euclidean coordinates
+  u <- Directional::euclid(y)  ## transform the data into euclidean coordinates
   m <- Rfast::colmeans(u)
   m <- m / sqrt(sum( m^2) )  ## the mean direction
   b <- c(0, 0, 1)  ## the north pole
   H <- rotation(m, b)  ## the rotation matrix
   u1 <- tcrossprod(u, H)  ## rotating the data so that their mean
   ## direction is the north pole
-  u2 <- euclid.inv(u1)  ## bring the data into degrees again
+  u2 <- Directional::euclid.inv(u1)  ## bring the data into degrees again
   u2 <- pi * u2 / 180  ## from degrees to radians
   theta <- u2[, 1]
   phi <- u2[, 2]

@@ -2,14 +2,13 @@
 #### Simulation of random rotation matrices
 #### Matrices in SO(p)
 ################################
-
 rsop <- function(n, p) {
 
   a <- c(1, numeric(p - 1) )
   A <- array( dim = c(p, p, n) )
   Ip <- diag(p)
 
-  for (i in 1:n) {
+  for ( i in 1:n ) {
     b <- rnorm(p)
     b <- b / sqrt( sum(b^2) )
     ca <- a - b * b[1]

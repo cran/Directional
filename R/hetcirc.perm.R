@@ -6,8 +6,7 @@ hetcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
   N <- length(u)
   ni <- tabulate(ina)
   kapa <- numeric(2)
-  x1 <- cos(u)
-  x2 <- sin(u)
+  x1 <- cos(u)   ;   x2 <- sin(u)
   C <- Rfast::group(x1, ina)
   S <- Rfast::group(x2, ina)
   mi <- atan(S/C) + pi * as.numeric(C < 0)
@@ -73,7 +72,7 @@ hetcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
     pta[j] <- 2 * (sum(kapa * Ri) - Rw)
   }
 
-  pvalue <- ( sum(pta > Ta) + 1 ) / (B + 1) 
+  pvalue <- ( sum(pta > Ta) + 1 ) / (B + 1)
   res <- c(Ta, pvalue)
   names(res) <- c("test", "p-value")
   res

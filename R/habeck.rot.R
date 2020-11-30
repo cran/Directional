@@ -1,5 +1,4 @@
 # Genearation of three-dimensional rotation matrices using Habeck's algorithm
-
 habeck.rot <- function(F) {
 
   ana <- svd(F)
@@ -21,11 +20,11 @@ habeck.rot <- function(F) {
   kappa_shi <- (lamda1 - lamda2) * ( sin(Beta.val/2) ) ^ 2
   if ( kappa_phi == 0 ) {
     phi <- runif(1, 0, 2*pi)
-  } else  phi <- rvonmises(1, 0, kappa_phi, rads = TRUE)
+  } else  phi <- Directional::rvonmises(1, 0, kappa_phi, rads = TRUE)
 
   if ( kappa_shi == 0 ) {
     shi <- runif(1, 0, 2*pi)
-  } else  shi <- rvonmises(1, 0, kappa_shi, rads = TRUE) 
+  } else  shi <- Directional::rvonmises(1, 0, kappa_shi, rads = TRUE) 
   
   u <- rbinom(1, 1, 0.5)
   alpha <- 0.5 * (phi + shi) + pi * u

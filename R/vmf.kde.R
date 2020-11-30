@@ -16,7 +16,7 @@ vmf.kde <- function(x, h = NULL, thumb = "none") {
   if ( is.null(h) ) {
 
     if (thumb == "rot") {
-      k <- vmf(x)$kappa  ## concentration parameter
+      k <- Directional::vmf(x)$kappa  ## concentration parameter
       q <- p - 1
       if (q == 2)  h <- ( 8 * sinh(k)^2 / ( k * n * ( (1 + 4 * k^2) * sinh(2 * k) -  2 * k * cosh(2 * k) ) ) )^(1/6)
       if (q >= 3) {

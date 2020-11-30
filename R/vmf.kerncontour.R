@@ -45,7 +45,7 @@ vmf.kerncontour <- function(u, thumb = "none", den.ret = FALSE, full = FALSE,
 
   for (i in 1:ngrid) {
     for (j in 1:ngrid) {
-      y <- euclid( c(x1[i], x2[j]) )
+      y <- Directional::euclid( c(x1[i], x2[j]) )
       a <- as.vector( tcrossprod(x, y / h^2) )
       can <- sum( exp(a + log(cpk)) ) / ngrid
       if (abs(can) < Inf)   mat[i, j] <- can

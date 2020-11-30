@@ -29,9 +29,9 @@ makefolds <- function(ina, nfolds = 10, stratified = TRUE, seed = FALSE) {
     }
   }
   for (i in 1:nfolds)  {
-    if ( any( is.na(runs[[ i ]]) ) )  runs[[ i ]] <- runs[[ i ]][ !is.na(runs[[ i ]]) ]
+    if ( any( is.na( runs[[ i ]] ) ) )  runs[[ i ]] <- runs[[ i ]][ !is.na(runs[[ i ]]) ]
   }
-  if ( length(runs[[ nfolds ]]) == 0 ) runs[[ nfolds ]] <- NULL
+  if ( length( runs[[ nfolds ]] ) == 0 ) runs[[ nfolds ]] <- NULL
   runs
 }
 

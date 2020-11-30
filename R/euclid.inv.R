@@ -3,7 +3,6 @@
 #### Tsagris Michail 1/2014
 #### mtsagris@yahoo.gr
 ################################
-
 euclid.inv <- function(U) {
   ## U is a 3-column matrix of unit vectors
   ## the cartesian coordinates

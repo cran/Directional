@@ -50,7 +50,7 @@ fb.saddle <- function(gam, lam) {
   c3 <- c1 + Ta
   ## the next multiplications brings the modification with the negative
   ## values in the lambdas back
-  if (mina <= 0) {
+  if ( mina <= 0 ) {
     c1 <- c1 + aaa
     c2 <- c2 + aaa
     c3 <- c3 + aaa

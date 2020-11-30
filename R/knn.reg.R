@@ -1,4 +1,4 @@
-knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim = "arithmetic") {
+knn.reg <- function(xnew, y, x, k = 5, res = "eucl", estim = "arithmetic") {
   y <- as.matrix(y)
   x <- as.matrix(x)
   dm <- dim(y)  ## dimensions of y
@@ -8,7 +8,7 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
   klen <- length(k)
   est <- list()
 
-  if (d == 1  & type == "euclidean") {
+  if ( d == 1 ) {
     if (estim == "arithmetic") {
       method = "average"
     } else  method = "harmonic"
@@ -16,16 +16,10 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
     for (i in 1:klen)  est[[ i ]] <- g[, i]
 
   } else {
-    if ( type == "spher" ) {
-      dis <- tcrossprod(x, xnew)
-      dis[ dis >= 1 ] <- 1
-      dis[ dis <=  -1 ] <-  -1
-      disa <- acos(dis)
-    } else   disa <- Rfast::dista(xnew, x, trans = FALSE)
 
-    disa <- Rfast::colOrder(disa)[1:max(k), , drop = FALSE]
+    disa <- Rfast::dista(xnew, x, trans = FALSE, k = 5, index = TRUE)
 
-	if ( estim == "arithmetic" ) {
+	  if ( estim == "arithmetic" ) {
       for (j in 1:klen) {
         g <- matrix(nrow = nu, ncol = d)
         knn <- k[j]
@@ -51,7 +45,7 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", type = "euclidean", estim =
         } else  est[[ j ]] <- g
       }  ## end for (j in klen)
     }   ## end if ( estim == "arithmetic" )
-  }  ## end if (d == 1  & type == "euclidean")
+  }  ## end if ( d == 1 )
   names(est) <- paste("k=", k, sep = "")
   est
 }
