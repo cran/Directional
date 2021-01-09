@@ -63,7 +63,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{dirknn.tune}, \link{vmfda.pred}, \link{mix.vmf}
+\code{\link{dirknn.tune}, \link{vmfda.pred}, \link{mixvmf.mle}
 }
 }
 

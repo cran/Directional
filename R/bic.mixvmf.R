@@ -14,10 +14,10 @@ bic.mixvmf <- function(x, A = 3, n.start = 20) {
   logn <- log( dim(x)[1] )  ## sample size of the data
   p <- dim(x)[2]  ## dimensionality of the data
   bic <- 1:A
-  mod <- Directional::vmf(x)
+  mod <- Directional::vmf.mle(x)
   bic[1] <-  - 2 * mod$loglik+ p * logn  ## BIC assuming one cluster
   for (vim in 2:A) {
-    a <- Directional::mix.vmf(x, vim, n.start = n.start)  ## model based clustering for some possible clusters
+    a <- Directional::mixvmf.mle(x, vim, n.start = n.start)  ## model based clustering for some possible clusters
     bic[vim] <-  -2 * a$loglik + ( (vim - 1) + vim * p ) * logn
   }  ## BIC for a range of different clusters
   runtime <- proc.time() - runtime

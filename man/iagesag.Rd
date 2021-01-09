@@ -56,7 +56,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 %}
 
 \seealso{
-\code{\link{fishkent}, \link{ESAGmle}, \link{kent.mle}, \link{iag.mle}
+\code{\link{fishkent}, \link{esag.mle}, \link{kent.mle}, \link{iag.mle}
 }
 }
 

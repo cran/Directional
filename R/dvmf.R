@@ -1,4 +1,4 @@
-vmf.density <- function(y, k, mu, logden = FALSE) {
+dvmf <- function(y, k, mu, logden = FALSE) {
   y <- as.matrix(y)
   p <- dim(y)[2]
   if ( p == 1 )   y <- t(y)

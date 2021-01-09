@@ -1,5 +1,5 @@
 \name{MLE of the ESAG distribution}
-\alias{ESAGmle}
+\alias{esag.mle}
 \title{
 MLE of the ESAG distribution
 }
@@ -9,7 +9,7 @@ MLE of the ESAG distribution.
 }
 
 \usage{
-ESAGmle(y, full = FALSE, tol = 1e-06)
+esag.mle(y, full = FALSE, tol = 1e-06)
 }
 
 \arguments{
@@ -73,14 +73,14 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 %}
 
 \seealso{
-\code{\link{ESAGdensity}, \link{ESAGsim}, \link{iag.mle}, \link{kent.mle}, \link{acg}, \link{circ.summary}, \link{sphereplot}
+\code{\link{desag}, \link{resag}, \link{iag.mle}, \link{kent.mle}, \link{acg.mle}, \link{circ.summary}, \link{sphereplot}
 }
 }
 
 \examples{
 m <- colMeans( as.matrix( iris[,1:3] ) )
-y <- ESAGsim(1000, c(m, 1,0.5) )
-ESAGmle(y)
+y <- resag(1000, c(m, 1,0.5) )
+esag.mle(y)
 }
 
 \keyword{ ESAG distribution }

@@ -53,7 +53,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{vmfkde.tune}, \link{vm.kde}, \link{vmf}, \link{vmkde.tune}
+\code{\link{vmfkde.tune}, \link{vm.kde}, \link{vmf.mle}, \link{vmkde.tune}
 }
 }
 

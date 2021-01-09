@@ -31,13 +31,13 @@ A Filebacked Big Matrix object.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
 R implementation and documentation: Michail Tsagris <mtsagris@uoc.gr>.
 }
 
 \seealso{
-\code{ \link{vmf}, \link{kent.mle} }
+\code{ \link{vmf.mle}, \link{kent.mle} }
 }
 
 \examples{

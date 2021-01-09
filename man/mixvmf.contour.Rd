@@ -37,7 +37,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf.kerncontour}, \link{vmf.contour}, \link{mix.vmf}
+\code{\link{vmf.kerncontour}, \link{vmf.contour}, \link{mixvmf.mle}
 }
 }
 \examples{
@@ -46,7 +46,7 @@ prob <- c(0.4, 0.6)
 mu <- matrix( rnorm(6), ncol = 3 )
 mu <- mu / sqrt( rowSums(mu^2) )
 x <- rmixvmf(200, prob, mu, k)$x
-mod <- mix.vmf(x, 2)
+mod <- mixvmf.mle(x, 2)
 y <- euclid.inv(x)
 mixvmf.contour(y, mod)
 }

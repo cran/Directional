@@ -1,5 +1,5 @@
 \name{Mixtures of Von Mises-Fisher distributions}
-\alias{mix.vmf}
+\alias{mixvmf.mle}
 \title{
 Mixtures of Von Mises-Fisher distributions
 }
@@ -9,7 +9,7 @@ It performs model based clustering for circualr, spherical and hyperspherical da
 }
 
 \usage{
-mix.vmf(x, g, n.start = 10)
+mixvmf.mle(x, g, n.start = 10)
 }
 
 \arguments{
@@ -71,9 +71,9 @@ prob <- c(0.2, 0.4, 0.3, 0.1)
 mu <- matrix(rnorm(16), ncol = 4)
 mu <- mu / sqrt( rowSums(mu^2) )
 x <- rmixvmf(200, prob, mu, k)$x
-mix.vmf(x, 3)
-mix.vmf(x, 4)
-mix.vmf(x, 5)
+mixvmf.mle(x, 3)
+mixvmf.mle(x, 4)
+mixvmf.mle(x, 5)
 }
 
 \keyword{ Model based clustering }

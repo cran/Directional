@@ -1,4 +1,4 @@
-spml.density <- function(x, mu, rads = FALSE, logden = FALSE) {
+dspml <- function(x, mu, rads = FALSE, logden = FALSE) {
   if ( !rads )  x <- x * pi/180
   x <- cbind( cos(x), sin(x) )
   ta <- tcrossprod(mu, x)

@@ -51,7 +51,7 @@ Morris J. E. and Laycock P. J. (1974). Discriminant analysis of directional data
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
 R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
@@ -61,7 +61,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{vmfda.pred}, \link{mix.vmf}, \link{vmf}, \link{dirknn}
+\code{\link{vmfda.pred}, \link{mixvmf.mle}, \link{vmf.mle}, \link{dirknn}
 }
 }
 

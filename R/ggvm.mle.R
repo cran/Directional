@@ -6,7 +6,7 @@
 #### Classes of geometrically generalized von Mises distributions.
 #### Sankhya B, 1-39.
 ################################
-ggvm <- function(phi, rads = FALSE) {
+ggvm.mle <- function(phi, rads = FALSE) {
 
   if ( !rads )  phi <- phi / 180 * pi
   n <- length(phi)

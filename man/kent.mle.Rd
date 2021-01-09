@@ -59,18 +59,18 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{kent.mle}, \link{fb.saddle}, \link{vmf}, \link{wood.mle}, \link{sphereplot}
+\code{\link{kent.mle}, \link{fb.saddle}, \link{vmf.mle}, \link{wood.mle}, \link{sphereplot}
 }
 }
 
 \examples{
 x <- rvmf(200, rnorm(3), 15)
 kent.mle(x)
-vmf(x)
+vmf.mle(x)
 A <- diag( c(-5, 0, 5) )
 x <- rfb(200, 15, rnorm(3), A)
 kent.mle(x)
-vmf(x)
+vmf.mle(x)
 }
 
 \keyword{ Kent distribution }

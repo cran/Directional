@@ -12,7 +12,7 @@ fishkent <- function(x, B = 999) {
   ## B is by default eaual to 999 bootstrap re-samples
   ## If B==1 then no bootstrap is performed
   n <- dim(x)[1]  ## sample size
-  estim <- vmf(x)
+  estim <- Directional::vmf.mle(x)
   k <- estim$k  ## the estimated concentration parameter
   ## under the H0, that the Fisher distribution is true
   mu <- estim$mu  ## the estimated mean direction under H0
@@ -33,7 +33,7 @@ fishkent <- function(x, B = 999) {
     for (i in 1:B) {
       nu <- sample(n, n, replace = TRUE)
       z <- x[nu, ]
-      estim <- Directional::vmf(z, fast = TRUE)
+      estim <- Directional::vmf.mle(z, fast = TRUE)
       k <- estim$kappa  ## the estimated concentration parameter
       ## under the H0, that the Fisher distribution is true
       mu <- estim$mu  ## the estimated mean direction under H0

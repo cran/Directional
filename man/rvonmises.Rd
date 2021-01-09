@@ -2,6 +2,7 @@
 \alias{rvonmises}
 \alias{rwrapcauchy}
 \alias{rspml}
+\alias{rcircbeta}
 \title{
 Random values simulation from some circular distributions
 }
@@ -14,6 +15,7 @@ Random values simulation from some circular distributions.
 rvonmises(n, m, k, rads = TRUE)
 rwrapcauchy(n, m, rho, rads = TRUE)
 rspml(n, mu, rads = TRUE)
+rcircbeta(n, m, a, b, rads = TRUE)
 }
 
 
@@ -32,6 +34,12 @@ The concentration parameter of the von Mises distribution. If k is zero the samp
 }
 \item{rho}{
 The \eqn{\rho} parameter of the Wrapped Cauchy distribution.
+}
+\item{a}{
+The \eqn{\alpha} parameter of the beta distribution
+}
+\item{b}{
+The \eqn{\beta} parameter of the beta distribution
 }
 \item{rads}{
 If the mean angle is expressed in radians, this should be TRUE and FALSE otherwise. The simulated data will be expressed in radians or degrees depending on what the mean angle is expressed.

@@ -76,7 +76,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 %}
 
 \seealso{
-\code{\link{ESAGmle}, \link{vmf}, \link{spml.reg}
+\code{\link{esag.mle}, \link{vmf.mle}, \link{spml.reg}
 }
 }
 

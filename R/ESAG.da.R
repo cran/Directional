@@ -1,4 +1,4 @@
-ESAG.da <- function(y, ina, fraction = 0.2, R = 100, seed = FALSE) {
+esag.da <- function(y, ina, fraction = 0.2, R = 100, seed = FALSE) {
   runtime <- proc.time()
   ina <- as.numeric(ina)
   n <- dim(y)[1]  
@@ -14,8 +14,8 @@ ESAG.da <- function(y, ina, fraction = 0.2, R = 100, seed = FALSE) {
     ytrain <- y[-nu, ]
     ytest <- y[nu, ]
     for (j in 1:g) {
-      mod <- Directional::ESAGmle( ytrain[id == j, ] )
-      mat[, j] <- Directional::ESAGdensity(ytest, c(mod$mu, mod$gam), logden = TRUE )
+      mod <- Directional::esag.mle( ytrain[id == j, ] )
+      mat[, j] <- Directional::desag(ytest, c(mod$mu, mod$gam), logden = TRUE )
     }
     est <- Rfast::rowMaxs(mat)
     per[i] <- sum(est == ina[nu])/frac

@@ -40,9 +40,9 @@ Rivest, L. P. (1986). Modified Kent's statistics for testing goodness of fit for
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 
 %\note{
@@ -50,7 +50,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{iagesag}, \link{vmf}, \link{kent.mle}, \link{rkent}
+\code{\link{iagesag}, \link{vmf.mle}, \link{kent.mle}, \link{rkent}
 }
 }
 

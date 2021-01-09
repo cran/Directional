@@ -1,4 +1,4 @@
-circpurka.density <- function(x, m, a, rads = FALSE, logden = FALSE) {
+dcircpurka <- function(x, m, a, rads = FALSE, logden = FALSE) {
   if ( !rads )  x <- x * pi/180
   x <- cbind( cos(x), sin(x) )
   m <- c( cos(m), sin(m) )

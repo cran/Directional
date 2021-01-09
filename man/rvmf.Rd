@@ -50,7 +50,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{vmf}, \link{rfb}, \link{racg}, \link{rvonmises}, \link{rmixvmf}
+\code{\link{vmf.mle}, \link{rfb}, \link{racg}, \link{rvonmises}, \link{rmixvmf}
 }
 }
 
@@ -59,7 +59,7 @@ m <- rnorm(4)
 m <- m/sqrt(sum(m^2))
 x <- rvmf(100, m, 25)
 m
-vmf(x)
+vmf.mle(x)
 }
 
 \keyword{ Random values simulation }

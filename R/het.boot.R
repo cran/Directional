@@ -15,8 +15,8 @@ het.boot <- function(x1, x2, B = 999) {
   R <- sqrt( sum(S^2) )
   m <- S/R
 
-  kapa[1] <- Directional::vmf( x1, fast = TRUE )$kappa
-  kapa[2] <- Directional::vmf( x2, fast = TRUE )$kappa
+  kapa[1] <- Directional::vmf.mle( x1, fast = TRUE )$kappa
+  kapa[2] <- Directional::vmf.mle( x2, fast = TRUE )$kappa
   tw <- Rfast::colsums(kapa * ni * mi)
   Tt <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
 
@@ -33,8 +33,8 @@ het.boot <- function(x1, x2, B = 999) {
     yb1 <- y1[b1, ]   ;   yb2 <- y2[b2, ]
     yb <- rbind(yb1, yb2)
     mi <- rowsum(yb, ina) / ni
-    kapa[1] <- Directional::vmf(yb1, fast = TRUE )$kappa
-    kapa[2] <- Directional::vmf(yb2, fast = TRUE )$kappa
+    kapa[1] <- Directional::vmf.mle(yb1, fast = TRUE )$kappa
+    kapa[2] <- Directional::vmf.mle(yb2, fast = TRUE )$kappa
     tw <- Rfast::colsums(kapa * ni * mi)
     tb[i] <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
   }

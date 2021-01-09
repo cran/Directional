@@ -41,7 +41,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{spher.reg}, \link{vmf}, \link{circ.cor1}, \link{circ.cor2}
+\code{\link{spher.reg}, \link{vmf.mle}, \link{circ.cor1}, \link{circ.cor2}
 }
 }
 \examples{

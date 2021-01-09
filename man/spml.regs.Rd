@@ -51,10 +51,9 @@ directional data. Journal of the American Statistical Association, 93(443): 1068
 }
 
 \author{
-Michail Tsagris and Stefanos Fafalios
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@yahoo.gr} and Stefanos Fafalios
-\email{stefanosfafalios@gmail.com}
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 %\note{
 %%  ~~further notes~~

@@ -1,5 +1,5 @@
 \name{Random values generation from the ESAG distribution}
-\alias{ESAGsim}
+\alias{resag}
 \title{
 Random values generation from the ESAG distribution
 }
@@ -9,7 +9,7 @@ Random values generation from the ESAG distribution.
 }
 
 \usage{
-ESAGsim(n, param)
+resag(n, param)
 }
 
 \arguments{
@@ -39,23 +39,23 @@ Gaussian Distribution. Statistics and Computing, 28((3):689--697.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 %\note{
 %%  ~~further notes~~
 %}
 
 \seealso{
-\code{ \link{ESAGmle}, \link{ESAGdensity}, \link{spml.mle}, \link{acg}, \link{circ.summary}
+\code{ \link{esag.mle}, \link{desag}, \link{spml.mle}, \link{acg.mle}, \link{circ.summary}
 }
 }
 
 \examples{
 m <- colMeans( as.matrix( iris[,1:3] ) )
-y <- ESAGsim(1000, c(m, 1, 0.5) )
-ESAGmle(y)
+y <- resag(1000, c(m, 1, 0.5) )
+esag.mle(y)
 }
 
 \keyword{ ESAG distribution }

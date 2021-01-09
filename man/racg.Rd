@@ -35,9 +35,9 @@ Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distri
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} 
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}. 
 }
 
 %\note{
@@ -45,15 +45,16 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 %}
 
 \seealso{
-\code{\link{acg}, \link{rvmf}, \link{rvonmises}
+\code{\link{acg.mle}, \link{rvmf}, \link{rvonmises}
 }
 }
 
 \examples{
 s <- cov( iris[, 1:4] )
 x <- racg(100, s)
-acg(x)  
-vmf(x)  ## the concentration parameter, kappa, is very low, close to zero, as expected.
+Directional::acg.mle(x)  
+Directional::vmf.mle(x)  
+## the concentration parameter, kappa, is very low, close to zero, as expected.
 }
 
 \keyword{ Angular central Gaussian distribution }

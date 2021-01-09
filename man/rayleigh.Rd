@@ -57,7 +57,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{vmf}, \link{meandir.test}, \link{acg}
+\code{\link{vmf.mle}, \link{meandir.test}, \link{acg.mle}
 }
 }
 

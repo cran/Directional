@@ -55,7 +55,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{mix.vmf}, \link{rvmf}, \link{rvmf}, \link{bic.mixvmf}
+\code{\link{mixvmf.mle}, \link{rvmf}, \link{bic.mixvmf}
 }
 }
 

@@ -1,4 +1,4 @@
-iag.density <- function(y, mu, logden = FALSE) {
+iagd <- function(y, mu, logden = FALSE) {
   y <- as.matrix(y)
   p <- dim(y)[2]
   if ( p == 1 )   y <- t(y)

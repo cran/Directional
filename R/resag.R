@@ -1,4 +1,4 @@
-ESAGsim <- function(n, param) {
+resag <- function(n, param) {
   ## n is the sample size
   ## para contains the mean vector and the two gammas
   m <- param[1:3]

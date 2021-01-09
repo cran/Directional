@@ -50,7 +50,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 m <- rnorm(3)
 m <- m / sqrt( sum(m^2) )
 x <- rvmf(20, m, 19)
-mu <- vmf(x)$mu
+mu <- vmf.mle(x)$mu
 y <- lambert( euclid.inv(x) )
 lambert.inv(y, mu)
 euclid.inv(x)

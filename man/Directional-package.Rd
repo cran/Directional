@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 4.5\cr
-Date: \tab 2020-11-30\cr
+Version: \tab 4.6\cr
+Date: \tab 2020-01-08\cr
 License: \tab GPL-2\cr
 }
 }
@@ -55,7 +55,7 @@ Professor Kurt Hornik from the Vienna university of economics and business is gr
 
 Manos Papadakis, undergraduate student in the department of computer science at university of Crete, is also acknowledged for his programming tips.
 
-Dr Mojgan Golzy spotted a mistake in the \code{\link{ESAGdensity}} and Michail is very happy for that.
+Dr Mojgan Golzy spotted a mistake in the \code{\link{desag}} and Michail is very happy for that.
 
 Lisette de Jonge-Hoekstra from the University of Groningen found a wrong sentence in the help file of spml.reg which is now deleted.
 

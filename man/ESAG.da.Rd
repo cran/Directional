@@ -1,5 +1,5 @@
 \name{Cross validation with ESAG discrminant analysis}
-\alias{ESAG.da}
+\alias{esag.da}
 \title{
 Cross validation for estimating the classification rate of a discrminant analysis for directional data assuming an ESAG distribution
 }
@@ -9,7 +9,7 @@ Cross validation for estimating the classification rate of a discrminant analysi
 }
 
 \usage{
-ESAG.da(y, ina, fraction = 0.2, R = 100, seed = FALSE)
+esag.da(y, ina, fraction = 0.2, R = 100, seed = FALSE)
 }
 
 \arguments{
@@ -73,7 +73,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 \examples{
 x <- rvmf(100, rnorm(3), 15)
 ina <- rep(1:2, each = 50)
-ESAG.da(x, ina, fraction = 0.2, R = 50, seed = FALSE)
+esag.da(x, ina, fraction = 0.2, R = 50, seed = FALSE)
 }
 
 \keyword{ Discriminant analysis }

@@ -6,7 +6,7 @@
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 #### http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 ################################
-mix.vmf <- function(x, g, n.start = 10) {
+mixvmf.mle <- function(x, g, n.start = 10) {
   ## x contains the data
   ## g is the number of clusters
   p <- dim(x)[2]  ## dimensionality of the data

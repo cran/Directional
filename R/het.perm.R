@@ -9,8 +9,8 @@ het.perm <- function(x1, x2, B = 999) {
   S <- rowsum(x, ina)
   kapa <- numeric(2)
   mi <- rowsum(x, ina) / ni
-  kapa[1] <- Directional::vmf( x1, fast = TRUE )$kappa
-  kapa[2] <- Directional::vmf( x2, fast = TRUE )$kappa
+  kapa[1] <- Directional::vmf.mle( x1, fast = TRUE )$kappa
+  kapa[2] <- Directional::vmf.mle( x2, fast = TRUE )$kappa
   tw <- Rfast::colsums(kapa * ni * mi)
   Tt <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) )
 
@@ -20,8 +20,8 @@ het.perm <- function(x1, x2, B = 999) {
     S <- rowsum(x, ind)
     kapa <- numeric(2)
     mi <- rowsum(x, ind) / ni
-    kapa[1] <- Directional::vmf( x[ind == 1, ], fast = TRUE )$kappa
-    kapa[2] <- Directional::vmf( x[ind == 2, ], fast = TRUE )$kappa
+    kapa[1] <- Directional::vmf.mle( x[ind == 1, ], fast = TRUE )$kappa
+    kapa[2] <- Directional::vmf.mle( x[ind == 2, ], fast = TRUE )$kappa
     tw <- Rfast::colsums(kapa * ni * mi)
     ptt[i] <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) )
   }

@@ -1,5 +1,5 @@
 ### MLE of the ESAG
-ESAGmle <- function(y, full = FALSE, tol = 1e-06) {
+esag.mle <- function(y, full = FALSE, tol = 1e-06) {
   ## y is the spherical data, a matrix with unit vectors
   n <- dim(y)[1]
   I3 <- diag(3)
@@ -27,18 +27,18 @@ ESAGmle <- function(y, full = FALSE, tol = 1e-06) {
      - 0.5 * sum(a2) + nc * rl + 1.5 * sum( log(g1) ) - sum( log(M2) )
    }
 
-  oop <- options(warn = -1) 
+  oop <- options(warn = -1)
   on.exit( options(oop) )
-  da <- nlm(mag, rnorm(5), z = z, nc = nc, iterlim = 2000)
+  mod <- Rfast::iag.mle(y)
+  da <- nlm(mag, c(mod$mesi[1, ], rnorm(2) ), z = z, nc = nc, iterlim = 5000)
   lik1 <-  -da$minimum
-  da2 <- nlm(mag, da$estimate, z = z, nc = nc, iterlim = 2000 )
-  lik2 <-  -da$minimum
+  da <- optim(da$estimate, mag, z = z, nc = nc, control = list(maxit = 10000) )
+  lik2 <-  -da$value
   while ( lik2 - lik1 > tol) {
     lik1 <- lik2
-    da <- nlm(mag, da$estimate, z = z, nc = nc, iterlim = 2000 )
-    lik2 <-  -da$minimum
+    da <- optim(da$par, mag, z = z, nc = nc, control = list(maxit = 10000) )
+    lik2 <-  -da$value
   }
-  da <- optim(da$estimate, mag, z = z, nc = nc, control = list(maxit = 10000) )
   if ( full ) {
     mu <- da$par[1:3]
     gam1 <- da$par[4]  ;    gam2 <- da$par[5]
@@ -52,9 +52,9 @@ ESAGmle <- function(y, full = FALSE, tol = 1e-06) {
     vinv <- I3 + gam1 * ( T1 - T2 ) + gam2 * ( T12 + t(T12) ) + heta * ( T1 + T2 )
     rho <- heta + 1 - 0.5 * sqrt( (2 * heta + 2 )^ 2 - 4 )
     psi <- 0.5 * acos( 2 * gam1 / (1/rho - rho ) )
-    res <- res <- list( mu = da$par[1:3], gam = c(gam1, gam2), loglik = -da$value - n * log(2 * pi),
-                        vinv = vinv, rho = rho, psi = psi, iag.loglik = Rfast::iag.mle(y)$param[2])
-  } else  res <- list( mu = da$par[1:3], gam = da$par[4:5], loglik = -da$value - n * log(2 * pi),
-                       iag.loglik = Rfast::iag.mle(y)$param[2])
+    res <- res <- list( mu = da$par[1:3], gam = c(gam1, gam2), loglik = lik2 - n * log(2 * pi),
+                        vinv = vinv, rho = rho, psi = psi, iag.loglik = mod$param[2])
+  } else  res <- list( mu = da$par[1:3], gam = da$par[4:5], loglik = lik2 - n * log(2 * pi),
+                       iag.loglik = mod$param[2])
   res
 }

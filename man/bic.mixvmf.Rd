@@ -56,7 +56,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{mix.vmf}, \link{rmixvmf}, \link{mixvmf.contour}
+\code{\link{mixvmf.mle}, \link{rmixvmf}, \link{mixvmf.contour}
 }
 }
 

@@ -47,16 +47,16 @@ Jammalamadaka, S. Rao and SenGupta, A. (2001). Topics in Circular Statistics, pg
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 %\note{
 %%  ~~further notes~~
 %}
 
 \seealso{
-\code{\link{rayleigh}, \link{vmf}, \link{rvonmises}
+\code{\link{rayleigh}, \link{vmf.mle}, \link{rvonmises}
 }
 }
 

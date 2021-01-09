@@ -1,6 +1,6 @@
 \name{Density of the spherical Kent and ESAG distributions}
-\alias{kent.density}
-\alias{ESAGdensity}
+\alias{dkent}
+\alias{desag}
 
 \title{
 Density of the spherical Kent and ESAG distributions
@@ -11,8 +11,8 @@ Density of the spherical Kent and ESAG distributions.
 }
 
 \usage{
-kent.density(y, G, param, logden = FALSE )
-ESAGdensity(y, param, logden = FALSE)
+dkent(y, G, param, logden = FALSE )
+desag(y, param, logden = FALSE)
 }
 
 \arguments{
@@ -61,7 +61,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 %}
 
 \seealso{
-\code{\link{kent.mle}, \link{rkent}, \link{ESAGmle}
+\code{\link{kent.mle}, \link{rkent}, \link{esag.mle}
 }
 }
 
@@ -69,6 +69,6 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 m <- colMeans( as.matrix( iris[,1:3] ) )
 y <- rkent(1000, k = 10, m = m, b = 4)
 mod <- kent.mle(y)
-kent.density( y, G = mod$G, param = mod$param )
+dkent( y, G = mod$G, param = mod$param )
 }
 

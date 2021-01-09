@@ -1,5 +1,5 @@
 \name{Prediction in discriminant analysis based on ESAG distribution}
-\alias{ESAGda.pred}
+\alias{esagda.pred}
 \title{
 Prediction of a new observation using discriminant analysis based on ESAGdistribution
 }
@@ -9,7 +9,7 @@ Prediction of a new observation using discriminant analysis based on ESAG distri
 }
 
 \usage{
-ESAGda.pred(ynew, y, ina)
+esagda.pred(ynew, y, ina)
 }
 
 \arguments{
@@ -52,7 +52,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
     %}
 
 \seealso{
-\code{\link{ESAG.da}, \link{vmfda.pred}, \link{dirknn}, \link{knn.reg}
+\code{\link{esag.da}, \link{vmfda.pred}, \link{dirknn}, \link{knn.reg}
 }
 }
 
@@ -63,7 +63,7 @@ y <- rbind( rvmf(100, m1, 3), rvmf(80, m2, 5) )
 ina <- c( rep(1,100), rep(2, 80) )
 ynew <- rbind(rvmf(10, m1, 10), rvmf(10, m2, 5))
 id <- rep(1:2, each = 10)
-g <- ESAGda.pred(ynew, y, ina)
+g <- esagda.pred(ynew, y, ina)
 table(id, g)
 }
 

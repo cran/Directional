@@ -1,7 +1,9 @@
 hcfcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
-
+  if ( !rads )  {
+    u1 <- u1 * pi/180
+    u2 <- u2 * pi/180
+  }
   u <- c(u1, u2)
-  if ( !rads )  u <- u * pi/180
   ina <- c( rep(1, length(u1) ), rep(2, length(u2) ) )
   ni <- tabulate(ina)
   n <- sum(ni)

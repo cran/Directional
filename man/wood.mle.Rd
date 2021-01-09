@@ -44,9 +44,9 @@ Wood A.T.A. (1982). A bimodal distribution on the sphere. Journal of the Royal S
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 
 %\note{
@@ -54,7 +54,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{kent.mle}, \link{ESAGmle}, \link{vmf}, \link{rvmf}, \link{sphereplot}
+\code{\link{kent.mle}, \link{esag.mle}, \link{vmf.mle}, \link{sphereplot}
 }
 }
 

@@ -1,5 +1,5 @@
 \name{MLE of the generalised von Mises distribution}
-\alias{ggvm}
+\alias{ggvm.mle}
 \title{
 MLE of the geometrically generalised von Mises distribution
 }
@@ -9,7 +9,7 @@ MLE of the geometrically generalised von Mises distribution.
 }
 
 \usage{
-ggvm(phi, rads = FALSE)
+ggvm.mle(phi, rads = FALSE)
 }
 
 \arguments{
@@ -56,7 +56,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 \examples{
 x <- rvonmises(100, 2, 25, rads = TRUE)
 circ.summary(x, rads = TRUE)
-ggvm(x, rads = TRUE)
+ggvm.mle(x, rads = TRUE)
 }
 
 \keyword{ Generalised von Mises distribution }

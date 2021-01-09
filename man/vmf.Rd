@@ -1,7 +1,7 @@
 \name{MLE of (hyper-)spherical distributions}
-\alias{vmf}
-\alias{multivmf}
-\alias{acg}
+\alias{vmf.mle}
+\alias{multivmf.mle}
+\alias{acg.mle}
 \alias{iag.mle}
 \title{
 MLE of (hyper-)spherical distributions
@@ -12,9 +12,9 @@ MLE of (hyper-)spherical distributions.
 }
 
 \usage{
-vmf(x, fast = FALSE, tol = 1e-07)
-multivmf(x, ina, tol = 1e-07, ell = FALSE)
-acg(x, tol = 1e-07)
+vmf.mle(x, fast = FALSE, tol = 1e-07)
+multivmf.mle(x, ina, tol = 1e-07, ell = FALSE)
+acg.mle(x, tol = 1e-07)
 iag.mle(x, tol = 1e-07)
 }
 
@@ -121,12 +121,12 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 m <- c(0, 0, 0, 0)
 s <- cov(iris[, 1:4])
 x <- racg(100, s)
-mod <- acg(x)
+mod <- acg.mle(x)
 mod
 cov2cor(mod$cova)  ## estimated covariance matrix turned into a correlation matrix
 cov2cor(s)  ## true covariance matrix turned into a correlation matrix
-vmf(x)
+vmf.mle(x)
 x <- rbind( rvmf(100,rnorm(4), 10), rvmf(100,rnorm(4), 20) )
-a <- multivmf(x, rep(1:2, each = 100) )
+a <- multivmf.mle(x, rep(1:2, each = 100) )
 }
 

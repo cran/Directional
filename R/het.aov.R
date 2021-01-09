@@ -14,7 +14,7 @@ het.aov <- function(x, ina) {
   ni <- tabulate(ina)  ## group sample sizes
   kapa <- numeric(g)
   mi <- rowsum(x, ina) / ni
-  for (i in 1:g)  kapa[i] <- Directional::vmf( x[ina == i, ], fast = TRUE )$kappa
+  for (i in 1:g)  kapa[i] <- Directional::vmf.mle( x[ina == i, ], fast = TRUE )$kappa
   tw <- Rfast::colsums(kapa * ni * mi)
   Tt <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
   pvalue <- pchisq(Tt, (p - 1) * (g - 1), lower.tail = FALSE)

@@ -1,4 +1,4 @@
-ESAGdensity <- function(y, param, logden = FALSE) {
+desag <- function(y, param, logden = FALSE) {
   ## y is a matrix withe the sphericla data, unit vectors
   ## m is the mean vector
   ## param contans a) the mean vector and the two gammas

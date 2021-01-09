@@ -1,4 +1,4 @@
-kent.density <- function(y, G, param, logden = FALSE ) {
+dkent <- function(y, G, param, logden = FALSE ) {
   k <- param[1]
   b <- param[2]
   gam <- c(0, k, 0)

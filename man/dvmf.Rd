@@ -1,7 +1,7 @@
 \name{Density of some (hyper-)spherical distributions}
-\alias{vmf.density}
-\alias{iag.density}
-\alias{purka.density}
+\alias{dvmf}
+\alias{iagd}
+\alias{dpurka}
 \title{
 Density of some (hyper-)spherical distributions
 }
@@ -11,9 +11,9 @@ Density of some (hyper-)spherical distributions.
 }
 
 \usage{
-vmf.density(y, k, mu, logden = FALSE )
-iag.density(y, mu, logden = FALSE)
-purka.density(y, a, theta, logden = FALSE)
+dvmf(y, k, mu, logden = FALSE )
+iagd(y, mu, logden = FALSE)
+dpurka(y, a, theta, logden = FALSE)
 }
 
 \arguments{
@@ -66,13 +66,13 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 %}
 
 \seealso{
-\code{\link{kent.mle}, \link{rkent}, \link{ESAGmle}
+\code{\link{kent.mle}, \link{rkent}, \link{esag.mle}
 }
 }
 
 \examples{
 m <- colMeans( as.matrix( iris[,1:3] ) )
 y <- rvmf(1000, m = m, k = 10)
-vmf.density(y, k=10, m )
+dvmf(y, k=10, m )
 }
 

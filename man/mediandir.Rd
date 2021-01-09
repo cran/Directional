@@ -39,7 +39,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf}, \link{kent.mle}
+\code{\link{vmf.mle}, \link{kent.mle}
 }
 }
 \examples{

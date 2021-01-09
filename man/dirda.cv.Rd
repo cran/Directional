@@ -95,7 +95,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
     %}
 
 \seealso{
-\code{\link{ESAG.da}, \link{vmfda.pred}, \link{dirknn}, \link{knn.reg}
+\code{\link{esag.da}, \link{vmfda.pred}, \link{dirknn}, \link{knn.reg}
 }
 }
 

@@ -6,6 +6,6 @@
 #### the angular central Gaussian distribution on the sphere.
 #### Biometrika 74(3): 579-589.
 ################################
-acg <- function(x, tol = 1e-07) {
+acg.mle <- function(x, tol = 1e-07) {
   Rfast::acg.mle(x, tol = tol)
 }

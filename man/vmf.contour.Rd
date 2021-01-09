@@ -27,9 +27,9 @@ A contour plot of the von Mises-Fisher distribution.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 
 %\note{
@@ -37,12 +37,12 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{rvmf}, \link{vmf}, \link{vmf.kerncontour}, \link{kent.contour}, \link{sphereplot}
+\code{\link{rvmf}, \link{vmf.mle}, \link{vmf.kerncontour}, \link{kent.contour}, \link{sphereplot}
 }
 }
 
 \examples{
-par(mfrow = c(1,3) )
+par( mfrow = c(1, 3) )
 vmf.contour(1)
 vmf.contour(5)
 vmf.contour(10)
