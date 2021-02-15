@@ -1,4 +1,4 @@
-circbeta.mle <- function(x, rads = TRUE) {
+circbeta.mle <- function(x, rads = FALSE) {
   if ( !rads )   x <- x * pi/180
   n <- length(x)
 

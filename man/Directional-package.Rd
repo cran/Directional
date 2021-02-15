@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 4.6\cr
-Date: \tab 2020-01-08\cr
+Version: \tab 4.7\cr
+Date: \tab 2020-02-15\cr
 License: \tab GPL-2\cr
 }
 }
@@ -57,7 +57,9 @@ Manos Papadakis, undergraduate student in the department of computer science at 
 
 Dr Mojgan Golzy spotted a mistake in the \code{\link{desag}} and Michail is very happy for that.
 
-Lisette de Jonge-Hoekstra from the University of Groningen found a wrong sentence in the help file of spml.reg which is now deleted.
+Lisette de Jonge-Hoekstra from the University of Groningen found a wrong sentence in the help file of \code{\link{spml.reg}} which is now deleted.
+
+Peter Harremoes from the Copenhagen Business College spotted a mistake in the confidence interval of the \code{\link{circ.summary}} which has now been corrected.
 
 If you want more information on many of these algorithms see Chapters 9 and 10 in the following document.
 https://www.researchgate.net/publication/324363311_Multivariate_data_analysis_in_R

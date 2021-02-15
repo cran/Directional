@@ -7,7 +7,7 @@
 #### References: Mardia Kanti V. and Jupp Peter E. (2000)
 #### Directional statistics, page 124
 ################################
-circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE) {
+circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-07, plot = TRUE) {
   ## u is an angular variable
   if ( !rads )   u <- u * pi/180
   if (fast) {
@@ -34,10 +34,10 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE
     ## kappa is the estimated concentration (kappa)
     R <- n * Rbar
     if (Rbar < 2/3) {
-      fact <- sqrt(2 * n * ( 2 * R^2 - n * qchisq(0.05, 1) )/ ( R^2 * ( 4 * n - qchisq(0.05, 1)) ) )
+      fact <- sqrt(2 * n * ( 2 * R^2 - n * qchisq(0.95, 1) )/ ( R^2 * ( 4 * n - qchisq(0.05, 1)) ) )
       ci <- c(mesos - acos(fact), mesos + acos(fact))
     } else  {
-      fact <- sqrt( n^2 - (n^2 - R^2) * exp( qchisq(0.05, 1)/n ) )/R
+      fact <- sqrt( n^2 - (n^2 - R^2) * exp( qchisq(0.95, 1)/n ) )/R
       ci <- c(mesos - acos(fact), mesos + acos(fact))
     }
     if ( !rads ) {

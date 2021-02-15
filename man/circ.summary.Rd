@@ -7,7 +7,7 @@ Summary statistics for circular data
 It produces a few summary measures for circular data.
 }
 \usage{
-circ.summary(u, rads = FALSE, fast = FALSE, tol = 1e-09, plot = TRUE)
+circ.summary(u, rads = FALSE, fast = FALSE, tol = 1e-07, plot = TRUE)
 }
 \arguments{
 \item{u}{
@@ -51,7 +51,7 @@ The circular variance.
 The circular standard deviation.
 }
 \item{loglik}{
-The log-likelihood of the fitted von Mises distribution. 
+The log-likelihood of the fitted von Mises distribution.
 }
 }
 

@@ -1,13 +1,14 @@
-f17e3ffc40be1bb10fced40075d7ef64 *DESCRIPTION
+4efb7482f1cd930abeaeb8afc40fdc76 *DESCRIPTION
 06730692e6366e94dcc6d5b9eaefdec7 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
 73a5038983a1fc480dec309df6988bf4 *R/bic.mixvmf.R
+0b6069492b111209a43df1579e1929a7 *R/cardio.mle.R
 8c53f6ba573112ec590652b3fab9694e *R/circ.cor1.R
 98618b20f9a421d702ca2fb72a069196 *R/circ.cor2.R
 e96c79cb7b4518cb9790c90bea89a15a *R/circ.cors1.R
-95a8afcf242d82dd53c159fd3f6e57cc *R/circ.summary.R
-b7169c09e6775100e07f188b6de59f32 *R/circbeta.mle.R
+169ba6a4d1a9d4937efaa27b60d20e07 *R/circ.summary.R
+d6217ff63346ff2e63594840cc2d1582 *R/circbeta.mle.R
 d91713b97001b80eac35e1fd531df254 *R/circexp.mle.R
 c0fe0c60122afd8a2ac88d9ffb36b6b4 *R/circlin.cor.R
 f9dd43dabf5be2143703c03c6a930fb3 *R/colspml.mle.R
@@ -15,6 +16,7 @@ d8db2f1072598a886cbe504a9ceaaff7 *R/colvm.mle.R
 0ec586e312e174c22cbcf9f0f2a3e9f8 *R/conc.test.R
 2ef3f07c1171576e4ede1d42968a9ed9 *R/cosap.R
 eea02a524bca57717e894931c65cc6d9 *R/cosnn.R
+eadd39050d34d0b8017cf4bb7218f77d *R/dcardio.R
 afb5c7e99b1359e865f4929d148fb3fa *R/dcircbeta.R
 a767a503899ba59d2bd8adb0f6dbec91 *R/dcircpurka.R
 3a283b29374c8a86820004d4028ba4c2 *R/desag.R
@@ -140,11 +142,11 @@ f414b6c45017583fd2ea112e6ea98769 *R/vmnb.pred.R
 4115441ca71890ff34f0d730146ebde6 *R/wood.mle.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
 c4a9b752ced9a264c17935b4a6171278 *man/Arotation.Rd
-639606cdd5c240749ab2000d95b754a5 *man/Directional-package.Rd
+375f963aac02685a9be3e65a560db1f4 *man/Directional-package.Rd
 aefa00041701bc32471ea01a001b5b9b *man/bic.mixvmf.Rd
 c7f370cf6d3acc1c96d31164ecf6a22a *man/circ.cor1.Rd
 2372d23cccb31927362e46b380565890 *man/circ.cors1.Rd
-b71be8b8d757d1a69a1a2b471bfbb39f *man/circ.summary.Rd
+ac0db4082846236594d755befc7c54aa *man/circ.summary.Rd
 810c6cea71510200656ff0ffd860e081 *man/circlin.cor.Rd
 7adc480ad7b1550ee62fde017841385a *man/colspml.mle.Rd
 efe557c3289fc475d21e0e403df779d3 *man/conc.test.Rd
@@ -154,7 +156,7 @@ e5d48a5ee51fbc54ff5065d4409afe09 *man/dirda.cv.Rd
 dd7f055826ee1a8ad6309c7e513fbc67 *man/dirknn.Rd
 73f1674e8d69bdf21061778221b2b960 *man/dirknn.tune.Rd
 c2692ada3d067682a4a799ecf7a4af82 *man/dkent.Rd
-4600c36c1b1fe9fbcc1218364f640dc9 *man/dvm.Rd
+d0e4c9c230e1d25eff6769bcba164818 *man/dvm.Rd
 2ced5556063171605be903e240e088d9 *man/dvmf.Rd
 ea9d9e8918214a4be6d2cdb9e964c3a4 *man/esag.da.Rd
 3e14cc9c5e92ded27347750e53cf7d70 *man/esag.mle.Rd
@@ -166,7 +168,6 @@ bfaf2148e851b49ddfdf58452c421e79 *man/eul2rot.Rd
 f0b1a167babc75732e208a552b8d2cff *man/f.rbing.Rd
 d34d7099fa442a66a743a69c2d027b13 *man/fb.saddle.Rd
 abe6a1902f35c9bf8f7e3757b1e3d5b5 *man/fishkent.Rd
-957615e168efdde8a9b3fc7242ad83fe *man/ggvm.mle.Rd
 c36f8b2ae08abdd77d62d7dd0db6a6ed *man/group.gof.Rd
 74e83d8f614022c13d7f29be64361ff1 *man/group.vm.Rd
 65f3d41f124969a19ba00d0971676623 *man/habeck.rot.Rd
@@ -218,7 +219,7 @@ d1bb8e689682c2f91a1890f7d87e4359 *man/spher.reg.Rd
 bbac8e89bf5b89132046643020cc52e7 *man/spherconc.test.Rd
 51894e8142f743ba3a7855ca584b47a3 *man/sphereplot.Rd
 dab1a637f36306205cde8cc1843a86cb *man/spml.fbed.Rd
-b63e951baadeaf374f46fbe75129524c *man/spml.mle.Rd
+5bf6842a5132148c273e7834a1047d8e *man/spml.mle.Rd
 3ae6b261d3bc0a5634c649ae69f0524f *man/spml.reg.Rd
 8706032a054aa644ab2a223a74cc25cd *man/spml.regs.Rd
 f4b2606624a93305441b446d8b1d930f *man/tang.conc.Rd

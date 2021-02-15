@@ -5,6 +5,7 @@
 \alias{dcircpurka}
 \alias{dggvm}
 \alias{dcircbeta}
+\alias{dcardio}
 \title{
 Density of some circular distributions
 }
@@ -20,6 +21,7 @@ dwrapcauchy(x, m, rho, rads = FALSE, logden = FALSE)
 dcircpurka(x, m, a, rads = FALSE, logden = FALSE)
 dggvm(x, param, rads = FALSE, logden = FALSE)
 dcircbeta(x, m, a, b, rads = FALSE, logden = FALSE)
+dcardio(x, m, rho, rads = FALSE, logden = FALSE)
 }
 
 \arguments{
@@ -27,10 +29,10 @@ dcircbeta(x, m, a, b, rads = FALSE, logden = FALSE)
 A vector with circular data.
 }
 \item{m}{
-The mean value, a scalar. This is the median for the circular Purkayastha distribution.
+The mean value of the von Mises distribution and of the cardioid, a scalar. This is the median for the circular Purkayastha distribution.
 }
 \item{mu}{
-The mean vector, a vector with two values.
+The mean vector, a vector with two values for the "spml" and with
 }
 \item{k}{
 The concentration parameter.
