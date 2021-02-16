@@ -1,4 +1,4 @@
-4efb7482f1cd930abeaeb8afc40fdc76 *DESCRIPTION
+7a119e665e2bab699bc6b062b756828e *DESCRIPTION
 06730692e6366e94dcc6d5b9eaefdec7 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
@@ -7,7 +7,7 @@ a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
 8c53f6ba573112ec590652b3fab9694e *R/circ.cor1.R
 98618b20f9a421d702ca2fb72a069196 *R/circ.cor2.R
 e96c79cb7b4518cb9790c90bea89a15a *R/circ.cors1.R
-169ba6a4d1a9d4937efaa27b60d20e07 *R/circ.summary.R
+f4e7ee88def3209d26d432739f68b5cd *R/circ.summary.R
 d6217ff63346ff2e63594840cc2d1582 *R/circbeta.mle.R
 d91713b97001b80eac35e1fd531df254 *R/circexp.mle.R
 c0fe0c60122afd8a2ac88d9ffb36b6b4 *R/circlin.cor.R
@@ -142,7 +142,7 @@ f414b6c45017583fd2ea112e6ea98769 *R/vmnb.pred.R
 4115441ca71890ff34f0d730146ebde6 *R/wood.mle.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
 c4a9b752ced9a264c17935b4a6171278 *man/Arotation.Rd
-375f963aac02685a9be3e65a560db1f4 *man/Directional-package.Rd
+04cd717ffb1985959a8097c2fa64e3b5 *man/Directional-package.Rd
 aefa00041701bc32471ea01a001b5b9b *man/bic.mixvmf.Rd
 c7f370cf6d3acc1c96d31164ecf6a22a *man/circ.cor1.Rd
 2372d23cccb31927362e46b380565890 *man/circ.cors1.Rd
