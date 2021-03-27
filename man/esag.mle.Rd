@@ -79,7 +79,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 
 \examples{
 m <- colMeans( as.matrix( iris[,1:3] ) )
-y <- resag(1000, c(m, 1,0.5) )
+y <- resag(1000, m, c(1,0.5) )
 esag.mle(y)
 }
 

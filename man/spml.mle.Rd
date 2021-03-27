@@ -41,7 +41,7 @@ The tolerance level to stop the iterative process of finding the MLEs.
 The parameters of the bivariate angular Gaussian (spml.mle), wrapped Cauchy, circular exponential, cardioid, circular beta and geometrically
 generalised von Mises distributions are estimated. For the Wrapped Cauchy, the iterative procedure described by Kent and
 Tyler (1988) is used. The Newton-Raphson algortihm for the angular Gaussian is described in the regression setting in Presnell
-et al. (1998).
+et al. (1998). The circular exponential is also known as wrapped exponential distribution.
 }
 
 \value{
@@ -88,6 +88,8 @@ Journal of Applied Statistics, 15(2): 247--254.
 
 Dietrich T. and Richter W. D. (2017). Classes of geometrically generalized von Mises distributions.
 Sankhya B, 79(1): 21-59.
+
+https://en.wikipedia.org/wiki/Wrapped_exponential_distribution
 }
 
 \author{
@@ -100,7 +102,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{purka.mle}, \link{rvonmises}, \link{vmf.mle}, \link{rvmf}
+\code{\link{circ.summary}, \link{purka.mle}, \link{rvonmises}, \link{vmf.mle}, \link{rvmf}
 }
 }
 

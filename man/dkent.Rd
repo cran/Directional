@@ -12,7 +12,7 @@ Density of the spherical Kent and ESAG distributions.
 
 \usage{
 dkent(y, G, param, logden = FALSE )
-desag(y, param, logden = FALSE)
+desag(y, mu, gam, logden = FALSE)
 }
 
 \arguments{
@@ -24,9 +24,12 @@ For the Kent distribution only, a 3 x 3 matrix whose first column is the mean di
 }
 \item{param}{
 For the Kent distribution a vector with the concentration \eqn{\kappa} and ovalness \eqn{\beta} parameters. The \eqn{\psi} has been absorbed inside the matrix G.
-
-For the ESAG distribution, its parameters, the first three are the mean vector in \eqn{R^3} and the next two are the two gammas.
-
+}
+\item{mu}{
+The mean vector the ESAG distribution, a vector in \eqn{R^3}.
+}
+\item{gam}{
+The two gamma parameters of the ESAG distribution.
 }
 \item{logden}{
 If you the logarithm of the density values set this to TRUE.
@@ -48,7 +51,7 @@ Kent John (1982). The Fisher-Bingham distribution on the sphere. Journal of the 
 Series B, 44(1): 71-80.
 
 Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular
-Gaussian Distribution. Statistics and Computing, 28((3):689--697.
+Gaussian Distribution. Statistics and Computing, 28(3):689--697.
 }
 
 \author{

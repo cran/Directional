@@ -1,6 +1,7 @@
 \name{Bootstrap 2-sample mean test for circular data}
 \alias{hcfcirc.boot}
 \alias{lrcirc.boot}
+\alias{hclrcirc.boot}
 \alias{embedcirc.boot}
 \alias{hetcirc.boot}
 
@@ -14,11 +15,9 @@ Bootstrap 2-sample mean test for circular data.
 
 \usage{
 hcfcirc.boot(u1, u2, rads = TRUE, B = 999)
-
 lrcirc.boot(u1, u2, rads = TRUE, B = 999)
-
+hclrcirc.boot(u1, u2, rads = TRUE, B = 999)
 embedcirc.boot(u1, u2, rads = TRUE, B = 999)
-
 hetcirc.boot(u1, u2, rads = TRUE, B = 999)
 }
 
@@ -38,28 +37,21 @@ The number of bootstraps to perform.
 }
 
 \details{
-The high concentration (hcfcirc.boot), the log-likelihood ratio test (lrcirc.boot) or the non equal concentration parameters approach (hetcirc.boot) is used.
+The high concentration (hcfcirc.boot), the log-likelihood ratio test (lrcirc.boot), high concentration log-likelihood ratio (hclrcirc.boot), embedding approach (embedcirc.boot), or the non equal concentration parameters approach (hetcirc.boot) is used.
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic.
-}
-\item{p-value}{
-The p-value of the test.
-}
-\item{kappa}{
-The concentration parameter based on all the data. If the het.circaov is used this argument is not returned.
-}
+A vector including two or three numbers, the test statistic value, the bootstrap p-value of the test and the common concentration parameter kappa based on all the data.
 }
 
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+
+Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1), 119-135.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
 R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }

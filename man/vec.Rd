@@ -1,11 +1,11 @@
-\name{Unit vector(s) with a given angle}
+\name{Generation of unit vector(s) with a given angle}
 \alias{vec}
 \title{
-Unit vector(s) with a given angle
+Generation of unit vector(s) with a given angle
 }
 
 \description{
-Unit vector with a given angle from a given unit vector.
+Generation of unit vector(s) with a given angle from a given unit vector.
 }
 
 \usage{

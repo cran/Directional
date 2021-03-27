@@ -75,7 +75,7 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
         id <- ina[-nu]
         for (j in 1:g) {
           mod <- Directional::esag.mle( xtrain[id == j, ] )
-          mat[, j] <- Directional::desag(xtest, c(mod$mu, mod$gam), logden = TRUE )
+          mat[, j] <- Directional::desag(xtest, mod$mu, mod$gam, logden = TRUE )
         }
         est3[[ i ]] <- Rfast::rowMaxs(mat)
         per3[i] <- mean(est3[[ i ]] == ina[nu])

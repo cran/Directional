@@ -9,7 +9,7 @@ esagda.pred <- function(ynew, y, ina) {
   mat <- matrix(0, dim(ynew)[1], g)
   for (j in 1:g) {
     mod <- Directional::esag.mle( y[ina == j, ] )
-    mat[, j] <- Directional::desag(ynew, c(mod$mu, mod$gam), logden = TRUE )
+    mat[, j] <- Directional::desag(ynew, mod$mu, mod$gam, logden = TRUE )
   }
   Rfast::rowMaxs(mat)
 }

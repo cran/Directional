@@ -3,6 +3,7 @@
 \alias{lr.aov}
 \alias{embed.aov}
 \alias{het.aov}
+\alias{hclr.aov}
 
 \title{
 Analysis of variance for (hyper-)spherical data
@@ -14,58 +15,49 @@ Analysis of variance for (hyper-)spherical data.
 
 \usage{
 hcf.aov(x, ina, fc = TRUE)
-
+hclr.aov(x, ina)
 lr.aov(x, ina)
-
 embed.aov(x, ina)
-
 het.aov(x, ina)
 }
 
 \arguments{
-  \item{x}{
-  A matrix with the data in Euclidean coordinates, i.e. unit vectors.
+\item{x}{
+A matrix with the data in Euclidean coordinates, i.e. unit vectors.
 }
-  \item{ina}{
-  A numerical variable or a factor indicating the group of each vector.
+\item{ina}{
+A numerical variable or a factor indicating the group of each vector.
 }
-  \item{fc}{
-  A boolean that indicates whether a corrected F test should be used or not.
+\item{fc}{
+A boolean that indicates whether a corrected F test should be used or not.
 }
 }
 
 \details{
-The high concentration (hcf.aov), log-likelihood ratio (lr.aov), embedding approach (embed.aov) or the non equal concentration parameters approach (het.aov) is used.
+The high concentration (hcf.aov), high concentration likelihood ratio (hclr.aov), log-likelihood ratio (lr.aov), embedding approach (embed.aov) or the non equal concentration parameters approach (het.aov) is used.
 }
 
 \value{
-A vector including:
-\item{test}{
-The test statistic value.
-}
-\item{p-value}{
-The p-value of the F test.
-}
-\item{kappa}{
-The common concentration parameter kappa based on all the data.
-}
+A vector with two or three elements, the test statistic, the p-value and the  common concentration parameter kappa based on all the data.
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+
+Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1), 119-135.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 %\note{
 %%  ~~further notes~~
 %}
 
 \seealso{
-\code{\link{hcf.boot}, \link{spherconc.test}, \link{conc.test}
+\code{\link{hcf.boot}, \link{spherconc.test}, \link{conc.test}, \link{hclr.circaov},
 }
 }
 

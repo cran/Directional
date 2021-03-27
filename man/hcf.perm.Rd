@@ -1,6 +1,7 @@
 \name{Permutation based 2-sample mean test for (hyper-)spherical data}
 \alias{hcf.perm}
 \alias{lr.perm}
+\alias{hclr.perm}
 \alias{embed.perm}
 \alias{het.perm}
 
@@ -14,11 +15,9 @@ Permutation based 2-sample mean test for (hyper-)spherical data.
 
 \usage{
 hcf.perm(x1, x2, B = 999)
-
 lr.perm(x1, x2, B = 999)
-
+hclr.perm(x1, x2, B = 999)
 embed.perm(x1, x2, B = 999)
-
 het.perm(x1, x2, B = 999)
 }
 
@@ -35,7 +34,7 @@ The number of permutations to perform.
 }
 
 \details{
-The high concentration (hcf.perm), log-likelihood ratio (lr.perm), embedding approach (embed.perm) or the non equal concentration parameters approach (het.perm) is used.
+The high concentration (hcf.perm), log-likelihood ratio (lr.perm), high concentration log-likelihood ratio (hclr.perm), embedding approach (embed.perm) or the non equal concentration parameters approach (het.perm) is used.
 }
 
 \value{
@@ -53,6 +52,8 @@ The common concentration parameter kappa based on all the data.
 
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+
+Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1), 119-135.
 }
 
 \author{
@@ -65,7 +66,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{hcf.boot}, \link{spherconc.test}, \link{conc.test}
+\code{\link{hcf.boot}, \link{hcf.aov}, \link{spherconc.test}, \link{conc.test}
 }
 }
 

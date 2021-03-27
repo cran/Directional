@@ -70,7 +70,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{rvonmises}, \link{vm.kde}, \link{vmf.mle}, \link{group.vm}, \link{hcf.circaov}
+\code{\link{spml.mle}, \link{rvonmises}, \link{vm.kde}, \link{vmf.mle}, \link{group.vm}, \link{hcf.circaov}
 }
 }
 

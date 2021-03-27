@@ -1,5 +1,6 @@
 \name{Anova for circular data}
 \alias{hcf.circaov}
+\alias{hclr.circaov}
 \alias{lr.circaov}
 \alias{embed.circaov}
 \alias{het.circaov}
@@ -14,28 +15,26 @@ Analysis of variance for circular data.
 
 \usage{
 hcf.circaov(u, ina, rads = FALSE)
-
+hclr.circaov(u, ina, rads = FALSE)
 lr.circaov(u, ina, rads = FALSE)
-
 het.circaov(u, ina, rads = FALSE)
-
 embed.circaov(u, ina, rads = FALSE)
 }
 
 \arguments{
-  \item{u}{
-  A numeric vector containing the data.
+\item{u}{
+A numeric vector containing the data.
 }
-  \item{ina}{
-  A numerical or factor variable indicating the group of each value.
+\item{ina}{
+A numerical or factor variable indicating the group of each value.
 }
-  \item{rads}{
-  If the data are in radians, this should be TRUE and FALSE otherwise.
+\item{rads}{
+If the data are in radians, this should be TRUE and FALSE otherwise.
 }
 }
 
 \details{
-The high concentration (hcf.circaov), log-likelihood ratio (lr.circaov), embedding approach (embed.circaov) or the non equal concentration parameters approach (het.circaov) is used.
+The high concentration (hcf.circaov), high concentration likelihood ratio (hclr.aov), log-likelihood ratio (lr.circaov), embedding approach (embed.circaov) or the non equal concentration parameters approach (het.circaov) is used.
 }
 
 \value{
@@ -53,19 +52,21 @@ The concentration parameter based on all the data. If the het.circaov is used th
 
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+
+Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1), 119-135.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 %\note{
 %%  ~~further notes~~
 %}
 
 \seealso{
-\code{\link{conc.test}, \link{hcf.aov}, \link{lr.aov}, \link{het.aov}, \link{embed.aov}
+\code{\link{conc.test}, \link{hclr.aov}, \link{hcfcirc.boot}
 }
 }
 

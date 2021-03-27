@@ -3,6 +3,7 @@
 \alias{multivmf.mle}
 \alias{acg.mle}
 \alias{iag.mle}
+\alias{spcauchy.mle}
 \title{
 MLE of (hyper-)spherical distributions
 }
@@ -16,6 +17,7 @@ vmf.mle(x, fast = FALSE, tol = 1e-07)
 multivmf.mle(x, ina, tol = 1e-07, ell = FALSE)
 acg.mle(x, tol = 1e-07)
 iag.mle(x, tol = 1e-07)
+spcauchy.mle(x, tol = 1e-06)
 }
 
 \arguments{
@@ -38,14 +40,17 @@ The tolerance value at which to terminate the iterations.
 }
 
 \details{
-The vm estimates the mean direction and concentration of a fitted von Mises-Fisher distribution.
+The vmf.mle estimates the mean direction and concentration of a fitted von Mises-Fisher distribution.
 
 The von Mises-Fisher distribution for groups of data is also implemented.
 
-The acg.mle fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal to the number of variables.
-An iterative algorithm takes place and convergence is guaranteed.
+The acg.mle fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal
+to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
 
-The iag.mle implements MLE of the projected normal distribution, on the sphere.
+The iag.mle implements MLE of the spherical projected normal distribution, for spherical data only.
+
+The spcauchy.mle estimates the parameters of the spherical Cauchy distribution, for any dimension. The name sounds confusing, but it is implemented for
+arbitrary dimensions, not only the sphere.
 }
 
 \value{
@@ -86,7 +91,17 @@ The first comes from the second by normalising to have unit length.
 }
 \item{param}{
 A vector with the elements, the norm of mean vector, the log-likelihood and the log-likelihood of the spherical uniform distribution.
-The third value helps in case you want to do a log-likleihood ratio test for uniformity.
+The third value helps in case you want to do a log-likelihood ratio test for uniformity.
+}
+For the spherical Cauchy a list including:
+\item{mu}{
+The mean direction.
+}
+\item{rho}{
+The concetration parameter, this takes values in [0, 1).
+}
+\item{loglik}{
+The log-likelihood value.
 }
 }
 
@@ -101,6 +116,8 @@ Biometrika 74(3): 579-589.
 
 Paine P.J., Preston S.P., Tsagris M and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution.
 Statistics and Computing, 28: 689-697.
+
+Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere. arXiv preprint arXiv:1510.07679.
 }
 
 \author{

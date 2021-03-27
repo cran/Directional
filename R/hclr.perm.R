@@ -1,4 +1,4 @@
-lr.perm <- function(x1, x2, B = 999) {
+hclr.perm <- function(x1, x2, B = 999) {
 
   n1 <- dim(x1)[1]    ;  n2 <- dim(x2)[1]
   x <- rbind(x1, x2)
@@ -34,11 +34,15 @@ lr.perm <- function(x1, x2, B = 999) {
   }
   k1 <- k2  ## concentration parameter under H1
 
-  apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI( k0, p/2 - 1, expon.scaled = TRUE ) ) + k0
-  apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI( k1, p/2 - 1, expon.scaled = TRUE ) ) + k1
-  w <- k1 * sum(Ri) - k0 * R - n * apk1 + n * apk0
+  I0 <- besselI( k0, p/2 - 1 )
+  I1 <- besselI( k1, p/2 - 1 )
+  Apk0 <- Apk(p, k0)
+  Apk1 <- Apk(p, k1)
+  up <- k0^(p/2 - 1) / I0 * exp(k0 * Apk0)
+  down <- k1^(p/2 - 1) / I1 * exp(k1 * Apk1)
+  P <- (n - 2) * ( (up / down)^( -2/(p - 1) ) - 1 )
 
-  wp <- numeric(B)
+  Pp <- numeric(B)
   for (i in 1:B) {
     ind <- sample(ina, n)
     S <- rowsum(x, ind)
@@ -63,13 +67,17 @@ lr.perm <- function(x1, x2, B = 999) {
     }
     k1 <- k2  ## concentration parameter under H1
 
-    apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI( k0, p/2 - 1, expon.scaled = TRUE ) ) + k0
-    apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI( k1, p/2 - 1, expon.scaled = TRUE ) ) + k1
-    wp[i] <- k1 * sum(Ri) - k0 * R - n * apk1 + n * apk0
+    I0 <- besselI( k0, p/2 - 1 )
+    I1 <- besselI( k1, p/2 - 1 )
+    Apk0 <- Apk(p, k0)
+    Apk1 <- Apk(p, k1)
+    up <- k0^(p/2 - 1) / I0 * exp(k0 * Apk0)
+    down <- k1^(p/2 - 1) / I1 * exp(k1 * Apk1)
+    Pp[i] <- (n - 2) * ( (up / down)^( -2/(p - 1) ) - 1 )
   }
 
-  pvalue <- ( sum(wp > w) + 1 ) / (B + 1)
-  res <- c(2 * w, pvalue)
+  pvalue <- ( sum(Pp > P) + 1 ) / (B + 1)
+  res <- c(P, pvalue)
   names(res) <- c('w', 'p-value')
   res
 }
