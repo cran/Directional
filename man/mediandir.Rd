@@ -39,7 +39,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{vmf.mle}, \link{kent.mle}
+\code{\link{nsmedian}, \link{vmf.mle}, \link{kent.mle}
 }
 }
 \examples{
@@ -48,5 +48,6 @@ m <- m / sqrt( sum(m^2) )
 x <- rvmf(100, m, 10)
 mediandir(x)
 mediandir_2(x)
+nsmedian(x)
 }
 \keyword{ Median direction }

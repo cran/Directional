@@ -9,7 +9,7 @@ importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
 
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            colSort, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
-    	     rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans,
+    	     rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans, spat.med,
 		    	 multivmf.mle, Sort, spml.reg, spml.mle, mediandir, circlin.cor,
 			     Table, colnth, wrapcauchy.mle, colOrder, group, dirknn, rbing,
 			     rbingham, eachrow, colvm.mle, spml.regs, matrnorm)

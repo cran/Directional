@@ -88,7 +88,7 @@ The runtime required.
 Borboudakis G. and Tsamardinos I. (2019). Forward-backward selection with early dropping. Journal of Machine Learning Research, 20(8): 1-39.
 
 Tsagis M. (2018). Guide on performing feature selection with the R package MXM.
-\url{ https://f1000researchdata.s3.amazonaws.com/manuscripts/22822/f8d7dae0-c9d3-4ce8-afa1-e552c8cf3347_16216_-_michail_tsagris_v2.pdf?doi=10.12688/f1000research.16216.2&numberOfBrowsableCollections=20&numberOfBrowsableInstitutionalCollections=5&numberOfBrowsableGateways=22 }
+https://f1000research.com/articles/7-1505
 
 Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data.
 Journal of the American Statistical Association, 93(443): 1068-1077.

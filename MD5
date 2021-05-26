@@ -1,5 +1,5 @@
-81bf09c225921cf194d0eec81730d95a *DESCRIPTION
-06730692e6366e94dcc6d5b9eaefdec7 *NAMESPACE
+d0514906da70a06cd691fd36895b0a1d *DESCRIPTION
+d5e4b4c2b7f73642e8e414493c3c70cd *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
 73a5038983a1fc480dec309df6988bf4 *R/bic.mixvmf.R
@@ -30,12 +30,12 @@ f6935931d9ad58ffdd5d724464f17226 *R/dpurka.R
 f562aa150d021b8e62589f1dd16228ed *R/dvm.R
 be64432ec65ebd9ca93f14e83fb7c658 *R/dvmf.R
 ec85c864b7fdad11c173c2085c24faba *R/dwrapcauchy.R
-ef3272a012fee088f7679adfee05a4e1 *R/embed.aov.R
+401e6781a4872a81242f21624a65a161 *R/embed.aov.R
 86bd3cb49b0a8f8b8a52c835556a8e4a *R/embed.boot.R
 6a0f2daf016059c1bb608ed14c18274c *R/embed.circaov.R
-19c6321cfce5d34bb47e9f1d7595c93c *R/embed.perm.R
+05219ed9f5126cd9eb4d1d3521a2410a *R/embed.perm.R
 cffe1217a940e5f80fbe8f70c8247ca3 *R/embedcirc.boot.R
-2a46abab6a30b439098a6075564fd56d *R/embedcirc.perm.R
+a98e456fd5a35aa0dd2d00d3c762ea60 *R/embedcirc.perm.R
 3868afaac8a207d055dba21d5592d2fd *R/esag.da.R
 d0715c7d27239bf45928f5641733abd6 *R/esag.mle.R
 af22e0ddf0fde139329cc4c411c08206 *R/esagda.pred.R
@@ -97,6 +97,7 @@ dfc286de800b44e124ccd2d81e63e0c4 *R/mixvmf.mle.R
 bf81cdb2c75bb8c962e976014cd0df96 *R/multispml.mle.R
 2b20ad8eb132bc8047650bf706af8365 *R/multivm.mle.R
 2fedf228dfac853bf1a264f010318849 *R/multivmf.mle.R
+6d68de8b66386168c743119c3148ccdd *R/nsmedian.R
 85ac30cadc9a084fc4603fea1e4cf891 *R/purka.mle.R
 91d54f96826897641359314ab7619452 *R/pvm.R
 2659c7dbb86238781e348b9a3779990a *R/quat2rot.R
@@ -140,7 +141,7 @@ f198f32f62305bd98bcd28d9b45e5572 *R/vmf.contour.R
 c70e5ab01bc1718af8b8867b6f910a0e *R/vmf.da.R
 88486e6f9b4f0efb3f3b223615c32539 *R/vmf.kde.R
 dfef6661149f3c89a922026c9389fe8b *R/vmf.kerncontour.R
-867c5d185dfc1d8d6bb9805772f4bb94 *R/vmf.mle.R
+395cee33cf9393d57856a0603dbf90ed *R/vmf.mle.R
 c018031073d9e2901d3aa5764a2f90f3 *R/vmf.reg.R
 590e7ac338c929dce0b3456dc6627d26 *R/vmfda.pred.R
 69726da582d6f2be3b974aa5aafb70f7 *R/vmfkde.tune.R
@@ -150,7 +151,7 @@ f414b6c45017583fd2ea112e6ea98769 *R/vmnb.pred.R
 4115441ca71890ff34f0d730146ebde6 *R/wood.mle.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
 c4a9b752ced9a264c17935b4a6171278 *man/Arotation.Rd
-37d12a4bded4f64d62f00b03b743948c *man/Directional-package.Rd
+b96dc6e94b7e08c2185d92e229ef100d *man/Directional-package.Rd
 aefa00041701bc32471ea01a001b5b9b *man/bic.mixvmf.Rd
 c7f370cf6d3acc1c96d31164ecf6a22a *man/circ.cor1.Rd
 2372d23cccb31927362e46b380565890 *man/circ.cors1.Rd
@@ -199,10 +200,11 @@ bee30cb1ef9f760b464ede0b790d87df *man/lambert.Rd
 9c3e23cd56c836fd5d71766b78c79375 *man/makefolds.Rd
 99101dc7b9ccc6040bedad7a6423c8fb *man/matrixfisher.mle.Rd
 40da5625c5217aa545ba069676118d40 *man/meandir.test.Rd
-fee54ad0772a9ab23cabdf12f637208d *man/mediandir.Rd
+dd8a863f74223a55d3e874c96ea394c9 *man/mediandir.Rd
 8e426c7d2a4bd8de1165f702b9cc299c *man/mixvmf.contour.Rd
 19c868869bd944e7a2c33744952d39ef *man/mixvmf.mle.Rd
 488d963ca2d6c2d783e25e18c77c226f *man/multivm.mle.Rd
+fa5a49db2936ddd70ede01c9a1fa924c *man/nsmedian.Rd
 117d87e874d6758bc90f27dcfd1f49cf *man/purka.mle.Rd
 a708e149e994f2acb0b55f6b6d3ff8cf *man/pvm.Rd
 27487cb3384835df405cb9a5b4774e9e *man/quat2rot.Rd
@@ -226,7 +228,7 @@ ad20b47e0ab53b303b21aa32904bd267 *man/rvmf.Rd
 d1bb8e689682c2f91a1890f7d87e4359 *man/spher.reg.Rd
 bbac8e89bf5b89132046643020cc52e7 *man/spherconc.test.Rd
 51894e8142f743ba3a7855ca584b47a3 *man/sphereplot.Rd
-dab1a637f36306205cde8cc1843a86cb *man/spml.fbed.Rd
+b759da1402cd3c89ed215a98128634ff *man/spml.fbed.Rd
 b4fa4b5e4e47c72f94c2d2edcecb3fac *man/spml.mle.Rd
 3ae6b261d3bc0a5634c649ae69f0524f *man/spml.reg.Rd
 8706032a054aa644ab2a223a74cc25cd *man/spml.regs.Rd

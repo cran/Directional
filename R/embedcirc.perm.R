@@ -29,7 +29,7 @@ embedcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
     C <- sum(Ci)
     S <- sum(Si)
     Rbar <- sqrt(C^2 + S^2)/n
-    pfb[i] <- (n - 2) * (sum(ni * Rbi) - n * Rbar^2) / ( n - sum(ni * Rbi) )
+    pfb[i] <- (n - 2) * ( sum(ni * Rbi) - n * Rbar^2 ) / ( n - sum(ni * Rbi) )
   }
   pvalue <- ( sum(pfb > Fb) + 1 ) / (B + 1)
   res <- c(Fb, pvalue)
