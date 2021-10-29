@@ -18,7 +18,7 @@ hclr.boot <- function(x1, x2, B = 999) {
   Rk <- R/n
   k1 <- Rk * (p - Rk^2)/(1 - Rk^2)
   k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
-  while (abs(k2 - k1) > 1e-07) {
+  while ( abs(k2 - k1) > 1e-07 ) {
     k1 <- k2
     k2 <- k1 - (Apk(p, k1) - Rk) / (1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
   }
@@ -28,7 +28,7 @@ hclr.boot <- function(x1, x2, B = 999) {
   k1 <- Rk * (p - Rk^2)/(1 - Rk^2)
   k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
 
-  while (abs(k2 - k1) > 1e-07) {
+  while ( abs(k2 - k1) > 1e-07 ) {
     k1 <- k2
     k2 <- k1 - (Apk(p, k1) - Rk) / ( 1 - Apk(p, k1)^2 - (p - 1)/k1 * Apk(p, k1) )
   }

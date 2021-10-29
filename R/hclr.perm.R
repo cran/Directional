@@ -6,14 +6,12 @@ hclr.perm <- function(x1, x2, B = 999) {
   ni <- c(n1, n2)
   p <- dim(x)[2]
   n <- n1 + n2
-
   S <- rowsum(x, ina)
   Ri <- sqrt( Rfast::rowsums(S^2) )  ## the resultant length of each group
   S <- Rfast::colsums(S)
   R <- sqrt( sum(S^2) )  ## the resultant length based on all the data
 
   Apk <- function(p, k)  besselI(k, p/2, expon.scaled = TRUE) / besselI(k, p/2 - 1, expon.scaled = TRUE)
-
   ## Next we stimate the common concentration parameter kappa under H0 and H1
   Rk <- R/n
   k1 <- Rk * (p - Rk^2)/(1 - Rk^2)

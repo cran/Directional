@@ -1,7 +1,9 @@
-d0514906da70a06cd691fd36895b0a1d *DESCRIPTION
-d5e4b4c2b7f73642e8e414493c3c70cd *NAMESPACE
+cf4a4f0a176a6b5353c7d767fd89df06 *DESCRIPTION
+b0ca94c61ebad31bd1a5d474e7b439fa *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
+86388a75526e39869c14fc8ef41a7c67 *R/africa.R
+715c00221a4ca65a553622f7e144b4ac *R/asia.R
 73a5038983a1fc480dec309df6988bf4 *R/bic.mixvmf.R
 0b6069492b111209a43df1579e1929a7 *R/cardio.mle.R
 8c53f6ba573112ec590652b3fab9694e *R/circ.cor1.R
@@ -43,6 +45,7 @@ af22e0ddf0fde139329cc4c411c08206 *R/esagda.pred.R
 b623be254ce1684be8207f60e5c805dc *R/euclid.R
 027cf2a4b969cdb4f22509b0dc1763dc *R/euclid.inv.R
 5881cc1187ea707549c2ca2daa27f968 *R/eul2rot.R
+6576df82824db648aed363679b5a8529 *R/europe.R
 097219f36e0451bb6c16162358dcfb37 *R/f.rbing.R
 8696979998c8546d8f4e8dc85a131f7d *R/fb.saddle.R
 b48129ce551ce3f1f361029089d91bbf *R/fishkent.R
@@ -57,9 +60,9 @@ cbb6510b2edbaa5f8d8afdb6a4af8332 *R/hcf.perm.R
 5dbabe9ef85fc375899ab5f9697a2255 *R/hcfcirc.boot.R
 f4b9dbab858705a1ce86451b6b866f3b *R/hcfcirc.perm.R
 a8c21c8e30c832caa7be4189e5fe59e3 *R/hclr.aov.R
-c311118e291f849605a0075aef0f0839 *R/hclr.boot.R
+8964b8a64584363407451e2b94e9216f *R/hclr.boot.R
 8879f664ea2663aa05421111e85270c6 *R/hclr.circaov.R
-6994ff5c74287d2474a5696dbbc474e1 *R/hclr.perm.R
+bacef9ce4b0be5d7520a44ee8a7ed29d *R/hclr.perm.R
 739133c2616991d8f9a5cd75b462aa5f *R/hclrcirc.boot.R
 cb5bebd6186031b3849bd200b35e8227 *R/hclrcirc.perm.R
 4887281eeccd28943d3ae66d32b73830 *R/het.aov.R
@@ -97,7 +100,9 @@ dfc286de800b44e124ccd2d81e63e0c4 *R/mixvmf.mle.R
 bf81cdb2c75bb8c962e976014cd0df96 *R/multispml.mle.R
 2b20ad8eb132bc8047650bf706af8365 *R/multivm.mle.R
 2fedf228dfac853bf1a264f010318849 *R/multivmf.mle.R
+11dedae4caad40f29a0ba2c2a6238b54 *R/north.america.R
 6d68de8b66386168c743119c3148ccdd *R/nsmedian.R
+20139d2704d4eea604dc915edace1bd3 *R/oceania.R
 85ac30cadc9a084fc4603fea1e4cf891 *R/purka.mle.R
 91d54f96826897641359314ab7619452 *R/pvm.R
 2659c7dbb86238781e348b9a3779990a *R/quat2rot.R
@@ -121,6 +126,7 @@ eac91a987a59ecb759cffcfb3afdce21 *R/rmatrixfisher.R
 5bd4ae1c388997f5b9d86058a9be443b *R/rvmf.R
 7aac3d303839c20566cae2ca27861310 *R/rvonmises.R
 0021853ba4656564fe10d05fbcd26000 *R/rwrapcauchy.R
+b3a5d7fcf0c56c31362bc577c2901c6e *R/south.america.R
 ed7a1de11733f499a3710f24962325bf *R/spcauchy.mle.R
 bb768887b0cf1d7650a1d0fd18fc04e6 *R/spher.cor.R
 802d51307ed15ca583dcd95c7e274d0e *R/spher.reg.R
@@ -149,9 +155,10 @@ fe69c5161f72450b4bd31d0aef9b2219 *R/vmkde.tune.R
 f414b6c45017583fd2ea112e6ea98769 *R/vmnb.pred.R
 683e6af4c1234696137a46d0e4a1bcec *R/watson.R
 4115441ca71890ff34f0d730146ebde6 *R/wood.mle.R
+e01c29292f5ea64fae5f129b57ee00e0 *R/worldmap.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
 c4a9b752ced9a264c17935b4a6171278 *man/Arotation.Rd
-b96dc6e94b7e08c2185d92e229ef100d *man/Directional-package.Rd
+1434b1e5cb1df4af05d52769f6927303 *man/Directional-package.Rd
 aefa00041701bc32471ea01a001b5b9b *man/bic.mixvmf.Rd
 c7f370cf6d3acc1c96d31164ecf6a22a *man/circ.cor1.Rd
 2372d23cccb31927362e46b380565890 *man/circ.cors1.Rd
@@ -205,6 +212,7 @@ dd8a863f74223a55d3e874c96ea394c9 *man/mediandir.Rd
 19c868869bd944e7a2c33744952d39ef *man/mixvmf.mle.Rd
 488d963ca2d6c2d783e25e18c77c226f *man/multivm.mle.Rd
 fa5a49db2936ddd70ede01c9a1fa924c *man/nsmedian.Rd
+ed49cd92b39849258a52b5c04da7fab7 *man/oceania.Rd
 117d87e874d6758bc90f27dcfd1f49cf *man/purka.mle.Rd
 a708e149e994f2acb0b55f6b6d3ff8cf *man/pvm.Rd
 27487cb3384835df405cb9a5b4774e9e *man/quat2rot.Rd
