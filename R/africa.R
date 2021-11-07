@@ -5,7 +5,7 @@
 # Select map projection
 # (Here it is Mollweide)
 
-africa <- function(title = "Africa") {
+africa <- function(title = "Africa", coords = NULL) {
 
 select_proj <- '+proj=moll'
 
@@ -46,16 +46,17 @@ plot_data <- merge(world, my_data,
 
 
 # Insert points
+if (!is.null( coords ) ) {
+d_points <- data.frame(long = coords[, 1] ,
+                       lat  = coords[, 2]) %>%
 
-#d_points <- data.frame(long = c(0, 20, 40),
-#                       lat  = c(0, 0, 0)) %>%
+  # Data frame to sf
+  st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
 
-#  # Data frame to sf
-#  st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
+  # Set map projection
+  st_transform(crs = select_proj)
 
-#  # Set map projection
-#  st_transform(crs = select_proj)
-
+}
 
 
 
@@ -123,11 +124,12 @@ ggplot() +
  # map margins
    ylim(c(-4000000, 4490006)) +
 
-#  # Add points
-#   geom_sf(data = d_points,
-#           color = "black",
-#           size = 1,
-#           shape = 23) +
+{if (!is.null( coords ) )
+  # Add points
+   geom_sf(data = d_points,
+           color = "black",
+           size = 1,
+           shape = 23)} +
 
   # Title
   ggtitle(title)+

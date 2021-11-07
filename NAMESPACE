@@ -1,6 +1,6 @@
 #useDynLib(Directional, .registration = TRUE)
 
-importFrom("graphics", contour, lines, plot, points, abline)
+importFrom("graphics", contour, lines, plot, points, abline, filled.contour, axis, par)
 
 importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
            .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
@@ -25,10 +25,10 @@ import("foreach")
 importFrom("rgl", open3d, points3d, spheres3d)
 importFrom("bigstatsr", big_apply, big_read)
 importFrom("rnaturalearth", ne_countries)
-importFrom("sf", st_transform)
-importFrom("grDevices", heat.colors)
-importFrom(magrittr,"%>%")
-importFrom(ggplot2, aes, element_line, element_rect, element_text, geom_sf, ggplot,
+importFrom("sf", st_transform, st_as_sf)
+importFrom("grDevices", heat.colors, hcl.colors, colorRampPalette)
+importFrom("magrittr", "%>%")
+importFrom("ggplot2", aes, element_line, element_rect, element_text, geom_sf, ggplot,
            ggtitle, labs, scale_fill_gradientn, theme, xlim, ylim)
 
 exportPattern("^[[:alpha:]]+")

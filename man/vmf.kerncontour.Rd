@@ -17,7 +17,8 @@ vmf.kerncontour(u, thumb = "none", den.ret = FALSE, full = FALSE, ngrid = 100)
 A two column matrix. The first coolumn is the latitude and the second is the longitude.
 }
 \item{thumb}{
-This is either 'none' (defualt), or 'rot' for the rule of thumb suggested by Garcia-Portugues (2013). If it is "none" it is estimated via cross validation, with the fast function "vmfkde.tune_2".
+This is either 'none' (defualt), or 'rot' for the rule of thumb suggested by Garcia-Portugues (2013).
+If it is "none" it is estimated via cross validation, with the fast function "vmfkde.tune_2".
 }
 \item{den.ret}{
 If FALSE (default), plots the contours of the density along with the individual
@@ -55,14 +56,15 @@ The kernel density estimate contour points.
 }
 
 \references{
-Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655--1685.
+Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data.
+Electronic Journal of Statistics, 7, 1655--1685.
 }
 
 \author{
-Michail Tsagris and Micah J. Waldstein. 
+Michail Tsagris, Micah J. Waldstein and Christos Adam.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}, Giorgos Athineou <gioathineou@gmail.com> and
-Micah J. Waldstein <micah@waldste.in>.
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr},
+Micah J. Waldstein \email{micah@waldste.in} and Christos Adam \email{pada4m4@gmail.com}.
 }
 
 %\note{
@@ -77,9 +79,9 @@ Micah J. Waldstein <micah@waldste.in>.
 \examples{
 x <- rvmf(100, rnorm(3), 15)
 x <- euclid.inv(x)
-par( mfrow = c(1, 2) )
+\dontrun{
 vmf.kerncontour(x, "rot")
-vmf.kerncontour(x, "none")
+}
 }
 
 \keyword{ Contour plot }

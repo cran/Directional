@@ -34,9 +34,9 @@ Kent John (1982). The Fisher-Bingham distribution on the sphere. Journal of the 
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris and Christos Adam.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Christos Adam \email{pada4m4@gmail.com}.
 }
 
 %\note{
@@ -49,9 +49,9 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 }
 
 \examples{
-par( mfrow = c(1, 2) )
-kent.contour(10, 2)
+\dontrun{
 kent.contour(10, 4)
+}
 }
 
 \keyword{ Contour plot}

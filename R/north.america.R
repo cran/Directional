@@ -5,7 +5,7 @@
 # Select map projection
 # (Here it is Mollweide)
 
-north.america <- function(title = "North America") {
+north.america <- function(title = "North America", coords = NULL) {
 
 select_proj <- '+proj=aea +lat_1=30 +lat_2=50 +lon_0=-100'
 
@@ -18,15 +18,6 @@ world <- ne_countries(continent = "North America",
 
          # Set map projection
          st_transform(select_proj)
-
-
-
-# Be careful in plots!!!
-
-# For degrees do /100000
-
-
-
 
 # Number of countries
 num <- nrow(world)
@@ -49,20 +40,16 @@ plot_data <- merge(world, my_data,
 
 
 # Insert points
+if (!is.null( coords ) ) {
+d_points <- data.frame(long = coords[, 1] ,
+                       lat  = coords[, 2]) %>%
 
-#d_points <- data.frame(long = c(0, 20, 40),
-#                       lat  = c(0, 0, 0)) %>%
+  # Data frame to sf
+  st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
 
-#  # Data frame to sf
-#  st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
-
-#  # Set map projection
-#  st_transform(crs = select_proj)
-
-
-
-
-
+  # Set map projection
+  st_transform(crs = select_proj)
+}
 
 
 ##############################################
@@ -127,11 +114,12 @@ ggplot() +
 
 
 
-#  # Add points
-#   geom_sf(data = d_points,
-#           color = "black",
-#           size = 1,
-#           shape = 23) +
+{if (!is.null( coords ) )
+  # Add points
+   geom_sf(data = d_points,
+           color = "black",
+           size = 1,
+           shape = 23)} +
 
   # Title
   ggtitle(title) +

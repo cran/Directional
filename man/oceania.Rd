@@ -13,17 +13,21 @@
 It produces maps of the world and the continents.
 }
 \usage{
-asia(title = "Asia")
-africa(title = "Africa")
-europe(title = "Europe")
-north.america(title = "North America")
-oceania(title = "Oceania")
-south.america(title = "South America")
-worldmap(title = "World map")
+asia(title = "Asia", coords = NULL)
+africa(title = "Africa", coords = NULL)
+europe(title = "Europe", coords = NULL)
+north.america(title = "North America", coords = NULL)
+oceania(title = "Oceania", coords = NULL)
+south.america(title = "South America", coords = NULL)
+worldmap(title = "World map", coords = NULL)
 }
 \arguments{
 \item{title}{
 A character vector with the title of the map.
+}
+\item{coords}{
+If you want specific points to appear on the plot give the coordinates as a matrix, where the first column
+contains the longitude and the second column contains the latitude, in degrees.
 }
 }
 \details{

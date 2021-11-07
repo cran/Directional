@@ -11,15 +11,9 @@
 # Select map projection
 # (Here it is Mollweide)
 
-oceania <- function(title = "Oceania") {
+oceania <- function(title = "Oceania", coords = NULL) {
 
 select_proj <- '+proj=moll'
-
-
-# Be careful in plots!!!
-
-# For degrees do /100000
-
 
 # Select what to plot
 world <- rnaturalearth::ne_countries(continent = "Oceania",
@@ -47,18 +41,16 @@ plot_data <- merge(world, my_data,
 
 
 # Insert points
+if (!is.null( coords ) ) {
+d_points <- data.frame(long = coords[, 1] ,
+                       lat  = coords[, 2]) %>%
 
-#d_points <- data.frame(long = c(0, 20, 40),
-#                       lat  = c(0, 0, 0)) %>%
+  # Data frame to sf
+  st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
 
-#  # Data frame to sf
-#  st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
-
-#  # Set map projection
-#  st_transform(crs = select_proj)
-
-
-
+  # Set map projection
+  st_transform(crs = select_proj)
+}
 
 ##############################################
 # Map theme
@@ -122,11 +114,12 @@ ggplot() +
    xlim(c(10000000, 17596910)) +
    ylim(c(-6361366, 0)) +
 
-#  # Add points
-#   geom_sf(data = d_points,
-#           color = "black",
-#           size = 1,
-#           shape = 23) +
+{if (!is.null( coords ) )
+  # Add points
+   geom_sf(data = d_points,
+           color = "black",
+           size = 1,
+           shape = 23)} +
 
   # Title
   ggtitle(title)+

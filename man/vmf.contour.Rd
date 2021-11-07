@@ -27,9 +27,9 @@ A contour plot of the von Mises-Fisher distribution.
 }
 
 \author{
-Michail Tsagris.
+Michail Tsagris and Christos Adam.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Christos Adam \email{pada4m4@gmail.com}.
 }
 
 %\note{
@@ -42,10 +42,9 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 }
 
 \examples{
-par( mfrow = c(1, 3) )
-vmf.contour(1)
+\dontrun{
 vmf.contour(5)
-vmf.contour(10)
+}
 }
 
 \keyword{ von Mises-Fisher distribution }

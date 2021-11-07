@@ -24,9 +24,9 @@ A plot containing the contours of the distribution along with the data.
 Kent John (1982). The Fisher-Bingham distribution on the sphere. Journal of the Royal Statistical Society, Series B, 44(1): 71-80.
 }
 \author{
-Michail Tsagris
+Michail Tsagris and Christos Adam.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Christos Adam \email{pada4m4@gmail.com}.
 }
 %\note{
 %%  ~~further notes~~
@@ -39,8 +39,9 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 x <- rvmf(100, rnorm(3), 10)
 kent.mle(x)
 y <- euclid.inv(x)
+\dontrun{
 kent.datacontour(y)
-vmf.kerncontour(y, thumb = "none")
+}
 }
 \keyword{ Contour plot }
 \keyword{ Kent distribution }
