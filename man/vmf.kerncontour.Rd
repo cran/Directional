@@ -18,7 +18,7 @@ A two column matrix. The first coolumn is the latitude and the second is the lon
 }
 \item{thumb}{
 This is either 'none' (defualt), or 'rot' for the rule of thumb suggested by Garcia-Portugues (2013).
-If it is "none" it is estimated via cross validation, with the fast function "vmfkde.tune_2".
+If it is "none" it is estimated via cross validation, with the fast function \code{\link{vmfkde.tune}}.
 }
 \item{den.ret}{
 If FALSE (default), plots the contours of the density along with the individual

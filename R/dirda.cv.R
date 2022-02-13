@@ -132,7 +132,7 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
     g <- max(ina)
     for (i in 1:nfolds) {
       nu <- folds[[ i ]]
-      est6[[ i ]] <- Directional::dirknn(x[-nu, ], x[nu, , drop = FALSE], k = k, ina[-nu], type = "NS")
+      est6[[ i ]] <- Directional::dirknn(x[nu, , drop = FALSE], ina[-nu], x[-nu, ], k = k, type = "NS")
       per6[i, ] <- Rfast::colmeans(est6[[ i ]] == ina[nu])
     }
   }

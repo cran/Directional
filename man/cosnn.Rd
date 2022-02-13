@@ -42,7 +42,7 @@ Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
 R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }

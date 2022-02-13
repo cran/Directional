@@ -47,7 +47,7 @@ mixvmf.contour <- function(u, mod) {
 
                  # Number of levels
                  # the greater the more interpolate
-                 nlevels = 1000,
+                 nlevels = 200,
 
 
 

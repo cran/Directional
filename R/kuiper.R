@@ -17,11 +17,11 @@ kuiper <- function(u, rads = FALSE, R = 1) {
   Vn <- f * ( max(u - (i - 1)/n ) + max(i/n - u) )
 
   if ( R == 1 ) {  ## asymptotic p-value is returned
-    m2 <- (1:50)^2
-    a1 <- 4 * m2 * Vn^2
-    a2 <- exp( -2 * m2 * Vn^2 )
+    m <- (1:50)^2
+    a1 <- 4 * m * Vn^2
+    a2 <- exp( -2 * m * Vn^2 )
     b1 <- 2 * ( a1 - 1 ) * a2
-    b2 <- 8 * Vn / ( 3 * f ) * m2 * (a1 - 3) * a2
+    b2 <- 8 * Vn / ( 3 * f ) * m * (a1 - 3) * a2
     pvalue <- sum(b1 - b2)
   } else {
     x <- matrix( runif(n * R, 0, 2 * pi), ncol = R)

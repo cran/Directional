@@ -54,7 +54,10 @@ knnreg.tune <- function(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl",
     names(performance) <- "mspe"
   }
 
-  if ( graph )  plot(1:A, mspe, xlab = "Nearest neighbours", ylab = "MSPE", type = "b")
+  if ( graph )  plot(1:A, mspe, xlab = "Nearest neighbours", ylab = "MSPE", type = "b", pch = 16,
+                     cex.axis = 1.2, cex.lab = 1.2, col = "green", lwd = 2)
+  abline(v = 1:A, col = "lightgrey", lty = 2)
+  abline(h = seq(min(mspe), max(mspe), length = 10), lty = 2, col = "lightgrey" )
   list(crit = mspe, best_k = which.min(mspe) + 1, performance = performance, runtime = runtime)
 }
 

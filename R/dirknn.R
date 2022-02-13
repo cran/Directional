@@ -1,10 +1,10 @@
 ################################
-#### Discriminant analysis for directional data
+#### k-NN algorithm for directional data
 #### using the k-NN alorithm,
 #### Tsagris Michail 01/2016
 #### mtsagris@yahoo.gr
 ################################
-dirknn <- function(x, xnew, k = 5, ina, type = "S", mesos = TRUE, parallel = FALSE, rann = FALSE) {
+dirknn <- function(xnew, ina, x, k = 5, type = "S", mesos = TRUE, parallel = FALSE, rann = FALSE) {
   ## x is the matrix containing the data
   ## xnew is the new data
   ## k is the number of neighbours to use

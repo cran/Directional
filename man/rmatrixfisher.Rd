@@ -35,9 +35,14 @@ distributions in directional data analysis with applications. http://arxiv.org/p
 }
 
 \author{
-Anamul Sajib & Chris Fallaize
+Anamul Sajib & Chris Fallaize.
 
-R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> & Chris Fallaize
+R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> & Chris Fallaize.
+}
+
+\seealso{
+\code{\link{matrixfisher.mle}
+}
 }
 
 \examples{

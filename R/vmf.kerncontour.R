@@ -71,7 +71,7 @@ vmf.kerncontour <- function(u, thumb = "none", den.ret = FALSE, full = FALSE,
 
                    # Number of levels
                    # the greater the more interpolate
-                   nlevels = 1000,
+                   nlevels = 200,
 
 
 

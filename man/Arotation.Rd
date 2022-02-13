@@ -5,7 +5,7 @@ Rotation axis and angle of rotation given a rotation matrix
 }
 
 \description{
-Given a 3 x 3 rotation matrix, the angle and the axis of rotation are calcualted.
+Given a 3 x 3 rotation matrix, the angle and the axis of rotation are calculated.
 }
 
 \usage{

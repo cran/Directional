@@ -7,7 +7,7 @@
 #### References: Mardia Kanti V. and Jupp Peter E. (2000)
 #### Directional statistics, page 124
 ################################
-circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-07, plot = TRUE) {
+circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-07, plot = FALSE) {
   ## u is an angular variable
   if ( !rads )   u <- u * pi/180
   if (fast) {
@@ -21,9 +21,8 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-07, plot = TRUE
     C <- sum( cos(u) ) / n
     S <- sum( sin(u) )/ n
     Rbar <- sqrt( C^2 + S^2 )  ## mean resultant length
-    if (C > 0) {
-      mesos <- atan(S/C)
-    } else  mesos <- atan(S/C) + pi
+    est <- c(C, S)
+  	mesos <- ( atan(est[2]/est[1]) + pi * I(est[1] < 0) ) %% (2 * pi)
     MRL <- Rbar  ## mean resultant length
     circv <- 1 - Rbar
     circs <- sqrt( -2 * log(Rbar) )  ## sample cicrular standard deviation
@@ -46,15 +45,19 @@ circ.summary <- function(u, rads = FALSE, fast = FALSE, tol = 1e-07, plot = TRUE
     }
     if ( plot ) {
       r <- seq(0, 2 * pi, by = 0.01)
-      plot(cos(r), sin(r), type = "l", xlab = "Cosinus", ylab = "Sinus", cex.lab = 1.2)
+      plot(cos(r), sin(r), type = "l", xlab = "Cosinus", ylab = "Sinus", cex.lab = 1.2, cex.axis = 1.2, col = 4)
+      r <- seq(15, 345, by = 15) / 180 * pi
+      a <- cbind( cos(r), sin(r) )
+      for (i in 1:23)  segments(0, 0, a[i, 1], a[i, 2], col = "lightgrey")
       xx <- seq(-1, 1, by = 0.1)
       yy <- seq(-1, 1, by = 0.1)
       ta <- numeric(length(xx))
-      lines(ta, xx, type = "l", lty = 2)
-      lines(yy, ta, lty = 2)
-      points(cos(u), sin(u))
+      lines(ta, xx, type = "l", lty = 2, col = "grey", lwd = 2)
+      lines(yy, ta, lty = 2, col = "grey", lwd = 2)
+      points(cos(u), sin(u), pch = 20, col = 3)
     }
-    res <- list( mesos = mesos, confint = ci, kappa = kappa, MRL = MRL, circvariance = circv, circstd = circs, loglik = mod$objective - n * log(2 * pi) )
+    res <- list( mesos = mesos, confint = ci, kappa = kappa, MRL = MRL, circvariance = circv,
+                 circstd = circs, loglik = mod$objective - n * log(2 * pi) )
   }
   res
 }

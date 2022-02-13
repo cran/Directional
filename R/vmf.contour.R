@@ -28,7 +28,7 @@ vmf.contour <- function(k) {
 
                  # Number of levels
                  # the greater the more interpolate
-                 nlevels = 1000,
+                 nlevels = 200,
 
 
 

@@ -9,7 +9,7 @@ It estimates the percentage of correct classification via an m-fold cross valida
 }
 
 \usage{
-dirknn.tune(x, k = 2:10, ina, type = "S", mesos = TRUE, nfolds = 10, folds = NULL,
+dirknn.tune(ina, x, k = 2:10, type = "S", mesos = TRUE, nfolds = 10, folds = NULL,
 parallel = FALSE, stratified = TRUE, seed = FALSE, rann = FALSE)
 }
 
@@ -94,8 +94,8 @@ mu <- mu / sqrt( rowSums(mu^2) )
 da <- rmixvmf(200, prob, mu, k)
 x <- da$x
 ina <- da$id
-dirknn.tune(x, nfolds = 5, k = 2:6, ina, type = "S", mesos = TRUE)
-dirknn.tune(x, nfolds = 10, k = 2:6, ina, type = "S", mesos = TRUE)
+dirknn.tune(ina, x, k = 2:6, nfolds = 5,  type = "S", mesos = TRUE)
+dirknn.tune(ina, x, k = 2:6, nfolds = 10, type = "S", mesos = TRUE)
 }
 
 \keyword{ Directional k-NN algorithm }

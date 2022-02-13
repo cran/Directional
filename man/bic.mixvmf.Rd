@@ -29,12 +29,9 @@ If the data are not unit vectors, they are transformed into unit vectors.
 }
 
 \value{
-A list including:
+A plot of the BIC values and a list including:
 \item{BIC}{
 The BIC values for all the models tested.
-}
-\item{A plot}{
-A plot of the BIC values.
 }
 \item{runtime}{
 The run time of the algorithm. A numeric vector. The first element is the user time, the second element is the system time and the third element is the elapsed time.
