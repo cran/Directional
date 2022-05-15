@@ -30,17 +30,11 @@ kent.datacontour <- function(x) {
   n <- 100
   x1 <- seq(min(u[, 1]) - 5, max(u[, 1]) + 5, length = n)  ## latitude
   x2 <- seq(min(u[, 2]) - 5, max(u[, 2]) + 5, length = n)  ## longitude
-  mat <- matrix(nrow = n, ncol = n)
 
-  for (i in 1:n) {
-    for (j in 1:n) {
-      y <- Directional::euclid( c(x1[i], x2[j]) )
-      can <-  -ckb + k * y %*% G[, 1] + b * (y %*% G[, 2])^2 -
-        b * (y %*% G[, 3])^2
-      if ( abs(exp( can) ) < Inf )  mat[i, j] <- exp(can)
-    }
-  }
-
+  wa <- NULL
+  for ( i in 1:n )  wa <- rbind(wa, Directional::euclid( cbind(x1[i], x2) ) )
+  can <- Directional::dkent(wa, a$G, a$param, logden = FALSE)
+  mat <- matrix(can, byrow = TRUE, nrow = n, ncol = n)
 
   # Continuous color legend
   # Note that it disappears EVERY BLACK LINE!!!!!!

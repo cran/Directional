@@ -1,15 +1,15 @@
-esag.da <- function(y, ina, fraction = 0.2, R = 100, seed = FALSE) {
+esag.da <- function(y, ina, fraction = 0.2, R = 100, seed = NULL) {
   runtime <- proc.time()
   ina <- as.numeric(ina)
   n <- dim(y)[1]
   frac <- round(fraction * n)
   g <- max(ina)
   mesi <- matrix(nrow = g, ncol = 3)
-  if (seed)  set.seed(1234567)
+  if ( !is.null(seed) )  set.seed(seed)
   mat <- matrix(0, frac, g)
   per <- numeric(R)
   for (i in 1:R) {
-    nu <- sample(1:n, frac)
+    nu <- Rfast2::Sample.int(n, frac)
     id <- ina[-nu]
     ytrain <- y[-nu, ]
     ytest <- y[nu, ]

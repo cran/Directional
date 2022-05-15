@@ -9,8 +9,8 @@ It estimates the percentage of correct classification via an m-fold cross valida
 }
 
 \usage{
-dirknn.tune(ina, x, k = 2:10, type = "S", mesos = TRUE, nfolds = 10, folds = NULL,
-parallel = FALSE, stratified = TRUE, seed = FALSE, rann = FALSE)
+dirknn.tune(ina, x, k = 2:10, mesos = TRUE, nfolds = 10, folds = NULL,
+parallel = FALSE, stratified = TRUE, seed = NULL, rann = FALSE)
 }
 
 \arguments{
@@ -25,9 +25,6 @@ How many folds to create?
 }
 \item{k}{
 A vector with the number of nearest neighbours to consider.
-}
-\item{type}{
-If type is "S", the standard k-NN algorithm is to be used, else "NS" for the non standard one. See below (details) for more information.
 }
 \item{mesos}{
 A boolean variable used only in the case of the non standard algorithm (type="NS"). Should the average of the distances be calculated (TRUE) or not (FALSE)? If it is FALSE, the harmonic mean is calculated.
@@ -94,8 +91,8 @@ mu <- mu / sqrt( rowSums(mu^2) )
 da <- rmixvmf(200, prob, mu, k)
 x <- da$x
 ina <- da$id
-dirknn.tune(ina, x, k = 2:6, nfolds = 5,  type = "S", mesos = TRUE)
-dirknn.tune(ina, x, k = 2:6, nfolds = 10, type = "S", mesos = TRUE)
+dirknn.tune(ina, x, k = 2:6, nfolds = 5, mesos = TRUE)
+dirknn.tune(ina, x, k = 2:6, nfolds = 10, mesos = TRUE)
 }
 
 \keyword{ Directional k-NN algorithm }

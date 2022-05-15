@@ -5,14 +5,14 @@
 This is an R package that provides methods for the statistical analysis of directional data, including massive (very large scale) directional data.
 }
 \description{
-Circular-linear regression, spherical-spherical regression, spherical regression, discriminant analysis, ANOVA for circular and (hyper-)spherical data, tests for eaquality of conentration parameters, fitting distributions, random values generation, contour plots and many more functions are included in this package.
+Circular-linear regression, spherical-spherical regression, spherical regression, discriminant analysis, ANOVA for circular and (hyper-)spherical data, tests for eaquality of conentration parameters, fitting distributions, random values generation, contour plots and many more functions are included.
 }
 \details{
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 5.3\cr
-Date: \tab 2022-02-13\cr
+Version: \tab 5.4\cr
+Date: \tab 2022-05-15\cr
 License: \tab GPL-2\cr
 }
 }

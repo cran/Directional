@@ -31,7 +31,7 @@ fishkent <- function(x, B = 999) {
   } else {
     Tb <- numeric(B)
     for (i in 1:B) {
-      nu <- sample(n, n, replace = TRUE)
+      nu <- Rfast2::Sample.int(n, n, replace = TRUE)
       z <- x[nu, ]
       estim <- Directional::vmf.mle(z, fast = TRUE)
       k <- estim$kappa  ## the estimated concentration parameter

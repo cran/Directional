@@ -46,9 +46,10 @@ lrcirc.boot <- function(u1, u2, rads = TRUE, B = 999) {
   y1 <- x[1:n1, ] %*% rot1
   y2 <- x[-c(1:n1), ] %*% rot2
   wb <- numeric(B)
+  
   for (i in 1:B) {
-    b1 <- sample(n1, n1, replace = TRUE)
-    b2 <- sample(n2, n2, replace = TRUE)
+    b1 <- Rfast2::Sample.int(n1, n1, replace = TRUE)
+    b2 <- Rfast2::Sample.int(n2, n2, replace = TRUE)
     yb <- rbind(y1[b1, ], y2[b2, ])
     rsi <- rowsum(yb, ina)
     Ri <- sqrt(Rfast::rowsums(rsi^2))

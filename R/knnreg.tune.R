@@ -1,5 +1,5 @@
 knnreg.tune <- function(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl",
-               estim = "arithmetic", folds = NULL, seed = FALSE, graph = FALSE) {
+               estim = "arithmetic", folds = NULL, seed = NULL, graph = FALSE) {
   y <- as.matrix(y)
   x <- as.matrix(x)
   n <- dim(y)[1]

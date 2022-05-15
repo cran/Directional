@@ -26,7 +26,7 @@ rfb <- function(n, k, m, A) {
   lam <- lam[-q]
   x <- f.rbing(n, lam, fast = TRUE)$X  ## Chris and Theo's code
   x <- tcrossprod(x, V) ## simulated data
-  u <- log( runif(n) )
+  u <- log( Rfast2::Runif(n) )
   ffb <- k * x[, 2]  - Rfast::rowsums( x %*% A * x )
   fb <- k - Rfast::rowsums( x %*% A1 * x )
   x1 <- x[u <= c(ffb - fb), ]

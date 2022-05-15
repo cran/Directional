@@ -24,8 +24,8 @@ embed.boot <- function(x1, x2, B = 999) {
   ftb <- numeric(B)
 
   for (i in 1:B) {
-    b1 <- sample(n1, n1, replace = TRUE)
-    b2 <- sample(n2, n2, replace = TRUE)
+    b1 <- Rfast2::Sample.int(n1, n1, replace = TRUE)
+    b2 <- Rfast2::Sample.int(n2, n2, replace = TRUE)
     yb <- rbind(y1[b1, ], y2[b2, ])
     S <- rowsum(yb, ina) / ni
     Rbi <- sqrt( Rfast::rowsums(S^2) ) ## the mean resultant length of each group

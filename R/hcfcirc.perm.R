@@ -45,7 +45,7 @@ hcfcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
   if ( !is.na(Ft) ) {
     pft <- numeric(B)
     for (i in 1:B) {
-      id <- sample(n, n)
+      id <- Rfast2::Sample.int(n, n)
       Ci <- Rfast::group(x1[id], ina)
       Si <- Rfast::group(x2[id], ina)
       Ri <- sqrt(Ci^2 + Si^2)

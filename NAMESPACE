@@ -17,7 +17,7 @@ importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
 
 importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1, colspml.mle, hcf.circaov,
            lr.circaov, het.circaov, embed.circaov, vm.nb, vmnb.pred, spml.nb,
-           spmlnb.pred)
+           spmlnb.pred, Sample.int, Sample, Runif)
 
 importFrom("RANN", nn2)
 

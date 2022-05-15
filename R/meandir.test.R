@@ -28,8 +28,9 @@ meandir.test <- function(x, mu, B = 999) {
     y <- tcrossprod(x, A)  ## bring the data under H0
     ## y has mean direction equal to mu
     wb <- numeric(B)
+	
     for (i in 1:B) {
-      nu <- sample(1:n, n, replace = TRUE)
+      nu <- Rfast2::Sample.int(n, n, replace = TRUE)
       z <- y[nu, ]
       k1 <- Directional::vmf.mle(z, fast = TRUE)$k  ## concentration parameter under H1
       zbar <- Rfast::colmeans(z)  ## z-bar
@@ -40,6 +41,7 @@ meandir.test <- function(x, mu, B = 999) {
       apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI(k1, p/2 - 1, expon.scaled = TRUE) ) + k1
       wb[i] <- 2 * n * ( k1 * sqrt( sum(zbar^2) ) - k0 * sum(mu * zbar) - apk1 + apk0 )
     }
+	
     pvalue <- (sum(wb > w) + 1)/(B + 1)
   } else  pvalue <- pchisq(w, p - 1, lower.tail = FALSE)
 

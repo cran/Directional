@@ -41,7 +41,7 @@ lrcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
 
   wp <- numeric(B)
   for (i in 1:B) {
-    ind <- sample(ina, n)
+    ind <- Rfast2::Sample(ina, n)
     rsi <- rowsum(x, ind)
     Ri <- sqrt( Rfast::rowsums(rsi^2) )
     mi <- rsi/ni

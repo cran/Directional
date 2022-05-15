@@ -16,7 +16,7 @@ het.perm <- function(x1, x2, B = 999) {
 
   ptt <- numeric(B)
   for (i in 1:B) {
-    ind <- sample(ina, n)
+    ind <- Rfast2::Sample(ina, n)
     S <- rowsum(x, ind)
     kapa <- numeric(2)
     mi <- rowsum(x, ind) / ni

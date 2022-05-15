@@ -7,7 +7,7 @@ circbeta.mle <- function(x, rads = FALSE) {
     a <- exp(par[2])
     b <- exp(par[3])
     con <- cos(x - m)
-    den <-  -(a + b) * log(2) - lbeta(a, b) + (a - 0.5) * log(1 + con) + (b - 0.5) * log(1 - con)
+    den <-  -(a + b) * log(2) - lbeta(a, b) + (a - 0.5) * log1p(con) + (b - 0.5) * log(1 - con)
     -sum(den)
   }
 

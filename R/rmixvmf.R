@@ -13,7 +13,7 @@ rmixvmf <- function(n, prob, mu, k) {
   ## k is a vector with the concentration parameters
   p2 <- c( 0, cumsum(prob) )
   p <- ncol(mu)  ## dimensionality of the data
-  u <- runif(n)
+  u <- Rfast2::Runif(n)
   g <- length(k)  ## how many clusters are there
   ina <- as.numeric( cut(u, breaks = p2) )  ## the cluster of each observation
   ina <- sort(ina)

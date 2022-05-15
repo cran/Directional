@@ -42,7 +42,7 @@ hclr.perm <- function(x1, x2, B = 999) {
 
   Pp <- numeric(B)
   for (i in 1:B) {
-    ind <- sample(ina, n)
+    ind <- Rfast2::Sample(ina, n)
     S <- rowsum(x, ind)
     Ri <- sqrt( Rfast::rowsums(S^2) )  ## the resultant length of each group
     ## Next we stimate the common concentration parameter kappa under H0 and H1

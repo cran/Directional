@@ -1,11 +1,11 @@
-\name{Random values generation from the ESAG distribution}
+\name{Simulation of random values from the ESAG distribution}
 \alias{resag}
 \title{
-Random values generation from the ESAG distribution
+Simulation of random values from the ESAG distribution
 }
 
 \description{
-Random values generation from the ESAG distribution.
+Simulation of random values from the ESAG distribution.
 }
 
 \usage{

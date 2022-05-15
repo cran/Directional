@@ -9,7 +9,7 @@ It classifies new observations to some known groups via the k-NN algorithm.
 }
 
 \usage{
-dirknn(xnew, ina, x, k = 5, type = "S", mesos = TRUE, parallel = FALSE, rann = FALSE)
+dirknn(xnew, ina, x, k = 5, mesos = TRUE, parallel = FALSE, rann = FALSE)
 }
 
 \arguments{
@@ -24,9 +24,6 @@ The data, a numeric matrix with unit vectors.
 }
 \item{k}{
 The number of nearest neighbours, set to 5 by default. It can also be a vector with many values.
-}
-\item{type}{
-If type is "S", the standard k-NN algorithm is to be used, else "NS" for the non standard one. See below (details) for more information.
 }
 \item{mesos}{
 A boolean variable used only in the case of the non standard algorithm (type="NS"). Should the average of the distances be calculated (TRUE) or not (FALSE)? If it is FALSE, the harmonic mean is calculated.
@@ -78,15 +75,11 @@ x <- da$x[nu, ]
 ina <- da$id[nu]
 xx <- da$x[-nu, ]
 id <- da$id[-nu]
-a1 <- dirknn(xx, ina, x, k = 5, type = "S", mesos = TRUE)
-a2 <- dirknn(xx, ina, x, k = 5, type = "NS", mesos = TRUE)
-a3 <- dirknn(xx, ina, x, k = 5, type = "S", mesos = FALSE)
-a4 <- dirknn(xx, ina, x, k = 5, type = "NS", mesos = FALSE)
+a1 <- dirknn(xx, ina, x, k = 5, mesos = TRUE)
+a2 <- dirknn(xx, ina, x, k = 5, mesos = FALSE)
 b <- vmfda.pred(xx, x, ina)
 table(id, a1)
 table(id, a2)
-table(id, a3)
-table(id, a4)
 }
 
 \keyword{ Directional k-NN algorithm }

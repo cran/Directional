@@ -7,7 +7,7 @@
 #### References: J. E. Morris and P. J. Laycock (1974)
 #### Discriminant Analysis of Directional Data (Biometrika)
 ################################
-vmf.da <- function(x, ina, fraction = 0.2, R = 200, seed = FALSE) {
+vmf.da <- function(x, ina, fraction = 0.2, R = 200, seed = NULL) {
   ## x is the data set
   ## ina is the group indicator variable
   ## fraction denotes the percentage of the sample to be used as the test sample
@@ -22,10 +22,10 @@ vmf.da <- function(x, ina, fraction = 0.2, R = 200, seed = FALSE) {
   mesi <- matrix(nrow = g, ncol = p)
   k <- numeric(g)
   ## if seed==TRUE then the results will always be the same
-  if ( seed )  set.seed(1234567)
+  if ( !is.null(seed) )  set.seed(seed)
 
   for (i in 1:R) {
-    nu <- sample(1:n, frac)
+    nu <- Rfast2::Sample.int(n, frac)
     mod <- Rfast::multivmf.mle(x[-nu, ], ina[-nu], ell = FALSE)
     ki <- mod$ki
     mat <- (p/2 - 1) * log(ki) + ki * tcrossprod(mod$mi, x[nu, ]) - log( besselI(ki, p/2 - 1, expon.scaled = TRUE) ) - ki

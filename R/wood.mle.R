@@ -52,7 +52,7 @@ wood.mle <- function(y) {
   b <- atan2( w, v )
   n <- dim(y)[1]
 
-  ka <- optimize( lik, c(0, 1000), maximum = TRUE )
+  ka <- optimize( lik, c(0, 1000), maximum = TRUE, tol = 1e-7 )
   k <- ka$maximum
   se.mod <- sqrt( diag( solve(mod$hessian) ) )
   se.a <- sqrt( (1 - exp( - 2 * k)) / (1 + exp(- 2* k ) ) / (n * k) )

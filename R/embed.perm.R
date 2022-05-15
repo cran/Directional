@@ -13,7 +13,7 @@ embed.perm <- function(x1, x2, B = 999) {
 
   pft <- numeric(B)
   for (i in 1:B) {
-    ind <- sample(ina, n)
+    ind <- Rfast2::Sample(ina, n)
     S <- rowsum(x, ind) / ni
     Rbi <- sqrt( Rfast::rowsums(S^2) )
     pft[i] <- (n - 2) * ( sum(ni * Rbi^2) - n * Rbar^2) / ( n - sum(ni * Rbi^2) )

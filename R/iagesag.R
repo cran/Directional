@@ -10,7 +10,7 @@ iagesag <- function(x, B = 1, tol = 1e-07) {
     tb <- numeric(B)
     n <- dim(x)[1]
     for (i in 1:B) {
-      nu <- sample(n, n, replace = TRUE)
+      nu <- Rfast2::Sample.int(n, n, replace = TRUE)
 	    mod <- Directional::esag.mle(x[nu, ], tol = tol)
       tb[i] <- 2 * mod$loglik - 2 * mod$iag.loglik
     }

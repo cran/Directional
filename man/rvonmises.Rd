@@ -1,14 +1,14 @@
-\name{Random values simulation from some circular distributions}
+\name{Simulation of random values from some circular distributions}
 \alias{rvonmises}
 \alias{rwrapcauchy}
 \alias{rspml}
 \alias{rcircbeta}
 \title{
-Random values simulation from some circular distributions
+Simulation of random values from some circular distributions
 }
 
 \description{
-Random values simulation from some circular distributions.
+Simulation of random values from some circular distributions.
 }
 
 \usage{

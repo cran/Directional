@@ -1,20 +1,19 @@
 dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = FALSE,
-                  type = c("vmf", "iag", "esag", "kent", "sknn", "nsknn"),
-                  seed = FALSE, B = 1000, parallel = FALSE) {
+                  type = c("vmf", "iag", "esag", "kent", "knn"),
+                  seed = NULL, B = 1000, parallel = FALSE) {
 
   if ( is.null(folds) )  folds <- Directional::makefolds(ina, nfolds = nfolds, stratified = stratified, seed = seed)
   nfolds <- length(folds)
 
-  est1 <- est2 <- est3 <- est4 <- est5 <- est6 <- list()
+  est1 <- est2 <- est3 <- est4 <- est5 <- list()
   for (i in 1:nfolds) {
     est1[[ i ]] <- NA
     est2[[ i ]] <- NA
     est3[[ i ]] <- NA
     est4[[ i ]] <- NA
     est5[[ i ]] <- NA
-    est6[[ i ]] <- NA
   }
-  per1 <- per2 <- per3 <- per4 <- per5 <- per6 <- NA
+  per1 <- per2 <- per3 <- per4 <- per5 <- NA
   p <- dim(x)[2]
 
   if ( sum( type == "vmf") == 1 ) {
@@ -115,9 +114,9 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
     }
   }
 
-  if ( sum( type == "sknn" ) == 1 ) {
+  if ( sum( type == "knn" ) == 1 ) {
     per5 <- matrix(0, nfolds, length(k) )
-    colnames(per5) <- paste("sknn", k, sep = " ")
+    colnames(per5) <- paste("knn", k, sep = " ")
     g <- max(ina)
     for (i in 1:nfolds) {
       nu <- folds[[ i ]]
@@ -126,50 +125,12 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
     }
   }
 
-  if ( sum( type == "nsknn" ) == 1 ) {
-    per6 <- matrix(0, nfolds, length(k) )
-    colnames(per6) <- paste("nsknn", k, sep = " ")
-    g <- max(ina)
-    for (i in 1:nfolds) {
-      nu <- folds[[ i ]]
-      est6[[ i ]] <- Directional::dirknn(x[nu, , drop = FALSE], ina[-nu], x[-nu, ], k = k, type = "NS")
-      per6[i, ] <- Rfast::colmeans(est6[[ i ]] == ina[nu])
-    }
-  }
-
-  per <- cbind(per1, per2, per3, per4, per5, per6)
+  per <- cbind(per1, per2, per3, per4, per5)
   perf <- Rfast::colmeans(per)
   names(perf) <- colnames(per)
   names(perf)[1:4] <- c("vmf", "iag", "esag", "kent")
 
-  if ( any( !is.na(est5) ) &  any( !is.na(est6) ) ) {
-
-    est1 <- est5[[ 1 ]]
-    est2 <- est6[[ 1 ]]
-    for (i in 2:nfolds) {
-      est1 <- rbind( est1, est5[[ i ]] )
-      est2 <- rbind( est2, est6[[ i ]] )
-    }
-    diaf1 <- est1 - ina[unlist(folds)]
-    diaf2 <- est2 - ina[unlist(folds)]
-    n <- dim(est1)[1]
-    bf1 <- bf2 <- numeric(B)
-
-    for (i in 1:B) {
-      ind <- sample.int(n, n, TRUE)
-      m <- Rfast::colmeans(diaf1[ind, ] == 0)
-      poio <- which.max(m)
-      bf1[i] <- mean(diaf1[-ind, poio] == 0)
-      m <- Rfast::colmeans(diaf2[ind, ] == 0)
-      poio <- which.max(m)
-      bf2[i] <- mean(diaf2[-ind, poio] == 0)
-    }
-    perf[5] <- mean(bf1)
-    perf[6] <- mean(bf2)
-    perf <- perf[1:6]
-    names(perf)[5:6] <- c("sknn", "nsknn")
-
-  } else if ( any( !is.na(est5) ) )  {
+  if ( any( !is.na(est5) ) )  {
 
     est <- est5[[ 1 ]]
     for (i in 2:nfolds)   est <- rbind( est, est5[[ i ]] )
@@ -184,31 +145,8 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
       bf[i] <- mean(diaf[-ind, poio] == 0)
     }
     perf[5] <- mean(bf)
-    perf[6] <- NA
-    perf <- perf[1:6]
-    names(perf)[5] <- c("sknn")
-    names(perf)[6] <- c("nsknn")
-
-  } else if ( any( !is.na(est6) ) ){
-
-    est <- est6[[ 1 ]]
-    for (i in 2:nfolds)   est <- rbind( est, est6[[ i ]] )
-    diaf <- est - ina[unlist(folds)]
-    n <- dim(est)[1]
-    bf <- numeric(B)
-
-    for (i in 1:B) {
-      ind <- sample.int(n, n, TRUE)
-      m <- Rfast::colmeans(diaf[ind, ] == 0)
-      poio <- which.max(m)
-      bf[i] <- mean(diaf[-ind, poio] == 0)
-    }
-    perf[6] <- mean(bf)
-    perf[5] <- NA
-    perf <- perf[1:6]
-    names(perf)[5] <- c("sknn")
-    names(perf)[6] <- c("nsknn")
-
+    perf <- perf[1:5]
+    names(perf)[5] <- "knn"
   }
 
   perf

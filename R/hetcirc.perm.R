@@ -43,7 +43,7 @@ hetcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
 
   pta <- numeric(B)
   for (j in 1:B) {
-    id <- sample(N, N)
+    id <- Rfast2::Sample.int(N, N)
     C <- Rfast::group(x1[id], ina)
     S <- Rfast::group(x2[id], ina)
     mi <- atan(S/C) + pi * as.numeric(C < 0)

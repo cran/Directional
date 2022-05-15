@@ -10,7 +10,7 @@ Tuning of the k-NN regression with Euclidean or (hyper-)spherical response and o
 
 \usage{
 knnreg.tune(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl",
-estim = "arithmetic", folds = NULL, seed = FALSE, graph = FALSE)
+estim = "arithmetic", folds = NULL, seed = NULL, graph = FALSE)
 }
 
 \arguments{
@@ -39,7 +39,7 @@ Once the k observations whith the smallest distance are discovered, what should 
 Do you already have a list with the folds? If not, leave this NULL.
 }
 \item{seed}{
-If seed is TRUE, the results will always be the same.
+You can specify your own seed number here or leave it NULL.
 }
 \item{graph}{
 If this is TRUE a graph with the results will appear.

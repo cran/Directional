@@ -4,8 +4,8 @@
 #### Tsagris Michail 01/2016
 #### mtsagris@yahoo.gr
 ################################
-dirknn.tune <- function(ina, x, k = 2:10, type = "S", mesos = TRUE, nfolds = 10, folds = NULL,
-                        parallel = FALSE, stratified = TRUE, seed = FALSE, rann = FALSE) {
+dirknn.tune <- function(ina, x, k = 2:10, mesos = TRUE, nfolds = 10, folds = NULL,
+                        parallel = FALSE, stratified = TRUE, seed = NULL, rann = FALSE) {
   ## x is the matrix containing the data
   ## nfolds is the number of folds, set to 10 by default
   ## A is the maximum number of neighbours to use
@@ -28,7 +28,7 @@ dirknn.tune <- function(ina, x, k = 2:10, type = "S", mesos = TRUE, nfolds = 10,
     aba <- as.vector( folds[[ vim ]] )
     aba <- aba[aba > 0]
     g <- Directional::dirknn(x = x[-aba, ], xnew = x[aba, ,drop = FALSE], k = k, ina = ina2,
-                             type = type, mesos = mesos, parallel = parallel, rann = rann)
+                             mesos = mesos, parallel = parallel, rann = rann)
     be <- g - id
     per[vim, ] <- Rfast::colmeans(be == 0)
   }

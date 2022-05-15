@@ -9,7 +9,7 @@ Cross validation for estimating the classification rate of a discrminant analysi
 }
 
 \usage{
-vmf.da(x, ina, fraction = 0.2, R = 200, seed = FALSE)
+vmf.da(x, ina, fraction = 0.2, R = 200, seed = NULL)
 }
 
 \arguments{
@@ -68,7 +68,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 \examples{
 x <- rvmf(100, rnorm(4), 15)
 ina <- rep(1:2, each = 50)
-vmf.da(x, ina, fraction = 0.2, R = 200, seed = FALSE)
+vmf.da(x, ina, fraction = 0.2, R = 200)
 }
 
 \keyword{ Discriminant analysis }

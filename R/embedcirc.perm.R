@@ -22,7 +22,7 @@ embedcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
 
   pfb <- numeric(B)
   for (i in 1:B) {
-    ind <- sample(ina, n)
+    ind <- Rfast2::Sample(ina, n)
     Ci <- Rfast::group(x1, ind)
     Si <- Rfast::group(x2, ind)
     Rbi <- (Ci^2 + Si^2)/ni^2

@@ -9,7 +9,7 @@ Cross validation for estimating the classification rate of a discrminant analysi
 }
 
 \usage{
-esag.da(y, ina, fraction = 0.2, R = 100, seed = FALSE)
+esag.da(y, ina, fraction = 0.2, R = 100, seed = NULL)
 }
 
 \arguments{
@@ -26,7 +26,7 @@ The fraction of data to be used as test set.
 The number of repetitions.
 }
 \item{seed}{
-If seed is TRUE, the results will always be the same.
+You can specify your own seed number here or leave it NULL.
 }
 }
 
@@ -73,7 +73,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 \examples{
 x <- rvmf(100, rnorm(3), 15)
 ina <- rep(1:2, each = 50)
-esag.da(x, ina, fraction = 0.2, R = 50, seed = FALSE)
+esag.da(x, ina, fraction = 0.2, R = 50)
 }
 
 \keyword{ Discriminant analysis }

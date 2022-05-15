@@ -28,8 +28,8 @@ het.boot <- function(x1, x2, B = 999) {
 
   for (i in 1:B) {
 
-    b1 <- sample(n1, n1, replace = TRUE)
-    b2 <- sample(n2, n2, replace = TRUE)
+    b1 <- Rfast2::Sample.int(n1, n1, replace = TRUE)
+    b2 <- Rfast2::Sample.int(n2, n2, replace = TRUE)
     yb1 <- y1[b1, ]   ;   yb2 <- y2[b2, ]
     yb <- rbind(yb1, yb2)
     mi <- rowsum(yb, ina) / ni
