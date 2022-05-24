@@ -34,7 +34,9 @@ The number of permutations to perform.
 }
 
 \details{
-The high concentration (hcf.perm), log-likelihood ratio (lr.perm), high concentration log-likelihood ratio (hclr.perm), embedding approach (embed.perm) or the non equal concentration parameters approach (het.perm) is used.
+The high concentration (hcf.perm), log-likelihood ratio (lr.perm), high concentration 
+log-likelihood ratio (hclr.perm), embedding approach (embed.perm) or the non equal 
+concentration parameters approach (het.perm) is used.
 }
 
 \value{
@@ -51,9 +53,14 @@ The common concentration parameter kappa based on all the data.
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. 
+Chicester: John Wiley & Sons.
 
-Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1), 119-135.
+Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for the 
+Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1), 119-135.
+
+Tsagris M. and Alenazi A. (2022). An investigation of hypothesis testing procedures for circular 
+and spherical mean vectors. Communications in Statistics-Simulation and Computation (Accepted for publication).
 }
 
 \author{

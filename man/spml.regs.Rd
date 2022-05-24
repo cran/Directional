@@ -69,7 +69,7 @@ x <- rnorm(200)
 z <- cbind(3 + 2 * x, 1 -3 * x)
 y <- cbind( rnorm(100,z[, 1], 1), rnorm(100, z[, 2], 1) )
 y <- y / sqrt( rowSums(y^2) )
-x <- matrix( rnorm(200 * 50), ncol = 50 )
+x <- matrix( rnorm(100 * 50), ncol = 50 )
 a <- Directional::spml.regs(y, x)
 x <- NULL
 }

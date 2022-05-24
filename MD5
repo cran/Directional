@@ -1,4 +1,4 @@
-82e740bc179f220cf4865ac32b7d0f40 *DESCRIPTION
+55ccb4057f7ad6a22c616b9f8f951662 *DESCRIPTION
 3d9095808e2eb255107580dc9fe52694 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
@@ -160,7 +160,7 @@ f414b6c45017583fd2ea112e6ea98769 *R/vmnb.pred.R
 93c5b1c7847a12548809a2b241bbb001 *R/worldmap.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
 8cce4b36347f7d7c2ed7c69b47789666 *man/Arotation.Rd
-ea4d9215cd36775ab1b6f98ed7397bdd *man/Directional-package.Rd
+5d9fb22cd1064244ee42d9dd3c8443cb *man/Directional-package.Rd
 2960938c4fc181af8912b34290a3a153 *man/bic.mixvmf.Rd
 c7f370cf6d3acc1c96d31164ecf6a22a *man/circ.cor1.Rd
 2372d23cccb31927362e46b380565890 *man/circ.cors1.Rd
@@ -191,12 +191,12 @@ c36f8b2ae08abdd77d62d7dd0db6a6ed *man/group.gof.Rd
 74e83d8f614022c13d7f29be64361ff1 *man/group.vm.Rd
 65f3d41f124969a19ba00d0971676623 *man/habeck.rot.Rd
 9573aad9f0373611e89026b21b2559ce *man/haversine.dist.Rd
-e1f8881e4ec43b78399bed112e5a9e9c *man/hcf.aov.Rd
-3827d095cbb938c6d7de7bac342a940a *man/hcf.boot.Rd
-eb241f2f70485bf399d6436776dfa845 *man/hcf.circaov.Rd
-233848f1e7658f1db3f07bf33a58e387 *man/hcf.perm.Rd
-5c12f6dc136ed2b8841547b67cba48f4 *man/hcfcirc.boot.Rd
-9c07d9f11dc74fb69bdc29136de04250 *man/hcfcirc.perm.Rd
+167f10a712a39da7b6779cb0c5d5eda2 *man/hcf.aov.Rd
+55c0a4549baa5a6c134aaad02a4e74fd *man/hcf.boot.Rd
+6576199d43914d01212e3b5fc8fe88ac *man/hcf.circaov.Rd
+40a99ccdf8e5fcf4357d4d87d6a8ef6e *man/hcf.perm.Rd
+5521617cc12edfb57f45f3ec15e232dc *man/hcfcirc.boot.Rd
+c65ba8a25fefdf2d66551dde5e2a1e5c *man/hcfcirc.perm.Rd
 801feb24ac2f04810f3aaf688bfe8d02 *man/iag.reg.Rd
 1963e15f0806302eb2ce00142e5f02d2 *man/iagesag.Rd
 b17889417a589c21dccb5b65a54254b3 *man/kent.contour.Rd
@@ -243,7 +243,7 @@ bbac8e89bf5b89132046643020cc52e7 *man/spherconc.test.Rd
 b759da1402cd3c89ed215a98128634ff *man/spml.fbed.Rd
 b4fa4b5e4e47c72f94c2d2edcecb3fac *man/spml.mle.Rd
 3ae6b261d3bc0a5634c649ae69f0524f *man/spml.reg.Rd
-8706032a054aa644ab2a223a74cc25cd *man/spml.regs.Rd
+a7eb5254c6d20a4fc1540e8b8cccecb2 *man/spml.regs.Rd
 f4b2606624a93305441b446d8b1d930f *man/tang.conc.Rd
 c1592c8dd6983b1b623c5568c56ffd30 *man/vec.Rd
 bd245b4bf0c0524e6345c382793b9f56 *man/visual.check.Rd
