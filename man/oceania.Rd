@@ -51,7 +51,7 @@ R implementation and documentation: Christos Adam \email{pada4m4@gmail.com} and 
 }
 }
 \examples{
-\dontrun{
+\donttest{
 oceania()
 }
 }

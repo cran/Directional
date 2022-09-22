@@ -6,7 +6,7 @@ esag.mle <- function(y, full = FALSE, tol = 1e-06) {
   z <- t(y)
   nc <- n/2
 
-   mag <- function(param, z, nc){
+   mag <- function(param, z, nc, I3) {
      m <- param[1:3]
      gam1 <- param[4]
      gam2 <- param[5]
@@ -27,18 +27,18 @@ esag.mle <- function(y, full = FALSE, tol = 1e-06) {
      - 0.5 * sum(a2) + nc * rl + 1.5 * sum( log(g1) ) - sum( log(M2) )
    }
 
-  oop <- options(warn = -1)
-  on.exit( options(oop) )
+  suppressWarnings({
   mod <- Rfast::iag.mle(y)
-  da <- nlm(mag, c(mod$mesi[1, ], rnorm(2) ), z = z, nc = nc, iterlim = 5000)
+  da <- nlm(mag, c(mod$mesi[1, ], rnorm(2) ), z = z, nc = nc, I3 = I3, iterlim = 5000)
   lik1 <-  -da$minimum
-  da <- optim(da$estimate, mag, z = z, nc = nc, control = list(maxit = 10000) )
+  da <- optim(da$estimate, mag, z = z, nc = nc, I3 = I3, control = list(maxit = 10000) )
   lik2 <-  -da$value
   while ( lik2 - lik1 > tol) {
     lik1 <- lik2
-    da <- optim(da$par, mag, z = z, nc = nc, control = list(maxit = 10000) )
+    da <- optim(da$par, mag, z = z, nc = nc, I3 = I3, control = list(maxit = 10000) )
     lik2 <-  -da$value
   }
+  })
   if ( full ) {
     mu <- da$par[1:3]
     gam1 <- da$par[4]  ;    gam2 <- da$par[5]

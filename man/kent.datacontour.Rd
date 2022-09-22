@@ -39,7 +39,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 x <- rvmf(100, rnorm(3), 10)
 kent.mle(x)
 y <- euclid.inv(x)
-\dontrun{
+\donttest{
 kent.datacontour(y)
 }
 }

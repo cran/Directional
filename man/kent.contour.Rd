@@ -49,7 +49,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 }
 
 \examples{
-\dontrun{
+\donttest{
 kent.contour(10, 4)
 }
 }

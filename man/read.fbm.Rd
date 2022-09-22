@@ -41,7 +41,7 @@ R implementation and documentation: Michail Tsagris <mtsagris@uoc.gr>.
 }
 
 \examples{
-\dontrun{
+\donttest{
 dataset <- matrix( runif(100 * 50, 1, 100), ncol = 50 )
 write.csv(dataset, "dataset.csv")
 a <- read.fbm("dataset.csv", select = 1:50)

@@ -24,10 +24,10 @@ ggvm.mle(phi, rads = FALSE)
 
 \arguments{
 \item{x}{
-A numerical vector with the circular data. They must be expressed in radians.
+A numerical vector with the circular data. They can either be expressed in radians or in degrees.
 }
 \item{phi}{
-A numerical vector with the circular data.
+A numerical vector with the circular data. They can either be expressed in radians or in degrees.
 }
 \item{rads}{
 If the data are in radians set this to TRUE.
@@ -75,7 +75,7 @@ The lambda parameter of the circular exponential distribution.
 }
 
 \references{
-Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley \& Sons.
+Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
 Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
 and a fast implementation of Is(x). Computational Statistics, 27(1): 177-190.

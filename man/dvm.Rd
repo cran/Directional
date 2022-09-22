@@ -32,7 +32,7 @@ A vector with circular data.
 The mean value of the von Mises distribution and of the cardioid, a scalar. This is the median for the circular Purkayastha distribution.
 }
 \item{mu}{
-The mean vector, a vector with two values for the "spml" and with
+The mean vector, a vector with two values for the "spml".
 }
 \item{k}{
 The concentration parameter.
@@ -40,7 +40,7 @@ The concentration parameter.
 \item{rho}{The \eqn{rho} parameter of the wrapped Cauchy distribution.
 }
 \item{a}{
-The \eqn{alpha} parameter of the circular Purkayastha distribution or the \eqn{alpha} parameter of the
+The \eqn{\alpha} parameter of the circular Purkayastha distribution or the \eqn{\alpha} parameter of the
 circular beta distribution.
 }
 \item{b}{

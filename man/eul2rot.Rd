@@ -37,7 +37,7 @@ A roation matrix.
 }
 
 \references{
-Green, P. J. \& Mardia, K. V. (2006). Bayesian alignment using hierarchical models, with applications in proteins bioinformatics. Biometrika, 93(2):235--254.
+Green, P. J. and Mardia, K. V. (2006). Bayesian alignment using hierarchical models, with applications in proteins bioinformatics. Biometrika, 93(2):235--254.
 
 }
 

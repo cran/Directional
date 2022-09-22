@@ -42,7 +42,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 }
 
 \examples{
-\dontrun{
+\donttest{
 vmf.contour(5)
 }
 }

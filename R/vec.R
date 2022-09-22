@@ -22,10 +22,7 @@ vec <- function(x, n = 1, deg = 90) {
   } else if (deg > 0 & deg < 180) {
     mat <- matrix(nrow = n, ncol = p)
     crit <- numeric(n)
-	
-    oop <- options(warn = -1) 
-	on.exit( options(oop) )
-	  
+    suppressWarnings({	
     for (i in 1:n) {
       ini <- rnorm(p)
       pa <- nlm(fu, ini, x = x)
@@ -41,6 +38,7 @@ vec <- function(x, n = 1, deg = 90) {
       mat[i, ] <- y
       crit[i] <- ca
     }
+	})
   }
 
   runtime <- proc.time() - runtime

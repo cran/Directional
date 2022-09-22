@@ -79,7 +79,7 @@ Micah J. Waldstein \email{micah@waldste.in} and Christos Adam \email{pada4m4@gma
 \examples{
 x <- rvmf(100, rnorm(3), 15)
 x <- euclid.inv(x)
-\dontrun{
+\donttest{
 vmf.kerncontour(x, "rot")
 }
 }

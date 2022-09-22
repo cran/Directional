@@ -66,7 +66,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 }
 
 \examples{
-k <- runif(4, 4, 20)
+k <- runif(4, 4, 6)
 prob <- c(0.2, 0.4, 0.3, 0.1)
 mu <- matrix(rnorm(16), ncol = 4)
 mu <- mu / sqrt( rowSums(mu^2) )

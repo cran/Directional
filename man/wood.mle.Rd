@@ -25,7 +25,7 @@ The Wood distribution is fitted to some data and its parameters are estimated. I
 \value{
 A list including:
 \item{info}{
-A 5 x 3 matrix containing the 5 parameters, gamma, delta, alpha, beta and kappa along with their corresponding 95\% confidence intervals all expressed in degrees.
+A 5 x 3 matrix containing the 5 parameters, \eqn{\gamma}, \eqn{\delta}, \eqn{\alpha}, \eqn{\beta} and \eqn{\kappa} along with their corresponding 95\% confidence intervals all expressed in degrees.
 }
 
 \item{modes}{

@@ -13,15 +13,15 @@ vmf.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
   }
   p <- dim(x)[2]
   ini <- solve(crossprod(x), crossprod(x, y))  ## initial values for the beta
-  oop <- options(warn = -1)
-  on.exit( options(oop) )
-  val1 <-  nlm(regvmf, ini, y = y, x = x, iterlim = 1000)
-  val2 <-  nlm(regvmf, val1$estimate, y = y, x = x, iterlim = 1000)
+  suppressWarnings({
+  val1 <- nlm(regvmf, ini, y = y, x = x, iterlim = 1000)
+  val2 <- nlm(regvmf, val1$estimate, y = y, x = x, iterlim = 1000)
   while (val1$minimum - val2$minimum > tol) {
     val1 <- val2
-    val2 <-  nlm(regvmf, val1$estimate, y = y, x = x, iterlim = 1000)
+    val2 <- nlm(regvmf, val1$estimate, y = y, x = x, iterlim = 1000)
   }
   da <- optim(val2$estimate, regvmf, y = y, x = x, control = list(maxit = 10000), hessian = TRUE)
+  })
   be <- matrix(da$par, ncol = 3)
   seb <- sqrt( diag( solve(da$hessian) ) )
   seb <- matrix(seb, ncol = 3)

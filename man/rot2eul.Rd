@@ -30,7 +30,7 @@ For a given rotation matrix, there are two eqivalent sets of euler angles.
 }
 
 \references{
-Green, P. J. \& Mardia, K. V. (2006). Bayesian alignment using hierarchical models, with applications
+Green, P. J. and Mardia, K. V. (2006). Bayesian alignment using hierarchical models, with applications
 in proteins bioinformatics. Biometrika, 93(2):235--254.
 
 http://www.staff.city.ac.uk/~sbbh653/publications/euler.pdf
