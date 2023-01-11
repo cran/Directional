@@ -1,7 +1,7 @@
 \name{Prediction in discriminant analysis based on ESAG distribution}
 \alias{esagda.pred}
 \title{
-Prediction of a new observation using discriminant analysis based on ESAGdistribution
+Prediction of a new observation using discriminant analysis based on ESAG distribution
 }
 
 \description{
@@ -43,7 +43,7 @@ Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wi
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
 R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }

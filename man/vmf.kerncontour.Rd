@@ -36,7 +36,7 @@ Sets the resolution of the density calculation.
 }
 
 \details{
-It calcculates the contour plot using a von Mises-Fisher kernel for spherical data only.
+It calculates the contour plot using a von Mises-Fisher kernel for spherical data only.
 }
 
 \value{

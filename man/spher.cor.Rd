@@ -33,9 +33,9 @@ The p-value of the no correlation hypothesis testing.
 Kanti V. Mardia and Peter E. Jupp. Directional statistics, pg. 254--255.
 }
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 %\note{
 %%  ~~further notes~~

@@ -43,9 +43,9 @@ Amson E, Arnold P, Van Heteren AH, Cannoville A, Nyakatura JA. Trabecular archit
 }
 
 \author{
-Eli Amson
+Eli Amson.
 
-R implementation and documentation: Eli Amson <eli.amson1988@gmail.com>
+R implementation and documentation: Eli Amson <eli.amson1988@gmail.com>.
 }
 
 %\note{

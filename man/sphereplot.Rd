@@ -32,8 +32,9 @@ An interactive 3D plot of the spherical data will appear.
 %}
 
 \author{
-Michail Tsagris
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} 
+Michail Tsagris.
+
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 %\note{

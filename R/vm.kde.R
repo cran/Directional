@@ -16,7 +16,7 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
   ## thumb is either 'none' (defualt), or 'tay' (Taylor, 2008) or
   ## 'rot' (Garcia-Portugues, 2013)
   ## if the data are in degrees we transform them into radians
-  if ( rads )  u <- u / 180 * pi
+  if ( !rads )  u <- u / 180 * pi
   n <- length(u)  ## sample size
   x <- cbind( cos(u), sin(u) )
   disa <- tcrossprod(x)

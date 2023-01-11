@@ -68,7 +68,6 @@ This procedure though takes place only for the k-NN algorithm.
 The good thing with the function is that you can run any method you want by supplying the 
 folds yourselves using the command \code{\link{makefolds}}. Then suppose you want to run  another method. 
 By suppying the same folds you will be able to have comparative results for all methods.
-
 }
 
 \value{
@@ -83,7 +82,6 @@ The classifier with the optimal performance.
 The bootstrap bias corrected performance.
 }
 }
-
 
 \references{
 Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere. 
@@ -100,7 +98,7 @@ Tsamardinos I., Greasidou E. & Borboudakis G. (2018). Machince Learning, 107(12)
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
 R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }

@@ -1,15 +1,8 @@
- ################################
-#### Contour plots of the Kent distribution on the sphere
-#### with data appearing
-#### Tsagris Michail 06/2014
-#### mtsagris@yahoo.gr
-################################
-kent.datacontour <- function(x) {
-  ## u contains the data in latitude and longitude
+kent.datacontour <- function(x, lat = 20, long = 20) {
+  ## x contains the data in latitude and longitude
   ## the first column is the latitude and the
   ## second column is the longitude
-
-  ## if u are eucliean coordinates turn them into
+  ## if x are euclidean coordinates turn them into
   ## latitude and longitude
   dm <- dim(x)
   if ( dm[2] == 3 ) {
@@ -28,13 +21,13 @@ kent.datacontour <- function(x) {
   lam <- c(0, -b, b)
   ckb <- Directional::fb.saddle(gam, lam)[3] ## logarithm of the normalising constant
   n <- 100
-  x1 <- seq(min(u[, 1]) - 5, max(u[, 1]) + 5, length = n)  ## latitude
-  x2 <- seq(min(u[, 2]) - 5, max(u[, 2]) + 5, length = n)  ## longitude
+  x1 <- seq(min(u[, 1]) - lat, max(u[, 1]) + lat, length = n)  ## latitude
+  x2 <- seq(min(u[, 2]) - long, max(u[, 2]) + long, length = n)  ## longitude
 
   wa <- NULL
   for ( i in 1:n )  wa <- rbind(wa, Directional::euclid( cbind(x1[i], x2) ) )
   can <- Directional::dkent(wa, a$G, a$param, logden = FALSE)
-  mat <- matrix(can, byrow = TRUE, nrow = n, ncol = n)
+  mat <- matrix(can, nrow = n, ncol = n, byrow = TRUE)
 
   # Continuous color legend
   # Note that it disappears EVERY BLACK LINE!!!!!!
@@ -43,61 +36,41 @@ kent.datacontour <- function(x) {
   # https://stackoverflow.com/questions/8068366/removing-lines-within-filled-contour-legend
 
   par(fg = NA)
-
   # Filled contoure plot in base R
   filled.contour(x1, x2, mat,
-
                  # Number of levels
                  # the greater the more interpolate
                  nlevels = 200,
-
-
-
                  # Select color function
                  color.palette =  colorRampPalette( c( "blue",
                                                        "cyan",
                                                        "yellow",
                                                        "red") ),
-
                  # Adjust axes to points
                  plot.axes = {
                     # Plot axes
                       axis(1, col = "black", cex.axis = 1.2);
                       axis(2, col = "black", cex.axis = 1.2);
-
                     # Add points
                       points(u[, 1], u[, 2],
-                             col = "black");
-
+                      col = "black", pch = 16);
                    # Add contour lines
                    contour(x1, x2, mat,
-
                            # Color of contour lines
                            # Otherwise par(fg = NA) will
                            # disappear them...
-
                            col="black",
-
-
                            # Number of levels
                            nlevels = 10,
-
                            # Size of contour numbers
                            labcex = 0.8,
-
                            # Width of contour lines
                            lwd = 1.5,
-
                            add = TRUE) },
-
                  # Legend tick lines
                  key.axes = {axis(4, col = "black", cex.lab = 1.2)},
-
                  cex.lab = 1.2,
-
                  # Axes labs
                  xlab = "Latitude",
                  ylab = "Longitude")
-
-
 }

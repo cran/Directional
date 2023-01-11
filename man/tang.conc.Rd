@@ -43,9 +43,9 @@ Fisher, N. I. (1995). Statistical analysis of circular data. Cambridge Universit
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 %\note{
 %%  ~~further notes~~

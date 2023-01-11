@@ -6,6 +6,7 @@
 \alias{dggvm}
 \alias{dcircbeta}
 \alias{dcardio}
+\alias{dcircexp}
 \title{
 Density of some circular distributions
 }
@@ -22,6 +23,7 @@ dcircpurka(x, m, a, rads = FALSE, logden = FALSE)
 dggvm(x, param, rads = FALSE, logden = FALSE)
 dcircbeta(x, m, a, b, rads = FALSE, logden = FALSE)
 dcardio(x, m, rho, rads = FALSE, logden = FALSE)
+dcircexp(x, lambda, rads = FALSE, logden = FALSE)
 }
 
 \arguments{
@@ -46,6 +48,9 @@ circular beta distribution.
 \item{b}{
 The \eqn{\beta} parameter of the circular beta distribution.
 }
+\item{lambda}{
+The \eqn{\lambda} parameter of the circular or wrapped exponential distribution. This must be positive.
+}
 \item{param}{
 The vector of parameters of the GGVM distribution as returned by the function \code{\link{ggvm.mle}}.
 }
@@ -67,12 +72,15 @@ A vector with the (log) density values of x.
 
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+
+Jammalamadaka, S. R. & Kozubowski, T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
+Advances and Applications in Statistics, 3(1), 77-103.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 \seealso{

@@ -11,8 +11,8 @@ It transforms the data from the Euclidan coordinates to latitude dn longitude.
 euclid.inv(U)
 }
 \arguments{
-  \item{U}{
-  A matrix of unit vectors, or even one single unit vector in three dimensions.
+\item{U}{
+A matrix of unit vectors, or even one single unit vector in three dimensions.
 }
 }
 
@@ -26,9 +26,9 @@ A two column matrix:
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 
 %\note{

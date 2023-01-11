@@ -96,9 +96,9 @@ Journal of the American Statistical Association, 93(443): 1068-1077.
 
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 \seealso{

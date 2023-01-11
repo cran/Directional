@@ -9,15 +9,15 @@ BIC to choose the number of components in a model based clustering using mixture
 }
 
 \usage{
-bic.mixvmf(x, A, n.start = 20)
+bic.mixvmf(x, G = 5, n.start = 20)
 }
 
 \arguments{
 \item{x}{
 A matrix containing directional data.
 }
-\item{A}{
-The maximum number of clusters to be tested. Default value is 3.
+\item{G}{
+The maximum number of clusters to be tested. Default value is 5.
 }
 \item{n.start}{
 The number of random starts to try. See also R's built-in function \code{\link{kmeans}} for more information about this.
@@ -43,9 +43,9 @@ Hornik, K. and Grun, B. (2014). movMF: An R package for fitting mixtures of von 
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 
 %\note{
@@ -60,7 +60,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 \examples{
 x <- as.matrix( iris[, 1:4] )
 x <- x / sqrt( rowSums(x^2) )
-bic.mixvmf(x, 5)
+bic.mixvmf(x)
 }
 
 \keyword{ Mixtures of von Mises-Fisher distributions }

@@ -3,6 +3,8 @@
 \alias{rwrapcauchy}
 \alias{rspml}
 \alias{rcircbeta}
+\alias{rcircpurka}
+\alias{rcircexp}
 \title{
 Simulation of random values from some circular distributions
 }
@@ -16,6 +18,8 @@ rvonmises(n, m, k, rads = TRUE)
 rwrapcauchy(n, m, rho, rads = TRUE)
 rspml(n, mu, rads = TRUE)
 rcircbeta(n, m, a, b, rads = TRUE)
+rcircpurka(n, m, a, rads = TRUE)
+rcircexp(n, lambda, rads = TRUE)
 }
 
 
@@ -36,10 +40,13 @@ The concentration parameter of the von Mises distribution. If k is zero the samp
 The \eqn{\rho} parameter of the Wrapped Cauchy distribution.
 }
 \item{a}{
-The \eqn{\alpha} parameter of the beta distribution
+The \eqn{\alpha} parameter of the beta distribution.
 }
 \item{b}{
-The \eqn{\beta} parameter of the beta distribution
+The \eqn{\beta} parameter of the beta distribution.
+}
+\item{lambda}{
+The \eqn{\lambda} parameter of the circular (wrapped) exponential distribution.
 }
 \item{rads}{
 If the mean angle is expressed in radians, this should be TRUE and FALSE otherwise. The simulated data will be expressed in radians or degrees depending on what the mean angle is expressed.
@@ -49,7 +56,7 @@ If the mean angle is expressed in radians, this should be TRUE and FALSE otherwi
 \details{
 For the von Mises distribution, the mean direction is transformed to the Euclidean coordinates (i.e. unit vector) and then the rvmf function is employed. It uses a rejection smapling as suggested by Andrew Wood in 1994. I have mentioned the description of the algorithm as I found it in Dhillon and Sra in 2003. Finally, the data are transformed to radians or degrees.
 
-For the wrapped Cauchy distribution the function generates Cauchy values \eqn{x} and then wrapps around the circle \eqn{x = x(mod 2 \pi)}. For the circular beta the function has some extra steps (see Zheng Sun's master thesis).
+For the wrapped Cauchy and wrapped exponential distributions the function generates Cauchy or exponential values \eqn{x} and then wrapps them around the circle \eqn{x = x(mod 2 \pi)}. For the circular beta the function has some extra steps (see Zheng Sun's master thesis).
 }
 
 \value{
@@ -68,12 +75,17 @@ https://dspace.library.uvic.ca/bitstream/handle/1828/2698/zhengsun_master_thesis
 Lai, M. (1994). Some results in the statistical analysis of directional data. Master thesis, University of Hong Kong.
 
 Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data. Journal of the American Statistical Association, 93(443): 1068-1077.
+
+Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70-83
+
+Jammalamadaka, S. R. & Kozubowski, T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
+Advances and Applications in Statistics, 3(1), 77-103.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 
 %\note{

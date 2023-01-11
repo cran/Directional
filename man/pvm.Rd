@@ -9,11 +9,11 @@ Probability density function of the von Mises-Fisher distribution.
 }
 
 \usage{
-pvm(theta, m, k, rads = FALSE)
+pvm(u, m, k, rads = FALSE)
 }
 
 \arguments{
-\item{theta}{
+\item{u}{
 A numerical value, either in radians or in degrees.
 }
 \item{m}{
@@ -41,9 +41,9 @@ Circular Statistics in R.
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 %\note{

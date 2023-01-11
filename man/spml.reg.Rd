@@ -1,5 +1,6 @@
 \name{Circular or angular regression}
 \alias{spml.reg}
+\alias{circpurka.reg}
 \title{
 Circular or angular regression
 }
@@ -10,6 +11,7 @@ Regression with circular dependent variable and Euclidean or categorical indepen
 
 \usage{
 spml.reg(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-07)
+circpurka.reg(y, x, rads = TRUE, xnew = NULL)
 }
 
 \arguments{
@@ -37,8 +39,10 @@ The tolerance value to terminate the Newton-Raphson algorithm.
 }
 
 \details{
-The Newton-Raphson algorithm is fitted in this regression as described in Presnell et al. (1998).
+For the spml.reg(), the Newton-Raphson algorithm is fitted in this regression as described in Presnell et al. (1998).
+For the circpurka.reg(), the optim() function is employed.
 }
+
 \value{
 A list including:
 \item{runtime}{
@@ -63,12 +67,14 @@ The fitted values expressed in radians if the obsereved data are in radians and 
 
 \references{
 Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data. Journal of the American Statistical Association, 93(443): 1068-1077.
+
+Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70-83
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 %\note{
 %%  ~~further notes~~
@@ -85,7 +91,8 @@ z <- cbind(3 + 2 * x, 1 -3 * x)
 y <- cbind( rnorm(100,z[ ,1], 1), rnorm(100, z[ ,2], 1) )
 y <- y / sqrt( rowSums(y^2) )
 y <- ( atan( y[, 2] / y[, 1] ) + pi * I(y[, 1] < 0) ) \%\% (2 * pi)
-spml.reg(y, x, rads = TRUE)
+a <- spml.reg(y, x, rads = TRUE, xnew = x)
+b <- circpurka.reg(y, x, rads = TRUE, xnew = x)
 }
 
 \keyword{ Circular regression }

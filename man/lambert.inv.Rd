@@ -34,9 +34,9 @@ Kent, John T. (1982). The Fisher-Bingham distribution on the sphere. Journal of 
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>.
 }
 %\note{
 %%  ~~further notes~~

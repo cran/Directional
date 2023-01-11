@@ -41,9 +41,9 @@ http://arxiv.org/pdf/1310.8110v1.pdf
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Giorgos Athineou <gioathineou@gmail.com>
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 %\note{
 %%  ~~further notes~~

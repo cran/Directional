@@ -66,9 +66,9 @@ https://link.springer.com/content/pdf/10.1007%2Fs11222-019-09872-2.pdf
 }
 
 \author{
-Michail Tsagris
+Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 %\note{

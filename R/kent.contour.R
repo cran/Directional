@@ -31,51 +31,34 @@ kent.contour <- function(k, b) {
 
   # Filled contoure plot in base R
   filled.contour(x, x, mat,
-
                  # Number of levels
                  # the greater the more interpolate
                  nlevels = 200,
-
-
-
                  # Select color function
                   color.palette = colorRampPalette( c( "blue",
                                                        "cyan",
                                                        "yellow",
                                                        "red") ),
-
-
                  # Adjust axes to points
-                 plot.axes = {   
-            
+                 plot.axes = {
                    # # Add points
                    #   points(u[, 1], u[, 2],
                    #          col = "black");
-
                    # Add contour lines
                    contour(x, x, mat,
-
                            # Color of contour lines
                            # Otherwise par(fg = NA) will
                            # disappear them...
-
                            col="black",
-
-
                            # Number of levels
                            nlevels = 10,
-
                            # Size of contour numbers
                            labcex = 0.8,
-
                            # Width of contour lines
                            lwd = 1.5,
-
                            add = TRUE) },
-
                  # Legend tick lines
                  key.axes = {axis(4, col = "black", cex.lab = 1.2)},
-
                  # Axes labs
                  xlab = "Latitude",
                  ylab = "Longitude",

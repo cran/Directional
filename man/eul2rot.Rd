@@ -43,9 +43,9 @@ Green, P. J. and Mardia, K. V. (2006). Bayesian alignment using hierarchical mod
 
 \author{
 
-Anamul Sajib<sajibstat@du.ac.bd>
+Anamul Sajib <sajibstat@du.ac.bd>.
 
-R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd>
+R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd>.
 }
 
 \seealso{

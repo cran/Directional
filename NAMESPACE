@@ -6,18 +6,19 @@ importFrom("graphics", contour, lines, plot, points, abline, filled.contour,
 importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
            .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
            quantile, rbeta, rnorm, runif, sd, uniroot, qnorm,
-           cov, model.matrix, nlm, integrate, rbinom, rcauchy)
+           cov, model.matrix, nlm, integrate, rbinom, rcauchy, rexp)
 
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            colSort, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
     	     rvonmises, acg.mle, racg, vm.mle, iag.mle, colhameans, spat.med,
 		    	 multivmf.mle, Sort, spml.reg, spml.mle, mediandir, circlin.cor,
 			     Table, colnth, wrapcauchy.mle, colOrder, group, dirknn, rbing,
-			     rbingham, eachrow, colvm.mle, spml.regs, matrnorm, colwatsons)
+			     rbingham, eachrow, colvm.mle, spml.regs, matrnorm, colwatsons,
+		    	 corpairs)
 
-importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1, colspml.mle, hcf.circaov,
-           lr.circaov, het.circaov, embed.circaov, vm.nb, vmnb.pred, spml.nb,
-           spmlnb.pred, Sample.int, Sample, Runif)
+importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1, colspml.mle,
+           hcf.circaov, lr.circaov, het.circaov, embed.circaov, vm.nb,
+           vmnb.pred, spml.nb, spmlnb.pred, Sample.int, Sample, Runif)
 
 importFrom("RANN", nn2)
 
