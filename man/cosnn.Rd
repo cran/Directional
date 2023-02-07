@@ -38,7 +38,8 @@ A matrix with the shortest distance of each xnew from x, if index is FALSE, or t
 }
 
 \references{
-Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere. Communications in Statistics: Case Studies, Data Analysis and Applications, 5(4), 467--491.
+Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere. 
+Communications in Statistics: Case Studies, Data Analysis and Applications, 5(4): 467--491.
 }
 
 \author{

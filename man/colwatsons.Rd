@@ -34,7 +34,7 @@ A matrix with two columns, the value of the test statistic and its associated p-
 
 
 \references{
-Jammalamadaka, S. Rao and SenGupta, A. (2001). Topics in Circular Statistics, pg. 156-157.
+Jammalamadaka S. Rao and SenGupta A. (2001). Topics in Circular Statistics, pg. 156--157.
 }
 
 \author{

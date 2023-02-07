@@ -23,7 +23,12 @@ If you want a fast, efficient simulation set this to TRUE.
 }
 
 \details{
-The user must have calculated the eigenvalues of the diagonal symmetric matrix of the Bingham distribution. The function accepts the q-1 eigenvalues only. This means, that the user must have subtracted the lowest eigenvalue from the rest and give the non zero ones. The function uses rejection sampling and it was written by Chris Fallaize and Theo Kypraios (University of Nottingham) and kindly offered. Any questions on the code can be addressed to one of the two aforementioned people. It is slightly different than the one Ketn et al. (2013) suggests.
+The user must have calculated the eigenvalues of the diagonal symmetric matrix of the Bingham distribution. 
+The function accepts the q-1 eigenvalues only. This means, that the user must have subtracted the 
+lowest eigenvalue from the rest and give the non zero ones. The function uses rejection sampling and 
+it was written by Chris Fallaize and Theo Kypraios (University of Nottingham) and kindly offered. 
+Any questions on the code can be addressed to one of the two aforementioned people. 
+It is slightly different than the one Kent et al. (2013) suggests.
 }
 
 \value{
@@ -38,14 +43,16 @@ If the argument fast is set to TRUE this information will not appear.
 }
 
 \references{
+Kent J. T., Ganeiber A. M. & Mardia K. V. (2018). A new unified approach for the simulation of a wide class of directional distributions. 
+Journal of Computational and Graphical Statistics, 27(2): 291--301.
+
 Kent J.T., Ganeiber A.M. and Mardia K.V. (2013).
 A new method to simulate the Bingham and related distributions
 in directional data analysis with applications.
 http://arxiv.org/pdf/1310.8110v1.pdf
 
-C.J. Fallaize and T. Kypraios (2014).
-Exact Bayesian Inference for the Bingham Distribution.
-Statistics and Computing (No volum assigned yet).
+Fallaize C. J. & Kypraios T. (2016). Exact bayesian inference for the Bingham distribution. 
+Statistics and Computing, 26(1): 349--360.
 http://arxiv.org/pdf/1401.2894v1.pdf
 }
 

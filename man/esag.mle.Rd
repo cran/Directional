@@ -17,7 +17,7 @@ esag.mle(y, full = FALSE, tol = 1e-06)
 A matrix with the data expressed in Euclidean coordinates, i.e. unit vectors.
 }
 \item{full}{
-If you want some extra information, the inverse of the covariance matrix, the \eqn{rho} parameter (smallest eigenvalue of the covariance matrix) and the angle of rotation \eqn{\psi} set this equal to TRUE. Otherwise leave it FALSE.
+If you want some extra information, the inverse of the covariance matrix, the \eqn{rho} parameter (smallest eigenvalue of the covariance matrix) and the angle of rotation \eqn{\psi}, set this equal to TRUE. Otherwise leave it FALSE.
 }
 \item{tol}{
 A tolerance value to stop performing successive optimizations.
@@ -25,9 +25,7 @@ A tolerance value to stop performing successive optimizations.
 }
 
 \details{
-MLE of the MLE of the ESAG distributiontribution, on the sphere, is implemented. ESAG stands for Elliptically Symmetric Angular Gaussian
-and it was suugested by Paine et al. (2017). Unlike the projected normal distribution this is rotationally symmetric and is a competitor
-of the spherical Kent distribution (which is also non rotational symmetric).
+MLE of the MLE of the ESAG distributiontribution, on the sphere, is implemented. ESAG stands for Elliptically Symmetric Angular Gaussian and it was suugested by Paine et al. (2018). Unlike the projected normal distribution this is rotationally symmetric and is a competitor of the spherical Kent distribution (which is also elliptically symmetric).
 }
 
 \value{
@@ -36,7 +34,7 @@ A list including:
 The mean vector in \eqn{R^3}.
 }
 \item{gam}{
-The two gamma parameters.
+The two \eqn{\gamma} parameters.
 }
 \item{loglik}{
 The log-likelihood value.

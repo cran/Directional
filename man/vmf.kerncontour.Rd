@@ -72,7 +72,7 @@ Micah J. Waldstein \email{micah@waldste.in} and Christos Adam \email{pada4m4@gma
 %}
 
 \seealso{
-\code{\link{vmf.kde}, \link{vmfkde.tune}, \link{vmf.contour}, \link{kent.datacontour}
+\code{\link{vmf.kde}, \link{vmfkde.tune}, \link{vmf.contour}
 }
 }
 

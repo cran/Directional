@@ -43,10 +43,11 @@ The value of the log-likelihood.
 }
 
 \references{
-Kent John (1982). The Fisher-Bingham distribution on the sphere. Journal of the Royal Statistical Society, Series B, 44(1): 71-80.
+Kent John (1982). The Fisher-Bingham distribution on the sphere. 
+Journal of the Royal Statistical Society, Series B, 44(1): 71--80.
 
 Kume Alfred and Wood Andrew T.A. (2005). Saddlepoint approximations for the Bingham and Fisher-Bingham normalizing constants.
-Biometrika, 92(2):465-476
+Biometrika, 92(2):465--476
 }
 
 \author{

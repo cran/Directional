@@ -30,7 +30,8 @@ A matrix containing spherical data (unit vectors).
 }
 
 \references{
-Kent, John T. (1982). The Fisher-Bingham distribution on the sphere. Journal of the Royal Statistical Society. Series B (Methodological) 44(1):71-80.
+Kent, John T. (1982). The Fisher-Bingham distribution on the sphere. 
+Journal of the Royal Statistical Society. Series B (Methodological) 44(1):71--80.
 }
 
 \author{

@@ -1,4 +1,4 @@
-dpurka <- function(y, a, theta, logden = FALSE) {
+dpurka <- function(y, theta, a, logden = FALSE) {
   y <- as.matrix(y)
   p <- dim(y)[2]
   if ( p == 1 )   y <- t(y)

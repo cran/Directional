@@ -45,9 +45,11 @@ Three types of confidence intervals, the standard one, another one based on the 
 }
 
 \references{
-Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere. Communications in Statistics: Case Studies, Data Analysis and Applications, 5(4), 467--491.
+Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere. 
+Communications in Statistics: Case Studies, Data Analysis and Applications, 5(4): 467--491.
 
-Morris J. E. and Laycock P. J. (1974). Discriminant analysis of directional data. Biometrika, 61(2): 335-341.
+Morris J. E. and Laycock P. J. (1974). Discriminant analysis of directional data. 
+Biometrika, 61(2): 335--341.
 }
 
 \author{

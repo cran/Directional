@@ -36,8 +36,17 @@ A matrix with the simulated data.
 }
 
 \references{
-Kent J.T., Ganeiber A.M. and Mardia K.V. (2013). A new method to simulate the Bingham and related distributions in directional data analysis with applications.
+Kent J. T., Ganeiber A. M. & Mardia K. V. (2018). A new unified approach for the simulation of a wide class of directional distributions. 
+Journal of Computational and Graphical Statistics, 27(2): 291--301.
+
+Kent J.T., Ganeiber A.M. and Mardia K.V. (2013).
+A new method to simulate the Bingham and related distributions
+in directional data analysis with applications.
 http://arxiv.org/pdf/1310.8110v1.pdf
+
+Fallaize C. J. & Kypraios T. (2016). Exact bayesian inference for the Bingham distribution. 
+Statistics and Computing, 26(1): 349--360.
+http://arxiv.org/pdf/1401.2894v1.pdf
 }
 
 \author{

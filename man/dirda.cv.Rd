@@ -92,9 +92,9 @@ Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wi
 Paine P.J. Preston S.P. & Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular 
 Gaussian Distribution. Statistics and Computing, 28(3):689--697.
 
-Morris J. E. & Laycock P. J. (1974). Discriminant analysis of directional data. Biometrika, 61(2): 335-341.
+Morris J. E. & Laycock P. J. (1974). Discriminant analysis of directional data. Biometrika, 61(2): 335--341.
 
-Tsamardinos I., Greasidou E. & Borboudakis G. (2018). Machince Learning, 107(12): 1895-1922.
+Tsamardinos I., Greasidou E. & Borboudakis G. (2018). Machince Learning, 107(12): 1895--1922.
 }
 
 \author{

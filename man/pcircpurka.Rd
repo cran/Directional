@@ -5,7 +5,7 @@ Probability density function of the circular Purkayastha distribution
 }
 
 \description{
-robability density function of the circular Purkayastha distribution.
+Probability density function of the circular Purkayastha distribution.
 }
 
 \usage{
@@ -38,7 +38,7 @@ The probability that of x being less than theta, where x follows the circular Pu
 \references{
 Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70-83
 
-Cabrera J. and Watson G. S. (1990). On a spherical median related distribution. Communications in Statistics-Theory and Methods, 19(6): 1973-1986.
+Cabrera J. and Watson G. S. (1990). On a spherical median related distribution. Communications in Statistics-Theory and Methods, 19(6): 1973--1986.
 }
 
 \author{

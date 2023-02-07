@@ -1,23 +1,25 @@
-\name{MLE of (hyper-)spherical distributions}
+\name{MLE of (hyper-)spherical rotational symmetric distributions}
 \alias{vmf.mle}
 \alias{multivmf.mle}
-\alias{acg.mle}
 \alias{iag.mle}
 \alias{spcauchy.mle}
+\alias{sipc.mle}
+\alias{acg.mle}
 \title{
-MLE of (hyper-)spherical distributions
+MLE of (hyper-)spherical rotational symmetric distributions
 }
 
 \description{
-MLE of (hyper-)spherical distributions.
+MLE of (hyper-)spherical rotational symmetric distributions.
 }
 
 \usage{
 vmf.mle(x, fast = FALSE, tol = 1e-07)
 multivmf.mle(x, ina, tol = 1e-07, ell = FALSE)
-acg.mle(x, tol = 1e-07)
 iag.mle(x, tol = 1e-07)
 spcauchy.mle(x, tol = 1e-06)
+sipc.mle(x, tol = 1e-6)
+acg.mle(x, tol = 1e-07)
 }
 
 \arguments{
@@ -44,13 +46,14 @@ The vmf.mle estimates the mean direction and concentration of a fitted von Mises
 
 The von Mises-Fisher distribution for groups of data is also implemented.
 
-The acg.mle fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal
-to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
+The acg.mle fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
 
 The iag.mle implements MLE of the spherical projected normal distribution, for spherical data only.
 
-The spcauchy.mle estimates the parameters of the spherical Cauchy distribution, for any dimension. The name sounds confusing, but it is implemented for
-arbitrary dimensions, not only the sphere.
+The spcauchy.mle estimates the parameters of the spherical Cauchy distribution, for any dimension.
+Despite the name sounds confusing, it is implemented for arbitrary dimensions, not only the sphere.
+
+The sipc.mle implements MLE of the spherical independent projected Cauchy distribution, for spherical data only.
 }
 
 \value{
@@ -103,21 +106,42 @@ The concetration parameter, this takes values in [0, 1).
 \item{loglik}{
 The log-likelihood value.
 }
+For the SIPC a list including:
+\item{mu}{
+The mean direction.
+}
+\item{loglik}{
+The log-likelihood value.
+}
+For the angular central Gaussian a list including:
+\item{iter}{
+The number of iterations performed.
+}
+\item{cova}{
+The covariance matrix.
+}
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Sra, S. (2012). A short note on parameter approximation for von Mises-Fisher distributions: and a fast implementation of Is(x).
-Computational Statistics, 27(1): 177--190.
+Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
+and a fast implementation of \eqn{I_s(x)}. Computational Statistics, 27(1): 177--190.
 
 Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere.
-Biometrika 74(3): 579-589.
+Biometrika 74(3): 579--589.
 
-Paine P.J., Preston S.P., Tsagris M and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution.
-Statistics and Computing, 28: 689-697.
+Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution.
+Statistics and Computing, 28: 689--697.
 
-Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere. arXiv preprint arXiv:1510.07679.
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions.
+https://arxiv.org/pdf/2302.02468.pdf
+
+Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere.
+arXiv preprint arXiv:1510.07679.
+
+Kato S. & McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations.
+Bernoulli, 26(4), 3224--3248.
 }
 
 \author{

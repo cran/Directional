@@ -41,9 +41,10 @@ The (bootstrap) p-value of the test.
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Jupp, P. E. (2001). Modifications of the rayleigh and bingham tests for uniformity of directions. Journal of Multivariate Analysis, 77(2):1-20.
+Jupp, P. E. (2001). Modifications of the rayleigh and bingham tests for uniformity of directions. Journal of Multivariate Analysis, 77(2): 1-20.
 
-Rayleigh, L. (1919). On the problem of random vibrations, and of random flights in one, two, or three dimensions. The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science, 37(220):321-347.
+Rayleigh, L. (1919). On the problem of random vibrations, and of random flights in one, two, or three dimensions. 
+The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science, 37(220): 321--347.
 }
 
 \author{

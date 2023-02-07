@@ -18,6 +18,6 @@ spcauchy.mle <- function(x, tol = 1e-06) {
   rho <- 1 / ( 1 + exp( -m2$par[1] ) )
   mu <- m2$par[-1]
   mu <- mu / sqrt( sum(mu^2) )
-  loglik <- n * lgamma( 0.5 * (d + 1) ) - 0.5 * n * (d + 1) * log(2 * pi)  - m2$value
+  loglik <- n * lgamma( 0.5 * (d + 1) ) - 0.5 * n * (d + 1) * log(pi) - 0.5 * n * log(2) - m2$value
   list(mu = mu, rho = rho, loglik = loglik)
 }

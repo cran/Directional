@@ -27,7 +27,7 @@ The concentration parameter of the von Mises-Fisher distribution. If k = 0, rand
 }
 
 \details{
-The von Mises-Fisher uses the rejection smapling suggested by Andrew Wood (1994). For the Independent Angular Gaussian, values are generated from a multivariate normal distribution with the given mean vector and the identity matrix as the covariance matrix. Then each vector becomes a unit vector.
+The von Mises-Fisher uses the rejection smapling suggested by Wood (1994). For the Independent Angular Gaussian, values are generated from a multivariate normal distribution with the given mean vector and the identity matrix as the covariance matrix. Then each vector becomes a unit vector.
 }
 
 \value{
@@ -35,9 +35,11 @@ A matrix with the simulated data.
 }
 
 \references{
-Wood A. T. A. (1994). Simulation of the von Mises Fisher distribution. Communications in statistics-simulation and computation, 23(1): 157--164.
+Wood A.T.A. (1994). Simulation of the von Mises Fisher distribution. 
+Communications in Statistics-Simulation and Computation, 23(1): 157--164.
 
-Dhillon I. S. & Sra S. (2003). Modeling data using directional distributions. Technical Report TR-03-06, Department of Computer Sciences, The University of Texas at Austin.
+Dhillon I. S. & Sra S. (2003). Modeling data using directional distributions. 
+Technical Report TR-03-06, Department of Computer Sciences, The University of Texas at Austin.
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.75.4122&rep=rep1&type=pdf
 }
 

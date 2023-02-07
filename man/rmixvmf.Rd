@@ -9,14 +9,14 @@ The function simulates random values simulation from a given mixture of von Mise
 }
 
 \usage{
-rmixvmf(n, prob, mu, k)
+rmixvmf(n, probs, mu, k)
 }
 
 \arguments{
 \item{n}{
 The sample size.
 }
-\item{prob}{
+\item{probs}{
 This is avector with the mixing probability of each group.
 }
 \item{mu}{
@@ -60,11 +60,11 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 \examples{
-k <- runif(4, 4, 20)
-prob <- c(0.2, 0.4, 0.3, 0.1)
-mu <- matrix(rnorm(16), ncol = 4)
+k <- runif(3, 4, 20)
+probs <- c(0.2, 0.5, 0.3)
+mu <- matrix(rnorm(9), ncol = 3)
 mu <- mu / sqrt( rowSums(mu^2) )
-x <- rmixvmf(200, prob, mu, k)$x
+x <- rmixvmf(200, probs, mu, k)$x
 bic.mixvmf(x, 5)
 }
 

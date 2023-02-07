@@ -32,7 +32,8 @@ The value of the logarithm of the normalising constant of the Kent distribution.
 }
 
 \references{
-Kent John (1982). The Fisher-Bingham distribution on the sphere. Journal of the Royal Statistical Society, Series B, 44(1): 71-80.
+Kent John (1982). The Fisher-Bingham distribution on the sphere. 
+Journal of the Royal Statistical Society, Series B, 44(1): 71--80.
 }
 
 \author{

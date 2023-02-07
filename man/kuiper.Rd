@@ -43,7 +43,7 @@ The p-value of the test (bootstrap or asymptotic depends upon the value of the a
 }
 
 \references{
-Jammalamadaka, S. Rao and SenGupta, A. (2001). Topics in Circular Statistics, pg. 153-55 (Kuiper's test) & 156-157 (Watson's test).
+Jammalamadaka, S. Rao and SenGupta, A. (2001). Topics in Circular Statistics, pg. 153--55 (Kuiper's test) & 156--157 (Watson's test).
 }
 
 \author{

@@ -37,9 +37,9 @@ The value of the maximised pseudo-likelihood.
 }
 
 \references{
-Garcia Portugues E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655--1685.
+Garcia P.E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655--1685.
 
-Wand M. P.,  and Jones M. C. (1994). Kernel smoothing. Crc Press.
+Wand M.P. and Jones M.C. (1994). Kernel smoothing. Crc Press.
 }
 
 \author{

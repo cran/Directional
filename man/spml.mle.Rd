@@ -5,6 +5,8 @@
 \alias{circbeta.mle}
 \alias{cardio.mle}
 \alias{ggvm.mle}
+\alias{cipc.mle}
+\alias{gcpc.mle}
 \title{
 MLE of some circular distributions
 }
@@ -20,6 +22,8 @@ circexp.mle(x, rads = FALSE, tol = 1e-06)
 circbeta.mle(x, rads = FALSE)
 cardio.mle(x, rads = FALSE)
 ggvm.mle(phi, rads = FALSE)
+cipc.mle(x, rads = FALSE)
+gcpc.mle(x, rads = FALSE)
 }
 
 \arguments{
@@ -58,13 +62,19 @@ consisting of the \eqn{\zeta}, \eqn{\kappa}, \eqn{\mu} and \eqn{\alpha} paramete
 distribution as described in Equation (2.7) of Dietrich and Richter (2017).
 }
 \item{gamma}{
-The norm of the mean vector of the angular Gaussian distribution.
+The norm of the mean vector of the angular Gaussian, the CIPC and the GCPC distributions.
 }
 \item{mu}{
-The mean vector of the angular Gaussian distribution.
+The mean vector of the angular Gaussian, the CIPC and the GCPC distributions.
 }
 \item{mumu}{
 In the case of "angular Gaussian distribution this is the mean angle in radians.
+}
+\item{circmu}{
+In the case of the CIPC and the GCPC this is the mean angle in radians.
+}
+\item{rho}{
+For the GCPC distribution this is the eigenvalue of the covariance matrix, or the covariance determinant.
 }
 \item{lambda}{
 The lambda parameter of the circular exponential distribution.
@@ -75,20 +85,20 @@ The lambda parameter of the circular exponential distribution.
 Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
 Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
-and a fast implementation of Is(x). Computational Statistics, 27(1): 177-190.
+and a fast implementation of \eqn{I_s(x)}. Computational Statistics, 27(1): 177--190.
 
 Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data.
-Journal of the American Statistical Association, 93(443): 1068-1077.
+Journal of the American Statistical Association, 93(443): 1068--1077.
 
 Kent J. and Tyler D. (1988). Maximum likelihood estimation for the wrapped Cauchy distribution.
 Journal of Applied Statistics, 15(2): 247--254.
 
 Dietrich T. and Richter W. D. (2017). Classes of geometrically generalized von Mises distributions.
-Sankhya B, 79(1): 21-59.
+Sankhya B, 79(1): 21--59.
 
 https://en.wikipedia.org/wiki/Wrapped_exponential_distribution
 
-Jammalamadaka, S. R. & Kozubowski, T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
+Jammalamadaka S. R. & Kozubowski T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
 Advances and Applications in Statistics, 3(1), 77-103.
 }
 

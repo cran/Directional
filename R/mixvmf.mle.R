@@ -109,9 +109,9 @@ mixvmf.mle <- function(x, g, n.start = 10) {
     pj <- Rfast::colmeans(wij)
     loglik <- sum( log( Rfast::colsums( pj * t( exp(lika) ) ) ) )
     ta <- Rfast::rowMaxs(wij)  ## estimated cluster of each observation
-    param <- cbind( mat, ka, pj )
+    param <- cbind( pj, ka, mat )
     runtime <- proc.time() - runtime
-    colnames(param) <- c( paste("mu", 1:p, sep = ""), 'kappa', 'probs' )
+    colnames(param) <- c( "probs", "kappa", paste("mu", 1:p, sep = "") )
     rownames(param) <- paste("Cluster", 1:g, sep = " ")
     res <- list(param = param, loglik = loglik, pred = ta, iter = l, runtime = runtime)
 

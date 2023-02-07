@@ -27,7 +27,7 @@ wood.mle <- function(y) {
       w <- 2 * sum( a1 * a2  / down )
       - u^2 - v^2 - w^2
     }
-    ############# 
+    #############
     lik <- function(k) {
       - n * log( ( exp(k) - exp(-k) ) / k ) +
       k * ( u * cos(a) + ( v * cos(b) + w * sin(b) ) * sin(a) )
@@ -69,7 +69,8 @@ wood.mle <- function(y) {
   confb <- confb / pi * 180
   confk <- c(k - qnorm(0.975) * se.k, k + qnorm(0.975) * se.k )
 
-  info <- rbind( c(gam / pi * 180, confgam), c(del / pi * 180, confdel), c(a / pi * 180, confa), c(b / pi * 180, confb),  c(k, confk) )
+  info <- rbind( c(gam / pi * 180, confgam), c(del / pi * 180, confdel), c(a / pi * 180, confa),
+                 c(b / pi * 180, confb),  c(k, confk) )
   rownames(info) <- c("gamma", "delta", "alpha", "beta", "kappa")
   colnames(info) <- c("estimate", "2.5%", "97.5%")
   modes <- rbind( c(a, b/2), c(a, b/2 + pi) )

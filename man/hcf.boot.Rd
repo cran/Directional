@@ -48,11 +48,11 @@ p-value of the test and the common concentration parameter kappa based on all th
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. 
+Mardia K. V. and Jupp P. E. (2000). Directional statistics. 
 Chicester: John Wiley & Sons.
 
 Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions 
-for the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1), 119-135.
+for the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1): 119--135.
 
 Tsagris M. and Alenazi A. (2022). An investigation of hypothesis testing procedures for circular 
 and spherical mean vectors. Communications in Statistics-Simulation and Computation (Accepted for publication).

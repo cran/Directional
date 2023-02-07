@@ -20,12 +20,12 @@ A number; how many vectors you want to generate.
 The mean vector the ESAG distribution, a vector in \eqn{R^3}.
 }
 \item{gam}{
-The two gamma parameters of the ESAG distribution.
+The two \eqn{\gamma} parameters of the ESAG distribution.
 }
 }
 
 \details{
-A random sample from the ESAG distribution is generated. In case the gammas are zero, the sample is drawn
+A random sample from the ESAG distribution is generated. In case the \eqn{\gamma_s} are zero, the sample is drawn
 from the Independent Angular Gaussian (or projected normal).
 }
 

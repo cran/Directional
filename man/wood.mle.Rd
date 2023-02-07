@@ -32,7 +32,7 @@ A 5 x 3 matrix containing the 5 parameters, \eqn{\gamma}, \eqn{\delta}, \eqn{\al
 The two axis of the modes of the distribution expressed in degrees.
 }
 \item{unitvectors}{
-A 3 x 3 matrix with the 3 unitvectors associated with the gamma and delta parameters.
+A 3 x 3 matrix with the 3 unit vectors associated with the \eqn{\gamma} and \eqn{\delta} parameters.
 }
 \item{loglik}{
 The value of the log-likelihood.
@@ -40,7 +40,8 @@ The value of the log-likelihood.
 }
 
 \references{
-Wood A.T.A. (1982). A bimodal distribution on the sphere. Journal of the Royal Statistical Society, Series C, 31(1): 52-58.
+Wood A.T.A. (1982). A bimodal distribution on the sphere.
+Journal of the Royal Statistical Society, Series C, 31(1): 52--58.
 }
 
 \author{

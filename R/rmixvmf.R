@@ -6,12 +6,12 @@
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 #### http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 ################################
-rmixvmf <- function(n, prob, mu, k) {
+rmixvmf <- function(n, probs, mu, k) {
   ## n is the sample size
   ## prob is a vector with the mixing probabilities
   ## mu is a matrix with with the mean directions
   ## k is a vector with the concentration parameters
-  p2 <- c( 0, cumsum(prob) )
+  p2 <- c( 0, cumsum(probs) )
   p <- ncol(mu)  ## dimensionality of the data
   u <- Rfast2::Runif(n)
   g <- length(k)  ## how many clusters are there

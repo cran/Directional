@@ -47,7 +47,7 @@ A matrix with two columns, the test statistics and their associated (log) p-valu
 
 \references{
 Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for
-directional data. Journal of the American Statistical Association, 93(443): 1068-1077.
+directional data. Journal of the American Statistical Association, 93(443): 1068--1077.
 }
 
 \author{

@@ -4,8 +4,6 @@ makefolds <- function(ina, nfolds = 10, stratified = TRUE, seed = NULL) {
   if ( !is.null(seed) )  set.seed(seed)
 
   if ( !stratified ) {
-    oop <- options(warn = -1)
-    on.exit(options(oop))
 	rat <- length(ina) %% nfolds
     mat <- matrix( Rfast2::Sample.int( length(ina), length(ina) ), ncol = nfolds )
     mat[-c( 1:length(ina) )] <- NA

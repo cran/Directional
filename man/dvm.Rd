@@ -7,6 +7,8 @@
 \alias{dcircbeta}
 \alias{dcardio}
 \alias{dcircexp}
+\alias{dcipc}
+\alias{dgcpc}
 \title{
 Density of some circular distributions
 }
@@ -24,6 +26,8 @@ dggvm(x, param, rads = FALSE, logden = FALSE)
 dcircbeta(x, m, a, b, rads = FALSE, logden = FALSE)
 dcardio(x, m, rho, rads = FALSE, logden = FALSE)
 dcircexp(x, lambda, rads = FALSE, logden = FALSE)
+dcipc(x, omega, g, rads = FALSE, logden = FALSE)
+dgcpc(x, omega, g, rho, rads = FALSE, logden = FALSE)
 }
 
 \arguments{
@@ -31,15 +35,24 @@ dcircexp(x, lambda, rads = FALSE, logden = FALSE)
 A vector with circular data.
 }
 \item{m}{
-The mean value of the von Mises distribution and of the cardioid, a scalar. This is the median for the circular Purkayastha distribution.
+The mean value of the von Mises distribution and of the cardioid, a scalar.
+This is the median for the circular Purkayastha distribution.
 }
 \item{mu}{
 The mean vector, a vector with two values for the "spml".
 }
+\item{omega}{
+The location parameter of the CIPC and GCPC distributions.
+}
+\item{g}{
+The norm of the mean vector for the CIPC and GCPC.
+}
 \item{k}{
 The concentration parameter.
 }
-\item{rho}{The \eqn{rho} parameter of the wrapped Cauchy distribution.
+\item{rho}{
+For the wrapped Cauchy distribution, this is the \eqn{\rho} parameter.
+For the GCPC distribution this is the eigenvalue parameter, or covariance determinant.
 }
 \item{a}{
 The \eqn{\alpha} parameter of the circular Purkayastha distribution or the \eqn{\alpha} parameter of the
@@ -63,7 +76,8 @@ If you the logarithm of the density values set this to TRUE.
 }
 
 \details{
-The density of the von Mises, bivariate projected normal, wrapped Cauchy or the circular Purkayastha distributions is computed.
+The density of the von Mises, bivariate projected normal, cardio, circular exponential,
+wrapped Cauchy, circular Purkayastha, CIPC or GCPC distributions is computed.
 }
 
 \value{
@@ -72,6 +86,12 @@ A vector with the (log) density values of x.
 
 \references{
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions.
+https://arxiv.org/pdf/2302.02468.pdf
+
+Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data.
+Journal of the American Statistical Association, 93(443): 1068--1077.
 
 Jammalamadaka, S. R. & Kozubowski, T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
 Advances and Applications in Statistics, 3(1), 77-103.

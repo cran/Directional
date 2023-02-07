@@ -15,7 +15,7 @@ purka.da <- function(y, ina, fraction = 0.2, R = 100, seed = NULL) {
     ytest <- y[nu, ]
     for (j in 1:g) {
       mod <- Directional::purka.mle( ytrain[id == j, ] )
-      mat[, j] <- Directional::dpurka(ytest, mod$alpha, mod$theta, logden = TRUE )
+      mat[, j] <- Directional::dpurka(ytest, mod$theta, mod$alpha, logden = TRUE )
     }
     est <- Rfast::rowMaxs(mat)
     per[i] <- sum(est == ina[nu]) / frac

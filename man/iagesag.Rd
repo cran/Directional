@@ -67,6 +67,6 @@ fishkent(x, B = 1)
 }
 
 \keyword{ Goodness of fit test }
-\keyword{ von Mises-Fisher distribution }
-\keyword{ Kent distribution }
+\keyword{ ESAG distribution }
+\keyword{ IAG distribution }
 

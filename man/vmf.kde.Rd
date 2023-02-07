@@ -39,7 +39,8 @@ A vector with the kernel density estimate calculated for each of the data points
 }
 
 \references{
-Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. Electronic Journal of Statistics, 7, 1655-1685.
+Garcia Portugues, E. (2013). Exact risk improvement of bandwidth selectors for kernel density estimation with directional data. 
+Electronic Journal of Statistics, 7, 1655--1685.
 }
 
 \author{

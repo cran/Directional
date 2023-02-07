@@ -22,7 +22,7 @@ An arbitrary 3x3 matrix.
 }
 
 \details{
-Firstly corresponding Bingham parameter A is determined for a given Matrix Fisher parameter F using John Kent (2013) algorithm and then Bingham samples for parameter A are generated using rbingham code. Finally convert Bingham samples to Matrix Fisher samples according to the Kent (2013) transformation.
+Firstly corresponding Bingham parameter A is determined for a given Matrix Fisher parameter F using John Kent et al.'s (2013) algorithm and then Bingham samples for parameter A are generated using rbingham code. Finally convert Bingham samples to Matrix Fisher samples according to the Kent (2013) transformation.
 }
 
 \value{
@@ -30,8 +30,13 @@ An array with simulated rotation matrices.
 }
 
 \references{
-Kent J.T., Ganeiber A.M. and Mardia K.V. (2013). A new method to simulate the Bingham and related
-distributions in directional data analysis with applications. http://arxiv.org/pdf/1310.8110v1.pdf
+Kent J. T., Ganeiber A. M. and Mardia K. V. (2018). A new unified approach for the simulation of a wide class of directional distributions. 
+Journal of Computational and Graphical Statistics, 27(2): 291--301.
+
+Kent J.T., Ganeiber A.M. and Mardia K.V. (2013).
+A new method to simulate the Bingham and related distributions
+in directional data analysis with applications.
+http://arxiv.org/pdf/1310.8110v1.pdf
 }
 
 \author{

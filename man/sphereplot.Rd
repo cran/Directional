@@ -9,15 +9,18 @@ Interactive 3D plot of spherical data.
 }
 
 \usage{
-sphereplot(x, col = NULL)
+sphereplot(dat, col = NULL, bgcol = "snow")
 }
 
 \arguments{
-\item{x}{
+\item{dat}{
 A matrix with three columns, unit-vectors, spherical data.
 }
 \item{col}{
 If you want the points to appear with different colours put numbers here, otherwise leave it NULL.
+}
+\item{bgcol}{
+The color of the surface of the sphere.
 }
 }
 

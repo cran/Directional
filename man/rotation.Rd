@@ -30,7 +30,8 @@ A rotation matrix whose dimension is equal to the length of the unit vectors.
 
 \references{
 G. J. A. Amaral, I. L. Dryden & Andrew T. A. Wood (2007).
-Pivotal Bootstrap Methods for k-Sample Problems in Directional Statistics and Shape Analysis. Journal of the American Statistical Association, 102(478): 695-707.
+Pivotal Bootstrap Methods for k-Sample Problems in Directional Statistics and Shape Analysis. 
+Journal of the American Statistical Association, 102(478): 695--707.
 }
 
 \author{

@@ -36,7 +36,7 @@ A vector containing the test statistic and its p-value.
 }
 
 \references{
-Kanti V. Mardia and Peter E. Jupp. Directional statistics, pg. 226-227.
+Kanti V. Mardia and Peter E. Jupp. Directional statistics, pg. 226--227.
 }
 
 \author{

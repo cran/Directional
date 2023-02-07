@@ -31,7 +31,7 @@ A matrix with the simulated data.
 }
 
 \references{
-Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere. Biometrika 74(3): 579-589. 
+Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere. Biometrika 74(3): 579--589. 
 }
 
 \author{
