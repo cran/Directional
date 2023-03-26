@@ -4,9 +4,11 @@ makefolds <- function(ina, nfolds = 10, stratified = TRUE, seed = NULL) {
   if ( !is.null(seed) )  set.seed(seed)
 
   if ( !stratified ) {
-	rat <- length(ina) %% nfolds
-    mat <- matrix( Rfast2::Sample.int( length(ina), length(ina) ), ncol = nfolds )
-    mat[-c( 1:length(ina) )] <- NA
+	  rat <- length(ina) %% nfolds
+	  suppressWarnings({
+	    mat <- matrix( Rfast2::Sample.int( length(ina), length(ina) ), ncol = nfolds )
+    })
+	  mat[-c( 1:length(ina) )] <- NA
     for ( i in 1:c(nfolds - 1) )  runs[[ i ]] <- mat[, i]
     a <- prod(dim(mat)) - length(ina)
     runs[[ nfolds ]] <- mat[1:c(nrow(mat) - a), nfolds]

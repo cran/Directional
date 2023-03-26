@@ -31,7 +31,7 @@ spher.esag.contour <- function(mu, gam, bgcol = "snow", dat = NULL, col = NULL, 
     }
     rgl::points3d(m1[1], m1[2], m1[3], col = 3, radius = 1, size = 3)
     if ( !is.null(dat) ) {
-        if ( is.null(color) )  color <- rep(2, dim(dat)[1])
+        if ( is.null(col) )  col <- rep(2, dim(dat)[1])
         rgl::points3d(dat[, 1], dat[, 2], dat[, 3], col = col, radius = 1, size = 3)
     }
 }

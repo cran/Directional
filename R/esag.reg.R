@@ -88,10 +88,7 @@ esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol =
   seb <- matrix(se[-c(1:2)], ncol = 3)
 
   if ( is.null(xnew) ) {
-    mu <- x %*% be
-    ki <- sqrt( Rfast::rowsums(mu^2) )
-    est <- mu / ki
-    fit <- sum( y * est )
+    est <- est
   } else {
     xnew <- model.matrix( ~., data.frame(xnew) )
     if ( !con )  xnew <- xnew[, -1]

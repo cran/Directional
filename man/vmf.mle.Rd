@@ -134,7 +134,7 @@ Biometrika 74(3): 579--589.
 Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution.
 Statistics and Computing, 28: 689--697.
 
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions.
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions. 
 https://arxiv.org/pdf/2302.02468.pdf
 
 Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere.

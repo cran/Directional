@@ -36,6 +36,7 @@ iag.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
     ki <- sqrt( Rfast::rowsums(mu^2) )
     est <- mu / ki
     fit <- sum( y * est )
+    names(fit) <- c( "Fit value")
   } else {
     xnew <- model.matrix( ~., data.frame(xnew) )
     if ( !con ) xnew <- xnew[, -1]
@@ -48,7 +49,6 @@ iag.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
     colnames(est) <- colnames(be) <- colnames(seb) <- c("X", "Y", "Z")
   } else  colnames(est) <- colnames(be) <- colnames(seb) <- colnames(y)
   rownames(be) <- rownames(seb) <- colnames(x)
-  names(fit) <- c( "Fit value")
 
   list(loglik = -da$value - 1.5 * n * log(2 * pi), fit = fit, beta = be, seb = seb, ki = ki, est = est)
 }

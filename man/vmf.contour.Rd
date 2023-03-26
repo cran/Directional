@@ -1,13 +1,13 @@
-\name{Contour plots of some rotational symmetric distributions on the sphere}
+\name{Contour plots of some rotational symmetric distributions}
 \alias{vmf.contour}
 \alias{spcauchy.contour}
 \alias{purka.contour}
 \title{
-Contour plots of some rotational symmetric distributions on the sphere
+Contour plots of some rotational symmetric distributions
 }
 
 \description{
-Contour plots of some rotational symmetric distributions on the sphere.
+Contour plots of some rotational symmetric distributions.
 }
 
 \usage{
