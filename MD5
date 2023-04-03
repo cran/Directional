@@ -1,4 +1,4 @@
-25ec6d27f901950178633b1a98702a7f *DESCRIPTION
+b1c812325d5459e47e9e79b140db98f8 *DESCRIPTION
 1b66b98677d32149da4881d73ee15f2e *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
@@ -136,7 +136,7 @@ b74c318bdde83d40202d2234e3031813 *R/rcircpurka.R
 2aaf7cf178358dd1049c81c836b129b7 *R/read.fbm.R
 2a42de171f81d45ff5a98f1b63653dd4 *R/resag.R
 67638f0861439ff7d696ea7137147cac *R/rfb.R
-3b4c236504d7223ee37143d27cc73587 *R/rgcpc.R
+24f796f30329b643b035f42db3f9a2b1 *R/rgcpc.R
 2595e2f5341d15ae27c3e267e3684e9c *R/riag.R
 3092f30e85d2a4ed19e7b0e31bcb3362 *R/rkent.R
 eac91a987a59ecb759cffcfb3afdce21 *R/rmatrixfisher.R
@@ -193,7 +193,7 @@ fbbb8aef0ca1daef632cfc0decde1ecb *R/wood.mle.R
 93c5b1c7847a12548809a2b241bbb001 *R/worldmap.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
 081bae313416545a82e844d1225dc6a4 *man/Arotation.Rd
-4088c080d3cbec0cc99e7e2da3a8ac29 *man/Directional-package.Rd
+205bc4c78cce329ba9cfb9bf559ee037 *man/Directional-package.Rd
 568260b6d0668333b9721e736b9794c6 *man/bic.mixvmf.Rd
 31afb62193fa405192f81e4945e52788 *man/circ.cor1.Rd
 cc28105c873009ddcf34a19eea52bbbb *man/circ.cors1.Rd
@@ -252,7 +252,7 @@ a69fb3228db8c119f88d1b395ce709ba *man/makefolds.Rd
 ba86df50fd757b91ff3a48136ffd0a5a *man/mixvmf.mle.Rd
 c19e5deb6b5be6f582997289e21376db *man/multivm.mle.Rd
 fa5a49db2936ddd70ede01c9a1fa924c *man/nsmedian.Rd
-ebffd619bc96ddcf3e638eccdf784991 *man/oceania.Rd
+341b8aec85dbbc91a185ee445f687616 *man/oceania.Rd
 7b1299faa6d86b8e96513b07c698ee0f *man/pc.test.Rd
 c30be20fe20a24007b0e6d798c05904e *man/pcircexp.Rd
 b93794824516d9d80374bb9f393febdc *man/pcircpurka.Rd
@@ -264,7 +264,7 @@ ac7c05447aa91b207ba1a42f5deba9aa *man/pvm.Rd
 69978f22b6aa165c6d2e66af9b4826be *man/racg.Rd
 682a44922f6829ab1d76376169c2eec5 *man/rayleigh.Rd
 46c43b5d867ff644dfc428cc925a13c2 *man/rbingham.Rd
-2a718fd326b643cdbbc697b51b2b5c49 *man/read.fbm.Rd
+2e98c8283e61d1b58509e647a8a4438c *man/read.fbm.Rd
 168f463e8768571aa57ed92a368e6932 *man/resag.Rd
 aba424d7924b8d60feb29cc260655d27 *man/rfb.Rd
 7f78ca3e72d837627afbf0a3013a2aff *man/rkent.Rd
@@ -277,7 +277,7 @@ aba424d7924b8d60feb29cc260655d27 *man/rfb.Rd
 b41f043e64cea462a72e8b2c99531e5a *man/rsespc.Rd
 efccd63a60c40ff7a1a666c8b2c48e8f *man/rsop.Rd
 a254213b163e88c0bc2a3034e6b63c11 *man/rvmf.Rd
-8d0c2a2fd654e397dd598c9a53409c9e *man/rvonmises.Rd
+b46ee798912b4a565ddc87ec6e70953f *man/rvonmises.Rd
 8ede0a0d3cb6d97fa0badca5dd084909 *man/sespc.mle.Rd
 de241c4d5026f0115e0586b244c2ed51 *man/spher.cor.Rd
 01704e24b471d7823ac4bbd34da3a13b *man/spher.esag.contour.Rd
@@ -286,7 +286,7 @@ b1b9b641d9b1f96836ebba9e726965e4 *man/spher.reg.Rd
 902eb5af1b438e397103e594bb7a1912 *man/spher.sespc.contour.Rd
 30e7a2c2b1b6da049e2669e9a4d0951d *man/spher.vmf.contour.Rd
 3bfb6ade51ce1b2b12fdf271f40995b9 *man/spherconc.test.Rd
-09423ad8b3a3560f14dc87784d135582 *man/sphereplot.Rd
+040dee4bd7be5933a51337f7d4988528 *man/sphereplot.Rd
 a927ece4b64c1574051d59e05aa6e1f2 *man/spml.fbed.Rd
 69a97c93e76462887279a943af43e8f4 *man/spml.mle.Rd
 86390292d4df51ee81ca41fd98972348 *man/spml.reg.Rd

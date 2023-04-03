@@ -51,8 +51,5 @@ R implementation and documentation: Christos Adam \email{pada4m4@gmail.com} and 
 }
 }
 \examples{
-\donttest{
-oceania()
+x <- euclid.inv( rvmf(10, rnorm(3), 5) )
 }
-}
-\keyword{ Median direction }

@@ -41,11 +41,5 @@ R implementation and documentation: Michail Tsagris <mtsagris@uoc.gr>.
 }
 
 \examples{
-\donttest{
-if (require("bigreadr") ) {
-dataset <- matrix( runif(100 * 50, 2*pi, 100), ncol = 50 )
-write.csv(dataset, "dataset.csv")
-x <- Directional::read.fbm("dataset.csv", select = 1:50, header = TRUE)
-}
-}
+x <- matrix( runif(50 * 20, 0, 2*pi), ncol = 20 )
 }

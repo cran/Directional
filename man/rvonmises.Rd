@@ -35,7 +35,8 @@ The sample size.
 The mean angle expressed in radians or degrees.
 }
 \item{mu}{
-The mean vector of the SPML, CIPC and GCPC in \eqn{R^2}.
+The mean vector of the SPML, CIPC and GCPC in \eqn{R^2}. For the CIPC and GCPC, if this argument is not given, 
+then the omega and g must be given.
 }
 \item{omega}{
 The location parameter for the CIPC and the GCPC expressed in radians or degrees.

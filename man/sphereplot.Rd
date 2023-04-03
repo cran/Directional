@@ -53,8 +53,6 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 \donttest{
 x <- rvmf(100, rnorm(3), 5)
 sphereplot(x)
-ina <- rbinom(100, 1, 0.5) + 1
-sphereplot(x, col = ina)
 }
 }
 
