@@ -34,8 +34,8 @@ If the data are in radians, this should be TRUE and FALSE otherwise.
 }
 
 \details{
-The high concentration (hcf.circaov), high concentration likelihood ratio (hclr.aov), 
-log-likelihood ratio (lr.circaov), embedding approach (embed.circaov) or the non equal 
+The high concentration (hcf.circaov), high concentration likelihood ratio (hclr.aov),
+log-likelihood ratio (lr.circaov), embedding approach (embed.circaov) or the non equal
 concentration parameters approach (het.circaov) is used.
 }
 
@@ -48,26 +48,26 @@ The value of the test statistic.
 The p-value of the test.
 }
 \item{kappa}{
-The concentration parameter based on all the data. If the het.circaov is 
+The concentration parameter based on all the data. If the het.circaov is
 used this argument is not returned.
 }
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. 
+Mardia, K. V. and Jupp, P. E. (2000). Directional statistics.
 Chicester: John Wiley & Sons.
 
-Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for 
+Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for
 the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1): 119--135.
 
-Tsagris M. and Alenazi A. (2022). An investigation of hypothesis testing procedures for circular 
+Tsagris M. and Alenazi A. (2022). An investigation of hypothesis testing procedures for circular
 and spherical mean vectors. Communications in Statistics-Simulation and Computation (Accepted for publication).
 }
 
 \author{
 Michail Tsagris.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} 
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}
 and Giorgos Athineou <gioathineou@gmail.com>.
 }
 %\note{
@@ -75,7 +75,7 @@ and Giorgos Athineou <gioathineou@gmail.com>.
 %}
 
 \seealso{
-\code{\link{conc.test}, \link{hclr.aov}, \link{hcfcirc.boot}
+\code{\link{hclr.aov}, \link{hcfcirc.boot}, \link{hcfcircboot}
 }
 }
 

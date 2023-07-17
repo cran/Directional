@@ -1,7 +1,7 @@
 \name{MLE of the Wood bimodal distribution on the sphere}
 \alias{wood.mle}
 \title{
-MLe of the Wood bimodal distribution on the sphere
+MLE of the Wood bimodal distribution on the sphere
 }
 
 \description{

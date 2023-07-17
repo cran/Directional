@@ -18,7 +18,7 @@ het.boot <- function(x1, x2, B = 999) {
   kapa[1] <- Directional::vmf.mle( x1, fast = TRUE )$kappa
   kapa[2] <- Directional::vmf.mle( x2, fast = TRUE )$kappa
   tw <- Rfast::colsums(kapa * ni * mi)
-  Tt <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
+  Tt <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) 
 
   tb <- numeric(B)
   rot1 <- t( Directional::rotation(m1, m) )
@@ -36,11 +36,11 @@ het.boot <- function(x1, x2, B = 999) {
     kapa[1] <- Directional::vmf.mle(yb1, fast = TRUE )$kappa
     kapa[2] <- Directional::vmf.mle(yb2, fast = TRUE )$kappa
     tw <- Rfast::colsums(kapa * ni * mi)
-    tb[i] <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
+    tb[i] <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) 
   }
 
   pvalue <- ( sum(tb > Tt) + 1 ) / (B + 1)
-  res <- c(Tt, pvalue)
+  res <- c(2 * Tt, pvalue)
   names(res) <- c('test', 'p-value')
   res
 }

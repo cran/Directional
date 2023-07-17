@@ -14,8 +14,8 @@ hcf.boot <- function(x1, x2, fc = TRUE, B = 999) {
   S <- Rfast::colsums(x)
   R <- sqrt( sum(S^2) )  ## the resultant length based on all the data
   ## Next we stimate the common concentration parameter kappa
-  kapaa <- Directional::vmf.mle(x, fast = TRUE)$kappa
   m <- S / R
+  kapaa <- Directional::vmf.mle(x, fast = TRUE)$kappa
   ## kapaa is the estimated concentration parameter based on all the data
   Ft <- (n - 2) * ( sum(Ri) - R) / ( n - sum(Ri) )
   if (fc) {  ## correction is used
@@ -38,9 +38,9 @@ hcf.boot <- function(x1, x2, fc = TRUE, B = 999) {
     Ri <- sqrt( Rfast::rowsums(S^2) )
     S <- Rfast::colsums(yb)
     R <- sqrt( sum(S^2) )
-    kapa <- Directional::vmf.mle(x, fast = TRUE)$kappa
     ftb[i] <- (n - 2) * ( sum(Ri) - R) / ( n - sum(Ri) )
     if (fc) {  ## correction is used
+      kapa <- Directional::vmf.mle(yb, fast = TRUE)$kappa
       if (p == 3) {
         ftb[i] <- kapa * (1/kapa - 1/(5 * kapa^3)) * ftb[i]
       } else if (p > 3)  ftb[i] <- kapa * ( 1/kapa - (p - 3)/(4 * kappa^2) - (p - 3)/(4 * kapa^3) ) * ftb[i]
