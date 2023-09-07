@@ -128,13 +128,12 @@ Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wile
 Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
 and a fast implementation of \eqn{I_s(x)}. Computational Statistics, 27(1): 177--190.
 
-Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere.
-Biometrika 74(3): 579--589.
+Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere. Biometrika 74(3): 579--589.
 
-Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution.
-Statistics and Computing, 28: 689--697.
+Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution. Statistics and Computing, 28: 689--697.
 
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions. 
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
+A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 
 Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere.

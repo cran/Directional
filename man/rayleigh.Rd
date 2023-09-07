@@ -5,7 +5,7 @@ Rayleigh's test of uniformity
 }
 
 \description{
-It checkes whether the data are uniformly distributed on the sphere or hypersphere.
+It checkes whether the data are uniformly distributed on the circle or the (hyper-)sphere.
 }
 
 \usage{
@@ -58,7 +58,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{vmf.mle}, \link{meandir.test}, \link{acg.mle}
+\code{\link{ptest}, \link{vmf.mle}, \link{meandir.test}, \link{acg.mle}
 }
 }
 
@@ -66,6 +66,3 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 x <- rvmf(100, rnorm(5), 1)  ## Fisher distribution with low concentration
 rayleigh(x)
 }
-
-\keyword{ Uniform distribution on the (hyper)-sphere }
-\keyword{ Hypothesis test }

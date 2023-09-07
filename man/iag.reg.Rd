@@ -1,17 +1,19 @@
-\name{Spherical regression using the projected normal or the von Mises-Fisher distribution}
+\name{Spherical regression using rotationally symmetric distributions}
 \alias{iag.reg}
 \alias{vmf.reg}
+\alias{sipc.reg}
 \title{
-Spherical regression using the projected normal or the von Mises-Fisher distribution
+Spherical regression using rotationally symmetric distributions
 }
 
 \description{
-Spherical regression using the projected normal or the von Mises-Fisher distribution.
+Spherical regression using rotationally symmetric distributions.
 }
 
 \usage{
 iag.reg(y, x, con = TRUE, xnew = NULL, tol = 1e-06)
 vmf.reg(y, x, con = TRUE, xnew = NULL, tol = 1e-06)
+sipc.reg(y, x, con = TRUE, xnew = NULL, tol = 1e-06)
 }
 
 \arguments{
@@ -33,8 +35,7 @@ A tolerance value to decide when to stop the successive optimaizations.
 }
 
 \details{
-The second parametrization of the projected normal and of the von Mises-Fisher regression (Paine et al., 2020) is applied.
-For more information see the paper by Paine et al. (2020).
+The second parametrization of the projected normal and of the von Mises-Fisher regression (Paine et al., 2020) is applied. The same is true for the SIPC distribution. For more information see the paper by Paine et al. (2020).
 }
 
 \value{
@@ -64,6 +65,11 @@ P. J. Paine, S. P. Preston, M. Tsagris and Andrew T. A. Wood (2020).
 Spherical regression models with general covariates and anisotropic errors.
 Statistics and Computing, 30(1): 153--165.
 https://link.springer.com/content/pdf/10.1007%2Fs11222-019-09872-2.pdf
+
+
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
+A Novel Framework for Circular and Directional Data Modeling.
+https://arxiv.org/pdf/2302.02468.pdf
 }
 
 \author{

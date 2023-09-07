@@ -17,7 +17,7 @@ knn.reg <- function(xnew, y, x, k = 5, res = "eucl", estim = "arithmetic") {
 
   } else {
 
-    disa <- Rfast::dista(xnew, x, trans = FALSE, k = 5, index = TRUE)
+    disa <- Rfast::dista(xnew, x, trans = FALSE, k = max(k), index = TRUE)
 
 	  if ( estim == "arithmetic" ) {
       for (j in 1:klen) {

@@ -8,7 +8,7 @@ knnreg.tune <- function(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl",
   if ( is.null(folds) )  folds <- Directional::makefolds(ina, nfolds = nfolds, stratified = FALSE, seed = seed)
   nfolds <- length(folds)
 
-  per <- matrix(nrow = nfolds, ncol = A)
+  per <- matrix(nrow = nfolds, ncol = A - 1)
 
   if (ncores <= 1) {
 
@@ -19,21 +19,22 @@ knnreg.tune <- function(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl",
       ytrain <- y[ -folds[[ vim ]], , drop = FALSE]  ## train set dependent vars
       xtest <- x[ folds[[ vim ]], , drop = FALSE]  ## test set independent vars
       xtrain <- x[ -folds[[ vim ]], , drop = FALSE]  ## train set independent vars
-      est <- Directional::knn.reg(xtest, ytrain, xtrain, k = 1:A, res = res, estim = estim)
+      est <- Directional::knn.reg(xtest, ytrain, xtrain, k = 2:A, res = res, estim = estim)
       if (res == "spher") {
-        for ( l in 1:A )   per[vim, l] <- 1 - mean( est[[ l ]] * ytest )
-      } else  for ( l in 1:A )   per[vim, l] <- mean( (est[[ l ]] - ytest)^2 )
+        for ( l in 1:c(A - 1) )   per[vim, l] <- 1 - mean( est[[ l ]] * ytest )
+      } else  for ( l in 1:c(A - 1) )   per[vim, l] <- mean( (est[[ l ]] - ytest)^2 )
     }
-    mspe <- Rfast::colmeans(per)
-    performance <- min(mspe)
     runtime <- proc.time() - runtime
+    mspe <- Rfast::colmeans(per)
+    names(mspe) <- paste("k=", 2:A, sep = "")
+    performance <- min(mspe)
 
   } else {
 
     runtime <- proc.time()
     cl <- parallel::makePSOCKcluster(ncores)
     doParallel::registerDoParallel(cl)
-    pe <- numeric(A)
+    pe <- numeric(A - 1)
     per <- foreach::foreach(vim = 1:nfolds, .combine = rbind, .packages = "Rfast",
 	         .export = c("knn.reg", "knn", "colOrder", "dista", "colmeans", "colhameans", "rowsums") ) %dopar% {
        ytest <- y[ folds[[ vim ]], , drop = FALSE]  ## test set dependent vars
@@ -42,22 +43,23 @@ knnreg.tune <- function(y, x, nfolds = 10, A = 10, ncores = 1, res = "eucl",
        xtrain <- x[ -folds[[ vim ]], drop = FALSE]  ## train set independent vars
        est <- Directional::knn.reg(xtest, ytrain, xtrain, k = 1:A, res = res, estim = estim)
        if (res == "spher") {
-         for ( l in 1:A )   pe[l] <- 1 - mean( est[[ l ]] * ytest )
-       } else  for ( l in 1:A )   pe[l] <- mean( (est[[ l ]] - ytest)^2 )
+         for ( l in 1:c(A - 1) )   pe[l] <- 1 - mean( est[[ l ]] * ytest )
+       } else  for ( l in 1:c(A - 1) )   pe[l] <- mean( (est[[ l ]] - ytest)^2 )
       return(pe)
     }
     parallel::stopCluster(cl)
     runtime <- proc.time() - runtime
     mspe <- Rfast::colmeans(per)
-    names(mspe) <- paste("k=", 1:A, sep = "")
+    names(mspe) <- paste("k=", 2:A, sep = "")
     performance <- min(mspe)
-    names(performance) <- "mspe"
   }
 
-  if ( graph )  plot(1:A, mspe, xlab = "Nearest neighbours", ylab = "MSPE", type = "b", pch = 16,
-                     cex.axis = 1.2, cex.lab = 1.2, col = "green", lwd = 2)
-  abline(v = 1:A, col = "lightgrey", lty = 2)
-  abline(h = seq(min(mspe), max(mspe), length = 10), lty = 2, col = "lightgrey" )
+  if ( graph ){
+    plot(1:A, mspe, xlab = "Nearest neighbours", ylab = "MSPE", type = "b", pch = 16,
+         cex.axis = 1.2, cex.lab = 1.2, col = "green", lwd = 2)
+    abline(v = 2:A, col = "lightgrey", lty = 2)
+    abline(h = seq(min(mspe), max(mspe), length = 10), lty = 2, col = "lightgrey" )
+  }
   list(crit = mspe, best_k = which.min(mspe) + 1, performance = performance, runtime = runtime)
 }
 

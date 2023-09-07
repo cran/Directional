@@ -24,7 +24,7 @@ The currently available data, the predictor variables values. A matrix with eith
 How many folds to create?
 }
 \item{A}{
-The maximum number of nearest neighbours, set to 5 by default, starting from the 1 nearest neighbor.
+The maximum number of nearest neighbours, set to 10 by default, starting from the 2nd nearest neighbor.
 }
 \item{ncores}{
 How many cores to use. This is taken into account only when the predictor variables are spherical.
@@ -47,7 +47,7 @@ If this is TRUE a graph with the results will appear.
 }
 
 \details{
-Tuning of the k-NN regression with Euclidean or (hyper-)spherical response and or predictor variables. It estimates the percentage of correct classification via an m-fold cross valdiation. The bias is estimated as well using the algorithm suggested by Tibshirani and Tibshirani (2009) and is subtracted. The sum of squares of prediction is used in the case of Euclidean responses. In the case of spherical responses the \eqn{\sum_{\hat{y}_i^T}y_i} is calculated.
+Tuning of the k-NN regression with Euclidean or (hyper-)spherical response and or predictor variables. It estimates the percentage of correct classification via an m-fold cross valdiation. The bias is estimated as well using the algorithm suggested by Tibshirani and Tibshirani (2009) and is subtracted. The sum of squares of prediction is used in the case of Euclidean responses. In the case of spherical responses the \eqn{\sum_i \hat{y}_i^Ty_i} is calculated.
 }
 
 \value{

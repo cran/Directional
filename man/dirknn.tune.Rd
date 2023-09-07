@@ -10,7 +10,7 @@ It estimates the percentage of correct classification via an m-fold cross valida
 
 \usage{
 dirknn.tune(ina, x, k = 2:10, mesos = TRUE, nfolds = 10, folds = NULL,
-parallel = FALSE, stratified = TRUE, seed = NULL, rann = FALSE)
+parallel = FALSE, stratified = TRUE, seed = NULL, rann = FALSE, graph = FALSE)
 }
 
 \arguments{
@@ -44,6 +44,9 @@ If seed is TRUE, the results will always be the same.
 \item{rann}{
 If you have large scale datasets and want a faster k-NN search, you can use kd-trees implemented in the R package "RANN". In this case you must set this argument equal to TRUE.
 }
+\item{graph}{
+If this is TRUE a graph with the results will appear.
+}
 }
 
 \details{
@@ -58,7 +61,7 @@ A list including:
 The average percent of correct classification across the neighbours.
 }
 \item{percent}{
-The bias corrected percent of correct classification.
+The estimated (optimal) percent of correct classification.
 }
 \item{runtime}{
 The run time of the algorithm. A numeric vector. The first element is the user time, the second element is the system time and the third element is the elapsed time.

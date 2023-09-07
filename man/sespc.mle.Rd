@@ -56,7 +56,8 @@ The log-likelihood value of the isotropic prohected Cuchy distribution, which is
 }
 
 \references{
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions. 
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: 
+A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.

@@ -5,7 +5,8 @@
 #### mtsagris@yahoo.gr
 ################################
 dirknn.tune <- function(ina, x, k = 2:10, mesos = TRUE, nfolds = 10, folds = NULL,
-                        parallel = FALSE, stratified = TRUE, seed = NULL, rann = FALSE) {
+                        parallel = FALSE, stratified = TRUE, seed = NULL, rann = FALSE,
+                        graph = FALSE) {
   ## x is the matrix containing the data
   ## nfolds is the number of folds, set to 10 by default
   ## A is the maximum number of neighbours to use
@@ -36,10 +37,13 @@ dirknn.tune <- function(ina, x, k = 2:10, mesos = TRUE, nfolds = 10, folds = NUL
   ela <- Rfast::colmeans(per)
   runtime <- proc.time() - runtime
   names(ela) <- paste("k=", k, sep = "")
-  plot(k, ela, type = "b", xlab = "k nearest neighbours", pch = 16, cex.lab = 1.2, cex.axis = 1.2,
-       ylab = "Estimated percentage of correct classification", lwd = 2, col = "green")
-  abline(v = k, lty = 2, col = "lightgrey")
-  abline(h = seq(min(ela), max(ela), length = 10), lty = 2, col = "lightgrey" )
+  if ( graph ){
+    plot(k, ela, type = "b", xlab = "k nearest neighbours", pch = 16, cex.lab = 1.2,
+         cex.axis = 1.2, ylab = "Estimated percentage of correct classification",
+         lwd = 2, col = "green")
+    abline(v = k, lty = 2, col = "lightgrey")
+    abline(h = seq(min(ela), max(ela), length = 10), lty = 2, col = "lightgrey" )
+  }
   percent <- max(ela)
   names(percent) <- c("Estimated percentage")
   list( per = ela, percent = percent, runtime = runtime )

@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 6.1\cr
-Date: \tab 2023-07-17\cr
+Version: \tab 6.2\cr
+Date: \tab 2023-09-07\cr
 License: \tab GPL-2\cr
 }
 }
@@ -43,13 +43,11 @@ Dr Kwang-Rae Kim (post-doc at the university of Nottingham) answered some of my 
 
 Giorgos Borboudakis (PhD student at the university of Crete) pointed out to me a not so clear message in the algorithm of generating random values from the von Mises-Fisher distribution.
 
-Panagiotis (pronounced Panayiotis) Tzirakis (master student at the department of computer science in Heraklion during the 2013-2015 seasons) showed me how to perform parallel computing in R and he is greatly acknowledged
-and appreciated not only from me but from all the readers of this document. He also helped me with the vectorization of some contour plot functions.
+Panagiotis (pronounced Panayiotis) Tzirakis (master student at the department of computer science in Heraklion during the 2013-2015 seasons) showed me how to perform parallel computing in R and he is greatly acknowledged and appreciated not only from me but from all the readers of this document. He also helped me with the vectorization of some contour plot functions.
 
 Professor John Kent from the university of Leeds is acknowledged for clarifying one thing with the ovalness parameter in his distribution.
 
-Phillip Paine (postdoc at the university of Nottingham) spotted that the function \code{\link{rfb}} is rather slow and he suggested me to change it. The function has changed now and this is also due to Joshua Davis
-(from Carleton College, Northfield, MN) who spotted that mistakes could occur, due a vector not being a matrix.
+Phillip Paine (postdoc at the university of Nottingham) spotted that the function \code{\link{rfb}} is rather slow and he suggested me to change it. The function has changed now and this is also due to Joshua Davis (from Carleton College, Northfield, MN) who spotted that mistakes could occur, due a vector not being a matrix.
 
 Professor Kurt Hornik from the Vienna university of economics and business is greatly acknowledged for his patience and contast help with this (and not only) R package.
 
@@ -62,6 +60,10 @@ Lisette de Jonge-Hoekstra from the University of Groningen found a wrong sentenc
 Peter Harremoes from the Copenhagen Business College spotted a mistake in the confidence interval of the function  \code{\link{circ.summary}} which has now been corrected.
 
 Dr Gregory Emvalomatis from the University of Crete helped me understand better the EM algorithm for mixture models and I fixed a bug in the function \code{\link{mixvmf.mle}}.
+
+Kinley Russell, PhD student at the Johns Hopkins University School of Medicine, suggested that I include bootstrap ANOVA functions.
+
+Sia Ahmadi found a mistake in the function \code{\link{conc.test}} which has now been corrected.
 
 If you want more information on many of these algorithms see Chapters 9 and 10 in the following document.
 https://www.researchgate.net/publication/324363311_Multivariate_data_analysis_in_R

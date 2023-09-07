@@ -1,6 +1,8 @@
 \name{Circular or angular regression}
 \alias{spml.reg}
 \alias{circpurka.reg}
+\alias{cipc.reg}
+\alias{gcpc.reg}
 \title{
 Circular or angular regression
 }
@@ -12,6 +14,8 @@ Regression with circular dependent variable and Euclidean or categorical indepen
 \usage{
 spml.reg(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-07)
 circpurka.reg(y, x, rads = TRUE, xnew = NULL)
+cipc.reg(y, x, rads = TRUE, xnew = NULL)
+gcpc.reg(y, x, rads = TRUE, reps = 20, xnew = NULL)
 }
 
 \arguments{
@@ -23,6 +27,9 @@ The independent variable(s). Can be Euclidean or categorical (factor variables).
 }
 \item{rads}{
 If the dependent variable is expressed in rads, this should be TRUE and FALSE otherwise.
+}
+\item{reps}{
+How many starting values shall the algortihm use? By default it uses 20 different starting values.
 }
 \item{xnew}{
 The new values of some independent variable(s) whose circular values you want to predict. Can be Euclidean or categorical.
@@ -39,8 +46,9 @@ The tolerance value to terminate the Newton-Raphson algorithm.
 }
 
 \details{
-For the spml.reg(), the Newton-Raphson algorithm is fitted in this regression as described in Presnell et al. (1998).
-For the circpurka.reg(), the optim() function is employed.
+For the spml.reg(), the Newton-Raphson algorithm is fitted in this regression as described in Presnell et al. (1998). 
+For the circpurka.reg() and the cipc.reg(), the optim() function is employed. 
+For the gcpc.reg() the optim() and the optimise() functions are being used. Note that the cipc.reg() is the same as the wrapped Cauchy regression. 
 }
 
 \value{
@@ -69,6 +77,9 @@ The fitted values expressed in radians if the obsereved data are in radians and 
 Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data. Journal of the American Statistical Association, 93(443): 1068-1077.
 
 Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70-83
+
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling.
+https://arxiv.org/pdf/2302.02468.pdf
 }
 
 \author{

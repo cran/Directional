@@ -1,15 +1,15 @@
-\name{Spherical regression using the ESAG distribution}
-\alias{esag.reg}
+\name{Spherical regression using the SESPC distribution}
+\alias{sespc.reg}
 \title{
-Spherical regression using the ESAG distribution
+Spherical regression using the SESPC distribution
 }
 
 \description{
-Spherical regression using the ESAG distribution.
+Spherical regression using the SESPC distribution.
 }
 
 \usage{
-esag.reg(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol = 1e-06)
+sespc.reg(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol = 1e-06)
 }
 
 \arguments{
@@ -26,10 +26,10 @@ Do you want the constant term in the regression?
 If you have new data use it, otherwise leave it NULL.
 }
 \item{lati}{
-A positive number determing the range of degrees to move left and right from the latitude center. This number and the next determine the grid of points to search for the Q matrix described in Paine et al. (2020).
+A positive number determing the range of degrees to move left and right from the latitude center. This number and the next determine the grid of points to search for the Q matrix described in Tsagris and Alzeley (2023).
 }
 \item{longi}{
-A positive number determing the range of degrees to move up and down from the longitude center. This number and the previous determine the grid of points to search for the Q matrix described in Paine et al. (2020).
+A positive number determing the range of degrees to move up and down from the longitude center. This number and the previous determine the grid of points to search for the Q matrix described in Tsagris and Alzeley (2023).
 }
 \item{tol}{
 A tolerance value to decide when to stop the successive optimizations.
@@ -37,7 +37,7 @@ A tolerance value to decide when to stop the successive optimizations.
 }
 
 \details{
-The second parametrization of the ESAG regression (Paine et al., 2020) is applied.
+Regression based on the SESPC distribution (Tsagris and Alzeley, 2023) is applied.
 }
 
 \value{
@@ -48,8 +48,8 @@ The log-likelihood of the regression model.
 \item{param}{
 A vector with three numbers. A measure of fit of the estimated values, defined as \eqn{\sum_{i=1}^ny_i^T\hat{y}_i}. This appears if the argument "xnew" is NULL. The \eqn{\rho \in (0,1]} (smallest eigenvalue of the covariance matrix)), and the angle of rotation \eqn{psi}.
 }
-\item{gam}{
-The two \eqn{\gamma} parameters.
+\item{theta}{
+The two \eqn{\theta} parameters.
 }
 \item{beta}{
 The beta coefficients.
@@ -63,10 +63,9 @@ The fitted values of xnew if "xnew" is NULL. If it is not NULL, the fitted value
 }
 
 \references{
-P. J. Paine, S. P. Preston, M. Tsagris and Andrew T. A. Wood (2020).
-Spherical regression models with general covariates and anisotropic errors.
-Statistics and Computing, 30(1): 153--165.
-https://link.springer.com/content/pdf/10.1007%2Fs11222-019-09872-2.pdf
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
+A Novel Framework for Circular and Directional Data Modeling.
+https://arxiv.org/pdf/2302.02468.pdf
 }
 
 \author{
@@ -85,9 +84,9 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 \examples{
-y <- resag( 150, rnorm(3), c(1, 1) )
+y <- rsespc( 150, rnorm(3), c(1, 1) )
 ## this is a small example to pass CRAN's check because the default argument values
 ## of lati and longi require many seconds
-a <- esag.reg(y, iris[, 4], lati = 2, longi = 2)
+a <- sespc.reg(y, iris[, 4], lati = 2, longi = 2)
 }
 

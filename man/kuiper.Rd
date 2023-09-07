@@ -56,7 +56,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{rayleigh}, \link{vmf.mle}, \link{rvonmises}
+\code{\link{rayleigh}, \link{ptest}, \link{vmf.mle}, \link{rvonmises}
 }
 }
 

@@ -37,7 +37,7 @@ conc.test <- function(u, ina, rads = FALSE) {
     ## case 2
     g2 <- wi <- numeric(g)
     wi <- (ni - 3) / 0.798
-    g2 <- asinh( (Rb - 1.089) / 0.258 )
+    g2 <- asinh( (Rbi - 1.089) / 0.258 )
     U <- sum( wi * g2^2) - (sum(wi * g2) )^2 / sum(wi)
     pvalue <- pchisq(U, g - 1, lower.tail = FALSE)
     mess <- paste('The mean resultant length is between 0.45 and 0.7. U2 was calculated')
