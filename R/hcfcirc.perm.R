@@ -41,7 +41,8 @@ hcfcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
     Ft <- (1 + 3/(8 * kapa) ) * (n - 2) * (V - R) / (n - V)
   } else  Ft <- NA
 
-  pvalue <- NA
+  p.value <- NA
+
   if ( !is.na(Ft) ) {
     pft <- numeric(B)
     for (i in 1:B) {
@@ -57,9 +58,16 @@ hcfcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
         pft[i] <- (1 + 3/(8 * kapa)) * (n - 2) * (V - R) / (n - V)
       } else  pft[i] <- NA
     }
-    pvalue <- ( sum(pft > Ft) + 1 ) / (B + 1)
+    p.value <- ( sum(pft > Ft) + 1 ) / (B + 1)
   }
-  res <- c(Ft, pvalue, kapa)
-  names(res) <- c("test", "p-value", "kappa")
-  res
+
+  statistic <- Ft  ;  names(statistic) <- "hcf test statistic"
+  parameter <- "NA"  ;  names(parameter) <- "df"
+  alternative <- "The 2 circular means differ"
+  method <- "Permutation ANOVA for 2 circular means using the high concentration test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

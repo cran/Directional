@@ -40,9 +40,9 @@ http://arxiv.org/pdf/1310.8110v1.pdf
 }
 
 \author{
-Anamul Sajib & Chris Fallaize.
+Anamul Sajib and Chris Fallaize.
 
-R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> & Chris Fallaize.
+R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> and Chris Fallaize.
 }
 
 \seealso{

@@ -2,6 +2,7 @@
 \alias{vmf.contour}
 \alias{spcauchy.contour}
 \alias{purka.contour}
+\alias{pkbd.contour}
 \title{
 Contour plots of some rotational symmetric distributions
 }
@@ -14,6 +15,7 @@ Contour plots of some rotational symmetric distributions.
 vmf.contour(k)
 spcauchy.contour(mu, rho, lat = 50, long = 50)
 purka.contour(theta, a, lat = 50, long = 50)
+pkbd.contour(mu, rho, lat = 50, long = 50)
 }
 
 \arguments{
@@ -21,10 +23,11 @@ purka.contour(theta, a, lat = 50, long = 50)
 The concentration parameter.
 }
 \item{mu}{
-The mean direction (unit vector) of the von Mises-Fisher, the IAG or the spherical Cauchy distribution.
+The mean direction (unit vector) of the von Mises-Fisher, the IAG, the spherical Cauchy distribution,
+or the Poisson kernel based distribution.
 }
 \item{rho}{
-The \eqn{\rho} parameter of the spherical Cauchy distribution.
+The \eqn{\rho} parameter of the spherical Cauchy distribution, or the Poisson kernel based distribution.
 }
 \item{theta}{
 The median direction for the Purkayastha distribution, a unit vector.
@@ -49,15 +52,24 @@ A contour plot of the distribution.
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere. arXiv preprint arXiv:1510.07679.
+Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. 
+Bernoulli, 26(4): 3224--3248.
+https://arxiv.org/pdf/1510.07679.pdf
 
-Kato S. & McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. Bernoulli, 26(4), 3224--3248.
+Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through
+Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70--83
 
-Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70--83
+Cabrera J. and Watson G. S. (1990). On a spherical median related distribution. 
+Communications in Statistics-Theory and Methods, 19(6): 1973--1986.
 
-Cabrera J. and Watson G. S. (1990). On a spherical median related distribution. Communications in Statistics-Theory and Methods, 19(6): 1973--1986.
+Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere:
+convergence properties, identifiability, and a method of sampling.
+Journal of Computational and Graphical Statistics, 29(4): 758--770.
+
+Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD distribution.
+Electronic Journal of Statistics, 17(2): 2180--2209.
 }
 
 \author{

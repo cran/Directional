@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 6.2\cr
-Date: \tab 2023-09-07\cr
+Version: \tab 6.3\cr
+Date: \tab 2023-10-12\cr
 License: \tab GPL-2\cr
 }
 }
@@ -51,7 +51,7 @@ Phillip Paine (postdoc at the university of Nottingham) spotted that the functio
 
 Professor Kurt Hornik from the Vienna university of economics and business is greatly acknowledged for his patience and contast help with this (and not only) R package.
 
-Manos Papadakis, undergraduate student in the department of computer science at university of Crete, is also acknowledged for his programming tips.
+Manos Papadakis is also acknowledged for his programming tips and for his assistance with the "htest" class object.
 
 Dr Mojgan Golzy spotted a mistake in the function \code{\link{desag}} and Michail is very happy for that.
 

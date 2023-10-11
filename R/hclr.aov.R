@@ -38,9 +38,16 @@ hclr.aov <- function(x, ina) {
   up <- k0^(p/2 - 1) / I0 * exp(k0 * Apk0)
   down <- k1^(p/2 - 1) / I1 * exp(k1 * Apk1)
   P <- (n - g) / (g - 1) * ( (up / down)^( -2/(p - 1) ) - 1 )
-  pvalue <- pf(P, (g - 1) * (p - 1), (n - g) * (p - 1), lower.tail = FALSE)
-  res <- c(P, pvalue)
-  names(res) <- c('P', 'p-value')
-  res
+  p.value <- pf(P, (g - 1) * (p - 1), (n - g) * (p - 1), lower.tail = FALSE)
+
+  statistic <- P  ;   names(statistic) <- "F-test statistic"
+  parameter <- c( (g - 1) * (p - 1), (n - g) * (p - 1) )     ;   names(parameter) <- c("df1", "df2")
+  alternative <- "At least one directional mean vector differs"
+  method <- "ANOVA for directional data using the high concentration log-likelihood ratio test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }
 

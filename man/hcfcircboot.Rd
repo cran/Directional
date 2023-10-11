@@ -36,8 +36,25 @@ parameters approach (hetcircboot) is used.
 }
 
 \value{
-A vector including two or three numbers, the test statistic value, the bootstrap
-p-value of the test and the common concentration parameter kappa based on all the data.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
+}
+\item{parameter}{
+The degrees of freedom of the test. Since these are bootstrap based tests this is "NA".
+}
+\item{p.value}{
+The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
+}
 }
 
 \references{

@@ -75,8 +75,14 @@ hetcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
     pta[j] <- 2 * (sum(kapa * Ri) - Rw)
   }
 
-  pvalue <- ( sum(pta > Ta) + 1 ) / (B + 1)
-  res <- c(Ta, pvalue)
-  names(res) <- c("test", "p-value")
-  res
+  p.value <- ( sum(pta > Ta) + 1 ) / (B + 1)
+  statistic <- Ta       ;   names(statistic) <- "het test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 circular means differ"
+  method <- "Permutation ANOVA for 2 circular means using the heterogeneous approach"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

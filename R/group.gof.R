@@ -1,6 +1,6 @@
 ## Goodness of fit test for grouped data
 ## The hypothesis is that they come from a
-## von Mises-Fisher distribution
+## von Mises-Fisher or a uniform distribution
 ## May 2016
 ## References: Arthur Pewsey, Markus Neuhauser, and Graeme D. Ruxton (2013)
 ## Circular Statistics in R
@@ -12,16 +12,16 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
   n <- sum(ni)
 
   if ( dist == "vm" ) {
-    for ( i in 1:d )  p[i] <- Directional::pvm( g[i + 1], m, k, rads = TRUE ) -  Directional::pvm( g[i], m, k, rads = TRUE )  
+    for ( i in 1:d )  p[i] <- Directional::pvm( g[i + 1], m, k, rads = TRUE ) -  Directional::pvm( g[i], m, k, rads = TRUE )
   } else if ( dist == "uniform" ) {
     for ( i in 1:d )  p[i] <- ( g[i + 1] - g[i] ) / (2 * pi)
   }
-  
+
   sj <- cumsum(ni - n * p)
   sjbar <- sum(p * sj)
   ug <- sum(p * (sj - sjbar)^2 ) / n
 
-  if (ncores <= 1) {
+  if ( ncores <= 1 ) {
     tic <- proc.time()
     ub <- numeric(R)
     for (i in 1:R) {
@@ -49,8 +49,13 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
      runtime <- proc.time() - tic
   }
 
-  pval <- ( sum(ub > ug) + 1 ) / ( R + 1 )
-  info <- c(ug, pval)
-  names(info) <- c("statistic", "p-value")
-  list(info = info, runtime = runtime)
+  p.value <- ( sum(ub > ug) + 1 ) / ( R + 1 )
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  statistic <- ug  ;   names(statistic) <- "Test statistic"
+  alternative <- "The distribution is not von Mises-Fisher or uniform distribution"
+  method <- "Goodness of fit test for grouped data for testing whether the distribution is von Mises-Fisher or uniform"
+  data.name <- c("data")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
 }

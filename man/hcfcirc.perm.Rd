@@ -37,32 +37,40 @@ The number of permutations to perform.
 }
 
 \details{
-The high concentration (hcfcirc.perm), log-likelihood ratio (lrcirc.perm), 
-high concentration log-likelihood ratio (hclrcirc.perm), embedding approach (embedcirc.perm) 
+The high concentration (hcfcirc.perm), log-likelihood ratio (lrcirc.perm),
+high concentration log-likelihood ratio (hclrcirc.perm), embedding approach (embedcirc.perm)
 or the non equal concentration parameters approach (hetcirc.perm) is used.
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{p-value}{
+\item{parameter}{
+The degrees of freedom of the test. Since these are permutation based tests this is "NA".
+}
+\item{p.value}{
 The p-value of the test.
 }
-\item{kappa}{
-The concentration parameter based on all the data. If the het.circaov is used this argument 
-is not returned.
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 
 \references{
 Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for 
+Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directions for
 the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1): 119--135.
 
-Tsagris M. and Alenazi A. (2022). An investigation of hypothesis testing procedures for circular 
+Tsagris M. and Alenazi A. (2022). An investigation of hypothesis testing procedures for circular
 and spherical mean vectors. Communications in Statistics-Simulation and Computation (Accepted for publication).
 }
 

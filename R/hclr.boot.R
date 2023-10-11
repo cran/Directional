@@ -87,9 +87,15 @@ hclr.boot <- function(x1, x2, B = 999) {
 
   }
 
-  pvalue <- ( sum(Pb > P) + 1 ) / (B + 1)
-  res <- c(P, pvalue)
-  names(res) <- c('P', 'p-value')
-  res
+  p.value <- ( sum(Pb > P) + 1 ) / (B + 1)
+  statistic <- P  ;   names(statistic) <- "Bootstrap hclr test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 directional mean vector differ"
+  method <- "Bootstrap ANOVA for 2 directional mean vectors using the high concentration log-likelihood ratio test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }
 

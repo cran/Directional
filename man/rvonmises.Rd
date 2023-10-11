@@ -89,7 +89,7 @@ A vector with the simulated data.
 Wood A.T.A. (1994). Simulation of the von Mises Fisher distribution.
 Communications in Statistics-Simulation and Computation, 23(1): 157-164.
 
-Dhillon I.S. & Sra S. (2003). Modeling data using directional distributions.
+Dhillon I.S. and Sra S. (2003). Modeling data using directional distributions.
 Technical Report TR-03-06, Department of Computer Sciences, The University of Texas at Austin.
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.75.4122&rep=rep1&type=pdf
 
@@ -99,13 +99,16 @@ https://dspace.library.uvic.ca/bitstream/handle/1828/2698/zhengsun_master_thesis
 Lai M. (1994). Some results in the statistical analysis of directional data.
 Master thesis, University of Hong Kong.
 
-Presnell B., Morrison S.P. and Littell R.C. (1998). Projected multivariate linear models for directional data.
+Presnell B., Morrison S.P. and Littell R.C. (1998). 
+Projected multivariate linear models for directional data.
 Journal of the American Statistical Association, 93(443): 1068--1077.
 
-Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70--83
+Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: 
+Obtained through Maximum Likelihood Characterization. 
+The Indian Journal of Statistics, Series A, 53(1): 70--83
 
-Jammalamadaka S.R. & Kozubowski T.J. (2003). A new family of circular models: The wrapped Laplace distributions.
-Advances and Applications in Statistics, 3(1): 77--103.
+Jammalamadaka S.R. and Kozubowski T.J. (2003). A new family of circular models: 
+The wrapped Laplace distributions. Advances and Applications in Statistics, 3(1): 77--103.
 }
 
 \author{

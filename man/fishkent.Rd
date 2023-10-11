@@ -26,18 +26,30 @@ Essentially it is a test of rotational symmetry, whether Kent's ovalness paramet
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{p-value or Bootstrap p-value}{
+\item{parameter}{
+The degrees of freedom of the test. If bootstrap was employed this is "NA".
+}
+\item{p.value}{
 The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 
 \references{
-Rivest L. P. (1986). Modified Kent's statistics for testing goodness of fit for the Fisher distribution in small concentrated samples. 
-Statistics & Probability Letters, 4(1): 1--4.
+Rivest L. P. (1986). Modified Kent's statistics for testing goodness of fit for the Fisher distribution 
+in small concentrated samples. Statistics & Probability Letters, 4(1): 1--4.
 }
 
 \author{
@@ -51,7 +63,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{iagesag}, \link{vmf.mle}, \link{kent.mle}, \link{rkent}
+\code{\link{iagesag}, \link{pc.test}, \link{vmf.mle}, \link{kent.mle}
 }
 }
 

@@ -26,22 +26,33 @@ The tolerance to accept that the Newton-Raphson algorithm used in the IAG distri
 }
 
 \details{
-Essentially it is a test of rotational symmetry, whether the two \eqn{\theta} parameters are equal to zero.
-This works for spherical data only.
+Essentially it is a test of rotational symmetry, whether the two \eqn{\theta} parameters are equal to zero. This works for spherical data only.
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{p-value or Bootstrap p-value}{
+\item{parameter}{
+The degrees of freedom of the test. If bootstrap was employed this is "NA".
+}
+\item{p.value}{
 The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 
 \references{
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: 
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 }
@@ -67,6 +78,5 @@ iagesag(x)
 pc.test(x)
 }
 
-\keyword{ Goodness of fit test }
-\keyword{ SESPC distribution }
+
 

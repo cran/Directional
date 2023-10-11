@@ -9,30 +9,30 @@ cosap <- function(x, y, z) {
   A <- NA
   P <- NA
   for (i in 1:length(x)){
-    
+
     ### A[i] (azimuth, theta) ####
-    if (z[i] <= 0) {
-      if (y[i] < 0) {
-        A[i] <- 180 - atan(x[i]/y[i]) * 180 / pi #if z[i] = 0, A[i]  is mod 180 degrees
+    if ( z[i] <= 0 ) {
+      if ( y[i] < 0 ) {
+        A[i] <- 180 - atan( x[i] / y[i] ) * 180 / pi #if z[i] = 0, A[i]  is mod 180 degrees
       } else {
         if ( y[i] > 0 ) {
-          A[i] <- 360 * (x[i] > 0) - atan(x[i]/y[i]) * 180 / pi
+          A[i] <- 360 * (x[i] > 0) - atan( x[i] / y[i] ) * 180 / pi
         } else {
-          if (z[i] == 0) {
-            A[i] <- 90 + 180 * (x[i] < 0) # same as 270 in this case
+          if ( z[i] == 0 ) {
+            A[i] <- 90 + 180 * ( x[i] < 0 ) # same as 270 in this case
           } else {
-            A[i] <-  90 + 180 * (x[i] > 0)
+            A[i] <-  90 + 180 * ( x[i] > 0 )
           }
         }
       }
     } else {
-      if (-y[i] < 0) {
-        A[i] <- 180 - atan(x[i]/y[i]) * 180 / pi
+      if ( -y[i] < 0 ) {
+        A[i] <- 180 - atan( x[i] / y[i] ) * 180 / pi
       } else {
         if ( -y[i] > 0 ){
-          A[i] <- 360 * (-x[i] > 0) - atan(x[i]/y[i]) * 180 / pi
+          A[i] <- 360 * ( -x[i] > 0 ) - atan( x[i] / y[i] ) * 180 / pi
         } else {
-          if ( z[i] == 0) {
+          if ( z[i] == 0 ) {
             A[i] <- 90 + 180 * (x[i] < 0) # same as 270 in this case
           } else {
             A[i] <- 90 + 180 * (x[i] <= 0)
@@ -42,7 +42,7 @@ cosap <- function(x, y, z) {
     }
     ##### P[i] (plunge, delta) ####
     P[i] <- asin(-z[i]) * 180 / pi
-    if (z[i] > 0)  P[i] <-  - P[i]
+    if ( z[i] > 0 )  P[i] <-  - P[i]
   }
   ##### Append results ####
   list(A = A, P = P)

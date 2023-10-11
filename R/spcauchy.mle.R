@@ -1,23 +1,35 @@
-spcauchy.mle <- function(x, tol = 1e-06) {
+spcauchy.mle <- function(x, tol = 1e-6) {
 
   dm <- dim(x)
   n <- dm[1]  ;  d <- dm[2] - 1
-  sp <- function(para, n, d) {
-    rho <- 1 / ( 1 + exp( -para[1] ) )
-    mu <- para[-1]
-    mu <- mu / sqrt( sum(mu^2) )
+
+  sp <- function(rho, mu, x, n, d) {
     a <- as.vector(x %*% mu)
-    - n * d * log(1 - rho^2) + d * sum( log1p( rho^2 - 2 * rho * a ) )
+    n * d * log(1 - rho^2) - d * sum( log1p( rho^2 - 2 * rho * a ) )
   }
-  m1 <- optim( c( runif(1), rnorm(d + 1) ), sp, n = n, d = d, control = list(maxit = 5000) )
-  m2 <- optim( c( runif(1), rnorm(d + 1) ), sp, n = n, d = d, control = list(maxit = 5000) )
-  while (m1$value - m2$value > tol) {
-    m1 <- m2
-    m2 <- optim( m1$par, sp, n = n, d = d, control = list(maxit = 5000) )
-  }
-  rho <- 1 / ( 1 + exp( -m2$par[1] ) )
-  mu <- m2$par[-1]
+    
+  mu <- Rfast::colmeans(x)
+  mu <- mu / sqrt(sum(mu^2) )
+  mod <- optimize(sp, c(0, 1), mu = mu, x = x, n = n, d = d, maximum = TRUE, tol = 1e-6 )
+  rho <- mod$maximum  
+  lik1 <- mod$objective
+
+  down <- 1 + rho^2 - 2 * rho * as.vector( x %*% mu) 
+  mu <- Rfast::eachcol.apply(rho * x, down, oper = "/")
   mu <- mu / sqrt( sum(mu^2) )
-  loglik <- n * lgamma( 0.5 * (d + 1) ) - 0.5 * n * (d + 1) * log(pi) - 0.5 * n * log(2) - m2$value
-  list(mu = mu, rho = rho, loglik = loglik)
+  mod <- optimize(sp, c(0, 1), mu = mu, x = x, n = n, d = d, maximum = TRUE, tol = 1e-6 )
+  rho <- mod$maximum  
+  lik2 <- mod$objective
+  
+  while ( abs( lik2 - lik1 ) > tol ) {
+    lik1 <- lik2
+    down <- 1 + rho^2 - 2 * rho * as.vector( x %*% mu) 
+    mu <- Rfast::eachcol.apply(rho * x, down, oper = "/")
+    mu <- mu / sqrt( sum(mu^2) )
+    mod <- optimize(sp, c(0, 1), mu = mu, x = x, n = n, d = d, maximum = TRUE, tol = 1e-6 )
+    rho <- mod$maximum  
+    lik2 <- mod$objective
+  }
+
+  list(mu = mu, rho = rho, loglik = lik2 + n * lgamma( 0.5 * (d + 1) ) - 0.5 * n * (d + 1) * log(pi) - 0.5 * n * log(2) )
 }

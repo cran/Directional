@@ -1,4 +1,4 @@
-spcauchy.contour <- function(mu, rho, lat = 50, long = 50) {
+pkbd.contour <- function(mu, rho, lat = 50, long = 50) {
   m <- Directional::euclid.inv(mu)
   x1 <- x2 <- seq(0, 180, by = 2)
   x1 <- seq(m[1] - lat, m[1] + lat)
@@ -12,7 +12,7 @@ spcauchy.contour <- function(mu, rho, lat = 50, long = 50) {
   }
 
   wa <- Directional::euclid(wa)
-  mat <- Directional::dspcauchy(wa, mu, rho)
+  mat <- Directional::dpkbd(wa, mu, rho)
   mat <- matrix(mat, nrow = n, byrow = TRUE)
 
   # Continuous color legend

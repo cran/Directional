@@ -40,16 +40,24 @@ concentration parameters approach (het.circaov) is used.
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{p-value}{
+\item{parameter}{
+The degree(s) of freedom of the test.
+}
+\item{p.value}{
 The p-value of the test.
 }
-\item{kappa}{
-The concentration parameter based on all the data. If the het.circaov is
-used this argument is not returned.
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 
@@ -86,11 +94,9 @@ hcf.circaov(x, ina, rads = TRUE)
 lr.circaov(x, ina, rads = TRUE)
 het.circaov(x, ina, rads = TRUE)
 embed.circaov(x, ina, rads = TRUE)
+hclr.circaov(x, ina, rads = TRUE)
 }
 
-\keyword{ Circular data}
-\keyword{ Analysis of variance }
-\keyword{ Hypothesis testing }
 
 
 

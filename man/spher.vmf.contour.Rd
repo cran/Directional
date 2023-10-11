@@ -2,6 +2,7 @@
 \alias{spher.vmf.contour}
 \alias{spher.purka.contour}
 \alias{spher.spcauchy.contour}
+\alias{spher.pkbd.contour}
 \title{
 Contour plot (on the sphere) of some spherical rotational symmetric distributions
 }
@@ -16,6 +17,8 @@ lat = 50, long = 50)
 spher.purka.contour(theta, a, bgcol = "snow", dat = NULL, col = NULL,
 lat = 50, long = 50)
 spher.spcauchy.contour(mu, rho, bgcol = "snow", dat = NULL, col = NULL,
+lat = 50, long = 50)
+spher.pkbd.contour(mu, rho, bgcol = "snow", dat = NULL, col = NULL,
 lat = 50, long = 50)
 }
 
@@ -53,7 +56,7 @@ A positive number determing the range of degrees to move up and down from the lo
 }
 
 \details{
-The goal of this function is for the user to see how the von Mises-Fisher, the Purkayastha or the spherical Cauchy distribution looks like.
+The goal of this function is for the user to see how the von Mises-Fisher, the Purkayastha, the spherical Cauchy or the Poisson kernel based distribution looks like.
 }
 
 \value{
@@ -66,17 +69,22 @@ Mardia K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wil
 Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
 and a fast implementation of \eqn{I_s(x)}. Computational Statistics, 27(1): 177--190.
 
-Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization.
-The Indian Journal of Statistics, Series A, 53(1): 70--83.
+Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through
+Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70--83.
 
 Cabrera J. and Watson G. S. (1990). On a spherical median related distribution.
 Communications in Statistics-Theory and Methods, 19(6): 1973--1986.
 
-Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere.
-arXiv preprint arXiv:1510.07679.
+Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. 
+Bernoulli, 26(4): 3224--3248.
+https://arxiv.org/pdf/1510.07679.pdf
 
-Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations.
-Bernoulli, 26(4), 3224--3248.
+Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere:
+convergence properties, identifiability, and a method of sampling.
+Journal of Computational and Graphical Statistics, 29(4): 758--770.
+
+Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD distribution.
+Electronic Journal of Statistics, 17(2): 2180--2209.
 }
 
 \author{

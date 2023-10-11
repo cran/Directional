@@ -4,6 +4,7 @@
 \alias{iag.mle}
 \alias{spcauchy.mle}
 \alias{sipc.mle}
+\alias{pkbd.mle}
 \alias{acg.mle}
 \title{
 MLE of (hyper-)spherical rotational symmetric distributions
@@ -19,6 +20,7 @@ multivmf.mle(x, ina, tol = 1e-07, ell = FALSE)
 iag.mle(x, tol = 1e-07)
 spcauchy.mle(x, tol = 1e-06)
 sipc.mle(x, tol = 1e-6)
+pkbd.mle(x, tol = 1e-6)
 acg.mle(x, tol = 1e-07)
 }
 
@@ -52,6 +54,8 @@ The iag.mle implements MLE of the spherical projected normal distribution, for s
 
 The spcauchy.mle estimates the parameters of the spherical Cauchy distribution, for any dimension.
 Despite the name sounds confusing, it is implemented for arbitrary dimensions, not only the sphere.
+
+The pkbd.mle estimates the parameters of the Poisson kernel based distribution (PKBD), for any dimension.
 
 The sipc.mle implements MLE of the spherical independent projected Cauchy distribution, for spherical data only.
 }
@@ -96,7 +100,7 @@ The first comes from the second by normalising to have unit length.
 A vector with the elements, the norm of mean vector, the log-likelihood and the log-likelihood of the spherical uniform distribution.
 The third value helps in case you want to do a log-likelihood ratio test for uniformity.
 }
-For the spherical Cauchy a list including:
+For the spherical Cauchy and the PKBD a list including:
 \item{mu}{
 The mean direction.
 }
@@ -128,19 +132,26 @@ Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wile
 Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
 and a fast implementation of \eqn{I_s(x)}. Computational Statistics, 27(1): 177--190.
 
-Tyler D. E. (1987). Statistical analysis for the angular central Gaussian distribution on the sphere. Biometrika 74(3): 579--589.
+Tyler D. E. (1987). Statistical analysis for the angular central Gaussian 
+distribution on the sphere. Biometrika 74(3): 579--589.
 
-Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular Gaussian Distribution. Statistics and Computing, 28: 689--697.
+Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric
+Angular Gaussian Distribution. Statistics and Computing, 28: 689--697.
 
 Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 
-Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere.
-arXiv preprint arXiv:1510.07679.
+Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. 
+Bernoulli, 26(4): 3224--3248.
+https://arxiv.org/pdf/1510.07679.pdf
 
-Kato S. & McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations.
-Bernoulli, 26(4), 3224--3248.
+Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere:
+convergence properties, identifiability, and a method of sampling.
+Journal of Computational and Graphical Statistics, 29(4): 758--770.
+
+Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD distribution.
+Electronic Journal of Statistics, 17(2): 2180--2209.
 }
 
 \author{

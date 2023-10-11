@@ -33,8 +33,8 @@ The probability that of x being less than u, where u follows the wrapped exponen
 }
 
 \references{
-Jammalamadaka, S. R. & Kozubowski, T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
-Advances and Applications in Statistics, 3(1), 77-103.
+Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models: 
+The wrapped Laplace distributions. Advances and Applications in Statistics, 3(1): 77--103.
 }
 
 \author{

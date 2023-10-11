@@ -34,14 +34,31 @@ A boolean that indicates whether a corrected F test should be used or not.
 }
 
 \details{
-The high concentration (hcf.aov), high concentration likelihood ratio (hclr.aov),
+The high concentration (hcf.aov), high concentration log-likelihood ratio (hclr.aov),
 log-likelihood ratio (lr.aov), embedding approach (embed.aov) or the non equal
 concentration parameters approach (het.aov) is used.
 }
 
 \value{
-A vector with two or three elements, the test statistic, the p-value and the
-common concentration parameter kappa based on all the data.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
+}
+\item{parameter}{
+The degree(s) of freedom of the test.
+}
+\item{p.value}{
+The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
+}
 }
 
 \references{

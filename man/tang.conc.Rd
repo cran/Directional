@@ -11,6 +11,7 @@ A test for testing the equality of the concentration parameter among g samples, 
 \usage{
 tang.conc(u, ina, rads = FALSE)
 }
+
 \arguments{
 \item{u}{
 A numeric vector containing the values of all samples.
@@ -28,12 +29,24 @@ This test works for circular data.
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{p-value}{
+\item{parameter}{
+The degrees of freedom of the test.
+}
+\item{p.value}{
 The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 

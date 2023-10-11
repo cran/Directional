@@ -47,8 +47,14 @@ hcf.boot <- function(x1, x2, fc = TRUE, B = 999) {
     }
   }
 
-  pvalue <- ( sum(ftb > Ft) + 1 ) / (B + 1)
-  res <- c(Ft, pvalue, kapaa)
-  names(res) <- c('test', 'p-value', 'kappa')
-  res
+  p.value <- ( sum(ftb > Ft) + 1 ) / (B + 1)
+  statistic <- Ft  ;   names(statistic) <- "Bootstrap hcf test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 directional mean vector differ"
+  method <- "Bootstrap ANOVA for 2 directional mean vectors using the high concentration test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

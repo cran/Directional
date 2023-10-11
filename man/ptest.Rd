@@ -22,11 +22,11 @@ The number of random uniform projections to use.
 }
 
 \details{
-For more details see Cuesta-Albertos, Cuevas and Fraiman (2009). 
+For more details see Cuesta-Albertos, Cuevas and Fraiman (2009).
 }
 
 \value{
-A vector including:
+A list including:
 \item{pvalues}{
 The p-values of the Kolmogorov-Smirnov tests.
 }
@@ -36,11 +36,11 @@ The p-value of the test based on the Benjamini and Heller (2008) procedure.
 }
 
 \references{
-Cuesta-Albertos J. A., Cuevas A. and Fraiman, R. (2009). 
-On projection-based tests for directional and compositional data. 
+Cuesta-Albertos J. A., Cuevas A. and Fraiman, R. (2009).
+On projection-based tests for directional and compositional data.
 Statistics and Computing, 19: 367--380.
 
-Benjamini Y. and Heller R. (2008). Screening for partial conjunction hypotheses. 
+Benjamini Y. and Heller R. (2008). Screening for partial conjunction hypotheses.
 Biometrics, 64(4): 1215--1222.
 }
 

@@ -1,8 +1,8 @@
-spher.mixvmf.contour <- function(probs, mu, k, bgcol = "snow", dat = NULL, col = NULL, lat = 50, long = 50) {
-  m1 <- mu/sqrt( Rfast::rowsums(mu^2) )
+spher.pkbd.contour <- function(mu, rho, bgcol = "snow", dat = NULL, col = NULL, lat = 50, long = 50) {
+  m1 <- mu
   m <- Directional::euclid.inv(m1)
-  x1 <- seq( min(m[, 1]) - lat, max(m[, 1]) + lat, by = 0.1 )
-  x2 <- seq( min(m[, 2]) - long, max(m[, 2]) + long, by = 0.1 )
+  x1 <- seq(m[1] - lat, m[1] + lat, by = 0.1)
+  x2 <- seq(m[2] - long, m[2] + long, by = 0.1)
   n <- length(x1)
   wa <- NULL
   for (i in 1:n) {
@@ -10,7 +10,7 @@ spher.mixvmf.contour <- function(probs, mu, k, bgcol = "snow", dat = NULL, col =
     wa <- rbind(wa, w1)
   }
   wa <- Directional::euclid(wa)
-  mat <- Directional::dmixvmf(wa, probs, mu, k)
+  mat <- Directional::dpkbd(wa, mu, rho)
   mat <- matrix(mat, nrow = n, byrow = TRUE)
   a <- contourLines(x1, x2, mat, nlevels = 7)
 
@@ -29,17 +29,9 @@ spher.mixvmf.contour <- function(probs, mu, k, bgcol = "snow", dat = NULL, col =
     y1 <- Directional::euclid( cbind( a[[ i ]]$x, a[[ i ]]$y ) )
     rgl::lines3d(y1[, 1], y1[, 2], y1[, 3], col = 4, radius = 1, size = 1)
   }
-  rgl::points3d(m1[, 1], m1[, 2], m1[, 3], col = 3, radius = 1, size = 3)
+  rgl::points3d(m1[1], m1[2], m1[3], col = 3, radius = 1, size = 3)
   if ( !is.null(dat) ) {
     if ( is.null(col) )  col <- rep(2, dim(dat)[1])
     rgl::points3d(dat[, 1], dat[, 2], dat[, 3], col = col, radius = 1, size = 3)
   }
 }
-
-
-
-
-
-
-
-

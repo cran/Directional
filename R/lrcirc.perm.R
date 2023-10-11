@@ -69,8 +69,14 @@ lrcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
     wp[i] <- kapa * sum( Ri * Rfast::rowsums( (mi - m)^2 ) )
   }
 
-  pvalue <- ( sum(wp > w) + 1 ) / (B + 1)
-  res <- c(kapa * w, pvalue, kapa)
-  names(res) <- c("test", "p-value", "kappa")
-  res
+  p.value <- ( sum(wp > w) + 1 ) / (B + 1)
+  statistic <- w  ;   names(statistic) <- "LR test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 circular means differ"
+  method <- "Permutation ANOVA for 2 circular means using the log-likelihood ratio test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

@@ -33,8 +33,15 @@ embed.boot <- function(x1, x2, B = 999) {
     Rbar <- sqrt( sum(S^2) )  ## the mean resultant length based on all the data
     ftb[i] <-  (n - 2) * ( sum(ni * Rbi^2) - n * Rbar^2) / ( n - sum(ni * Rbi^2) )
   }
-  pvalue <- ( sum(ftb > Ft) + 1 ) / (B + 1)
-  res <- c(Ft, pvalue)
-  names(res) <- c('test', 'p-value')
-  res
+
+  p.value <- ( sum(ftb > Ft) + 1 ) / (B + 1)
+  statistic <- Ft  ;   names(statistic) <- "Bootstrap embed test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 directional mean vectors differ"
+  method <- "Bootstrap ANOVA for 2 directional mean vectors using the embedding approach"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

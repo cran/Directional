@@ -1,5 +1,5 @@
 purka.contour <- function(theta, a, lat = 50, long = 50) {
-  m <- euclid.inv(theta)
+  m <- Directional::euclid.inv(theta)
   x1 <- x2 <- seq(0, 180, by = 2)
   x1 <- seq(m[1] - lat, m[1] + lat)
   x2 <- seq(m[2] - long, m[2] + long)

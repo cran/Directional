@@ -46,7 +46,7 @@ lrcirc.boot <- function(u1, u2, rads = TRUE, B = 999) {
   y1 <- x[1:n1, ] %*% rot1
   y2 <- x[-c(1:n1), ] %*% rot2
   wb <- numeric(B)
-  
+
   for (i in 1:B) {
     b1 <- Rfast2::Sample.int(n1, n1, replace = TRUE)
     b2 <- Rfast2::Sample.int(n2, n2, replace = TRUE)
@@ -82,8 +82,14 @@ lrcirc.boot <- function(u1, u2, rads = TRUE, B = 999) {
     wb[i] <- kapa * sum( Ri * Rfast::rowsums( (mi - m)^2 ) )
   }  ## end for (i in 1:B)
 
-  pvalue <- ( sum(wb > w) + 1 ) / (B + 1)
-  res <- c(w, pvalue, kapaa)
-  names(res) <- c("test", "p-value", "kappa")
-  res
+  p.value <- ( sum(wb > w) + 1 ) / (B + 1)
+  statistic <- w  ;   names(statistic) <- "LR test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 circular means differ"
+  method <- "Bootstrap ANOVA for 2 circular means using the log-likelihood ratio test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

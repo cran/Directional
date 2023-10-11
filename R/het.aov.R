@@ -17,8 +17,15 @@ het.aov <- function(x, ina) {
   for (i in 1:g)  kapa[i] <- Directional::vmf.mle( x[ina == i, ], fast = TRUE )$kappa
   tw <- Rfast::colsums(kapa * ni * mi)
   Tt <- 2 * ( sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) )
-  pvalue <- pchisq(Tt, (p - 1) * (g - 1), lower.tail = FALSE)
-  res <- c(Tt, pvalue)
-  names(res) <- c('test', 'p-value')
-  res
+  p.value <- pchisq(Tt, (g - 1) * (p - 1), lower.tail = FALSE)
+
+  statistic <- Tt  ;   names(statistic) <- "chi-square test statistic"
+  parameter <- (g - 1) * (p - 1)     ;   names(parameter) <- "df"
+  alternative <- "At least one directional mean vector differs"
+  method <- "ANOVA for directional data using the heterogeneous approach"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

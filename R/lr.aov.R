@@ -34,9 +34,16 @@ lr.aov <- function(x, ina) {
   apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI( k0, p/2 - 1, expon.scaled = TRUE ) ) + k0
   apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI( k1, p/2 - 1, expon.scaled = TRUE ) ) + k1
   w <- 2 * (k1 * sum(Ri) - k0 * R - n * apk1 + n * apk0)
-  pvalue <- pchisq(w, (g - 1) * (p - 1), lower.tail = FALSE)
-  res <- c(w, pvalue)
-  names(res) <- c('w', 'p-value')
-  res
+  p.value <- pchisq(w, (g - 1) * (p - 1), lower.tail = FALSE)
+
+  statistic <- w   ;   names(statistic) <- "chi-square test statistic"
+  parameter <- (g - 1) * (p - 1)     ;   names(parameter) <- "df"
+  alternative <- "At least one directional mean vector differs"
+  method <- "ANOVA for directional data using the log-likelihood ratio test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }
 

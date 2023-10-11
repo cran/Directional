@@ -10,5 +10,19 @@ het.circaov <- function(u, ina, rads = FALSE) {
   ## ina is an indicator variable of each sample
   ## if the data are in degrees we transform them into radians
   if ( !rads )  u <- u * pi/180
-  Rfast2::het.circaov(u, ina)
+  mod <- Rfast2::het.circaov(u, ina)
+
+  n <- length(u)
+  ni <- tabulate(ina)
+  g <- max(ina)
+  statistic <- mod[1]  ;   names(statistic) <- "chi-square test statistic"
+  p.value <- mod[2]
+  parameter <- g - 1      ;   names(parameter) <- "df"
+  alternative <- "At least one circular mean differs"
+  method <- "ANOVA for circular data using the heterogeneous approach"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

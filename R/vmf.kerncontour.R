@@ -23,12 +23,12 @@ vmf.kerncontour <- function(u, thumb = "none", den.ret = FALSE, full = FALSE,
   ##   using extents of the data
   ## ngrid specifies the number of points taken at each axis
   n <- dim(u)[1]  ## sample size
-  x <- euclid(u)
+  x <- Directional::euclid(u)
 
-  if (thumb == "none") {
+  if ( thumb == "none" ) {
     h <- as.numeric( vmfkde.tune(x, low = 0.1, up = 1)[1] )
   } else if (thumb == "rot") {
-    k <- vmf.mle(x)$kappa
+    k <- Directional::vmf.mle(x, fast = TRUE)$kappa
     h <- ( (8 * sinh(k)^2) / (k * n * ( (1 + 4 * k^2) * sinh(2 * k) -
                                           2 * k * cosh(2 * k)) ) ) ^ ( 1/6 )
   }

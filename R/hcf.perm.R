@@ -21,8 +21,14 @@ hcf.perm <- function(x1, x2, B = 999) {
     pft[i] <- (n - 2) * (sum(Ri) - R) / ( n - sum(Ri) )
   }
 
-  pvalue <- ( sum(pft > Ft) + 1 ) / (B + 1)
-  res <- c(Ft, pvalue)
-  names(res) <- c('test', 'p-value')
-  res
+  p.value <- ( sum(pft > Ft) + 1 ) / (B + 1)
+  statistic <- Ft  ;   names(statistic) <- "hcf test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 directional mean vector differ"
+  method <- "Permutation ANOVA for 2 directional mean vectors using the high concentration test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

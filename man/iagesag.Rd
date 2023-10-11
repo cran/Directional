@@ -31,12 +31,24 @@ This works for spherical data only.
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{p-value or Bootstrap p-value}{
+\item{parameter}{
+The degrees of freedom of the test. If bootstrap was employed this is "NA".
+}
+\item{p.value}{
 The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 
@@ -56,7 +68,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{fishkent}, \link{esag.mle}, \link{kent.mle}, \link{iag.mle}
+\code{\link{fishkent}, \link{iagesag}, \link{pc.test}, \link{esag.mle}, \link{kent.mle},
 }
 }
 

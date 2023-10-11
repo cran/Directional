@@ -29,12 +29,24 @@ The Rayleigh test of uniformity is not the best, when there are two antipodal me
 }
 
 \value{
-A vector including:
-\item{test}{
-The value of the test statistic.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{p-value or Bootstrap p-value}{
-The (bootstrap) p-value of the test.
+\item{parameter}{
+The degrees of freedom of the test. If bootstrap was employed this is "NA".
+}
+\item{p.value}{
+The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 
@@ -43,7 +55,7 @@ Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wi
 
 Jupp, P. E. (2001). Modifications of the rayleigh and bingham tests for uniformity of directions. Journal of Multivariate Analysis, 77(2): 1-20.
 
-Rayleigh, L. (1919). On the problem of random vibrations, and of random flights in one, two, or three dimensions. 
+Rayleigh, L. (1919). On the problem of random vibrations, and of random flights in one, two, or three dimensions.
 The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science, 37(220): 321--347.
 }
 
@@ -58,7 +70,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{ptest}, \link{vmf.mle}, \link{meandir.test}, \link{acg.mle}
+\code{\link{ptest}, \link{kuiper}, \link{iagesag}
 }
 }
 

@@ -6,5 +6,16 @@ hclrcirc.perm <- function(u1, u2, rads = TRUE, B = 999) {
   }
   x1 <- cbind( cos(u1), sin(u1) )
   x2 <- cbind( cos(u2), sin(u2) )
-  Directional::hclr.perm(x1, x2)
+  mod <- Directional::hclr.perm(x1, x2)
+
+  statistic <- mod$statistic
+  p.value <- mod$p.value
+  parameter <- mod$parameter
+  alternative <- "The 2 circular means differ"
+  method <- "Permutation ANOVA for 2 circular means using the high concentration log-likelihood ratio test"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

@@ -18,7 +18,7 @@ het.boot <- function(x1, x2, B = 999) {
   kapa[1] <- Directional::vmf.mle( x1, fast = TRUE )$kappa
   kapa[2] <- Directional::vmf.mle( x2, fast = TRUE )$kappa
   tw <- Rfast::colsums(kapa * ni * mi)
-  Tt <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) 
+  Tt <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) )
 
   tb <- numeric(B)
   rot1 <- t( Directional::rotation(m1, m) )
@@ -36,11 +36,17 @@ het.boot <- function(x1, x2, B = 999) {
     kapa[1] <- Directional::vmf.mle(yb1, fast = TRUE )$kappa
     kapa[2] <- Directional::vmf.mle(yb2, fast = TRUE )$kappa
     tw <- Rfast::colsums(kapa * ni * mi)
-    tb[i] <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) ) 
+    tb[i] <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) )
   }
 
-  pvalue <- ( sum(tb > Tt) + 1 ) / (B + 1)
-  res <- c(2 * Tt, pvalue)
-  names(res) <- c('test', 'p-value')
-  res
+  p.value <- ( sum(tb > Tt) + 1 ) / (B + 1)
+  statistic <- 2 * Tt  ;   names(statistic) <- "Bootstrap het test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "The 2 directional mean vectors differ"
+  method <- "Bootstrap ANOVA for 2 directional mean vectors using the heterogeneous approach"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }

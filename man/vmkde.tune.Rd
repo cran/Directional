@@ -42,7 +42,8 @@ The value of the maximised pseudo-likelihood.
 }
 
 \references{
-Taylor C.C. (2008). Automatic bandwidth selection for circular density estimation. Computational Statistics & Data Analysis, 52(7), 3493--3500.
+Taylor C.C. (2008). Automatic bandwidth selection for circular density estimation. 
+Computational Statistics & Data Analysis, 52(7), 3493--3500.
 
 Wand M.P. and Jones M.C. (1994). Kernel smoothing. CrC Press.
 }

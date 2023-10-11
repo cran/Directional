@@ -44,12 +44,24 @@ When you have grouped data, you can test whether the data come from the von Mise
 }
 
 \value{
-A list including:
-\item{info}{
-A vector with two elements, the test statistic value and the bootstrap p-value.
+This is an "htest"class object. Thus it returns a list including:
+\item{statistic}{
+The test statistic value.
 }
-\item{runtime}{
-The runtime of the procedure.
+\item{parameter}{
+Since this is a bootstrap based test, there are no degrees of freedom, hence this is "NA".
+}
+\item{p.value}{
+The p-value of the test.
+}
+\item{alternative}{
+A character with the alternative hypothesis.
+}
+\item{method}{
+A character with the test used.
+}
+\item{data.name}{
+A character vector with two elements.
 }
 }
 
@@ -80,5 +92,3 @@ group.gof(g, ni, 2, 10, dist = "vm", rads = TRUE, R = 299, ncores = 1)
 group.gof(g, ni, 2, 5, dist = "vm", rads = TRUE, R = 299, ncores = 1)
 }
 
-\keyword{ Grouped data }
-\keyword{ von Mises-Fisher distribution }

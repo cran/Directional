@@ -85,7 +85,7 @@ A vector with the (log) density values of x.
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
 Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: 
 A Novel Framework for Circular and Directional Data Modeling.
@@ -94,8 +94,8 @@ https://arxiv.org/pdf/2302.02468.pdf
 Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data.
 Journal of the American Statistical Association, 93(443): 1068--1077.
 
-Jammalamadaka, S. R. & Kozubowski, T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
-Advances and Applications in Statistics, 3(1), 77-103.
+Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
+Advances and Applications in Statistics, 3(1): 77--103.
 }
 
 \author{

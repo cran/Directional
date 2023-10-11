@@ -3,6 +3,7 @@
 \alias{iagd}
 \alias{dpurka}
 \alias{dspcauchy}
+\alias{dpkbd}
 \title{
 Density of some (hyper-)spherical distributions
 }
@@ -16,6 +17,7 @@ dvmf(y, mu, k, logden = FALSE )
 iagd(y, mu, logden = FALSE)
 dpurka(y, theta, a, logden = FALSE)
 dspcauchy(y, mu, rho, logden = FALSE)
+dpkbd(y, mu, rho, logden = FALSE)
 }
 
 \arguments{
@@ -23,7 +25,8 @@ dspcauchy(y, mu, rho, logden = FALSE)
 A matrix or a vector with the data expressed in Euclidean coordinates, i.e. unit vectors.
 }
 \item{mu}{
-The mean direction (unit vector) of the von Mises-Fisher, the IAG, or of the the spherical Cauchy distribution.
+The mean direction (unit vector) of the von Mises-Fisher, the IAG, the spherical Cauchy distribution,
+or of the Poisson kernel based distribution.
 }
 \item{theta}{
 The mean direction (unit vector) of the Purkayastha distribution.
@@ -35,7 +38,8 @@ The concentration parameter of the von Mises-Fisher distribution.
 The concentration parameter of the Purkayastha distribution.
 }
 \item{rho}{
-The \eqn{\rho} parameter of the spherical Cauchy distribution.
+The \eqn{\rho} parameter of the spherical Cauchy distribution, or of the
+Poisson kernel based distribution.
 }
 \item{logden}{
 If you the logarithm of the density values set this to TRUE.
@@ -43,7 +47,7 @@ If you the logarithm of the density values set this to TRUE.
 }
 
 \details{
-The density of the von Mises-Fisher, of the IAG, of the Purkayastha or of the spherical Cauchy distribution is computed.
+The density of the von Mises-Fisher, of the IAG, of the Purkayastha, of the spherical Cauchy distribution, or of the Poisson kernel based distribution is computed.
 }
 
 \value{
@@ -57,9 +61,15 @@ Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtain
 
 Cabrera J. and Watson G. S. (1990). On a spherical median related distribution. Communications in Statistics-Theory and Methods, 19(6): 1973--1986.
 
-Kato S. and McCullagh P. (2018). Mobius transformation and a Cauchy family on the sphere. arXiv preprint arXiv:1510.07679.
+Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. Bernoulli, 26(4): 3224--3248.
+https://arxiv.org/pdf/1510.07679.pdf
 
-Kato S. & McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. Bernoulli, 26(4), 3224--3248.
+Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere:
+convergence properties, identifiability, and a method of sampling.
+Journal of Computational and Graphical Statistics, 29(4): 758--770.
+
+Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD distribution.
+Electronic Journal of Statistics, 17(2): 2180--2209.
 }
 
 \author{

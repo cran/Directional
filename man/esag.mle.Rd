@@ -81,6 +81,4 @@ y <- resag(1000, m, c(1,0.5) )
 esag.mle(y)
 }
 
-\keyword{ ESAG distribution }
-\keyword{ maximum likelihood estimation }
-\keyword{ spherical data }
+

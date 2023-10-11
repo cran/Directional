@@ -41,9 +41,15 @@ hetboot <- function(x, ina, B = 999) {
     tb[i] <- sum( kapa * ni * sqrt( Rfast::rowsums(mi^2) ) ) - sqrt( sum(tw^2) )
   }
 
-  pvalue <- ( sum(tb > Tt) + 1 ) / (B + 1)
-  res <- c(2 * Tt, pvalue)
-  names(res) <- c('test', 'p-value')
-  res
+  p.value <- ( sum(tb > Tt) + 1 ) / (B + 1)
+  statistic <- 2 * Tt  ;   names(statistic) <- "Bootstrap het test statistic"
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  alternative <- "At least one directional mean vector differs"
+  method <- "Bootstrap ANOVA for directional data using the heterogeneous approach"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }
 

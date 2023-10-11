@@ -13,15 +13,15 @@ conc.test(u, ina, rads = FALSE)
 }
 
 \arguments{
-  \item{u}{
-  A numeric vector containing the values of all samples.
-  }
-  \item{ina}{
-  A numerical variable or factor indicating the groups of each value.
-  }
-  \item{rads}{
-  If the data are in radians this should be TRUE and FALSE otherwise.
-  }
+\item{u}{
+A numeric vector containing the values of all samples.
+}
+\item{ina}{
+A numerical variable or factor indicating the groups of each value.
+}
+\item{rads}{
+If the data are in radians this should be TRUE and FALSE otherwise.
+}
 }
 
 \details{

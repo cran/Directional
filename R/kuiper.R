@@ -22,17 +22,22 @@ kuiper <- function(u, rads = FALSE, R = 1) {
     a2 <- exp( -2 * m * Vn^2 )
     b1 <- 2 * ( a1 - 1 ) * a2
     b2 <- 8 * Vn / ( 3 * f ) * m * (a1 - 3) * a2
-    pvalue <- sum(b1 - b2)
+    p.value <- sum(b1 - b2)
   } else {
     x <- matrix( Rfast2::Runif(n * R, 0, 2 * pi), ncol = R)
     x <- Rfast::colSort(x) / (2 * pi)
     bvn <- f * ( Rfast::colMaxs(x - (i - 1)/n, value = TRUE) + Rfast::colMaxs(i/n - x, value = TRUE) )
-    pvalue <- ( sum(bvn > Vn) + 1 ) / (R + 1)
+    p.value <- ( sum(bvn > Vn) + 1 ) / (R + 1)
   }
 
-  res <- c(Vn, pvalue)
-  names(res) <- c("Test", "p-value")
-  res
+  parameter <- "NA"     ;   names(parameter) <- "df"
+  statistic <- Vn  ;   names(statistic) <- "Test statistic"
+  alternative <- "The distribution is circular uniform"
+  method <- "Kuiper test of uniformity with circular data"
+  data.name <- c("data")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
 }
 
 

@@ -36,3 +36,4 @@ importFrom("ggplot2", aes, element_line, element_rect, element_text, geom_sf, gg
 
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")
+export(.onAttach)

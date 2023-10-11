@@ -18,9 +18,16 @@ embed.aov <- function(x, ina) {
   S <- Rfast::colmeans(x)
   Rbar <- sqrt( sum(S^2) )  ## the mean resultant length based on all the data
   Ft <- (n - g) * ( sum(ni * Rbi^2) - n * Rbar^2) / ( (g - 1) * ( n - sum(ni * Rbi^2) ) )
-  pvalue <- pf(Ft, (g - 1) * (p - 1), (n - g) * (p - 1), lower.tail = FALSE)
-  res <- c(Ft, pvalue)
-  names(res) <- c('test', 'p-value')
-  res
+  p.value <- pf(Ft, (g - 1) * (p - 1), (n - g) * (p - 1), lower.tail = FALSE)
+
+  statistic <- Ft  ;   names(statistic) <- "F-test statistic"
+  parameter <- c( (g - 1) * (p - 1), (n - g) * (p - 1) )     ;   names(parameter) <- c("df1", "df2")
+  alternative <- "At least directional mean vector differs"
+  method <- "ANOVA for directional data using the embedding approach"
+  data.name <- c("data ", " groups")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
+  return(result)
 }
 

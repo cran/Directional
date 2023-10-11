@@ -28,13 +28,14 @@ The components of \eqn{ svd( \bar(X) ) }.
 }
 
 \references{
-Prentice M. J. (1986). Orientation statistics without parametric assumptions.Journal of the Royal Statistical Society. Series B: Methodological 48(2).
+Prentice M. J. (1986). Orientation statistics without parametric assumptions.
+Journal of the Royal Statistical Society. Series B: Methodological 48(2): 214--222.
 }
 
 \author{
-Anamul Sajib & Chris Fallaize.
+Anamul Sajib and Chris Fallaize.
 
-R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> & Chris Fallaize.
+R implementation and documentation: Anamul Sajib <sajibstat@du.ac.bd> and Chris Fallaize.
 }
 
 \seealso{

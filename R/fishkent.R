@@ -25,9 +25,16 @@ fishkent <- function(x, B = 999) {
   Ta <- n * (k / 2)^2 * rat * (lam[1] - lam[2])^2
 
   if (B == 1) {
-    pvalue <- pchisq(Ta, 2, lower.tail = FALSE)
-    res <- c(Ta, pvalue)
-    names(res) <- c('test', 'p-value')
+    p.value <- pchisq(Ta, 2, lower.tail = FALSE)
+    parameter <- 2     ;   names(parameter) <- "df"
+    statistic <- Ta  ;   names(statistic) <- "Test statistic"
+    alternative <- "Kent is prefered to von Mises-Fisher"
+    method <- "Asymptotic rotational symmetry (von Mises-Fisher versus Kent distribution)"
+    data.name <- c("data")
+    result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                    alternative = alternative, method = method, data.name = data.name )
+    class(result) <- "htest"
+
   } else {
     Tb <- numeric(B)
     for (i in 1:B) {
@@ -43,9 +50,16 @@ fishkent <- function(x, B = 999) {
       rat <- besselI(k, 0.5, expon.scaled = TRUE) / besselI(k, 2.5, expon.scaled = TRUE)
       Tb[i] <- n * ( k / 2 )^2 * rat * (lam[1] - lam[2])^2
     }
-
-    res <- c( Ta, (sum(Tb > Ta) + 1) / (B + 1) )
-    names(res) <- c('test', 'Bootstrap p-value')
+    p.value <-  (sum(Tb > Ta) + 1) / (B + 1)
+    parameter <- "NA"     ;   names(parameter) <- "df"
+    statistic <- Ta  ;   names(statistic) <- "Test statistic"
+    alternative <- "Kent is prefered to von Mises-Fisher"
+    method <- "Bootstrap rotational symmetry (von Mises-Fisher versus Kent distribution)"
+    data.name <- c("data")
+    result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                    alternative = alternative, method = method, data.name = data.name )
+    class(result) <- "htest"
   }
-  res
+
+  return(result)
 }

@@ -21,14 +21,24 @@ meandir.test <- function(x, mu, B = 999) {
   k0 <- qa0$maximum  ## concentration parameter under H0
   apk0 <- (1 - p/2) * log(k0/2) + lgamma(p/2) + log( besselI(k0, p/2 - 1, expon.scaled = TRUE) ) + k0
   apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI(k1, p/2 - 1, expon.scaled = TRUE) ) + k1
+
   w <- 2 * n * ( k1 * sqrt( sum(xbar^2) ) - k0 * sum(mu * xbar) - apk1 + apk0 )
+  p.value <- pchisq(w, p - 1, lower.tail = FALSE)
+  parameter <- p - 1     ;   names(parameter) <- "df"
+  statistic <- w  ;   names(statistic) <- "Test statistic"
+  alternative <- "Mean direction is not equal to some predefined direction"
+  method <- "Hypothesis test for a mean direction"
+  data.name <- c("data")
+  result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                  alternative = alternative, method = method, data.name = data.name )
+  class(result) <- "htest"
 
   if (B > 1) {
-    A <- rotation(m1, mu)
+    A <- Directional::rotation(m1, mu)
     y <- tcrossprod(x, A)  ## bring the data under H0
     ## y has mean direction equal to mu
     wb <- numeric(B)
-	
+
     for (i in 1:B) {
       nu <- Rfast2::Sample.int(n, n, replace = TRUE)
       z <- y[nu, ]
@@ -41,9 +51,17 @@ meandir.test <- function(x, mu, B = 999) {
       apk1 <- (1 - p/2) * log(k1/2) + lgamma(p/2) + log( besselI(k1, p/2 - 1, expon.scaled = TRUE) ) + k1
       wb[i] <- 2 * n * ( k1 * sqrt( sum(zbar^2) ) - k0 * sum(mu * zbar) - apk1 + apk0 )
     }
-	
-    pvalue <- (sum(wb > w) + 1)/(B + 1)
-  } else  pvalue <- pchisq(w, p - 1, lower.tail = FALSE)
 
-  list(mean.dir = m1, pvalue = pvalue)
+    p.value <- (sum(wb > w) + 1)/(B + 1)
+    parameter <- "NA"     ;   names(parameter) <- "df"
+    statistic <- w  ;   names(statistic) <- "Test statistic"
+    alternative <- "Mean direction is not equal to some predefined direction"
+    method <- "Bootstrap hypothesis test for a mean direction"
+    data.name <- c("data")
+    result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
+                    alternative = alternative, method = method, data.name = data.name )
+    class(result) <- "htest"
+  }
+
+  return(result)
 }
