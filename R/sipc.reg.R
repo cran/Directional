@@ -11,8 +11,8 @@ sipc.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
   regipc <- function(be, y, x) {
     be <- matrix(be, ncol = 3)
     mu <- x %*% be
-    a <- rowSums( y * mu )
-    rl <- rowSums(mu^2)
+    a <- Rfast::rowsums( y * mu )
+    rl <- Rfast::rowsums(mu^2)
     d <- rl + 1 - a^2
     sqd <- sqrt(d)
     up <- log( (rl + 1) * sqd * ( atan2(sqd, -a) - atan2(sqd, a) + pi ) + 2 * a * d )

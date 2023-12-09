@@ -17,7 +17,7 @@ vmkde.tune <- function(u, low = 0.1, up = 1, rads = TRUE) {
 
   funa <- function(h) {
     A <- expa^h
-    f <- rowSums( A )
+    f <- Rfast::rowsums( A )
     sum( log(f) ) - n * log( besselI(h, 0) )
   }
 

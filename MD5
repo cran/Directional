@@ -1,5 +1,5 @@
-06857ee42078012899cca930bafa6780 *DESCRIPTION
-ff6e586db1119046d23ab89179236046 *NAMESPACE
+acd63ca0df552c1b4e5f4985ccd7b284 *DESCRIPTION
+b3a40d7f338749e2f61678b5cd93df72 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
 edb4156f7fa0f88cb0cada52fdf2bc27 *R/africa.R
@@ -7,7 +7,7 @@ f014a52d50025a408ae92e9612fd1559 *R/asia.R
 1b57d45b412a5a23bd14147dfd9879df *R/bic.mixvmf.R
 0b6069492b111209a43df1579e1929a7 *R/cardio.mle.R
 8361b6ef879c8667c3cc016b68846e58 *R/cipc.mle.R
-ea695401d77ee4db820e34d8e676a292 *R/cipc.reg.R
+00e89a431cc44ac4e902060e4c9dd12c *R/cipc.reg.R
 8c53f6ba573112ec590652b3fab9694e *R/circ.cor1.R
 98618b20f9a421d702ca2fb72a069196 *R/circ.cor2.R
 080526ca69577507bd8e8c53516df71e *R/circ.cors1.R
@@ -23,7 +23,7 @@ d8db2f1072598a886cbe504a9ceaaff7 *R/colvm.mle.R
 db0b52c5b47272310669337969090248 *R/colwatsons.R
 4828d644d9e94289b8e9788a76a248cf *R/conc.test.R
 7c90faa77b16bfeed84e06ac85c90e1b *R/cosap.R
-eea02a524bca57717e894931c65cc6d9 *R/cosnn.R
+11fd82ec1cd98b3fc146b9e643d5d17b *R/cosnn.R
 eadd39050d34d0b8017cf4bb7218f77d *R/dcardio.R
 47f704313e1a89524b22041f9a0921a8 *R/dcipc.R
 afb5c7e99b1359e865f4929d148fb3fa *R/dcircbeta.R
@@ -33,7 +33,7 @@ c4ef2ffb5b1f93accda80ea6a29ef733 *R/desag.R
 9c319e00245f3f861b4d08364a7edf06 *R/dgcpc.R
 e7cb7eead077fbc8955d3bc25fa29ac0 *R/dggvm.R
 3f28b24c5c9b8a5c22a20b60282b7869 *R/dirda.cv.R
-721b9d97a4a33e575c54fdfb503d3fc1 *R/dirknn.R
+4e2a82ed4fe55cc8ee236874c6676e3c *R/dirknn.R
 994d8bb698b8f48df5ef7db0f02ab383 *R/dirknn.tune.R
 786f21d60f0190e5eb851f265c704195 *R/dkent.R
 db81a187da23a6bbe6464a625e305d47 *R/dmixvmf.R
@@ -55,7 +55,7 @@ a7f71e7136d1a0ab8246c0d48144dee7 *R/embedcirc.perm.R
 f80465622888756f076ca9b09604c5ac *R/esag.contour.R
 c7c0567e7fb309ce9f80741ff36babd1 *R/esag.da.R
 0a10940c30a5d5f6e1859ceaa1b7f45d *R/esag.mle.R
-e866b1d02f842d4525d7f79a265f2af8 *R/esag.reg.R
+925f482b34e27642908708bc8eb0efb5 *R/esag.reg.R
 af22e0ddf0fde139329cc4c411c08206 *R/esagda.pred.R
 12d771f0b3019eaacc1ad1864190a0c7 *R/etoa.R
 b623be254ce1684be8207f60e5c805dc *R/euclid.R
@@ -66,7 +66,7 @@ b623be254ce1684be8207f60e5c805dc *R/euclid.R
 8696979998c8546d8f4e8dc85a131f7d *R/fb.saddle.R
 a7de5b9923b9ca5f9c7b232065a96d81 *R/fishkent.R
 398e692ad6fa1b452e3678c2bac3ca4c *R/gcpc.mle.R
-cdef818c1dfe7f0df6a0e67f9312b0a8 *R/gcpc.reg.R
+ba0490b8d347b23f18f5cc12359bded6 *R/gcpc.reg.R
 0b14d21a78c0ffe5a071dcb5b504eda0 *R/ggvm.mle.R
 2b71635a225f3c0b16871f0c39e0c0cd *R/group.gof.R
 33442447c6b6ea47e2f0b993fcd7ac7c *R/group.vm.R
@@ -95,7 +95,7 @@ df2a16fd21b4bbba5c1cce755233b43e *R/hetboot.R
 36ca2309a53221a3ff099421b1eb6c28 *R/hetcirc.perm.R
 07c82e0a86f3b14b6c87d30f624da3f6 *R/hetcircboot.R
 3a7ba8fe685916f5e76bdc4fea4636fa *R/iag.mle.R
-a319ecaf39d05776a7c7df276d3714f9 *R/iag.reg.R
+624d9368b854532ff470ae327fdd0829 *R/iag.reg.R
 c3243ffc5ce412a5fe14a938438b88e8 *R/iagd.R
 ced10a8b8e466d862c46fcd3d7e9e3e5 *R/iagesag.R
 8d7d90ebe8c64b0fa5057ebde2612563 *R/kent.contour.R
@@ -165,10 +165,10 @@ b38d46ee98785a247fd9fb7065f13901 *R/rspcauchy.R
 5bd4ae1c388997f5b9d86058a9be443b *R/rvmf.R
 7aac3d303839c20566cae2ca27861310 *R/rvonmises.R
 0021853ba4656564fe10d05fbcd26000 *R/rwrapcauchy.R
-f5396eba2da0b4dad961f0482df8712e *R/sespc.mle.R
-a361a7cbf6847c30a00bfc6bcea0a4f8 *R/sespc.reg.R
+f3699bf8271c4fe27961f1fbb344bb8d *R/sespc.mle.R
+0d7725997263125ed8980bf40af90f54 *R/sespc.reg.R
 187d64319c7d890f609b66662cb1186b *R/sipc.mle.R
-d92dc7d97acdd296d54c0f2a26f662fc *R/sipc.reg.R
+d885a5ed9fb247e821b52ea733d4ef40 *R/sipc.reg.R
 7d7c80430ce3c06fd2efc1f8afbc15d4 *R/south.america.R
 16dc576df84b9bf18db974e69add72a8 *R/spcauchy.mle.R
 9dbc8c4f7214ebda4c73b4ca3553cb1c *R/spchauchy.contour.R
@@ -204,14 +204,14 @@ b1e6040052d2faa9d57c6edeedb22881 *R/vmf.kerncontour.R
 90b22ca205ef203fed20f40d73da7f71 *R/vmf.reg.R
 590e7ac338c929dce0b3456dc6627d26 *R/vmfda.pred.R
 69726da582d6f2be3b974aa5aafb70f7 *R/vmfkde.tune.R
-fe69c5161f72450b4bd31d0aef9b2219 *R/vmkde.tune.R
+85e915d7d6bf78d929485e15fae3572e *R/vmkde.tune.R
 f414b6c45017583fd2ea112e6ea98769 *R/vmnb.pred.R
 7698697ebe07e3a248b222e4af379ec0 *R/watson.R
 fbbb8aef0ca1daef632cfc0decde1ecb *R/wood.mle.R
 93c5b1c7847a12548809a2b241bbb001 *R/worldmap.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
 081bae313416545a82e844d1225dc6a4 *man/Arotation.Rd
-5455585e84277cb9437d23d420022aa4 *man/Directional-package.Rd
+654a8c4973daaeff387654285550a454 *man/Directional-package.Rd
 568260b6d0668333b9721e736b9794c6 *man/bic.mixvmf.Rd
 31afb62193fa405192f81e4945e52788 *man/circ.cor1.Rd
 cc28105c873009ddcf34a19eea52bbbb *man/circ.cors1.Rd

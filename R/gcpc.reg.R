@@ -3,12 +3,12 @@ gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
   lik <- function(param, y, x, y1, y2, y12, n, rho) {
     be <- matrix(param, ncol = 2)
     mu <- x %*% be
-    g2 <- rowsums(mu^2)
+    g2 <- Rfast::rowsums(mu^2)
     ksi <- mu / sqrt(g2)
     s1 <- ksi[, 1]^2 + ksi[, 2]^2/rho
     s12 <- ksi[, 1] * ksi[, 2] * (1 - 1/rho)
     s2 <- ksi[, 2]^2 + ksi[, 1]^2/rho
-    a <- rowsums(y * mu)
+    a <- Rfast::rowsums(y * mu)
     B <- y1 * s1 + 2 * y12 * s12 + y2 * s2
     n * 0.5 * log(rho) + sum( log( B * sqrt(g2 + 1) - a * sqrt(B) ) )
   }
@@ -17,12 +17,12 @@ gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
     rho <- 1 / ( 1 + exp(-param[1]) )
     be <- matrix(param[-1], ncol = 2)
     mu <- x %*% be
-    g2 <- rowsums(mu^2)
+    g2 <- Rfast::rowsums(mu^2)
     ksi <- mu / sqrt(g2)
     s1 <- ksi[, 1]^2 + ksi[, 2]^2/rho
     s12 <- ksi[, 1] * ksi[, 2] * (1 - 1/rho)
     s2 <- ksi[, 2]^2 + ksi[, 1]^2/rho
-    a <- rowsums(y * mu)
+    a <- Rfast::rowsums(y * mu)
     B <- y1 * s1 + 2 * y12 * s12 + y2 * s2
     n * 0.5 * log(rho) + sum( log( B * sqrt(g2 + 1) - a * sqrt(B) ) )
   }

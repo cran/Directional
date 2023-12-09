@@ -17,7 +17,7 @@ sespc.mle <- function(y, full = FALSE, tol = 1e-6) {
      vinv <- I3 + the1 * (T1 - T2) + the2 * ( T12 + t(T12) ) +
              heta * (T1 + T2)
      a <- as.vector( y %*% m )
-     b <- rowSums( y %*% vinv * y )
+     b <- Rfast::rowsums( y %*% vinv * y )
      E <- b * rl + b - a^2
      sqe <- sqrt(E)
      up <- log( b * (rl + 1) * sqe * ( atan2(sqe, -a) - atan2(sqe, a) + pi ) + 2 * a * E )

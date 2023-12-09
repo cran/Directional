@@ -9,11 +9,11 @@ cosnn <- function(xnew, x, k = 5, index = FALSE, rann = FALSE) {
   nu <- dim(xnew)[1]
   if ( index ) {
     if (rann) {
-      disa <-  t( RANN::nn2( data = x, query = xnew, k = k )$nn.idx )
+      disa <-  t( Rnanoflann::nn( data = x, points = xnew, k = k )$indices )
     } else disa <- Rfast::dista(xnew, x, k = k, square = TRUE, index = TRUE )
   } else {
     if (rann) {
-      disa <-  t( RANN::nn2(data = x, query = xnew, k = k )$nn.dists^2 )
+      disa <-  t( Rnanoflann::nn(data = x, points = xnew, k = k, square = TRUE )$distances )
     } else disa <- Rfast::dista(xnew, x, k = k, square = TRUE)
     disa <- Rfast::colSort( 0.5 * disa - 1)
     disa[ disa >= 1 ] <- 1

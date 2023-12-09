@@ -49,7 +49,7 @@ esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol =
     be <- matrix(param[ - c( 1:2 ) ], ncol = 3)
     m <- x %*% be
     m0 <- sqrt( m[, 2]^2 + m[, 3]^2 )
-    rl <- rowSums(m^2)
+    rl <- Rfast::rowsums(m^2)
     x1b <- cbind( -m0^2, m[, 1] * m[, 2], m[, 1] * m[, 3] ) / ( m0 * sqrt(rl) )
     x2b <- cbind( 0, -m[, 3], m[, 2] ) / m0
     z12 <- x1b[, 1] * x1b[, 2]  ;    z13 <- x1b[, 1] * x1b[, 3]
@@ -59,8 +59,8 @@ esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol =
     tx2 <- cbind(0, 0, 0, 0, x2b[, 2]^2, z23, 0, z23, x2b[, 3]^2)
     vinv <- cbind(x1b[, 1] * x2b, x1b[, 1] * x2b[, 2], 2 * x1b[, 2] * x2b[, 2], x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3],
                   x1b[, 1] * x2b[, 3], x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3], 2 * x1b[, 3] * x2b[, 3]  )
-    g1 <- 1 + rowSums( (gam2 * vinv + gam1 * (tx1 - tx2) + heta * (tx1 + tx2) ) * za )
-    g2 <- rowSums( y * m )
+    g1 <- 1 + Rfast::rowsums( (gam2 * vinv + gam1 * (tx1 - tx2) + heta * (tx1 + tx2) ) * za )
+    g2 <- Rfast::rowsums( y * m )
     a <- g2 / sqrt(g1)
     a2 <- a^2
     M2 <- ( 1 + a2 ) * pnorm(a) + a * dnorm(a)

@@ -12,7 +12,7 @@ iag.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
    regiag <- function(be, y, x) {
      be <- matrix(be, ncol = 3)
      mu <- x %*% be
-     a <- rowSums( y * mu )
+     a <- Rfast::rowsums( y * mu )
      M2 <- a + (1 + a^2) * pnorm(a)/dnorm(a)
      0.5 * sum(mu * mu) - sum( log(M2) )
    }

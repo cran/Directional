@@ -3,8 +3,8 @@ cipc.reg <- function(y, x, rads = TRUE, xnew = NULL) {
   lik <- function(be, y, x) {
     be <- matrix(be, ncol = 2)
     mu <- x %*% be
-    g2 <- rowsums(mu^2)
-    a <- rowsums(y * mu)
+    g2 <- Rfast::rowsums(mu^2)
+    a <- Rfast::rowsums(y * mu)
     sum( log(sqrt(g2 + 1) - a) )
   }
 

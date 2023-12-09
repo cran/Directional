@@ -48,7 +48,7 @@ sespc.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol 
     be <- matrix(param[ - c( 1:2 ) ], ncol = 3)
     m <- x %*% be
     m0 <- sqrt( m[, 2]^2 + m[, 3]^2 )
-    rl <- rowSums(m^2)
+    rl <- Rfast::rowsums(m^2)
     x1b <- cbind( -m0^2, m[, 1] * m[, 2], m[, 1] * m[, 3] ) / ( m0 * sqrt(rl) )
     x2b <- cbind( 0, -m[, 3], m[, 2] ) / m0
     z12 <- x1b[, 1] * x1b[, 2]  ;    z13 <- x1b[, 1] * x1b[, 3]
@@ -58,8 +58,8 @@ sespc.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol 
     tx2 <- cbind(0, 0, 0, 0, x2b[, 2]^2, z23, 0, z23, x2b[, 3]^2)
     vinv <- cbind(x1b[, 1] * x2b, x1b[, 1] * x2b[, 2], 2 * x1b[, 2] * x2b[, 2], x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3],
                   x1b[, 1] * x2b[, 3], x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3], 2 * x1b[, 3] * x2b[, 3]  )
-    a <- rowSums( y * m )
-    b <- 1 + rowSums( (the2 * vinv + the1 * (tx1 - tx2) + heta * (tx1 + tx2) ) * za )
+    a <- Rfast::rowsums( y * m )
+    b <- 1 + Rfast::rowsums( (the2 * vinv + the1 * (tx1 - tx2) + heta * (tx1 + tx2) ) * za )
     E <- b * rl + b - a^2
     sqe <- sqrt(E)
     up <- log( b * (rl + 1) * sqe * ( atan2(sqe, -a) - atan2(sqe, a) + pi ) + 2 * a * E )
