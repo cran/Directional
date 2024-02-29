@@ -67,14 +67,15 @@ esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol =
     - 0.5 * sum(a2) + 0.5 * sum(rl) + 1.5 * sum( log(g1) ) - sum( log(M2) )
   }
 
-  ini <- rnorm( 3 * dim(x)[2] + 2 )
-  val1 <- nlm(reg2, ini, y = y, x = x, za = za, iterlim = 5000)
-  val2 <- nlm(reg2, val1$estimate, y = y, x = x, za = za, iterlim = 5000)
-  while (val1$minimum - val2$minimum > 1e-06) {
+  ini <- lm.fit(x, y)$coefficients  
+  ini <- c( rnorm(2), ini)
+  val1 <- optim( ini, reg2, y = y, x = x, za = za, control = list(maxit = 5000))
+  val2 <- optim(val1$par, reg2, y = y, x = x, za = za, control = list(maxit = 5000))
+  while (val1$value - val2$value > 1e-06) {
     val1 <- val2
-    val2 <-  nlm(reg2, val1$estimate, y = y, x = x, za = za, iterlim = 5000)
+    val2 <-  optim(val1$par, reg2, y = y, x = x, za = za, control = list(maxit = 5000))
   }
-  da <- optim(val2$estimate, reg2, y = y, x = x, za = za, control = list(maxit = 10000), hessian = TRUE)
+  da <- optim(val2$par, reg2, y = y, x = x, za = za, control = list(maxit = 10000), hessian = TRUE)
   gam1 <- da$par[1]
   gam2 <- da$par[2]
   rho <- sqrt( gam1^2 + gam2^2 + 1 ) - sqrt( gam1^2 + gam2^2 )
@@ -109,4 +110,5 @@ esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol =
   list(loglik = -da$value - n * log(2 * pi), param = param, rl = rl,
        gam = gam, beta = be, seb = seb, est = est)
 }
+
 

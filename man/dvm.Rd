@@ -9,6 +9,7 @@
 \alias{dcircexp}
 \alias{dcipc}
 \alias{dgcpc}
+\alias{dmmvm}
 \title{
 Density of some circular distributions
 }
@@ -28,6 +29,7 @@ dcardio(x, m, rho, rads = FALSE, logden = FALSE)
 dcircexp(x, lambda, rads = FALSE, logden = FALSE)
 dcipc(x, omega, g, rads = FALSE, logden = FALSE)
 dgcpc(x, omega, g, rho, rads = FALSE, logden = FALSE)
+dmmvm(x, m, k, N, rads = FALSE, logden = FALSE)
 }
 
 \arguments{
@@ -45,27 +47,30 @@ The mean vector, a vector with two values for the "spml".
 The location parameter of the CIPC and GCPC distributions.
 }
 \item{g}{
-The norm of the mean vector for the CIPC and GCPC.
+The norm of the mean vector for the CIPC and GCPC distributions.
 }
 \item{k}{
 The concentration parameter.
 }
 \item{rho}{
-For the wrapped Cauchy distribution, this is the \eqn{\rho} parameter.
+For the wrapped Cauchy and Cardioid distributions, this is the \eqn{\rho} parameter.
 For the GCPC distribution this is the eigenvalue parameter, or covariance determinant.
 }
 \item{a}{
 The \eqn{\alpha} parameter of the circular Purkayastha distribution or the \eqn{\alpha} parameter of the
-circular beta distribution.
+circular Beta distribution.
 }
 \item{b}{
-The \eqn{\beta} parameter of the circular beta distribution.
+The \eqn{\beta} parameter of the circular Beta distribution.
 }
 \item{lambda}{
-The \eqn{\lambda} parameter of the circular or wrapped exponential distribution. This must be positive.
+The \eqn{\lambda} parameter of the circular (or wrapped) exponential distribution. This must be positive.
 }
 \item{param}{
 The vector of parameters of the GGVM distribution as returned by the function \code{\link{ggvm.mle}}.
+}
+\item{N}{
+The number of modes to consider in the multi-modal von Mises distribution.
 }
 \item{rads}{
 If the data are in rads, then this should be TRUE, otherwise FALSE.
@@ -87,15 +92,25 @@ A vector with the (log) density values of x.
 \references{
 Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: 
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 
-Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data.
-Journal of the American Statistical Association, 93(443): 1068--1077.
+Presnell B., Morrison S. P. and Littell R. C. (1998). Projected multivariate linear models for
+directional data. Journal of the American Statistical Association, 93(443): 1068--1077.
 
-Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models: The wrapped Laplace distributions.
-Advances and Applications in Statistics, 3(1): 77--103.
+Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models:
+The wrapped Laplace distributions. Advances and Applications in Statistics, 3(1): 77--103.
+
+Barnett M. J. and Kingston R. L. (2024). A note on the Hendrickson-Lattman phase probability
+distribution and its equivalence to the generalized von Mises distribution.
+Journal of Applied Crystallography, 57(2).
+
+Paula F. V., Nascimento A. D., Amaral G. J. and Cordeiro G. M. (2021).
+Generalized Cardioid distributions for circular data analysis. Stats, 4(3): 634--649.
+
+Zheng Sun (2009). Comparing measures of fit for circular distributions. MSc Thesis, University of Victoria.
+file:///C:/Users/mtsag/Downloads/zhengsun_master_thesis.pdf
 }
 
 \author{

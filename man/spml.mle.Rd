@@ -7,6 +7,7 @@
 \alias{ggvm.mle}
 \alias{cipc.mle}
 \alias{gcpc.mle}
+\alias{mmvm.mle}
 \title{
 MLE of some circular distributions
 }
@@ -24,6 +25,7 @@ cardio.mle(x, rads = FALSE)
 ggvm.mle(phi, rads = FALSE)
 cipc.mle(x, rads = FALSE)
 gcpc.mle(x, rads = FALSE)
+mmvm.mle(x, N, rads = FALSE)
 }
 
 \arguments{
@@ -32,6 +34,9 @@ A numerical vector with the circular data. They can either be expressed in radia
 }
 \item{phi}{
 A numerical vector with the circular data. They can either be expressed in radians or in degrees.
+}
+\item{N}{
+The number of modes to consider in the multi-modal von Mises distribution.
 }
 \item{rads}{
 If the data are in radians set this to TRUE.
@@ -42,9 +47,12 @@ The tolerance level to stop the iterative process of finding the MLEs.
 }
 
 \details{
-The parameters of the bivariate angular Gaussian (spml.mle), wrapped Cauchy, circular exponential, cardioid, circular beta, 
-geometrically generalised von Mises, CIPC (reparametrised version of the wrapped Cauchy) and GCPC (generalisation of the CIPC) distributions are estimated. For the Wrapped Cauchy, the iterative procedure described by Kent and Tyler (1988) is used. The Newton-Raphson algortihm for the angular Gaussian is described in the regression setting in Presnell et al. (1998). 
-The circular exponential is also known as wrapped exponential distribution. 
+The parameters of the bivariate angular Gaussian (spml.mle), wrapped Cauchy, circular exponential,
+cardioid, circular beta, geometrically generalised von Mises, CIPC (reparametrised version of the
+wrapped Cauchy), GCPC (generalisation of the CIPC) and multi-modal von Mises distributions are
+estimated. For the Wrapped Cauchy, the iterative procedure described by Kent and Tyler (1988) is
+used. The Newton-Raphson algortihm for the angular Gaussian is described in the regression setting
+in Presnell et al. (1998). The circular exponential is also known as wrapped exponential distribution.
 }
 
 \value{
@@ -57,11 +65,7 @@ The value of the maximised log-likelihood.
 }
 \item{param}{
 A vector consisting of the estimates of the two parameters, the mean direction for both distributions
-and the concentration parameter \eqn{kappa} and the \eqn{rho} for the von Mises and wrapped Cauchy respectively.
-For the circular beta this contains the mean angle and the \eqn{\alpha} and \eqn{\beta} parameters. For the cardioid
-distribution this contains the \eqn{\mu} and \eqn{rho} parameters. For the generalised von Mises this is a vector
-consisting of the \eqn{\zeta}, \eqn{\kappa}, \eqn{\mu} and \eqn{\alpha} parameters of the generalised von Mises
-distribution as described in Equation (2.7) of Dietrich and Richter (2017).
+and the concentration parameter \eqn{kappa} and the \eqn{rho} for the von Mises (and the multi-modal von Mises) and wrapped Cauchy respectively. For the circular beta this contains the mean angle and the \eqn{\alpha} and \eqn{\beta} parameters. For the cardioid distribution this contains the \eqn{\mu} and \eqn{rho} parameters. For the generalised von Mises this is a vector consisting of the \eqn{\zeta}, \eqn{\kappa}, \eqn{\mu} and \eqn{\alpha} parameters of the generalised von Mises distribution as described in Equation (2.7) of Dietrich and Richter (2017).
 }
 \item{gamma}{
 The norm of the mean vector of the angular Gaussian, the CIPC and the GCPC distributions.
@@ -100,13 +104,17 @@ Sankhya B, 79(1): 21--59.
 
 https://en.wikipedia.org/wiki/Wrapped_exponential_distribution
 
-Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models: 
+Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models:
 The wrapped Laplace distributions.
 Advances and Applications in Statistics, 3(1), 77-103.
 
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: 
+Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
+
+Barnett M. J. and Kingston R. L. (2024). A note on the Hendrickson-Lattman phase probability
+distribution and its equivalence to the generalized von Mises distribution.
+Journal of Applied Crystallography, 57(2).
 }
 
 \author{

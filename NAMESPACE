@@ -4,9 +4,9 @@ importFrom("graphics", contour, lines, plot, points, abline, filled.contour,
            axis, par, segments)
 
 importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
-           .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
+           .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq, lm.fit,
            quantile, rbeta, rnorm, runif, sd, uniroot, qnorm, cov,
-		   model.matrix, nlm, integrate, rbinom, rcauchy, rexp, ks.test)
+		       model.matrix, nlm, integrate, rbinom, rcauchy, rexp, ks.test)
 
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            colSort, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
