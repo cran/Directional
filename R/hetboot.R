@@ -1,7 +1,7 @@
 hetboot <- function(x, ina, B = 999) {
 
-  x <- x[order(ina), ]
   ina <- as.numeric(ina)
+  x <- x[order(ina), ]
   ina <- sort(ina)
   ni <- tabulate(ina)
   k <- length(ni)

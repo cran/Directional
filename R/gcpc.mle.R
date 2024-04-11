@@ -16,17 +16,17 @@ gcpc.mle <- function(x, rads = FALSE) {
     - optim(m1$par, likint, rho = rho, x = x, n = n, control = list(maxit = 1000) )$value
   }
 
-  lik <- function(param, x, n) {
-    mu <- param[1:2]
-    rho <- 1 / ( 1 + exp(-param[3]) )
-    g2 <- sum(mu^2)
-    ksi <- mu / sqrt(g2)
-    sinv <- matrix( c( ksi[1]^2 + ksi[2]^2/rho, ksi[1] * ksi[2] * (1 - 1/rho),
-                       ksi[1] * ksi[2] * (1 - 1/rho), ksi[2]^2 + ksi[1]^2/rho ), ncol = 2 )
-    a <- as.vector(x %*% mu)
-    b <- Rfast::rowsums( x %*% sinv * x )
-    n * 0.5 * log(rho) + sum( log( b * sqrt(g2 + 1) - a * sqrt(b) ) )
-  }
+ # lik <- function(param, x, n) {
+ #   mu <- param[1:2]
+ #   rho <- 1 / ( 1 + exp(-param[3]) )
+ #   g2 <- sum(mu^2)
+ #   ksi <- mu / sqrt(g2)
+ #   sinv <- matrix( c( ksi[1]^2 + ksi[2]^2/rho, ksi[1] * ksi[2] * (1 - 1/rho),
+ #                      ksi[1] * ksi[2] * (1 - 1/rho), ksi[2]^2 + ksi[1]^2/rho ), ncol = 2 )
+ #   a <- as.vector(x %*% mu)
+ #   b <- Rfast::rowsums( x %*% sinv * x )
+ #   n * 0.5 * log(rho) + sum( log( b * sqrt(g2 + 1) - a * sqrt(b) ) )
+ # }
 
   if ( !rads )  x <- x * pi/180
   x <- cbind( cos(x), sin(x) )

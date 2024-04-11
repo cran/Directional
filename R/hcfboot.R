@@ -1,7 +1,7 @@
 hcfboot <- function(x, ina, B = 999) {
 
-  x <- x[order(ina), ]
   ina <- as.numeric(ina)
+  x <- x[order(ina), ]
   ina <- sort(ina)
   ni <- tabulate(ina)
   k <- length(ni)
@@ -17,7 +17,7 @@ hcfboot <- function(x, ina, B = 999) {
   m <- S / R
   kapaa <- Directional::vmf.mle(x, fast = TRUE)$kappa
   ## kapaa is the estimated concentration parameter based on all the data
-  Ft <- (n - k) / (k - 1) * ( sum(Ri) - R) / ( n - sum(Ri) )
+  Ft <- ( sum(Ri) - R) / ( n - sum(Ri) )
 
   y <- list()
   for (j in 1:k) {
@@ -37,12 +37,12 @@ hcfboot <- function(x, ina, B = 999) {
     Ri <- sqrt( Rfast::rowsums(S^2) )
     S <- Rfast::colsums(yb)
     R <- sqrt( sum(S^2) )
-    ftb[i] <- (n - k) / (k - 1) * ( sum(Ri) - R) / ( n - sum(Ri) )
+    ftb[i] <- ( sum(Ri) - R) / ( n - sum(Ri) )
   }
 
   p.value <- ( sum(ftb > Ft) + 1 ) / (B + 1)
   p.value <- ( sum(ftb > Ft) + 1 ) / (B + 1)
-  statistic <- Ft  ;   names(statistic) <- "Bootstrap hcf test statistic"
+  statistic <- (n - k) / (k - 1) * Ft  ;   names(statistic) <- "Bootstrap hcf test statistic"
   parameter <- "NA"     ;   names(parameter) <- "df"
   alternative <- "At least one directional mean vector differs"
   method <- "Bootstrap ANOVA for directional data using the high concentration test"

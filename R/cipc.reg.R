@@ -34,10 +34,8 @@ cipc.reg <- function(y, x, rads = TRUE, xnew = NULL) {
   seb <- solve( mod$hessian )
   seb <- matrix( sqrt( diag(seb) ), ncol = 2)
 
-  colnames(be) <- c("Cosinus of y", "Sinus of y")
-  rownames(be) <- colnames(x)
-  colnames(seb) <- c("Cosinus of y", "Sinus of y")
-  rownames(seb) <- colnames(x)
+  colnames(be) <- colnames(seb) <- c("Cosinus of y", "Sinus of y")
+  rownames(be) <- rownames(seb) <- colnames(x)
 
   est <- NULL
   if ( !is.null(xnew) ) {

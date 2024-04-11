@@ -24,7 +24,7 @@ An array containing rotation matrices in SO(3).
 %}
 
 \value{
-The components of \eqn{ svd( \bar(X) ) }.
+The components of \eqn{ svd( \bar{X} ) }.
 }
 
 \references{
