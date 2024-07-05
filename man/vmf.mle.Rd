@@ -1,17 +1,18 @@
-\name{MLE of (hyper-)spherical rotational symmetric distributions}
+\name{MLE of (hyper-)spherical rotationally symmetric distributions}
 \alias{vmf.mle}
 \alias{multivmf.mle}
 \alias{iag.mle}
 \alias{spcauchy.mle}
+\alias{spcauchy.mle2}
 \alias{sipc.mle}
 \alias{pkbd.mle}
 \alias{acg.mle}
 \title{
-MLE of (hyper-)spherical rotational symmetric distributions
+MLE of (hyper-)spherical rotationally symmetric distributions
 }
 
 \description{
-MLE of (hyper-)spherical rotational symmetric distributions.
+MLE of (hyper-)spherical rotationally symmetric distributions.
 }
 
 \usage{
@@ -19,6 +20,7 @@ vmf.mle(x, fast = FALSE, tol = 1e-07)
 multivmf.mle(x, ina, tol = 1e-07, ell = FALSE)
 iag.mle(x, tol = 1e-07)
 spcauchy.mle(x, tol = 1e-06)
+spcauchy.mle2(x, tol = 1e-06)
 sipc.mle(x, tol = 1e-6)
 pkbd.mle(x, tol = 1e-6)
 acg.mle(x, tol = 1e-07)
@@ -44,20 +46,23 @@ The tolerance value at which to terminate the iterations.
 }
 
 \details{
-The vmf.mle estimates the mean direction and concentration of a fitted von Mises-Fisher distribution.
+The vmf.mle() estimates the mean direction and concentration of a fitted von Mises-Fisher distribution.
 
 The von Mises-Fisher distribution for groups of data is also implemented.
 
-The acg.mle fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
+The acg.mle() fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
 
-The iag.mle implements MLE of the spherical projected normal distribution, for spherical data only.
+The iag.mle() implements MLE of the spherical projected normal distribution, for spherical data only.
 
-The spcauchy.mle estimates the parameters of the spherical Cauchy distribution, for any dimension.
+The spcauchy.mle() is faster than the spcacuhy.mle() because it employs the Newton-Raphson algortihm.
+
+The spcauchy.mle2() estimates the parameters of the spherical Cauchy distribution, for any dimension.
 Despite the name sounds confusing, it is implemented for arbitrary dimensions, not only the sphere.
+The function employs a combination of the fixed points iteration algorithm and the Brent algorithm.
 
-The pkbd.mle estimates the parameters of the Poisson kernel based distribution (PKBD), for any dimension.
+The pkbd.mle() estimates the parameters of the Poisson kernel based distribution (PKBD), for any dimension.
 
-The sipc.mle implements MLE of the spherical independent projected Cauchy distribution, for spherical data only.
+The sipc.mle() implements MLE of the spherical independent projected Cauchy distribution, for spherical data only.
 }
 
 \value{
@@ -97,12 +102,21 @@ A matrix with two rows. The first row is the mean direction and the second is th
 The first comes from the second by normalising to have unit length.
 }
 \item{param}{
-A vector with the elements, the norm of mean vector, the log-likelihood and the log-likelihood of the spherical uniform distribution.
-The third value helps in case you want to do a log-likelihood ratio test for uniformity.
+A vector with the elements, the norm of mean vector, the log-likelihood and the log-likelihood of
+the spherical uniform distribution. The third value helps in case you want to do a log-likelihood
+ratio test for uniformity.
 }
 For the spherical Cauchy and the PKBD a list including:
+\item{mesos}{
+The mean in \eqn{R^{d+1}}. See Tsagris and Alenazy (2023) for a re-parametrization that
+applies in the spherical Cauchy also.
+}
 \item{mu}{
 The mean direction.
+}
+\item{gamma}{
+The norm of the mean in \eqn{R^{d+1}}. See Tsagris and Alenazy (2023) for a re-parametrization that
+applies in the spherical Cauchy also.
 }
 \item{rho}{
 The concetration parameter, this takes values in [0, 1).
@@ -132,7 +146,7 @@ Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wile
 Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
 and a fast implementation of \eqn{I_s(x)}. Computational Statistics, 27(1): 177--190.
 
-Tyler D. E. (1987). Statistical analysis for the angular central Gaussian 
+Tyler D. E. (1987). Statistical analysis for the angular central Gaussian
 distribution on the sphere. Biometrika 74(3): 579--589.
 
 Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric
@@ -142,8 +156,8 @@ Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distri
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 
-Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. 
-Bernoulli, 26(4): 3224--3248.
+Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the
+Mobius transformations. Bernoulli, 26(4): 3224--3248.
 https://arxiv.org/pdf/1510.07679.pdf
 
 Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere:
@@ -165,7 +179,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{ \link{racg}, \link{vm.mle}, \link{rvmf}
+\code{ \link{racg}, \link{rvmf}
 }
 }
 

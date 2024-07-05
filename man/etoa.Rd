@@ -20,7 +20,7 @@ A numerical matrix with directional data, i.e. unit verctors.
 }
 
 \details{
-from the Euclidean coordinates the data are mapped to angles, expressed in rads. 
+from the Euclidean coordinates the data are mapped to angles, expressed in rads.
 }
 
 \value{
@@ -45,7 +45,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{ \link{vmnb.pred}, \link{weibull.nb} }
+\code{ \link{vmnb.pred} }
 }
 
 \examples{

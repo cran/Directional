@@ -23,7 +23,7 @@ circexp.mle(x, rads = FALSE, tol = 1e-06)
 circbeta.mle(x, rads = FALSE)
 cardio.mle(x, rads = FALSE)
 ggvm.mle(phi, rads = FALSE)
-cipc.mle(x, rads = FALSE)
+cipc.mle(x, rads = FALSE, tol = 1e-6)
 gcpc.mle(x, rads = FALSE)
 mmvm.mle(x, N, rads = FALSE)
 }

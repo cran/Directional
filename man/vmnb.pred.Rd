@@ -60,7 +60,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{ \link{vm.nb}, \link{weibullnb.pred} }
+\code{ \link{vm.nb} }
 }
 
 \examples{

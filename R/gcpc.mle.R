@@ -1,6 +1,5 @@
 gcpc.mle <- function(x, rads = FALSE) {
 
-
   likint <- function(mu, rho, x, n) {
     g2 <- sum(mu^2)
     ksi <- mu / sqrt(g2)
@@ -32,7 +31,7 @@ gcpc.mle <- function(x, rads = FALSE) {
   x <- cbind( cos(x), sin(x) )
   n <- dim(x)[1]
 
-  rho <- optimise(lik0, c(0.001, 1), x = x, n = n, maximum = TRUE)$maximum
+  rho <- optimise(lik0, c(0.001, 1000), x = x, n = n, maximum = TRUE)$maximum
   mod <- optim(rnorm(2), likint, rho = rho, x = x, n = n, control = list(maxit = 5000) )
   mod <- optim(mod$par, likint, rho = rho, x = x, n = n, control = list(maxit = 5000) )
   mu <- mod$par

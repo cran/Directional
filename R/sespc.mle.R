@@ -2,7 +2,7 @@ sespc.mle <- function(y, full = FALSE, tol = 1e-6) {
 
   n <- dim(y)[1]
   I3 <- diag(3)
-   mag <- function(param, y) {
+   mag <- function(param, y, I3) {
      m <- param[1:3]
      the1 <- param[4]
      the2 <- param[5]
@@ -25,13 +25,13 @@ sespc.mle <- function(y, full = FALSE, tol = 1e-6) {
      - sum(up) + sum(down)
    }
   mod <- Directional::sipc.mle(y)
-  da <- nlm( mag, c( mod$mu, rnorm(2) ), y = y, iterlim = 10000 )
+  da <- nlm( mag, c( mod$mu, rnorm(2) ), y = y, I3 = I3, iterlim = 10000 )
   lik1 <-  -da$minimum
-  da <- optim( da$estimate, mag, y = y, control = list(maxit = 10000) )
+  da <- optim( da$estimate, mag, y = y, I3 = I3, control = list(maxit = 10000) )
   lik2 <-  -da$value
   while (lik2 - lik1 > tol) {
     lik1 <- lik2
-    da <- optim( da$par, mag, y = y, control = list(maxit = 10000) )
+    da <- optim( da$par, mag, y = y, I3 = I3, control = list(maxit = 10000) )
     lik2 <-  -da$value
   }
 

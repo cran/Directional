@@ -41,7 +41,7 @@ The mean value of the von Mises distribution and of the cardioid, a scalar.
 This is the median for the circular Purkayastha distribution.
 }
 \item{mu}{
-The mean vector, a vector with two values for the "spml".
+The mean vector, a vector with two values for the "spml" and the GCPC.
 }
 \item{omega}{
 The location parameter of the CIPC and GCPC distributions.

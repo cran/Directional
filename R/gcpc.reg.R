@@ -46,30 +46,30 @@ gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
   n <- dim(y)[1]  ;  p <- dim(x)[2]
   runtime <- proc.time()
   y1 <- y[, 1]^2  ;  y2 <- y[, 2]^2  ;  y12 <- y[, 1] * y[, 2]
-  
+
   be <- as.vector( spml.reg(y, x[, -1], rads = TRUE)$be )
   be <- matrix( optim(be, lik, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n, rho = 0.5)$par, ncol = 2 )
   mu <- x %*% be
   g2 <- Rfast::rowsums(mu^2)
   ksi <- mu / sqrt(g2)
   a <- Rfast::rowsums(y * mu)
-  modrho <- optimise( lik1, c(0.001, 1), mu = mu, g2 = g2, ksi = ksi, a = a, y = y, x = x, y1 = y1, 
+  modrho <- optimise( lik1, c(0.001, 1000), mu = mu, g2 = g2, ksi = ksi, a = a, y = y, x = x, y1 = y1,
                       y2 = y2, y12 = y12, n = n, maximum = TRUE )
   rho <- modrho$maximum
   be <- as.vector( optim(as.vector(be), lik, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n, rho = rho)$par )
-  mod <- optim( c( log(rho / (1 - rho)), be ), likreg, y = y, x = x, y1 = y1, y2 = y2, 
+  mod <- optim( c( log(rho / (1 - rho)), be ), likreg, y = y, x = x, y1 = y1, y2 = y2,
                 y12 = y12, n = n, control = list(maxit = 5000) )
   lika <- mod$value
-  mod <- optim( mod$par, likreg, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n, 
+  mod <- optim( mod$par, likreg, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n,
                 control = list(maxit = 5000) )
   likb <- mod$value
   while ( lika - likb > 1e-6 ) {
     lika <- likb
-    mod <- optim( mod$par, likreg, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n, 
+    mod <- optim( mod$par, likreg, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n,
                 control = list(maxit = 5000), hessian = TRUE )
     likb <- mod$value
-  } 
-  
+  }
+
   se <- solve(mod$hessian)
   runtime <- proc.time() - runtime
   rho <- 1 / ( 1 + exp(-mod$par[1]) )

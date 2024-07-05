@@ -51,7 +51,7 @@ The \eqn{\lambda_2} parameter (smallest eigenvalue of the covariance matrix). It
 The angle of rotation \eqn{\psi} set this equal to TRUE. It is returned if the argument "full" is TRUE.
 }
 \item{sipc.loglik}{
-The log-likelihood value of the isotropic prohected Cuchy distribution, which is rotational symmetric.
+The log-likelihood value of the isotropic prohected Cuchy distribution, which is rotationally symmetric.
 }
 }
 

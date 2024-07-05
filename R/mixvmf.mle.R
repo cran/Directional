@@ -54,7 +54,7 @@ mixvmf.mle <- function(x, g, n.start = 10) {
 
     ## Step 2
     wij <- wlika / rswlika  ## weights at step 2
-    pj <- Rfast::colmeans(wij) ## weights for step 2
+    #pj <- Rfast::colmeans(wij) ## weights for step 2
 
     for (j in 1:g) {
       m1 <- Rfast::eachcol.apply(x, wij[, j])   ## Rfast::colsums(wij[, j] * x)
@@ -82,7 +82,7 @@ mixvmf.mle <- function(x, g, n.start = 10) {
     while ( abs(lik[l] - lik[l - 1]) > 1e-05 ) {
       l <- l + 1
       wij <- wexplika / rswexplika  ## weights
-      pj <- Rfast::colmeans(wij)
+      #pj <- Rfast::colmeans(wij)
 
       for (j in 1:g) {
         m1 <- Rfast::eachcol.apply(x, wij[, j])   ## Rfast::colsums(wij[, j] * x)

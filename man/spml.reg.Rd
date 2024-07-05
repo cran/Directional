@@ -14,7 +14,7 @@ Regression with circular dependent variable and Euclidean or categorical indepen
 \usage{
 spml.reg(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-07)
 circpurka.reg(y, x, rads = TRUE, xnew = NULL)
-cipc.reg(y, x, rads = TRUE, xnew = NULL)
+cipc.reg(y, x, rads = TRUE, xnew = NULL, tol = 1e-06)
 gcpc.reg(y, x, rads = TRUE, reps = 20, xnew = NULL)
 }
 
@@ -46,9 +46,7 @@ The tolerance value to terminate the Newton-Raphson algorithm.
 }
 
 \details{
-For the spml.reg(), the Newton-Raphson algorithm is fitted in this regression as described in Presnell et al. (1998). 
-For the circpurka.reg() and the cipc.reg(), the optim() function is employed. 
-For the gcpc.reg() the optim() and the optimise() functions are being used. Note that the cipc.reg() is the same as the wrapped Cauchy regression. 
+For the spml.reg(), the Newton-Raphson algorithm is fitted in this regression as described in Presnell et al. (1998). For the cipc.reg(), the Newton-Raphson algorithm is fitted in this regression as described in Tsagris and Alenazy (2023). Note that the cipc.reg() is the same as the wrapped Cauchy regression. For the circpurka.reg() the optim() function is employed. For the gcpc.reg() the optim() and the optimise() functions are being used.
 }
 
 \value{
@@ -57,7 +55,7 @@ A list including:
 The runtime of the procedure.
 }
 \item{iters}{
-The number of iterations required until convergence of the EM algorithm.
+The number of iterations required until convergence of the Newton-Raphson algorithm.
 }
 \item{beta}{
 The regression coefficients.
@@ -103,8 +101,7 @@ y <- cbind( rnorm(100,z[ ,1], 1), rnorm(100, z[ ,2], 1) )
 y <- y / sqrt( rowSums(y^2) )
 y <- ( atan( y[, 2] / y[, 1] ) + pi * I(y[, 1] < 0) ) \%\% (2 * pi)
 a <- spml.reg(y, x, rads = TRUE, xnew = x)
-b <- circpurka.reg(y, x, rads = TRUE, xnew = x)
+b <- cipc.reg(y, x, rads = TRUE, xnew = x)
 }
 
-\keyword{ Circular regression }
-\keyword{ Projected normal }
+

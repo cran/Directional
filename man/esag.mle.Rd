@@ -50,7 +50,7 @@ The angle of rotation \eqn{\psi} set this equal to TRUE. It is returned if the a
 }
 \item{iag.loglik}{
 The log-likelihood value of the isotropic angular Gaussian distribution. That is, the projected
-normal distribution which is rotational symmetric.
+normal distribution which is rotationally symmetric.
 }
 }
 

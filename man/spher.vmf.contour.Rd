@@ -1,14 +1,14 @@
-\name{Contour plot (on the sphere) of some spherical rotational symmetric distributions}
+\name{Contour plot (on the sphere) of some spherical rotationally symmetric distributions}
 \alias{spher.vmf.contour}
 \alias{spher.purka.contour}
 \alias{spher.spcauchy.contour}
 \alias{spher.pkbd.contour}
 \title{
-Contour plot (on the sphere) of some spherical rotational symmetric distributions
+Contour plot (on the sphere) of some spherical rotationally symmetric distributions
 }
 
 \description{
-The contour plot (on the sphere) of some spherical rotational symmetric distributions is produced.
+The contour plot (on the sphere) of some spherical rotationally symmetric distributions is produced.
 }
 
 \usage{
