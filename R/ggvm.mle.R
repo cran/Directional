@@ -29,7 +29,8 @@ ggvm.mle <- function(phi, rads = FALSE) {
     - k * sum( coszphia * coszma + sinzphia * sinzma) + 2 * sum( log(nzphia) ) + n * log(2 * pi * z) + n * ( log( besselI(k, 0, expon.scaled = TRUE) ) + k )
   }
 
-  qa <- optim( c(rnorm(3, 0, 0.1), runif(1, 0, pi) ), likel, phi = phi, control = list(maxit = 5000) )
+  qa <- optim( c(rnorm(3, 0, 0.1), runif(1, 0, pi) ), likel, phi = phi,
+               control = list(maxit = 10000), method = "BFGS")
   qa <- optim( qa$par, likel, phi = phi )
   qa <- optim( qa$par, likel, phi = phi )
   param <- c( abs( qa$par[1]) , exp(qa$par[2]), qa$par[3], qa$par[4] )

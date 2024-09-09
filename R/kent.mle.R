@@ -49,7 +49,7 @@ kent.mle <- function(x) {
 
   ini <- Rfast::vmf.mle(x)$kappa
   ini <- c(ini, ini/2.1)  ## initial values for kappa and beta
-  qa <- optim(ini, mle)
+  qa <- optim(ini, mle, control = list(maxit = 5000))
   para <- qa$par
   k <- para[1]
   b <- para[2]  ## the estimated parameters

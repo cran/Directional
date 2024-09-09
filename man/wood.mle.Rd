@@ -27,7 +27,6 @@ A list including:
 \item{info}{
 A 5 x 3 matrix containing the 5 parameters, \eqn{\gamma}, \eqn{\delta}, \eqn{\alpha}, \eqn{\beta} and \eqn{\kappa} along with their corresponding 95\% confidence intervals all expressed in degrees.
 }
-
 \item{modes}{
 The two axis of the modes of the distribution expressed in degrees.
 }

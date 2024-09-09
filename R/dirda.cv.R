@@ -1,19 +1,21 @@
-dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = FALSE,
-                  type = c("vmf", "iag", "esag", "kent", "knn"),
-                  seed = NULL, B = 1000, parallel = FALSE) {
+dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, stratified = FALSE,
+                  type = c("vmf", "iag", "esag", "kent", "sc", "pkbd", "purka"),
+                  seed = NULL, B = 1000) {
 
   if ( is.null(folds) )  folds <- Directional::makefolds(ina, nfolds = nfolds, stratified = stratified, seed = seed)
   nfolds <- length(folds)
 
-  est1 <- est2 <- est3 <- est4 <- est5 <- list()
+  est1 <- est2 <- est3 <- est4 <- est5 <- est6 <- est7 <- list()
   for (i in 1:nfolds) {
     est1[[ i ]] <- NA
     est2[[ i ]] <- NA
     est3[[ i ]] <- NA
     est4[[ i ]] <- NA
     est5[[ i ]] <- NA
+    est6[[ i ]] <- NA
+    est7[[ i ]] <- NA
   }
-  per1 <- per2 <- per3 <- per4 <- per5 <- NA
+  per1 <- per2 <- per3 <- per4 <- per5 <- per6 <- per7 <- NA
   p <- dim(x)[2]
 
   if ( sum( type == "vmf") == 1 ) {
@@ -33,31 +35,18 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
     per2 <- matrix(0, nfolds, 1)
     colnames(per2) <- "iag"
     g <- max(ina)
-    if (p == 3) {
-      for (i in 1:nfolds) {
-        nu <- folds[[ i ]]
-        mat <- matrix(0, length(nu), g)
-        xtrain <- x[-nu, ]
-        xtest <- x[nu, ]
-        id <- ina[-nu]
-        for (j in 1:g) {
-          mod <- Rfast::iag.mle( xtrain[id == j, ] )
-          a <- as.vector(xtest %*% mod$mesi[1, ])
-          a2 <- a^2
-          pa <- pnorm(a)
-          da <- dnorm(a)
-          gm <- pa + a2 * pa + a * da
-          rl <- mod$param[1]
-          mat[, j] <- 0.5 * a2 - 0.5 * rl + log(gm)
-        }
-        est2[[ i ]] <- Rfast::rowMaxs(mat)
-        per2[i] <- mean(est2[[ i ]] == ina[nu])
+    for (i in 1:nfolds) {
+      nu <- folds[[ i ]]
+      mat <- matrix(0, length(nu), g)
+      xtrain <- x[-nu, ]
+      xtest <- x[nu, ]
+      id <- ina[-nu]
+      for (j in 1:g) {
+        mod <- Directional::iag.mle( xtrain[id == j, ] )
+        mat[, j] <- Directional::iagd(xtest, mod$mesi[1, ], logden = TRUE )
       }
-    } else {
-      for (i in 1:nfolds) {
-        est2[[ i ]] <- rep(NA, length(folds[[ i ]]) )
-        per2[i] <- NA
-      }
+      est2[[ i ]] <- Rfast::rowMaxs(mat)
+      per2[i] <- mean(est2[[ i ]] == ina[nu])
     }
   }
 
@@ -81,14 +70,22 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
       }
     } else {
       for (i in 1:nfolds) {
-        est3[[ i ]] <- rep(NA, length(folds[[ i ]]) )
-        per3[i] <- NA
+        nu <- folds[[ i ]]
+        mat <- matrix(0, length(nu), g)
+        xtrain <- x[-nu, ]
+        xtest <- x[nu, ]
+        id <- ina[-nu]
+        for (j in 1:g) {
+          mod <- Directional::ESAGd.mle( xtrain[id == j, ] )
+          mat[, j] <- Directional::dESAGd(xtest, mod$mu, mod$gam, logden = TRUE )
+        }
+        est3[[ i ]] <- Rfast::rowMaxs(mat)
+        per3[i] <- mean(est3[[ i ]] == ina[nu])
       }
     }
   }
 
   if ( sum( type == "kent") == 1 ) {
-
     per4 <- matrix(0, nfolds, 1)
     colnames(per4) <- "kent"
     g <- max(ina)
@@ -101,7 +98,7 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
         id <- ina[-nu]
         for (j in 1:g) {
           mod <- Directional::kent.mle( xtrain[id == j, ])
-          mat[, j] <- Directional::dkent(xtest, G = mod$G, param = mod$param[1:2] )
+          mat[, j] <- Directional::dkent(xtest, G = mod$G, param = mod$param[1:2], logden = TRUE )
         }
         est4[[ i ]] <- Rfast::rowMaxs(mat)
         per4[i] <- mean(est4[[ i ]] == ina[nu])
@@ -114,41 +111,124 @@ dirda.cv <- function(x, ina, folds = NULL, nfolds = 10, k = 2:10, stratified = F
     }
   }
 
-  if ( sum( type == "knn" ) == 1 ) {
-    per5 <- matrix(0, nfolds, length(k) )
-    colnames(per5) <- paste("knn", k, sep = " ")
+  if ( sum( type == "sc") == 1 ) {
+    per5 <- matrix(0, nfolds, 1)
+    colnames(per5) <- "sc"
     g <- max(ina)
     for (i in 1:nfolds) {
       nu <- folds[[ i ]]
-      est5[[ i ]] <- Rfast::dirknn(x[nu, , drop = FALSE], x[-nu, ], ina[-nu], k = k, type = "C", parallel = parallel)
-      per5[i, ] <- Rfast::colmeans(est5[[ i ]] == ina[nu])
+      mat <- matrix(0, length(nu), g)
+      xtrain <- x[-nu, ]
+      xtest <- x[nu, ]
+      id <- ina[-nu]
+      for (j in 1:g) {
+        mod <- Directional::spcauchy.mle( xtrain[id == j, ])
+        mat[, j] <- Directional::dspcauchy(xtest, mod$mu, mod$rho, logden = TRUE)
+      }
+      est5[[ i ]] <- Rfast::rowMaxs(mat)
+      per5[i] <- mean(est5[[ i ]] == ina[nu])
     }
   }
 
-  per <- cbind(per1, per2, per3, per4, per5)
+  if ( sum( type == "sc2") == 1 ) {
+    per5 <- matrix(0, nfolds, 1)
+    colnames(per5) <- "sc"
+    g <- max(ina)
+    for (i in 1:nfolds) {
+      nu <- folds[[ i ]]
+      mat <- matrix(0, length(nu), g)
+      xtrain <- x[-nu, ]
+      xtest <- x[nu, ]
+      id <- ina[-nu]
+      for (j in 1:g) {
+        mod <- Directional::spcauchy.mle2( xtrain[id == j, ])
+        mat[, j] <- Directional::dspcauchy(xtest, mod$mu, mod$rho, logden = TRUE)
+      }
+      est5[[ i ]] <- Rfast::rowMaxs(mat)
+      per5[i] <- mean(est5[[ i ]] == ina[nu])
+    }
+  }
+
+  if ( sum( type == "pkbd") == 1 ) {
+    per6 <- matrix(0, nfolds, 1)
+    colnames(per6) <- "pkbd"
+    g <- max(ina)
+    for (i in 1:nfolds) {
+      nu <- folds[[ i ]]
+      mat <- matrix(0, length(nu), g)
+      xtrain <- x[-nu, ]
+      xtest <- x[nu, ]
+      id <- ina[-nu]
+      for (j in 1:g) {
+        mod <- Directional::pkbd.mle( xtrain[id == j, ])
+        mat[, j] <- Directional::dpkbd(xtest, mod$mu, mod$rho, logden = TRUE)
+      }
+      est6[[ i ]] <- Rfast::rowMaxs(mat)
+      per6[i] <- mean(est6[[ i ]] == ina[nu])
+    }
+  }
+
+  if ( sum( type == "pkbd2") == 1 ) {
+    per6 <- matrix(0, nfolds, 1)
+    colnames(per6) <- "pkbd"
+    g <- max(ina)
+    for (i in 1:nfolds) {
+      nu <- folds[[ i ]]
+      mat <- matrix(0, length(nu), g)
+      xtrain <- x[-nu, ]
+      xtest <- x[nu, ]
+      id <- ina[-nu]
+      for (j in 1:g) {
+        mod <- Directional::pkbd.mle2( xtrain[id == j, ])
+        mat[, j] <- Directional::dpkbd(xtest, mod$mu, mod$rho, logden = TRUE)
+      }
+      est6[[ i ]] <- Rfast::rowMaxs(mat)
+      per6[i] <- mean(est6[[ i ]] == ina[nu])
+    }
+  }
+
+  if ( sum( type == "purka") == 1 ) {
+    per7 <- matrix(0, nfolds, 1)
+    colnames(per7) <- "purka"
+    g <- max(ina)
+    for (i in 1:nfolds) {
+      nu <- folds[[ i ]]
+      mat <- matrix(0, length(nu), g)
+      xtrain <- x[-nu, ]
+      xtest <- x[nu, ]
+      id <- ina[-nu]
+      for (j in 1:g) {
+        mod <- Directional::purka.mle( xtrain[id == j, ])
+        mat[, j] <- Directional::dpurka(xtest, mod$theta, mod$alpha, logden = TRUE)
+      }
+      est7[[ i ]] <- Rfast::rowMaxs(mat)
+      per7[i] <- mean(est7[[ i ]] == ina[nu])
+    }
+  }
+
+  per <- cbind(per1, per2, per3, per4, per5, per6, per7)
   perf <- Rfast::colmeans(per)
   names(perf) <- colnames(per)
-  names(perf)[1:4] <- c("vmf", "iag", "esag", "kent")
+  names(perf) <- c("vmf", "iag", "esag", "kent", "sc", "pkbd", "purka")
 
-  if ( any( !is.na(est5) ) )  {
+  bbc.perf <- NULL
 
-    est <- est5[[ 1 ]]
-    for (i in 2:nfolds)   est <- rbind( est, est5[[ i ]] )
-    diaf <- est - ina[unlist(folds)]
+  if ( B > 1 ) {
+    ina <- as.numeric( as.factor(ina) ) - 1
+    ina <- ina[ unlist(folds) ]
+    est <- cbind( unlist(est1), unlist(est2), unlist(est3), unlist(est4),
+                  unlist(est5), unlist(est6), unlist(est7) )
     n <- dim(est)[1]
-    bf <- numeric(B)
+    bbc.perf <- numeric(B)
 
     for (i in 1:B) {
-      ind <- sample.int(n, n, TRUE)
-      m <- Rfast::colmeans(diaf[ind, ] == 0)
-      poio <- which.max(m)
-      bf[i] <- mean(diaf[-ind, poio] == 0)
+      ind <- sample.int(n, n, replace = TRUE)
+      in.perf <- Rfast::colmeans( est[ind, , drop = FALSE] == ina[ind] )
+      poio <- which.max(in.perf)
+      bbc.perf[i] <- mean( est[-ind, poio] == ina[-ind] )
     }
-    perf[5] <- mean(bf)
-    perf <- perf[1:5]
-    names(perf)[5] <- "knn"
+
   }
 
-  perf
-
+  list(perf = perf, bbc.perf = bbc.perf)
 }

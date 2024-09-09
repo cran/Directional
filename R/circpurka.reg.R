@@ -12,11 +12,11 @@ circpurka.reg <- function(y, x, rads = TRUE, xnew = NULL) {
     est <- x %*% be
     a <- sqrt( Rfast::rowsums(est^2) )
     est <- est / a
-    - sum( log(a) - log(1 - exp(-a * pi) ) - a * acos( z * est ) )
+    - sum( log(a) - log(1 - exp(-pi * a) ) - a * acos( z * est ) )
   }
 
   ini <- as.vector( solve( crossprod(x), crossprod(x, z) ) )
-  mod <- optim(ini, reg, z = z, x = x )
+  mod <- optim(ini, reg, z = z, x = x, method = "BFGS" )
   lik1 <- mod$value
   mod <- optim(mod$par, reg, z = z, x = x, hessian = TRUE )
   lik2 <- mod$value

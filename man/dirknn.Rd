@@ -60,7 +60,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{dirknn.tune}, \link{vmfda.pred}, \link{mixvmf.mle}
+\code{\link{dirknn.tune}, \link{dirda}, \link{vm.nb}
 }
 }
 
@@ -77,10 +77,6 @@ xx <- da$x[-nu, ]
 id <- da$id[-nu]
 a1 <- dirknn(xx, ina, x, k = 5, mesos = TRUE)
 a2 <- dirknn(xx, ina, x, k = 5, mesos = FALSE)
-b <- vmfda.pred(xx, x, ina)
 table(id, a1)
 table(id, a2)
 }
-
-\keyword{ Directional k-NN algorithm }
-\keyword{ Supervised classification }

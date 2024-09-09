@@ -1,35 +1,58 @@
 pkbd.mle <- function(x, tol = 1e-6) {
 
   dm <- dim(x)
-  n <- dm[1]  ;  d <- dm[2]
+  n <- dm[1]  ;  d <- dm[2] - 1
+  mu <- colmeans(x)
+  g2 <- sum(mu^2)
+  a <- as.vector(x %*% mu)
+  com <- sqrt(g2 + 1)
+  com2 <- 1 / (com - a)
+  com3 <- 1 / (com - 1)
+  lik <- 0.5 * (d + 1) * sum( log( com2 ) ) - 0.5 * n * (d - 1) * ( log(com - 1) - log(g2) )
+  up <- Rfast::eachrow(x, mu / com, oper = "-" )
+  der <-  0.5 * (d + 1) * Rfast::eachcol.apply(up, com2) -
+    0.5 * n * (d - 1) * ( mu / com / (com - 1) - 2 * mu / g2 )
+  tcmu <- tcrossprod(mu)
+  upa1 <- ( diag(com, d + 1) - tcmu / com ) / com^2 * sum(com2)
+  upa2 <- crossprod(up * com2)
+  #der2 <- upa2 - upa1
+  upb1 <- ( diag(com, d + 1) - tcmu / com ) / com^2 * com3
+  upb2 <- tcrossprod(mu) / com^2 * com3^2
+  last <- ( 2 * diag(g2, d + 1) - 4 * tcmu ) / g2^2
+  der2 <- 0.5 * (d + 1) * ( upa2 - upa1 ) - n * 0.5 * (d - 1) * ( upb1 - upb2 - last)
+  mu <- mu - solve(der2, der)
 
-  pkbd <- function(rho, mu, x, n, d) {
+  g2 <- sum(mu^2)
+  a <- as.vector(x %*% mu)
+  com <- sqrt(g2 + 1)
+  com2 <- 1 / (com - a)
+  lik[2] <- 0.5 * (d + 1) * sum( log( com2 ) ) - 0.5 * n * (d - 1) * ( log(com - 1) - log(g2) )
+
+  i <- 2
+  while ( abs( lik[i] - lik[i - 1] ) > tol ) {
+    i <- i + 1
+    up <- Rfast::eachrow(x, mu / com, oper = "-" )
+    der <-  0.5 * (d + 1) * Rfast::eachcol.apply(up, com2) -
+      0.5 * n * (d - 1) * ( mu / com / (com - 1) - 2 * mu / g2 )
+    tcmu <- tcrossprod(mu)
+    upa1 <- ( diag(com, d + 1) - tcmu / com ) / com^2 * sum(com2)
+    upa2 <- crossprod(up * com2)
+    #der2 <- upa2 - upa1
+    upb1 <- ( diag(com, d + 1) - tcmu / com ) / com^2 * com3
+    upb2 <- tcrossprod(mu) / com^2 * com3^2
+    last <- ( 2 * diag(g2, d + 1) - 4 * tcmu ) / g2^2
+    der2 <- 0.5 * (d + 1) * ( upa2 - upa1 ) - n * 0.5 * (d - 1) * ( upb1 - upb2 - last)
+    mu <- mu - solve(der2, der)
+
     a <- as.vector(x %*% mu)
-    n * log( 1 - rho^2 ) - 0.5 * d * sum( log1p( rho^2 - 2 * rho * a ) )
+    g2 <- sum(mu^2)
+    com <- sqrt(g2 + 1)
+    com2 <- 1 / ( com - a )
+    com3 <- 1 / (com - 1)
+    lik[i] <-  0.5 * (d + 1) * sum( log( com2 ) ) - 0.5 * n * (d - 1) * ( log(com - 1) - log(g2) )
   }
+  g <- sqrt(g2)
 
-  mu <- Rfast::colmeans(x)
-  mu <- mu / sqrt(sum(mu^2) )
-  mod <- optimize(pkbd, c(0, 1), mu = mu, x = x, n = n, d = d, maximum = TRUE, tol = 1e-6 )
-  rho <- mod$maximum
-  lik1 <- mod$objective
-
-  down <- 1 + rho^2 - 2 * rho * as.vector( x %*% mu)
-  mu <- Rfast::eachcol.apply(rho * x, down, oper = "/")
-  mu <- mu / sqrt( sum(mu^2) )
-  mod <- optimize(pkbd, c(0, 1), mu = mu, x = x, n = n, d = d, maximum = TRUE, tol = 1e-6 )
-  rho <- mod$maximum
-  lik2 <- mod$objective
-
-  while ( abs( lik2 - lik1 ) > tol ) {
-    lik1 <- lik2
-    down <- 1 + rho^2 - 2 * rho * as.vector( x %*% mu)
-    mu <- Rfast::eachcol.apply(rho * x, down, oper = "/")
-    mu <- mu / sqrt( sum(mu^2) )
-    mod <- optimize(pkbd, c(0, 1), mu = mu, x = x, n = n, d = d, maximum = TRUE, tol = 1e-6 )
-    rho <- mod$maximum
-    lik2 <- mod$objective
-  }
-
-  list(mu = mu, rho = rho, loglik = lik2 + n * lgamma(0.5 * d) - n * 0.5 * d * log(2 * pi) )
+  list( mesos = mu, mu = mu / g, gamma = g, rho = (com - 1) / g, loglik = lik[i] - 0.5 * n * (d - 1) * log(2) +
+          n * lgamma(0.5 * (d + 1) ) - n * 0.5 * (d + 1) * log(pi) - n * log(2) )
 }

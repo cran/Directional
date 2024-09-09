@@ -1,5 +1,6 @@
 \name{Simulation of random values from the ESAG distribution}
 \alias{resag}
+\alias{rESAGd}
 \title{
 Simulation of random values from the ESAG distribution
 }
@@ -10,6 +11,7 @@ Simulation of random values from the ESAG distribution.
 
 \usage{
 resag(n, mu, gam)
+rESAGd(n, mu, gam)
 }
 
 \arguments{
@@ -17,33 +19,35 @@ resag(n, mu, gam)
 A number; how many vectors you want to generate.
 }
 \item{mu}{
-The mean vector the ESAG distribution, a vector in \eqn{R^3}.
+The mean vector the ESAG distribution.
 }
 \item{gam}{
-The two \eqn{\gamma} parameters of the ESAG distribution.
+The \eqn{\gamma} parameters of the ESAG distribution. For the rESAGd this may be NULL in case you want to simulate from the IAG in arbitrady dimensions.
 }
 }
 
 \details{
-A random sample from the ESAG distribution is generated. In case the \eqn{\gamma_s} are zero, the sample is drawn
-from the Independent Angular Gaussian (or projected normal).
+A random sample from the ESAG distribution is generated. In case the \eqn{\gamma_s} are zero (or null for the rESAGd), the sample is drawn from the Independent Angular Gaussian (or projected normal). The resag() is designed for the sphere, whereas the rESAGd is designed for the sphere and hyper-sphere.
 }
 
 \value{
-An \eqn{n \times 3} matrix with the simulated unit vectors.
+An \eqn{n \times d} matrix with the simulated unit vectors.
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
+Zehao Yu and Xianzheng Huang (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statististics, 18(1): 301--334.
 
 Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric Angular
 Gaussian Distribution. Statistics and Computing, 28(3):689--697.
+
+
+Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 }
 
 \author{
-Michail Tsagris.
+Michail Tsagris and Zehao Yu.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Zehao Yu \email{zehaoy@email.sc.edu}.
 }
 %\note{
 %%  ~~further notes~~
@@ -55,7 +59,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 \examples{
-m <- colMeans( as.matrix( iris[,1:3] ) )
+m <- colMeans( as.matrix( iris[, 1:3] ) )
 y <- resag(1000, m, c(1, 0.5) )
 esag.mle(y)
 }

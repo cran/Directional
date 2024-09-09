@@ -70,12 +70,14 @@ Journal of Computational and Graphical Statistics, 29(4): 758--770.
 
 Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD distribution.
 Electronic Journal of Statistics, 17(2): 2180--2209.
+
+Zehao Yu and Xianzheng Huang (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statististics, 18(1): 301--334.
 }
 
 \author{
-Michail Tsagris.
+Michail Tsagris and  Zehao Yu.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Zehao Yu \email{zehaoy@email.sc.edu}.
 }
 %\note{
 %%  ~~further notes~~

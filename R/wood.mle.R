@@ -34,7 +34,7 @@ wood.mle <- function(y) {
     }
   ##############
   ini <- Rfast::colmeans(y)
-  mod <- optim( ini, mle )
+  mod <- optim( ini, mle, method = "BFGS" )
   mod <- optim(mod$par, mle, hessian = TRUE)
   gam <- mod$par[1]     ;     del <- mod$par[2]
   m1 <- c( cos(gam) * cos(del), cos(gam) * sin(del), - sin(gam) )

@@ -83,7 +83,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{dirknn}, \link{vmf.da}, \link{mixvmf.mle}
+\code{\link{dirknn}, \link{dirda}, \link{mixvmf.mle}
 }
 }
 

@@ -8,6 +8,8 @@ esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol =
   lat <- asin( x3 / sqrt(x1^2 + x2^2 + x3^2) ) * 180 / pi
   long <- atan2(x2, x1) * 180 / pi
   wa <- Directional::euclid( expand.grid(lat, long) )
+  wa <- round(wa, 10)
+  wa <- unique(wa)
 
   my <- Directional::esag.mle(y)$mu
   my <- my / sqrt( sum(my^2) )

@@ -2,11 +2,12 @@
 \alias{vmf.mle}
 \alias{multivmf.mle}
 \alias{iag.mle}
+\alias{sipc.mle}
+\alias{acg.mle}
 \alias{spcauchy.mle}
 \alias{spcauchy.mle2}
-\alias{sipc.mle}
 \alias{pkbd.mle}
-\alias{acg.mle}
+\alias{pkbd.mle2}
 \title{
 MLE of (hyper-)spherical rotationally symmetric distributions
 }
@@ -18,12 +19,13 @@ MLE of (hyper-)spherical rotationally symmetric distributions.
 \usage{
 vmf.mle(x, fast = FALSE, tol = 1e-07)
 multivmf.mle(x, ina, tol = 1e-07, ell = FALSE)
-iag.mle(x, tol = 1e-07)
+iag.mle(x, tol = 1e-06)
+sipc.mle(x, tol = 1e-6)
+acg.mle(x, tol = 1e-07)
 spcauchy.mle(x, tol = 1e-06)
 spcauchy.mle2(x, tol = 1e-06)
-sipc.mle(x, tol = 1e-6)
 pkbd.mle(x, tol = 1e-6)
-acg.mle(x, tol = 1e-07)
+pkbd.mle2(x, tol = 1e-6)
 }
 
 \arguments{
@@ -52,15 +54,14 @@ The von Mises-Fisher distribution for groups of data is also implemented.
 
 The acg.mle() fits the angular central Gaussian distribution. There is a constraint on the estimated covariance matrix; its trace is equal to the number of variables. An iterative algorithm takes place and convergence is guaranteed.
 
-The iag.mle() implements MLE of the spherical projected normal distribution, for spherical data only.
+The iag.mle() implements MLE of the spherical projected normal distribution, for spherical and hyper-spherical data.
 
-The spcauchy.mle() is faster than the spcacuhy.mle() because it employs the Newton-Raphson algortihm.
-
-The spcauchy.mle2() estimates the parameters of the spherical Cauchy distribution, for any dimension.
+The spcauchy.mle() is faster than the spcacuhy.mle2() because it employs the Newton-Raphson algortihm.
+Both functions estimate the parameters of the spherical Cauchy distribution, for any dimension.
 Despite the name sounds confusing, it is implemented for arbitrary dimensions, not only the sphere.
 The function employs a combination of the fixed points iteration algorithm and the Brent algorithm.
 
-The pkbd.mle() estimates the parameters of the Poisson kernel based distribution (PKBD), for any dimension.
+The pkbd.mle() estimates the parameters of the Poisson kernel based distribution (PKBD), for any dimension and it is faster than pkbd.mle2() for the same reason with the spcauchy.mle().
 
 The sipc.mle() implements MLE of the spherical independent projected Cauchy distribution, for spherical data only.
 }
@@ -166,12 +167,17 @@ Journal of Computational and Graphical Statistics, 29(4): 758--770.
 
 Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD distribution.
 Electronic Journal of Statistics, 17(2): 2180--2209.
+
+Zehao Yu and Xianzheng Huang (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statististics, 18(1): 301--334.
+
+Tsagris M. (2024). Directional data analysis using the spherical Cauchy and the Poisson-kernel based distribution.
+https://arxiv.org/pdf/2409.03292
 }
 
 \author{
-Michail Tsagris.
+Michail Tsagris and  Zehao Yu.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and  Zehao Yu \email{zehaoy@email.sc.edu}.
 }
 
 %\note{

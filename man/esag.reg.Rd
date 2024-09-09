@@ -85,9 +85,9 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 \examples{
-y <- resag( 30, rnorm(3), c(1, 1) )
+y <- resag( 25, rnorm(3), c(1, 1) )
 ## this is a small example to pass CRAN's check because the default argument values
 ## of lati and longi require many seconds
-a <- esag.reg(y, iris[1:30, 4], lati = 2, longi = 2)
+a <- esag.reg(y, iris[1:25, 4], lati = 2, longi = 2)
 }
 

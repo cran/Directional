@@ -1,7 +1,9 @@
 dsespc <- function(y, mu, theta, logden = FALSE) {
+  y <- as.matrix(y)
+  if   ( dim(y)[2] == 1 )   y <- t(y)
   the1 <- theta[1]
   the2 <- theta[2]
-
+  
   if ( the1 == 0  &  the2 == 0 ) {
     a <- as.vector( y %*% mu )
     rl <- sum(mu^2)
