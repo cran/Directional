@@ -29,12 +29,12 @@ A unit vector showing the mean direction for the von Mises-Fisher or the spheric
 The concentration parameter (\eqn{\kappa}) of the von Mises-Fisher distribution. If \eqn{\kappa=0}, random values from the spherical uniform will be drwan.
 }
 \item{rho}{
-The \eqn{\rho} parameter of the spherical Cauchy or the Poisson kernel based distribution.
+The \eqn{\rho} parameter of the spherical Cauchy or the Poisson kernel-based distribution.
 }
 }
 
 \details{
-The von Mises-Fisher uses the rejection smapling suggested by Wood (1994). For the Independent Angular Gaussian, values are generated from a multivariate normal distribution with the given mean vector and the identity matrix as the covariance matrix. Then each vector becomes a unit vector. For the spherical Cauchy distribution the algortihm is described in Kato and McCullagh (2020) and for the Poisson kernel based distribution, it is described in Sablica, Hornik and Leydold (2023).
+The von Mises-Fisher uses the rejection smapling suggested by Wood (1994). For the Independent Angular Gaussian, values are generated from a multivariate normal distribution with the given mean vector and the identity matrix as the covariance matrix. Then each vector becomes a unit vector. For the spherical Cauchy distribution the algortihm is described in Kato and McCullagh (2020) and for the Poisson kernel-based distribution, it is described in Sablica, Hornik and Leydold (2023).
 }
 
 \value{

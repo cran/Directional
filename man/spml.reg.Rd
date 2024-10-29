@@ -76,7 +76,7 @@ Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multiva
 
 Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70-83
 
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling.
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 }
 

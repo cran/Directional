@@ -11,13 +11,13 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 6.8\cr
-Date: \tab 2024-09-09\cr
+Version: \tab 6.9\cr
+Date: \tab 2024-10-29\cr
 License: \tab GPL-2\cr
 }
 }
 \author{
-Michail Tsagris \email{mtsagris@uoc.gr}, Giorgos Athineou <gioathineou@gmail.com>, Christos Adam \email{pada4m4@gmail.com}, Anamul Sajib <sajibstat@du.ac.bd>, Eli Amson <eli.amson1988@gmail.com>, Micah J. Waldstein <micah@waldste.in> and  Zehao Yu <zehaoy@email.sc.edu>.
+Michail Tsagris \email{mtsagris@uoc.gr}, Giorgos Athineou <gioathineou@gmail.com>, Christos Adam \email{pada4m4@gmail.com}, Zehao Yu <zehaoy@email.sc.edu>, Anamul Sajib <sajibstat@du.ac.bd>, Eli Amson <eli.amson1988@gmail.com>, Micah J. Waldstein <micah@waldste.in> and Panagiotis Papastamoulis <papastamoulis@aueb.gr>.
 }
 
 \section{Maintainers}{

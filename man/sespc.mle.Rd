@@ -26,7 +26,7 @@ A tolerance value to stop performing successive optimizations.
 
 \details{
 MLE of the SESPC distribution is implemented. SESPC stands for Spherical Elliptically Symmetric Projected Cauchy
-and it was suugested by Tsagris and Alzeley (2023). Unlike the spherical independent projected Cauchy distribution 
+and it was suugested by Tsagris and Alzeley (2024). Unlike the spherical independent projected Cauchy distribution 
 this is rotationally symmetric and is a competitor of the spherical ESAG and Kent distributions (which are also ellitpically symmetric).
 }
 
@@ -56,7 +56,7 @@ The log-likelihood value of the isotropic prohected Cuchy distribution, which is
 }
 
 \references{
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions: 
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: 
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 

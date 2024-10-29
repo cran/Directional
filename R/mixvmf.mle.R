@@ -6,7 +6,7 @@
 #### movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 #### http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 ################################
-mixvmf.mle <- function(x, g, n.start = 10) {
+mixvmf.mle <- function(x, g, n.start = 5, tol = 1e-6, maxiters = 100) {
   ## x contains the data
   ## g is the number of clusters
   p <- dim(x)[2]  ## dimensionality of the data
@@ -22,7 +22,7 @@ mixvmf.mle <- function(x, g, n.start = 10) {
 
   ini <- kmeans(x, g, nstart = n.start)  ## initially a k-means for starting values
   cl <- ini$cluster
-  wij <- tabulate(cl) 
+  wij <- tabulate(cl)
 
   if ( min(wij) <= 3 ) {
     mess <- paste( "Too many clusters to fit for this data. Try one less" )
@@ -73,13 +73,13 @@ mixvmf.mle <- function(x, g, n.start = 10) {
       log(besselI(ka[j], p/2 - 1, expon.scaled = TRUE) ) - ka[j] + ka[j] * (x %*% mat[j, ])
     }
 
-    wexplika <- wij * exp(lika) 
+    wexplika <- wij * exp(lika)
     rswexplika <- Rfast::rowsums( wexplika )
     lik[2] <- sum( log( rswexplika ) )  ## log-likelihood at step 2
     l <- 2
 
     ## Step 3 and beyond
-    while ( abs(lik[l] - lik[l - 1]) > 1e-05 ) {
+    while ( abs(lik[l] - lik[l - 1]) > tol & l < maxiters ) {
       l <- l + 1
       wij <- wexplika / rswexplika  ## weights
       #pj <- Rfast::colmeans(wij)
@@ -113,7 +113,7 @@ mixvmf.mle <- function(x, g, n.start = 10) {
     runtime <- proc.time() - runtime
     colnames(param) <- c( "probs", "kappa", paste("mu", 1:p, sep = "") )
     rownames(param) <- paste("Cluster", 1:g, sep = " ")
-    res <- list(param = param, loglik = loglik, pred = ta, iter = l, runtime = runtime)
+    res <- list(param = param, loglik = loglik, pred = ta, w = wij, iter = l, runtime = runtime)
 
   }
 

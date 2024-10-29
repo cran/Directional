@@ -26,10 +26,10 @@ Do you want the constant term in the regression?
 If you have new data use it, otherwise leave it NULL.
 }
 \item{lati}{
-A positive number determing the range of degrees to move left and right from the latitude center. This number and the next determine the grid of points to search for the Q matrix described in Tsagris and Alzeley (2023).
+A positive number determing the range of degrees to move left and right from the latitude center. This number and the next determine the grid of points to search for the Q matrix described in Tsagris and Alzeley (2024).
 }
 \item{longi}{
-A positive number determing the range of degrees to move up and down from the longitude center. This number and the previous determine the grid of points to search for the Q matrix described in Tsagris and Alzeley (2023).
+A positive number determing the range of degrees to move up and down from the longitude center. This number and the previous determine the grid of points to search for the Q matrix described in Tsagris and Alzeley (2024).
 }
 \item{tol}{
 A tolerance value to decide when to stop the successive optimizations.
@@ -37,7 +37,7 @@ A tolerance value to decide when to stop the successive optimizations.
 }
 
 \details{
-Regression based on the SESPC distribution (Tsagris and Alzeley, 2023) is applied.
+Regression based on the SESPC distribution (Tsagris and Alzeley, 2024) is applied.
 }
 
 \value{
@@ -63,7 +63,7 @@ The fitted values of xnew if "xnew" is NULL. If it is not NULL, the fitted value
 }
 
 \references{
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 }

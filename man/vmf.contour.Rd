@@ -24,10 +24,10 @@ The concentration parameter.
 }
 \item{mu}{
 The mean direction (unit vector) of the von Mises-Fisher, the IAG, the spherical Cauchy distribution,
-or the Poisson kernel based distribution.
+or the Poisson kernel-based distribution.
 }
 \item{rho}{
-The \eqn{\rho} parameter of the spherical Cauchy distribution, or the Poisson kernel based distribution.
+The \eqn{\rho} parameter of the spherical Cauchy distribution, or the Poisson kernel-based distribution.
 }
 \item{theta}{
 The median direction for the Purkayastha distribution, a unit vector.
@@ -52,16 +52,16 @@ A contour plot of the distribution.
 }
 
 \references{
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
+
 Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
-Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. 
-Bernoulli, 26(4): 3224--3248.
-https://arxiv.org/pdf/1510.07679.pdf
+Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. Bernoulli, 26(4): 3224--3248. https://arxiv.org/pdf/1510.07679.pdf
 
 Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through
 Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70--83
 
-Cabrera J. and Watson G. S. (1990). On a spherical median related distribution. 
+Cabrera J. and Watson G. S. (1990). On a spherical median related distribution.
 Communications in Statistics-Theory and Methods, 19(6): 1973--1986.
 
 Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere:

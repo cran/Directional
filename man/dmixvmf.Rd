@@ -1,15 +1,19 @@
-\name{Density of a mixture of von Mises-Fisher distributions}
+\name{Density of a mixture of rotationally symmetric distributions}
 \alias{dmixvmf}
+\alias{dmixspcauchy}
+\alias{dmixpkbd}
 \title{
-Density of a mixture of von Mises-Fisher distributions
+Density of a mixture of rotationally symmetric distributions
 }
 
 \description{
-Density of a mixture of von Mises-Fisher distributions.
+Density of a mixture of rotationally symmetric distributions.
 }
 
 \usage{
 dmixvmf(y, probs, mu, k, logden = FALSE)
+dmixspcauchy(y, probs, mu, rho, logden = FALSE)
+dmixpkbd(y, probs, mu, rho, logden = FALSE)
 }
 
 \arguments{
@@ -25,13 +29,16 @@ A matrix with the mean direction of each group.
 \item{k}{
 A vector with the concentration parameter of each group.
 }
+\item{rho}{
+A vector with the concentration parameter of each group.
+}
 \item{logden}{
 If you the logarithm of the density values set this to TRUE.
 }
 }
 
 \details{
-The function computes the density for a given mixture of von Mises-Fisher distributions.
+The function computes the density for a given mixture of von Mises-Fisher, spherical Cauchy or Poisson kernel-based distributions.
 }
 
 \value{
@@ -41,6 +48,8 @@ A vector with the (log) density values of y.
 \references{
 Kurt Hornik and  Bettina Grun (2014). movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
+
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
 }
 
 \author{

@@ -1,15 +1,19 @@
-\name{Mixtures of Von Mises-Fisher distributions}
+\name{Mixtures of rotationally symmetric distributions}
 \alias{mixvmf.mle}
+\alias{mixspcauchy.mle}
+\alias{mixpkbd.mle}
 \title{
-Mixtures of Von Mises-Fisher distributions
+Mixtures of rotationally symmetric distributions
 }
 
 \description{
-It performs model based clustering for circualr, spherical and hyperspherical data assuming von Mises-Fisher distributions.
+It performs model based clustering for circualr, spherical and hyper-spherical data assuming rotationally symetric distributions.
 }
 
 \usage{
-mixvmf.mle(x, g, n.start = 10)
+mixvmf.mle(x, g, n.start = 5, tol = 1e-6, maxiters = 100)
+mixspcauchy.mle(x, g, n.start = 5, tol = 1e-6, maxiters = 100)
+mixpkbd.mle(x, g, n.start = 5, tol = 1e-6, maxiters = 100)
 }
 
 \arguments{
@@ -22,22 +26,31 @@ The number of groups to fit. It must be greater than or equal to 2.
 \item{n.start}{
 The number of random starts to try. See also R's built-in function \code{\link{kmeans}} for more information about this.
 }
+\item{tol}{
+The tolerance value to terminate the EM algorithm.
+}
+\item{maxiters}{
+The maximum number of iterations to perform.
+}
 }
 
 \details{
-The initial step of the algorithm is not based on a spherical k-means, but on s imple k-means. The results are comparable to the package movMF.
+The initial step of the algorithm is not based on a spherical k-means, but on simple k-means. The results are comparable to the package movMF for the mixtures of von Mises-Fisher distributions. The other cases are mixtures of spherical Cauchy distributions or mixtures of Poisson kernel-based distributions.
 }
 
 \value{
 A list including:
 \item{param}{
-A matrix with the mean direction, the concetrations parameter and mixing probability of each group.
+A matrix with the mean direction, the concentration parameters and mixing probability of each group.
 }
 \item{loglik}{
 The value of the maximised log-likelihood.
 }
 \item{pred}{
 The predicted group of each observation.
+}
+\item{w}{
+The estimated probabilities of each observation to belong to each cluster.
 }
 \item{iter}{
 The number of iteration required by the EM algorithm.
@@ -50,12 +63,14 @@ The run time of the algorithm. A numeric vector. The first element is the user t
 \references{
 Kurt Hornik and  Bettina Grun (2014). movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
+
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
 }
 
 \author{
-Michail Tsagris.
+Michail Tsagris and Panagiotis Papastamoulis.
 
-R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
+R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and Panagiotis Papastamoulis \email{papastamoulis@aueb.gr}.
 }
 %\note{
 %%  ~~further notes~~
@@ -75,6 +90,3 @@ mixvmf.mle(x, 3)
 mixvmf.mle(x, 4)
 mixvmf.mle(x, 5)
 }
-
-\keyword{ Model based clustering }
-\keyword{ von Mises-Fisher distribution }

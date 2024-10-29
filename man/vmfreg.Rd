@@ -39,7 +39,7 @@ A tolerance value to decide when to stop the successive optimaizations.
 \details{
 The second parametrization of the projected normal and of the von Mises-Fisher regression (Paine et al., 2020) is applied. The same is true for the SIPC distribution. For more information see the paper by Paine et al. (2020). The difference from \code{\link{vmf.reg}} is that the latter is designed for the sphere only, whereas this function works in the hyper-sphere also.
 
-As for the spcauchy.reg() and pkbd.reg() they are based upon the spherical Cauchy (Kato and McCullagh, 2020) and the Poisson-kernel based (Golzy and Markatou, 2020) distributions. These two use Newton-Raphson, but the pkbd.reg2() uses the \code{\link{optim}}. We have noticed some numerical issues with the pkbd.reg() when the dimensionalities of the variables are large and this is why we also provide the (much slower) pkbd.reg2() function.
+As for the spcauchy.reg() and pkbd.reg() they are based upon the spherical Cauchy (Kato and McCullagh, 2020) and the Poisson kernel-based (Golzy and Markatou, 2020) distributions. These two use Newton-Raphson, but the pkbd.reg2() uses the \code{\link{optim}}. We have noticed some numerical issues with the pkbd.reg() when the dimensionalities of the variables are large and this is why we also provide the (much slower) pkbd.reg2() function.
 }
 
 \value{
@@ -85,8 +85,7 @@ transformations. Bernoulli, 26(4): 3224--3248.
 Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere: convergence properties,
 identifiability, and a method of sampling. Journal of Computational and Graphical Statistics, 29(4): 758--770.
 
-Tsagris M. (2024). Directional data analysis using the spherical Cauchy and the Poisson-kernel based distribution.
-https://arxiv.org/pdf/2409.03292
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
 }
 
 \author{

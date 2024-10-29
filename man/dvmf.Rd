@@ -26,7 +26,7 @@ A matrix or a vector with the data expressed in Euclidean coordinates, i.e. unit
 }
 \item{mu}{
 The mean direction (unit vector) of the von Mises-Fisher, the IAG, the spherical Cauchy distribution,
-or of the Poisson kernel based distribution.
+or of the Poisson kernel-based distribution.
 }
 \item{theta}{
 The mean direction (unit vector) of the Purkayastha distribution.
@@ -39,7 +39,7 @@ The concentration parameter of the Purkayastha distribution.
 }
 \item{rho}{
 The \eqn{\rho} parameter of the spherical Cauchy distribution, or of the
-Poisson kernel based distribution.
+Poisson kernel-based distribution.
 }
 \item{logden}{
 If you the logarithm of the density values set this to TRUE.
@@ -47,7 +47,7 @@ If you the logarithm of the density values set this to TRUE.
 }
 
 \details{
-The density of the von Mises-Fisher, of the IAG, of the Purkayastha, of the spherical Cauchy distribution, or of the Poisson kernel based distribution is computed.
+The density of the von Mises-Fisher, of the IAG, of the Purkayastha, of the spherical Cauchy distribution, or of the Poisson kernel-based distribution is computed.
 }
 
 \value{
@@ -72,6 +72,8 @@ Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD di
 Electronic Journal of Statistics, 17(2): 2180--2209.
 
 Zehao Yu and Xianzheng Huang (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statististics, 18(1): 301--334.
+
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
 }
 
 \author{

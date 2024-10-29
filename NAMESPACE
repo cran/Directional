@@ -5,7 +5,7 @@ importFrom("graphics", contour, lines, plot, points, abline, filled.contour,
 
 importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
            .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq, lm.fit,
-           quantile, rbeta, rnorm, runif, sd, uniroot, qnorm, cov,
+           quantile, rbeta, rnorm, runif, sd, uniroot, qnorm, cov, BIC,
 		       model.matrix, nlm, integrate, rbinom, rcauchy, rexp, ks.test)
 
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,

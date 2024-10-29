@@ -56,7 +56,7 @@ A positive number determing the range of degrees to move up and down from the lo
 }
 
 \details{
-The goal of this function is for the user to see how the von Mises-Fisher, the Purkayastha, the spherical Cauchy or the Poisson kernel based distribution looks like.
+The goal of this function is for the user to see how the von Mises-Fisher, the Purkayastha, the spherical Cauchy or the Poisson kernel-based distribution looks like.
 }
 
 \value{
@@ -64,6 +64,8 @@ A plot containing the contours of the distribution.
 }
 
 \references{
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
+
 Mardia K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
 Sra S. (2012). A short note on parameter approximation for von Mises-Fisher distributions:
@@ -75,9 +77,7 @@ Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A,
 Cabrera J. and Watson G. S. (1990). On a spherical median related distribution.
 Communications in Statistics-Theory and Methods, 19(6): 1973--1986.
 
-Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. 
-Bernoulli, 26(4): 3224--3248.
-https://arxiv.org/pdf/1510.07679.pdf
+Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the sphere derived from the Mobius transformations. Bernoulli, 26(4): 3224--3248. https://arxiv.org/pdf/1510.07679.pdf
 
 Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere:
 convergence properties, identifiability, and a method of sampling.

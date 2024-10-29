@@ -67,7 +67,7 @@ Statistics and Computing, 30(1): 153--165.
 https://link.springer.com/content/pdf/10.1007%2Fs11222-019-09872-2.pdf
 
 
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 }

@@ -1,15 +1,19 @@
-\name{Simulation of random values from a mixture of von Mises-Fisher distributions}
+\name{Simulation of random values from a mixture of rotationally symmetric distributions}
 \alias{rmixvmf}
+\alias{rmixspcauchy}
+\alias{rmixpkbd}
 \title{
-Simulation of random values from a mixture of von Mises-Fisher distributions
+Simulation of random values from a mixture of rotationally symmetric distributions
 }
 
 \description{
-The function simulates random values simulation from a given mixture of von Mises-Fisher distributions.
+The function simulates random values simulation from a given mixture of rotationally symmetric distributions.
 }
 
 \usage{
 rmixvmf(n, probs, mu, k)
+rmixspcauchy(n, probs, mu, k)
+rmixpkbd(n, probs, mu, k)
 }
 
 \arguments{
@@ -28,7 +32,7 @@ A vector with the concentration parameter of each group.
 }
 
 \details{
-The function simulates random values simulation from a given mixture of von Mises-Fisher distributions using the rvmf function.
+The function simulates random values simulation from a given mixture of von Mises-Fisher, spherical Cauchy or Poisson kernel-based distributions.
 }
 
 \value{
@@ -43,7 +47,10 @@ A matrix with the simulated data.
 
 \references{
 Kurt Hornik and  Bettina Grun (2014). movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
-http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf}
+http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
+
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
+}
 
 \author{
 Michail Tsagris.
@@ -67,6 +74,3 @@ mu <- mu / sqrt( rowSums(mu^2) )
 x <- rmixvmf(200, probs, mu, k)$x
 bic.mixvmf(x, 5)
 }
-
-\keyword{ Random values simulation }
-\keyword{ Mixtures of von Mises-Fisher distributions }

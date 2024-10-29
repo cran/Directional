@@ -61,7 +61,7 @@ Both functions estimate the parameters of the spherical Cauchy distribution, for
 Despite the name sounds confusing, it is implemented for arbitrary dimensions, not only the sphere.
 The function employs a combination of the fixed points iteration algorithm and the Brent algorithm.
 
-The pkbd.mle() estimates the parameters of the Poisson kernel based distribution (PKBD), for any dimension and it is faster than pkbd.mle2() for the same reason with the spcauchy.mle().
+The pkbd.mle() estimates the parameters of the Poisson kernel-based distribution (PKBD), for any dimension and it is faster than pkbd.mle2() for the same reason with the spcauchy.mle().
 
 The sipc.mle() implements MLE of the spherical independent projected Cauchy distribution, for spherical data only.
 }
@@ -153,7 +153,7 @@ distribution on the sphere. Biometrika 74(3): 579--589.
 Paine P.J., Preston S.P., Tsagris M. and Wood A.T.A. (2018). An Elliptically Symmetric
 Angular Gaussian Distribution. Statistics and Computing, 28: 689--697.
 
-Tsagris M. and Alzeley O. (2023). Circular and spherical projected Cauchy distributions:
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 https://arxiv.org/pdf/2302.02468.pdf
 
@@ -170,8 +170,7 @@ Electronic Journal of Statistics, 17(2): 2180--2209.
 
 Zehao Yu and Xianzheng Huang (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statististics, 18(1): 301--334.
 
-Tsagris M. (2024). Directional data analysis using the spherical Cauchy and the Poisson-kernel based distribution.
-https://arxiv.org/pdf/2409.03292
+Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
 }
 
 \author{
