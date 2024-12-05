@@ -46,7 +46,7 @@ A matrix with two columns, the test statistics and their associated (log) p-valu
 }
 
 \references{
-Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for
+Presnell B., Morrison S. P. and Littell R. C. (1998). Projected multivariate linear models for
 directional data. Journal of the American Statistical Association, 93(443): 1068--1077.
 }
 
@@ -60,7 +60,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr}.
 %}
 
 \seealso{
-\code{\link{spml.reg}, \link{spml.mle}, \link{iag.mle}
+\code{\link{spml.reg}, \link{spml.mle}, \link{iag.mle}, \link{score.cipc}
 }
 }
 

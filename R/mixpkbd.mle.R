@@ -71,14 +71,14 @@ mixpkbd.mle <- function(x, g = 2, n.start = 5, tol = 1e-6, maxiters = 100) {
 
     ep <- fun2(wlika, rswlika, mu, x, d, g, lika, tol, maxiters)
     lik[1] <- ep$lik
-    ep2 <- fun2(ep$wlika, ep$rswlika, ep$mu, x, d, g, lika, tol, maxiters)
+    ep2 <- fun2(ep$wlika, ep$rswlika, ep$mu, x, d, g, ep$lika, tol, maxiters)
     lik[2] <- ep2$lik
 
     i <- 2
     while ( lik[i] - lik[i - 1] > tol & i < maxiters) {
       i <- i + 1
       ep <- ep2
-      ep2 <- fun2(ep$wlika, ep$rswlika, ep$mu, x, d, g, lika, tol, maxiters)
+      ep2 <- fun2(ep$wlika, ep$rswlika, ep$mu, x, d, g, ep$lika, tol, maxiters)
       lik[i] <- ep2$lik
     }
     res <- ep2

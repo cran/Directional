@@ -4,25 +4,24 @@ sp2 <- function(y1, y2, tol = 1e-6) {
   n1 <- dm[1]  ;  d <- dm[2] - 1
   n2 <- dim(y2)[1]
 
-  sp1 <- function(r1, r2, mu, y1, y2, n1, n2, d) {
-    a1 <- as.vector(y1 %*% mu)
-    a2 <- as.vector(y2 %*% mu)
+  sp1 <- function(r1, r2, a1, a2, n1, n2, d) {
     n1 * d * log(1 - r1^2) - d * sum( log1p( r1^2 - 2 * r1 * a1 ) ) +
-      n2 * d * log(1 - r2^2) - d * sum( log1p( r2^2 - 2 * r2 * a2 ) )
+    n2 * d * log(1 - r2^2) - d * sum( log1p( r2^2 - 2 * r2 * a2 ) )
   }
 
-  sp2 <- function(r2, r1, mu, y1, y2, n1, n2, d) {
-    a1 <- as.vector(y1 %*% mu)
-    a2 <- as.vector(y2 %*% mu)
+  sp2 <- function(r2, r1, mu, a1, a2, n1, n2, d) {
     n1 * d * log(1 - r1^2) - d * sum( log1p( r1^2 - 2 * r1 * a1 ) ) +
-      n2 * d * log(1 - r2^2) - d * sum( log1p( r2^2 - 2 * r2 * a2 ) )
+    n2 * d * log(1 - r2^2) - d * sum( log1p( r2^2 - 2 * r2 * a2 ) )
   }
 
   mu <- Rfast::colmeans( rbind(y1, y2) )
   mu <- mu / sqrt(sum(mu^2) )
-  mod1 <- optimize( sp1, c(0, 1), r2 = 0.5, mu = mu, y1 = y1, y2 = y2, n1 = n1, n2 = n2, d = d,
+  a1 <- as.vector(y1 %*% mu)
+  a2 <- as.vector(y2 %*% mu)
+
+  mod1 <- optimize( sp1, c(0, 1), r2 = 0.5, a1 = a1, a2 = a2, n1 = n1, n2 = n2, d = d,
                     maximum = TRUE, tol = 1e-6 )
-  mod2 <- optimize( sp2, c(0, 1), r1 = mod1$maximum, mu = mu, y1 = y1, y2 = y2, n1 = n1, n2 = n2, d = d,
+  mod2 <- optimize( sp2, c(0, 1), r1 = mod1$maximum, a1 = a1, a2 = a2, n1 = n1, n2 = n2, d = d,
                     maximum = TRUE, tol = 1e-6 )
   lik1 <- mod2$objective
   r1 <- mod1$maximum
@@ -34,14 +33,15 @@ sp2 <- function(y1, y2, tol = 1e-6) {
   mu2 <- Rfast::eachcol.apply(r2 * y2, down, oper = "/")
   mu <- mu1 + mu2
   mu <- mu / sqrt( sum(mu^2) )
+  a1 <- as.vector(y1 %*% mu)
+  a2 <- as.vector(y2 %*% mu)
 
-  mod1 <- optimize( sp1, c(0, 1), r2 = r2, mu = mu, y1 = y1, y2 = y2, n1 = n1, n2 = n2, d = d,
+  mod1 <- optimize( sp1, c(0, 1), r2 = r2, a1 = a1, a2 = a2, n1 = n1, n2 = n2, d = d,
                     maximum = TRUE, tol = 1e-6 )
-  mod2 <- optimize( sp2, c(0, 1), r1 = mod1$maximum, mu = mu, y1 = y1, y2 = y2, n1 = n1, n2 = n2, d = d,
+  mod2 <- optimize( sp2, c(0, 1), r1 = mod1$maximum, a1 = a1, a2 = a2, n1 = n1, n2 = n2, d = d,
                     maximum = TRUE, tol = 1e-6 )
   lik2 <- mod2$objective
-  r1 <- mod1$maximum
-  r2 <- mod2$maximum
+  r1 <- mod1$maximum   ;   r2 <- mod2$maximum
 
   while ( abs( lik2 - lik1 ) > tol ) {
     lik1 <- lik2
@@ -51,16 +51,18 @@ sp2 <- function(y1, y2, tol = 1e-6) {
     mu2 <- Rfast::eachcol.apply(r2 * y2, down, oper = "/")
     mu <- mu1 + mu2
     mu <- mu / sqrt( sum(mu^2) )
+    a1 <- as.vector(y1 %*% mu)
+    a2 <- as.vector(y2 %*% mu)
 
-    mod1 <- optimize( sp1, c(0, 1), r2 = r2, mu = mu, y1 = y1, y2 = y2, n1 = n1, n2 = n2, d = d,
+    mod1 <- optimize( sp1, c(0, 1), r2 = r2, a1 = a1, a2 = a2, n1 = n1, n2 = n2, d = d,
                       maximum = TRUE, tol = 1e-6 )
-    mod2 <- optimize( sp2, c(0, 1), r1 = mod1$maximum, mu = mu, y1 = y1, y2 = y2, n1 = n1, n2 = n2, d = d,
+    mod2 <- optimize( sp2, c(0, 1), r1 = mod1$maximum, a1 = a1, a2 = a2, n1 = n1, n2 = n2, d = d,
                       maximum = TRUE, tol = 1e-6 )
     lik2 <- mod2$objective
-    r1 <- mod1$maximum
-    r2 <- mod2$maximum
+    r1 <- mod1$maximum   ;    r2 <- mod2$maximum
   }
 
   n <- n1 + n2
-  list(mu = mu, rho1 = r1, rho2 = r2, loglik = lik2 + n * lgamma( 0.5 * (d + 1) ) - 0.5 * n * (d + 1) * log(pi) - n * log(2) )
+  list( mu = mu, rho1 = r1, rho2 = r2, loglik = lik2 + n * lgamma( 0.5 * (d + 1) ) - 
+        0.5 * n * (d + 1) * log(pi) - n * log(2) )
 }

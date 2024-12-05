@@ -72,12 +72,11 @@ The fitted values expressed in radians if the obsereved data are in radians and 
 }
 
 \references{
-Presnell Brett, Morrison Scott P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data. Journal of the American Statistical Association, 93(443): 1068-1077.
+Presnell B., Morrison S. P. and Littell Ramon C. (1998). Projected multivariate linear models for directional data. Journal of the American Statistical Association, 93(443): 1068-1077.
 
 Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: Obtained through Maximum Likelihood Characterization. The Indian Journal of Statistics, Series A, 53(1): 70-83
 
-Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling.
-https://arxiv.org/pdf/2302.02468.pdf
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling. Australian & New Zealand Journal of Statistics (accepted for publication). https://arxiv.org/pdf/2302.02468.pdf
 }
 
 \author{

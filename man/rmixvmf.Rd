@@ -49,7 +49,7 @@ A matrix with the simulated data.
 Kurt Hornik and  Bettina Grun (2014). movMF: An R Package for Fitting Mixtures of von Mises-Fisher Distributions
 http://cran.r-project.org/web/packages/movMF/vignettes/movMF.pdf
 
-Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
+Tsagris M., Papastamoulis P. and Kato S. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
 }
 
 \author{

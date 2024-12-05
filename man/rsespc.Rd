@@ -25,8 +25,7 @@ The two \eqn{\theta} parameters of the SESPC distribution.
 }
 
 \details{
-A random sample from the SESPC distribution is generated. In case the \eqn{\theta_s} are zero, the sample is drawn
-from the SIPC (spherical independent projected Cauchy) distribution.
+A random sample from the SESPC distribution is generated. In case the \eqn{\theta_s} are zero, the sample is drawn from the SIPC (spherical independent projected Cauchy) distribution.
 }
 
 \value{
@@ -34,6 +33,7 @@ An \eqn{n \times 3} matrix with the simulated unit vectors.
 }
 
 \references{
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling. Australian & New Zealand Journal of Statistics (accepted for publication). https://arxiv.org/pdf/2302.02468.pdf
 
 Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 }

@@ -7,7 +7,7 @@ spcauchy.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-6) {
   ind <- matrix(1:( (d + 1) * p), ncol = d + 1 )
 
   tic <- proc.time()
-  be <- Rfast::lmfit(x, y)$be
+  be <- solve( crossprod(x), crossprod(x, y) )
   mu <- x %*% be
   g2 <- Rfast::rowsums(mu^2)
   a <- Rfast::rowsums(y * mu)

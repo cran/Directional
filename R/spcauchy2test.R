@@ -17,8 +17,8 @@ spcauchy2test <- function(y1, y2, B = 1) {
     x2 <- y2 %*% rot2
     bstat <- numeric(B)
     for (i in 1:B) {
-      y1b <- x1[sample(n1, n1, replace = TRUE), ]
-      y2b <- x2[sample(n2, n2, replace = TRUE), ]
+      y1b <- x1[Rfast2::Sample.int(n1, n1, replace = TRUE), ]
+      y2b <- x2[Rfast2::Sample.int(n2, n2, replace = TRUE), ]
       lik0 <- Directional::sp2(y1b, y2b)$loglik
       lik1 <- Directional::spcauchy.mle(y1b)$loglik + Directional::spcauchy.mle(y2b)$loglik
       bstat[i] <- lik1 - lik0

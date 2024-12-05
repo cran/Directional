@@ -11,6 +11,7 @@ vmf.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
     ki <- sqrt( Rfast::rowsums(mu^2) )
     - sum( log(ki) ) + sum( log(sinh(ki) ) ) - sum(mu * y)
   }
+  
   p <- dim(x)[2]
   ini <- solve(crossprod(x), crossprod(x, y))  ## initial values for the beta
   suppressWarnings({

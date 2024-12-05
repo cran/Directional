@@ -16,7 +16,7 @@ vmfreg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
   p <- dim(x)[2]
 
   tic <- proc.time()
-  ini <- solve(crossprod(x), crossprod(x, y))  ## initial values for the beta
+  ini <- solve( crossprod(x), crossprod(x, y) )  ## initial values for the beta
   suppressWarnings({
   val1 <- nlm(regvmf, ini, y = y, x = x, d = d,iterlim = 1000)
   val2 <- nlm(regvmf, val1$estimate, y = y, x = x, d = d, iterlim = 1000)

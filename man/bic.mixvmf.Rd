@@ -56,7 +56,7 @@ Hornik, K. and Grun, B. (2014). movMF: An R package for fitting mixtures of von 
 
 Biernacki C., Celeux G. and Govaert, G. (2000). Assessing a mixture model for clustering with the integrated completed likelihood. IEEE Transactions on Pattern Analysis and Machine Intelligence, 22(7): 719--725.
 
-Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292
+Tsagris M., Papastamoulis P. and Kato S. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292
 }
 
 \author{

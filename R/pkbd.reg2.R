@@ -5,7 +5,7 @@ pkbd.reg2 <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-6) {
   dm <- dim(y)
   n <- dm[1]  ;  d <- dm[2]
 
-  regpkbd <- function(be, y, x, n, d) {
+  regpkbd <- function(be, y, x, d) {
     be <- matrix(be, ncol = d)
     mu <- x %*% be
     a <- Rfast::rowsums(y * mu)
@@ -17,18 +17,18 @@ pkbd.reg2 <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-6) {
   }
 
   tic <- proc.time()
-  ini <- solve(crossprod(x), crossprod(x, y))  ## initial values for the beta
-  qa <- optim( as.vector(ini), regpkbd, y = y, x = x, n = n, d = d,
+  ini <- solve( crossprod(x), crossprod(x, y) )  ## initial values for the beta
+  qa <- optim( as.vector(ini), regpkbd, y = y, x = x, d = d,
                control = list(maxit = 50000), method = "BFGS" )
-  qa <- optim( qa$par, regpkbd, y = y, x = x, n = n, d = d, control = list(maxit = 50000), method = "BFGS" )
+  qa <- optim( qa$par, regpkbd, y = y, x = x, d = d, control = list(maxit = 50000), method = "BFGS" )
   lik1 <- qa$value
-  qa <- optim( qa$par, regpkbd, y = y, x = x, n = n, d = d, control = list(maxit = 50000) )
+  qa <- optim( qa$par, regpkbd, y = y, x = x, d = d, control = list(maxit = 50000) )
   lik2 <- qa$value
 
   while ( lik1 - lik2 > tol ) {
-    qa <- optim( qa$par, regpkbd, y = y, x = x, n = n, d = d, control = list(maxit = 50000) )
+    qa <- optim( qa$par, regpkbd, y = y, x = x, d = d, control = list(maxit = 50000) )
     lik1 <- qa$value
-    qa <- optim( qa$par, regpkbd, y = y, x = x, n = n, d = d, control = list(maxit = 50000), method = "BFGS" )
+    qa <- optim( qa$par, regpkbd, y = y, x = x, d = d, control = list(maxit = 50000), method = "BFGS" )
     lik2 <- qa$value
   }
 

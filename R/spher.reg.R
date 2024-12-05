@@ -5,7 +5,7 @@
 #### References: Chang Ted (1986)
 #### Spherical egession. Annals of statistics, 14(3): 907-924
 ################################
-spher.reg <- function(y, x, rads = FALSE) {
+spher.reg <- function(y, x, rads = FALSE, xnew = NULL) {
   ## x is the independent variable
   ## y is the dependent variable
   ## The first row of both matrices is the latitude
@@ -34,6 +34,8 @@ spher.reg <- function(y, x, rads = FALSE) {
     A <- tcrossprod(b$v, b$u )
   }
 
-  est <- tcrossprod(X, A)
-  list(A = A, fitted = est)
+  est <- NULL
+  if ( !is.null(xnew) )  est <- tcrossprod(xnew, A)
+
+  list(A = A, est = est)
 }

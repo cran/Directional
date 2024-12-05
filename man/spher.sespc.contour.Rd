@@ -46,9 +46,7 @@ A plot containing the contours of the distribution.
 }
 
 \references{
-Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: 
-A Novel Framework for Circular and Directional Data Modeling.
-https://arxiv.org/pdf/2302.02468.pdf
+Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling. Australian & New Zealand Journal of Statistics (accepted for publication). https://arxiv.org/pdf/2302.02468.pdf
 }
 
 \author{

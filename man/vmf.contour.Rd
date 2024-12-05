@@ -52,7 +52,7 @@ A contour plot of the distribution.
 }
 
 \references{
-Tsagris M. and Papastamoulis P. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
+Tsagris M., Papastamoulis P. and Kato S. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
 
 Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley & Sons.
 
