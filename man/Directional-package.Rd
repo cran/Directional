@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 7.0\cr
-Date: \tab 2024-12-04\cr
+Version: \tab 7.1\cr
+Date: \tab 2025-02-11\cr
 License: \tab GPL-2\cr
 }
 }
@@ -25,7 +25,7 @@ Michail Tsagris \email{mtsagris@uoc.gr}.
 }
 
 \references{
-Mardia, K. V. and Jupp, P. E. (2000). Directional statistics. Chicester: John Wiley and Sons.
+Mardia K. V. and Jupp P. E. (2000). Directional statistics. Chicester: John Wiley and Sons.
 }
 
 \note{

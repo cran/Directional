@@ -4,7 +4,7 @@ importFrom("graphics", contour, lines, plot, points, abline, filled.contour,
            axis, par, segments)
 
 importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
-           .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq, 
+           .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
            quantile, rbeta, rnorm, runif, sd, uniroot, qnorm, cov, BIC,
 		   model.matrix, nlm, integrate, rbinom, rcauchy, rexp, ks.test)
 
@@ -14,7 +14,7 @@ importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
 		    	 multivmf.mle, Sort, spml.reg, spml.mle, mediandir, circlin.cor,
 			     Table, colnth, wrapcauchy.mle, colOrder, group, dirknn, rbing,
 			     rbingham, eachrow, colvm.mle, spml.regs, matrnorm, colwatsons,
-		    	 corpairs, dcor, Dist, Outer)
+		    	 corpairs, dcor, Dist, Outer, XopY.sum, rep_row)
 
 importFrom("Rfast2", purka.mle, circ.cor1, circ.cors1, colspml.mle,
            hcf.circaov, lr.circaov, het.circaov, embed.circaov, vm.nb,

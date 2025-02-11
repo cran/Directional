@@ -6,7 +6,7 @@ iag.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
   ## x is the independent variables
   ## If con == TRUE a constant term will be estimated estimated
   x <- model.matrix( ~., data.frame(x) )
-  if ( !con ) x <- x[, -1]
+  if ( !con )  x <- x[, -1]
   n <- dim(y)[1]
 
    regiag <- function(be, y, x) {
@@ -17,16 +17,14 @@ iag.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
      0.5 * sum(mu * mu) - sum( log(M2) )
    }
 
-  ini <- solve(crossprod(x), crossprod(x, y))  ## initial values for the beta
-  suppressWarnings({
-  val1 <- nlm(regiag, ini, y = y, x = x, iterlim = 1000)
-  val2 <- nlm(regiag, val1$estimate, y = y, x = x, iterlim = 1000)
-  while (val1$minimum - val2$minimum > tol) {
+  ini <- as.vector( solve(crossprod(x), crossprod(x, y)) )  ## initial values for the beta
+  val1 <- optim(ini, regiag, y = y, x = x,  control = list(maxit = 10000) )
+  val2 <- optim(val1$par, regiag, y = y, x = x,  control = list(maxit = 10000) )
+  while ( val1$value - val2$value > tol ) {
     val1 <- val2
-    val2 <- nlm(regiag, val1$estimate, y = y, x = x, iterlim = 1000)
+    val2 <- optim(val1$par, regiag, y = y, x = x,  control = list(maxit = 10000) )
   }
-  da <- optim(val2$estimate, regiag, y = y, x = x, control = list(maxit = 10000), hessian = TRUE)
-  })
+  da <- optim(val2$par, regiag, y = y, x = x, control = list(maxit = 10000), hessian = TRUE)
   be <- matrix(da$par, ncol = 3)
   seb <- sqrt( diag( solve(da$hessian) ) )
   seb <- matrix(seb, ncol = 3)

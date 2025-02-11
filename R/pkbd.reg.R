@@ -132,7 +132,8 @@ pkbd.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-6) {
     mu <- x %*% be
     g2 <- sqrt( Rfast::rowsums(mu^2) )
     est <- mu / g2
-    fit <- sum( y * est )
+    #fit <- sum( y * est )
+	fit <- Rfast::XopY.sum(y, est) 
   } else {
     xnew <- model.matrix(~., data.frame(xnew))
     est <- xnew %*% be

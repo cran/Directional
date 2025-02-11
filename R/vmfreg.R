@@ -37,6 +37,7 @@ vmfreg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
     ki <- sqrt( Rfast::rowsums(mu^2) )
     est <- mu / ki
     fit <- sum( y * est )
+	fit <- Rfast::XopY.sum(y, est) 
   } else {
     xnew <- model.matrix( ~., data.frame(xnew) )
     if ( !con ) xnew <- xnew[, -1]

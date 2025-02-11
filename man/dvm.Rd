@@ -2,6 +2,7 @@
 \alias{dvm}
 \alias{dspml}
 \alias{dwrapcauchy}
+\alias{dwrapnormal}
 \alias{dcircpurka}
 \alias{dggvm}
 \alias{dcircbeta}
@@ -22,6 +23,7 @@ Density of some circular distributions.
 dvm(x, m, k, rads = FALSE, logden = FALSE)
 dspml(x, mu, rads = FALSE, logden = FALSE)
 dwrapcauchy(x, m, rho, rads = FALSE, logden = FALSE)
+dwrapnormal(x, m, rho, rads = FALSE, logden = FALSE)
 dcircpurka(x, m, a, rads = FALSE, logden = FALSE)
 dggvm(x, param, rads = FALSE, logden = FALSE)
 dcircbeta(x, m, a, b, rads = FALSE, logden = FALSE)
@@ -37,7 +39,7 @@ dmmvm(x, m, k, N, rads = FALSE, logden = FALSE)
 A vector with circular data.
 }
 \item{m}{
-The mean value of the von Mises distribution and of the cardioid, a scalar.
+The mean value of the von Mises, wrapped Cauchy, wrapped normal and of the cardioid distribution, a scalar.
 This is the median for the circular Purkayastha distribution.
 }
 \item{mu}{
@@ -53,7 +55,7 @@ The norm of the mean vector for the CIPC and GCPC distributions.
 The concentration parameter.
 }
 \item{rho}{
-For the wrapped Cauchy and Cardioid distributions, this is the \eqn{\rho} parameter.
+For the wrapped Cauchy, normal and Cardioid distributions, this is the \eqn{\rho} parameter.
 For the GCPC distribution this is the eigenvalue parameter, or covariance determinant.
 }
 \item{a}{
@@ -82,7 +84,7 @@ If you the logarithm of the density values set this to TRUE.
 
 \details{
 The density of the von Mises, bivariate projected normal, cardio, circular exponential,
-wrapped Cauchy, circular Purkayastha, CIPC or GCPC distributions is computed.
+wrapped Cauchy, wrapped normal, circular Purkayastha, CIPC or GCPC distributions is computed.
 }
 
 \value{
@@ -111,6 +113,8 @@ Generalized Cardioid distributions for circular data analysis. Stats, 4(3): 634-
 
 Zheng Sun (2009). Comparing measures of fit for circular distributions. MSc Thesis, University of Victoria.
 file:///C:/Users/mtsag/Downloads/zhengsun_master_thesis.pdf
+
+Lopez-Custodio P. C. (2024). A cheat sheet for probability distributions of orientational data. arXiv:2412.08934.
 }
 
 \author{

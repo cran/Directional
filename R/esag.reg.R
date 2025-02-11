@@ -86,7 +86,8 @@ esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol =
   m <- x %*% be
   rl <- sqrt( Rfast::rowsums(m^2) )
   est <- m/rl
-  di <- sum( y * est )
+  #di <- sum( y * est )
+  di <- Rfast::XopY.sum(y, est) 
   se <- sqrt( diag( solve(da$hessian) ) )
   seb <- matrix(se[-c(1:2)], ncol = 3)
 

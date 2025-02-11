@@ -1,11 +1,11 @@
 Package: Directional
 Type: Package
 Title: A Collection of Functions for Directional Data Analysis
-Version: 7.0
-Date: 2024-12-04
+Version: 7.1
+Date: 2025-02-11
 Authors@R: c( person(given = "Michail", family = "Tsagris", role = c("aut", "cre"), email = "mtsagris@uoc.gr"),
                person(given = "Giorgos", family = "Athineou", role = "aut"), 
-               person(given = "Christos", family = "Adam",role = "aut"),
+               person(given = "Christos", family = "Adam", role = "aut"),
                person(given = "Zehao", family = "Yu", role = "aut"),
                person(given = "Anamul", family = "Sajib", role = "ctb"),
                person(given = "Eli", family = "Amson", role = "ctb"),
@@ -21,15 +21,15 @@ Description: A collection of functions for directional data (including massive d
 			 c) Paine J.P., Preston S.P., Tsagris M. and Wood A.T.A. (2020). "Spherical regression models with general covariates and anisotropic errors". Statistics and Computing 30(1): 153--165. <doi:10.1007/s11222-019-09872-2>. 
 			 d) Tsagris M. and Alenazi A. (2024). "An investigation of hypothesis testing procedures for circular and spherical mean vectors". Communications in Statistics-Simulation and Computation, 53(3): 1387--1408. <doi:10.1080/03610918.2022.2045499>. 
 			 e) Yu Z. and Huang X. (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statistics, 18(1): 301--334. <doi:10.1214/23-EJS2210>. 
-			 f) Tsagris M. and Alzeley O. (2024). "Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling". Australian & New Zealand Journal of Statistics (Accepted for publication). <doi:10.48550/arXiv.2302.02468>. 
-			 g) Tsagris M., Papastamoulis P. and Kato S. (2024). "Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution". <doi:10.48550/arXiv.2409.03292>.
+			 f) Tsagris M. and Alzeley O. (2024). "Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling". Australian & New Zealand Journal of Statistics (Accepted for publication). <doi:10.1111/anzs.12434>. 
+			 g) Tsagris M., Papastamoulis P. and Kato S. (2024). "Directional data analysis: spherical Cauchy or Poisson kernel-based distribution". Statistics and Computing (Accepted for publication). <doi:10.48550/arXiv.2409.03292>.
 License: GPL (>= 2)
 Imports: bigstatsr, doParallel, foreach, ggplot2, grDevices, magrittr,
         parallel, Rfast, Rfast2, Rnanoflann, rgl, rnaturalearth, sf
 Suggests: bigreadr
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2024-12-04 12:26:42 UTC; mtsag
+Packaged: 2025-02-11 19:47:18 UTC; mtsag
 Author: Michail Tsagris [aut, cre],
   Giorgos Athineou [aut],
   Christos Adam [aut],
@@ -39,4 +39,4 @@ Author: Michail Tsagris [aut, cre],
   Micah J. Waldstein [ctb],
   Panagiotis Papastamoulis [ctb]
 Repository: CRAN
-Date/Publication: 2024-12-05 08:40:05 UTC
+Date/Publication: 2025-02-11 23:40:02 UTC

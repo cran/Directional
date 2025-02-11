@@ -1,6 +1,7 @@
 \name{MLE of some circular distributions}
 \alias{spml.mle}
 \alias{wrapcauchy.mle}
+\alias{wrapnormal.mle}
 \alias{circexp.mle}
 \alias{circbeta.mle}
 \alias{cardio.mle}
@@ -19,6 +20,7 @@ MLE of some circular distributions.
 \usage{
 spml.mle(x, rads = FALSE, tol = 1e-07)
 wrapcauchy.mle(x, rads = FALSE, tol = 1e-07)
+wrapnormal.mle(x, rads = FALSE)
 circexp.mle(x, rads = FALSE, tol = 1e-06)
 circbeta.mle(x, rads = FALSE)
 cardio.mle(x, rads = FALSE)
@@ -64,12 +66,7 @@ The iterations required until convergence.
 The value of the maximised log-likelihood.
 }
 \item{param}{
-A vector consisting of the estimates of the two parameters, the mean direction for both distributions
-and the concentration parameter \eqn{\kappa} and the \eqn{\rho} for the von Mises (and the multi-modal von Mises)
-and wrapped Cauchy respectively. For the circular beta this contains the mean angle and the \eqn{\alpha} and \eqn{\beta} parameters.
-For the cardioid distribution this contains the \eqn{\mu} and \eqn{\rho} parameters. For the generalised von Mises this is a
-vector consisting of the \eqn{\zeta}, \eqn{\kappa}, \eqn{\mu} and \eqn{\alpha} parameters of the generalised von Mises
-distribution as described in Equation (2.7) of Dietrich and Richter (2017).
+A vector consisting of the estimates of the two parameters, the mean direction for both distributions and the concentration parameter \eqn{\kappa} and the \eqn{\rho} for the von Mises (and the multi-modal von Mises) and the wrapped Cauchy and normal respectively. For the circular beta this contains the mean angle and the \eqn{\alpha} and \eqn{\beta} parameters. For the cardioid distribution this contains the \eqn{\mu} and \eqn{\rho} parameters. For the generalised von Mises this is a vector consisting of the \eqn{\zeta}, \eqn{\kappa}, \eqn{\mu} and \eqn{\alpha} parameters of the generalised von Mises distribution as described in Equation (2.7) of Dietrich and Richter (2017).
 }
 \item{gamma}{
 The norm of the mean vector of the angular Gaussian, the CIPC and the GCPC distributions.
@@ -117,6 +114,8 @@ Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distri
 Barnett M. J. and Kingston R. L. (2024). A note on the Hendrickson-Lattman phase probability
 distribution and its equivalence to the generalized von Mises distribution.
 Journal of Applied Crystallography, 57(2).
+
+Lopez-Custodio P. C. (2024). A cheat sheet for probability distributions of orientational data. arXiv:2412.08934.
 }
 
 \author{

@@ -37,7 +37,8 @@ sipc.reg <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
     mu <- x %*% be
     ki <- sqrt( Rfast::rowsums(mu^2) )
     est <- mu / ki
-    fit <- sum( y * est )
+    #fit <- sum( y * est )
+	fit <- Rfast::XopY.sum(y, est) 
     names(fit) <- c( "Fit value")
   } else {
     xnew <- model.matrix( ~., data.frame(xnew) )
