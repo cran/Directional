@@ -11,8 +11,8 @@ circbeta.mle <- function(x, rads = FALSE) {
     -sum(den)
   }
 
-  qa <- optim( c( mean(x), rnorm(2) ), x = x, control = list(maxit = 5000) )
-  qa <- optim( qa$par, rnorm(2), x = x, control = list(maxit = 5000) )
+  qa <- optim( c( mean(x), rnorm(2) ), fun, x = x, control = list(maxit = 5000) )
+  qa <- optim( qa$par, rnorm(2), fun, x = x, control = list(maxit = 5000) )
   param <- c( cos(qa$par[1]), exp(qa$par[2]), exp(qa$par[3]) )
   names(param) <- c("mean", "alpha", "beta")
   list( loglik = -qa$value, param = param)

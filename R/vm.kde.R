@@ -20,7 +20,7 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
   n <- length(u)  ## sample size
   x <- cbind( cos(u), sin(u) )
   disa <- tcrossprod(x)
-  diag(disa) <-  -Inf
+  diag(disa) <- 1
   expa <- exp(disa)
 
   if ( is.null(h) ) {
@@ -37,6 +37,6 @@ vm.kde <- function(u, h = NULL, thumb = "none", rads = TRUE) {
 
   } else h <- h
 
-  f <- Rfast::rowsums( expa^h ) / ( (n - 1) * 2 * pi * besselI(h, 0) )
+  f <- Rfast::rowmeans( expa^h ) / ( 2 * pi * besselI(h, 0) )
   list( h = h, f = f )
 }

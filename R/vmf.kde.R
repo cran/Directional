@@ -30,8 +30,8 @@ vmf.kde <- function(x, h = NULL, thumb = "none") {
   } else h <- h
 
   d <- tcrossprod( x / h )
-  diag(d) <-  -Inf
+  diag(d) <- 1/h
   cpk <- (1/h^2)^( p/2 - 1) / ( (2 * pi) ^ (p/2) * besselI(1/h^2, p/2 - 1) )
-  f <- Rfast::rowsums( exp(d) ) * ( (n - 1) * cpk )
+  f <- Rfast::rowmeans( exp(d) ) * cpk
   list( h = h, f = f )
 }
