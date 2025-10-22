@@ -33,4 +33,5 @@ watson <- function(u, rads = FALSE, R = 1) {
   result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
                   alternative = alternative, method = method, data.name = data.name )
   class(result) <- "htest"
+  return(result)
 }

@@ -37,7 +37,7 @@ A tolerance value to decide when to stop the successive optimizations.
 }
 
 \details{
-Regression based on the SESPC distribution (Tsagris and Alzeley, 2024) is applied.
+Regression based on the SESPC distribution (Tsagris and Alzeley, 2025) is applied.
 }
 
 \value{
@@ -63,7 +63,9 @@ The fitted values of xnew if "xnew" is NULL. If it is not NULL, the fitted value
 }
 
 \references{
-Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling. Australian & New Zealand Journal of Statistics (accepted for publication). https://arxiv.org/pdf/2302.02468.pdf
+Tsagris M. and Alzeley O. (2025). Circular and spherical projected Cauchy distributions: 
+A Novel Framework for Circular and Directional Data Modeling. 
+Australian & New Zealand Journal of Statistics, 67(1): 77--103. https://arxiv.org/pdf/2302.02468.pdf
 }
 
 \author{

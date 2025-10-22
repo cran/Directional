@@ -58,4 +58,5 @@ group.gof <- function(g, ni, m, k, dist = "vm", rads = FALSE, R = 999, ncores = 
   result <- list( statistic = statistic, parameter = parameter, p.value = p.value,
                   alternative = alternative, method = method, data.name = data.name )
   class(result) <- "htest"
+  return(result)
 }

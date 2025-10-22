@@ -106,10 +106,11 @@ Sankhya B, 79(1): 21--59.
 https://en.wikipedia.org/wiki/Wrapped_exponential_distribution
 
 Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models:
-The wrapped Laplace distributions.
-Advances and Applications in Statistics, 3(1), 77--103.
+The wrapped Laplace distributions. Advances and Applications in Statistics, 3(1), 77--103.
 
-Tsagris M. and Alzeley O. (2024). Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling. Australian & New Zealand Journal of Statistics (accepted for publication). https://arxiv.org/pdf/2302.02468.pdf
+Tsagris M. and Alzeley O. (2025). Circular and spherical projected Cauchy distributions: 
+A Novel Framework for Circular and Directional Data Modeling. 
+Australian & New Zealand Journal of Statistics, 67(1): 77--103. https://arxiv.org/pdf/2302.02468.pdf
 
 Barnett M. J. and Kingston R. L. (2024). A note on the Hendrickson-Lattman phase probability
 distribution and its equivalence to the generalized von Mises distribution.

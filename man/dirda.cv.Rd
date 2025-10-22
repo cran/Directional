@@ -72,8 +72,8 @@ The bootstrap bias corrected performance.
 }
 
 \references{
-Tsagris M., Papastamoulis P. and Kato S. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution.
-https://arxiv.org/pdf/2409.03292
+Tsagris M., Papastamoulis P. and Kato S. (2025). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution.
+Statistics and Computing, 35:51.
 
 Tsagris M. and Alenazi A. (2019). Comparison of discriminant analysis methods on the sphere.
 Communications in Statistics: Case Studies, Data Analysis and Applications, 5(4), 467--491.

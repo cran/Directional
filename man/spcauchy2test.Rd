@@ -94,7 +94,8 @@ Kato S. and McCullagh P. (2020). Some properties of a Cauchy family on the spher
 Golzy M. and Markatou M. (2020). Poisson kernel-based clustering on the sphere: convergence properties,
 identifiability, and a method of sampling. Journal of Computational and Graphical Statistics, 29(4): 758--770.
 
-Tsagris M., Papastamoulis P. and Kato S. (2024). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution. https://arxiv.org/pdf/2409.03292.
+Tsagris M., Papastamoulis P. and Kato S. (2025). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution.
+Statistics and Computing, 35:51.
 }
 
 \author{
