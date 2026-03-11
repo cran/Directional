@@ -1,4 +1,4 @@
-gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
+gcpc.reg <- function(y, x, rads = TRUE, xnew = NULL) {
 
   lik <- function(param, y, x, y1, y2, y12, n, rho) {
     be <- matrix(param, ncol = 2)
@@ -13,8 +13,7 @@ gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
     n * 0.5 * log(rho) + sum( log( B * sqrt(g2 + 1) - a * sqrt(B) ) )
   }
 
-  lik1 <- function(rho, mu, g2, ksi, a, y, x, y1, y2, y12, n) {
-    rho <- 1 / ( 1 + exp(-rho) )
+  lik1 <- function(rho, g2, ksi, a, y, x, y1, y2, y12, n) {
     s1 <- ksi[, 1]^2 + ksi[, 2]^2/rho
     s12 <- ksi[, 1] * ksi[, 2] * (1 - 1/rho)
     s2 <- ksi[, 2]^2 + ksi[, 1]^2/rho
@@ -23,7 +22,7 @@ gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
   }
 
   likreg <- function(param, y, x, y1, y2, y12, n) {
-    rho <- 1 / ( 1 + exp(-param[1]) )
+    rho <- exp(param[1])
     be <- matrix(param[-1], ncol = 2)
     mu <- x %*% be
     g2 <- Rfast::rowsums(mu^2)
@@ -53,15 +52,15 @@ gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
   g2 <- Rfast::rowsums(mu^2)
   ksi <- mu / sqrt(g2)
   a <- Rfast::rowsums(y * mu)
-  modrho <- optimise( lik1, c(0.001, 1000), mu = mu, g2 = g2, ksi = ksi, a = a, y = y, x = x, y1 = y1,
-                      y2 = y2, y12 = y12, n = n, maximum = TRUE )
-  rho <- modrho$maximum
+  modrho <- optimise( lik1, c(0.001, 1000), g2 = g2, ksi = ksi, a = a, y = y, x = x, y1 = y1,
+                      y2 = y2, y12 = y12, n = n )
+  rho <- modrho$minimum
   be <- as.vector( optim(as.vector(be), lik, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n, rho = rho)$par )
-  mod <- optim( c( log(rho / (1 - rho)), be ), likreg, y = y, x = x, y1 = y1, y2 = y2,
-                y12 = y12, n = n, control = list(maxit = 5000) )
+  mod <- optim( c( log(rho), be ), likreg, y = y, x = x, y1 = y1, y2 = y2,
+                y12 = y12, n = n, control = list(maxit = 5000), method = "BFGS" )
   lika <- mod$value
   mod <- optim( mod$par, likreg, y = y, x = x, y1 = y1, y2 = y2, y12 = y12, n = n,
-                control = list(maxit = 5000) )
+                control = list(maxit = 5000), hessian = TRUE )
   likb <- mod$value
   while ( lika - likb > 1e-6 ) {
     lika <- likb
@@ -72,10 +71,10 @@ gcpc.reg <- function(y, x, rads = TRUE, reps = 20, xnew = NULL) {
 
   se <- solve(mod$hessian)
   runtime <- proc.time() - runtime
-  rho <- 1 / ( 1 + exp(-mod$par[1]) )
+  rho <- exp(mod$par[1])
   be <- matrix(mod$par[-1], ncol = 2)
-  serho <- rho * (1 - rho) * sqrt( se[1, 1] )
-  seb <- matrix( sqrt( diag(se)[-1] ), ncol = 2 )
+  serho <- rho * sqrt( se[1, 1] )
+  seb <- matrix( sqrt( abs( diag( se ) )[-1] ), ncol = 2 )
 
   colnames(be) <- c("Cosinus of y", "Sinus of y")
   rownames(be) <- colnames(x)

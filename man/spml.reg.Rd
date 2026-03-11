@@ -15,7 +15,7 @@ Regression with circular dependent variable and Euclidean or categorical indepen
 spml.reg(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-07)
 circpurka.reg(y, x, rads = TRUE, xnew = NULL)
 cipc.reg(y, x, rads = TRUE, xnew = NULL, tol = 1e-06)
-gcpc.reg(y, x, rads = TRUE, reps = 20, xnew = NULL)
+gcpc.reg(y, x, rads = TRUE, xnew = NULL)
 }
 
 \arguments{
@@ -27,9 +27,6 @@ The independent variable(s). Can be Euclidean or categorical (factor variables).
 }
 \item{rads}{
 If the dependent variable is expressed in rads, this should be TRUE and FALSE otherwise.
-}
-\item{reps}{
-How many starting values shall the algortihm use? By default it uses 20 different starting values.
 }
 \item{xnew}{
 The new values of some independent variable(s) whose circular values you want to predict. Can be Euclidean or categorical.

@@ -9,6 +9,7 @@
 \alias{cipc.mle}
 \alias{gcpc.mle}
 \alias{mmvm.mle}
+\alias{wraplaplace.mle}
 \title{
 MLE of some circular distributions
 }
@@ -28,6 +29,7 @@ ggvm.mle(phi, rads = FALSE)
 cipc.mle(x, rads = FALSE, tol = 1e-6)
 gcpc.mle(x, rads = FALSE)
 mmvm.mle(x, N, rads = FALSE)
+wraplaplace.mle(x, rads = FALSE)
 }
 
 \arguments{
@@ -51,8 +53,7 @@ The tolerance level to stop the iterative process of finding the MLEs.
 \details{
 The parameters of the bivariate angular Gaussian (spml.mle), wrapped Cauchy, circular exponential,
 cardioid, circular beta, geometrically generalised von Mises, CIPC (reparametrised version of the
-wrapped Cauchy), GCPC (generalisation of the CIPC) and multi-modal von Mises distributions are
-estimated. For the Wrapped Cauchy, the iterative procedure described by Kent and Tyler (1988) is
+wrapped Cauchy), GCPC (generalisation of the CIPC), multi-modal von Mises and wrapped Laplace distributions are estimated. For the Wrapped Cauchy, the iterative procedure described by Kent and Tyler (1988) is
 used. The Newton-Raphson algortihm for the angular Gaussian is described in the regression setting
 in Presnell et al. (1998). The circular exponential is also known as wrapped exponential distribution.
 }
@@ -108,8 +109,8 @@ https://en.wikipedia.org/wiki/Wrapped_exponential_distribution
 Jammalamadaka S. R. and Kozubowski T. J. (2003). A new family of circular models:
 The wrapped Laplace distributions. Advances and Applications in Statistics, 3(1), 77--103.
 
-Tsagris M. and Alzeley O. (2025). Circular and spherical projected Cauchy distributions: 
-A Novel Framework for Circular and Directional Data Modeling. 
+Tsagris M. and Alzeley O. (2025). Circular and spherical projected Cauchy distributions:
+A Novel Framework for Circular and Directional Data Modeling.
 Australian & New Zealand Journal of Statistics, 67(1): 77--103. https://arxiv.org/pdf/2302.02468.pdf
 
 Barnett M. J. and Kingston R. L. (2024). A note on the Hendrickson-Lattman phase probability
@@ -138,9 +139,6 @@ x <- rvonmises(1000, 3, 9)
 spml.mle(x, rads = TRUE)
 wrapcauchy.mle(x, rads = TRUE)
 circexp.mle(x, rads = TRUE)
-ggvm.mle(x, rads = TRUE)
 }
 
-\keyword{ bivariate angular Gaussian }
-\keyword{ wrapped Cauchy distribution }
-\keyword{ circular data }
+

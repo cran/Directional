@@ -1,8 +1,8 @@
 Package: Directional
 Type: Package
 Title: A Collection of Functions for Directional Data Analysis
-Version: 7.3
-Date: 2025-09-21
+Version: 7.4
+Date: 2026-03-10
 Authors@R: c( person(given = "Michail", family = "Tsagris", role = c("aut", "cre"), email = "mtsagris@uoc.gr"),
                person(given = "Giorgos", family = "Athineou", role = "aut"), 
                person(given = "Christos", family = "Adam", role = "aut"),
@@ -23,13 +23,14 @@ Description: A collection of functions for directional data (including massive d
 			 e) Yu Z. and Huang X. (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statistics, 18(1): 301--334. <doi:10.1214/23-EJS2210>. 
 			 f) Tsagris M. and Alzeley O. (2025). "Circular and spherical projected Cauchy distributions: A Novel Framework for Circular and Directional Data Modeling". Australian & New Zealand Journal of Statistics, 67(1): 77--103. <doi:10.1111/anzs.12434>. 
 			 g) Tsagris M., Papastamoulis P. and Kato S. (2025). "Directional data analysis: spherical Cauchy or Poisson kernel-based distribution". Statistics and Computing, 35:51. <doi:10.1007/s11222-025-10583-0>.
+			 h) Alzeley O. and Tsagris (2026). On the generalized circular projected Cauchy distribution. <doi:10.48550/arXiv.2603.04030>.
 License: GPL (>= 2)
 Imports: bigstatsr, doParallel, foreach, ggplot2, grDevices, magrittr,
         parallel, Rfast, Rfast2, Rnanoflann, rgl, rnaturalearth, sf
 Suggests: bigreadr
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2025-10-21 09:58:47 UTC; mtsag
+Packaged: 2026-03-10 15:54:25 UTC; mtsag
 Author: Michail Tsagris [aut, cre],
   Giorgos Athineou [aut],
   Christos Adam [aut],
@@ -39,4 +40,4 @@ Author: Michail Tsagris [aut, cre],
   Micah J. Waldstein [ctb],
   Panagiotis Papastamoulis [ctb]
 Repository: CRAN
-Date/Publication: 2025-10-22 05:10:17 UTC
+Date/Publication: 2026-03-11 08:20:02 UTC

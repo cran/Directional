@@ -1,4 +1,4 @@
-0e444128526cd2a2d744a204f2987960 *DESCRIPTION
+26199a8bec6030f5ba01591f1a183c6a *DESCRIPTION
 6861f676251ebdad4af21c29400390cb *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 ffc80a1ca4a2c1f2fa2b8d08f831ba5b *R/ESAGd.mle.R
@@ -72,9 +72,10 @@ b623be254ce1684be8207f60e5c805dc *R/euclid.R
 097219f36e0451bb6c16162358dcfb37 *R/f.rbing.R
 8696979998c8546d8f4e8dc85a131f7d *R/fb.saddle.R
 a7de5b9923b9ca5f9c7b232065a96d81 *R/fishkent.R
-4c90c54e288da97db004ace36eea4fdf *R/gcpc.mle.R
-efdbacc848a5966632b22b07ccca590e *R/gcpc.reg.R
-961c3ddeef46a10bfc173eb0e43450a5 *R/ggvm.mle.R
+9439f8aedfa1a25961a63b4f2827b83d *R/gcpc.means.test.R
+7685dd1d6f82575935d66a8349556979 *R/gcpc.mle.R
+bae6556d84fe98f85e8bfee06ea4412b *R/gcpc.reg.R
+3868162745d0538ec6f094b0dce0f00c *R/ggvm.mle.R
 9f8ac6e053a92d53c46c479ffcd367dc *R/group.gof.R
 33442447c6b6ea47e2f0b993fcd7ac7c *R/group.vm.R
 f40e2c534347a9ba6a55d9c36b13d5b1 *R/habeck.rot.R
@@ -241,9 +242,10 @@ faf58436a2c967b63d47b1208ed75412 *R/watson.R
 2147600163c599317c6ab89041abb26d *R/wood.mle.R
 93c5b1c7847a12548809a2b241bbb001 *R/worldmap.R
 716f13ed210471d4795456c063e509ee *R/wrapcauchy.mle.R
+57a855f285b7cbd23dae5614dfa10ea8 *R/wraplaplace.mle.R
 30cfb97ab9b7f4503d375e4522c274ee *R/wrapnormal.mle.R
 081bae313416545a82e844d1225dc6a4 *man/Arotation.Rd
-b3a1ce94c31cfca350446370819432e5 *man/Directional-package.Rd
+a87a792baad26764cb645730459da43f *man/Directional-package.Rd
 b2a6716e56f6fd5b8601aec1c6e9d278 *man/bic.mixvmf.Rd
 31afb62193fa405192f81e4945e52788 *man/circ.cor1.Rd
 cc28105c873009ddcf34a19eea52bbbb *man/circ.cors1.Rd
@@ -275,6 +277,7 @@ bb86cd81b1b79f00cd66e8ed720099f3 *man/eul2rot.Rd
 46022f7c17c042b01955d58f981861f2 *man/f.rbing.Rd
 4bff39a593f1c518d2e96442cc215dd3 *man/fb.saddle.Rd
 decdf574766310688ec7d9ca09d48bc7 *man/fishkent.Rd
+47deac4b5d2bd92790fd3821f6a98c45 *man/gcpc.means.test.Rd
 eed5d371e86352ca3865392299d84616 *man/group.gof.Rd
 d18ea6337a6232f009e1de3b7dc861b1 *man/group.vm.Rd
 d82b86e44ccf3acf05b5ac5c86110b74 *man/habeck.rot.Rd
@@ -342,8 +345,8 @@ f8043875f46cd65d751cf734977e2ffd *man/spher.sespc.contour.Rd
 3bfb6ade51ce1b2b12fdf271f40995b9 *man/spherconc.test.Rd
 040dee4bd7be5933a51337f7d4988528 *man/sphereplot.Rd
 a927ece4b64c1574051d59e05aa6e1f2 *man/spml.fbed.Rd
-c702fc270fac573903598b73e42d48c1 *man/spml.mle.Rd
-193cbe2d1c3b8ce8aec40f16ca608997 *man/spml.reg.Rd
+0c4469e7b14578af1c8f41b8d052e965 *man/spml.mle.Rd
+1f1cea8bd463d55b7902348cf0382e63 *man/spml.reg.Rd
 f2b8f844e7fcc5118b0bcabc70f446ea *man/spml.regs.Rd
 90a63b07fb60958078f07fa008292d78 *man/tang.conc.Rd
 e203602da1604beb2104adb6b4d1ba84 *man/vec.Rd
