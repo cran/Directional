@@ -26,7 +26,7 @@ A tolerance value to stop performing successive optimizations.
 
 \details{
 MLE of the SESPC distribution is implemented. SESPC stands for Spherical Elliptically Symmetric Projected Cauchy
-and it was suugested by Tsagris and Alzeley (2024). Unlike the spherical independent projected Cauchy distribution
+and it was suugested by Tsagris and Alzeley (2025). Unlike the spherical independent projected Cauchy distribution
 this is rotationally symmetric and is a competitor of the spherical ESAG and Kent distributions (which are also ellitpically symmetric).
 }
 

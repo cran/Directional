@@ -168,7 +168,8 @@ Journal of Computational and Graphical Statistics, 29(4): 758--770.
 Sablica L., Hornik K. and Leydold J. (2023). Efficient sampling from the PKBD distribution.
 Electronic Journal of Statistics, 17(2): 2180--2209.
 
-Zehao Yu and Xianzheng Huang (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. Electronic Journal of Statististics, 18(1): 301--334.
+Zehao Yu and Xianzheng Huang (2024). A new parameterization for elliptically symmetric angular Gaussian distributions of arbitrary dimension. 
+Electronic Journal of Statististics, 18(1): 301--334.
 
 Tsagris M., Papastamoulis P. and Kato S. (2025). Directional data analysis using the spherical Cauchy and the Poisson kernel-based distribution.
 Statistics and Computing, 35:51.

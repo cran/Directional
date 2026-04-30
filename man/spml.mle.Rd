@@ -8,6 +8,7 @@
 \alias{ggvm.mle}
 \alias{cipc.mle}
 \alias{gcpc.mle}
+\alias{gcpc.mle2}
 \alias{mmvm.mle}
 \alias{wraplaplace.mle}
 \title{
@@ -28,6 +29,7 @@ cardio.mle(x, rads = FALSE)
 ggvm.mle(phi, rads = FALSE)
 cipc.mle(x, rads = FALSE, tol = 1e-6)
 gcpc.mle(x, rads = FALSE)
+gcpc.mle2(x, rads = FALSE)
 mmvm.mle(x, N, rads = FALSE)
 wraplaplace.mle(x, rads = FALSE)
 }
@@ -53,9 +55,13 @@ The tolerance level to stop the iterative process of finding the MLEs.
 \details{
 The parameters of the bivariate angular Gaussian (spml.mle), wrapped Cauchy, circular exponential,
 cardioid, circular beta, geometrically generalised von Mises, CIPC (reparametrised version of the
-wrapped Cauchy), GCPC (generalisation of the CIPC), multi-modal von Mises and wrapped Laplace distributions are estimated. For the Wrapped Cauchy, the iterative procedure described by Kent and Tyler (1988) is
+wrapped Cauchy), GCPC (generalisation of the CIPC), multi-modal von Mises and wrapped Laplace distributions
+are estimated. For the Wrapped Cauchy, the iterative procedure described by Kent and Tyler (1988) is
 used. The Newton-Raphson algortihm for the angular Gaussian is described in the regression setting
 in Presnell et al. (1998). The circular exponential is also known as wrapped exponential distribution.
+The gcpc.mle() and gcpc.mle2() are both for the GCPC distribution. The first uses the Euclidean coordinates,
+whereas the second uses the polar coordinates, of the density. In cases of bimodality, the first function
+could be trapped in a local maximum, whereas the second function will not be trapped (see Alzeley and Tsagris, 2026).
 }
 
 \value{
@@ -112,6 +118,9 @@ The wrapped Laplace distributions. Advances and Applications in Statistics, 3(1)
 Tsagris M. and Alzeley O. (2025). Circular and spherical projected Cauchy distributions:
 A Novel Framework for Circular and Directional Data Modeling.
 Australian & New Zealand Journal of Statistics, 67(1): 77--103. https://arxiv.org/pdf/2302.02468.pdf
+
+Alzeley O. & Tsagris M. (2026). On the generalized circular projected Cauchy distribution.
+https://arxiv.org/pdf/2603.04030.
 
 Barnett M. J. and Kingston R. L. (2024). A note on the Hendrickson-Lattman phase probability
 distribution and its equivalence to the generalized von Mises distribution.

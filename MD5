@@ -1,4 +1,4 @@
-26199a8bec6030f5ba01591f1a183c6a *DESCRIPTION
+e5cf16a161c17c68ba2557b1bbe31a35 *DESCRIPTION
 6861f676251ebdad4af21c29400390cb *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 ffc80a1ca4a2c1f2fa2b8d08f831ba5b *R/ESAGd.mle.R
@@ -73,7 +73,8 @@ b623be254ce1684be8207f60e5c805dc *R/euclid.R
 8696979998c8546d8f4e8dc85a131f7d *R/fb.saddle.R
 a7de5b9923b9ca5f9c7b232065a96d81 *R/fishkent.R
 9439f8aedfa1a25961a63b4f2827b83d *R/gcpc.means.test.R
-7685dd1d6f82575935d66a8349556979 *R/gcpc.mle.R
+bfbb47b4cf8909c6ae0c5b8274b04183 *R/gcpc.mle.R
+93cfbb8d01ffdda8e58c60fbf5fed801 *R/gcpc.mle2.R
 bae6556d84fe98f85e8bfee06ea4412b *R/gcpc.reg.R
 3868162745d0538ec6f094b0dce0f00c *R/ggvm.mle.R
 9f8ac6e053a92d53c46c479ffcd367dc *R/group.gof.R
@@ -205,15 +206,15 @@ b58da1901dc5365d98f6918a5a7c6c1f *R/sipc.reg.R
 9dbc8c4f7214ebda4c73b4ca3553cb1c *R/spchauchy.contour.R
 bb768887b0cf1d7650a1d0fd18fc04e6 *R/spher.cor.R
 f1673fb5a0ee42a7dc0ddfa4a78fe5bd *R/spher.dcor.R
-eb73eea7d579a19623935bc40bee9298 *R/spher.esag.contour.R
-7b23f056d56910d325af8dbd3729d100 *R/spher.kent.contour.R
-2dd62fff411bf6fea63427109cb0fd97 *R/spher.mixvmf.contour.R
-e06dae8587cc32c002a57555ade601fe *R/spher.pkbd.contour.R
-06dc092bd063cd1305949a021a66fc5f *R/spher.purka.contour.R
+9534117fb0089ab82856675eadb23b29 *R/spher.esag.contour.R
+09609811697d64b22ee48a8de082159f *R/spher.kent.contour.R
+625da882e7418927f105a9e459048e3e *R/spher.mixvmf.contour.R
+f1d64419f5974c853d8881c2bb302f30 *R/spher.pkbd.contour.R
+2aa07f328fcf6550cc364335b306b0c5 *R/spher.purka.contour.R
 2f6543dd92160d2a836aa4518b77676a *R/spher.reg.R
-f8b92997194d970dfb5f946fa28f27d8 *R/spher.sespc.contour.R
-54d53e2699a6272e24fa217850404f80 *R/spher.spcauchy.contour.R
-a4163f83e375fa351232486b857c7d24 *R/spher.vmf.contour.R
+ca32512e4677d95e808bc175cbbdb209 *R/spher.sespc.contour.R
+dcd60d32145a8453022fbd4ef6892957 *R/spher.spcauchy.contour.R
+a83596b670030a35cafb77a70a49e24b *R/spher.vmf.contour.R
 957d8706a038979997d72193fa82d4cb *R/spherconc.test.R
 616c5099fde4b7c5b752f19acbb213a5 *R/sphereplot.R
 fd769460e232e48581f5512a13da71fa *R/spml.fbed.R
@@ -245,7 +246,7 @@ faf58436a2c967b63d47b1208ed75412 *R/watson.R
 57a855f285b7cbd23dae5614dfa10ea8 *R/wraplaplace.mle.R
 30cfb97ab9b7f4503d375e4522c274ee *R/wrapnormal.mle.R
 081bae313416545a82e844d1225dc6a4 *man/Arotation.Rd
-a87a792baad26764cb645730459da43f *man/Directional-package.Rd
+a6f5d113802577a77f199ee175ddeddc *man/Directional-package.Rd
 b2a6716e56f6fd5b8601aec1c6e9d278 *man/bic.mixvmf.Rd
 31afb62193fa405192f81e4945e52788 *man/circ.cor1.Rd
 cc28105c873009ddcf34a19eea52bbbb *man/circ.cors1.Rd
@@ -263,7 +264,7 @@ ab7b6aeabdac046e008c6bddf78ab0bc *man/dirda.Rd
 442e815fe3c4d3bc1745e5249e870ff0 *man/dirknn.Rd
 2cea4395057e41b46f256435c0a2678a *man/dirknn.tune.Rd
 92afa9f4f2bc0bfd0273925f9fbcf1b7 *man/dmixvmf.Rd
-1473a5a30ff6d275d7041c32de39bd1d *man/dsespc.Rd
+0bb1a86d9965af8ffb5df07d0b41bd1b *man/dsespc.Rd
 4260864d9dc40aa8d1aa6109eee6cbc4 *man/dvm.Rd
 d52bc8ac71c2bb3a116befd1118c43cd *man/dvmf.Rd
 d86aebf3ef5a343b9af2b0685ff4da54 *man/dwood.Rd
@@ -332,7 +333,7 @@ c1c3debd71a25da2d908579641926d39 *man/rsop.Rd
 f3a39d8ff8f42c2384d8c0d5c6fd6315 *man/rvmf.Rd
 00c65794bf4ca78a71257b4459ba3bfc *man/rvonmises.Rd
 e8b0a6da1fc59244a69f9edfea2fb5c7 *man/score.cipc.Rd
-1156613a1133ae7ee42b5aa451a361ea *man/sespc.mle.Rd
+6adf6d80670650829cbb3d0f130e6873 *man/sespc.mle.Rd
 045b79d1774f87a41e7cb35b054c0d76 *man/sespc.reg.Rd
 82feba416587fdfa5ef8c75ae0e2f538 *man/spcauchy2test.Rd
 de241c4d5026f0115e0586b244c2ed51 *man/spher.cor.Rd
@@ -345,8 +346,8 @@ f8043875f46cd65d751cf734977e2ffd *man/spher.sespc.contour.Rd
 3bfb6ade51ce1b2b12fdf271f40995b9 *man/spherconc.test.Rd
 040dee4bd7be5933a51337f7d4988528 *man/sphereplot.Rd
 a927ece4b64c1574051d59e05aa6e1f2 *man/spml.fbed.Rd
-0c4469e7b14578af1c8f41b8d052e965 *man/spml.mle.Rd
-1f1cea8bd463d55b7902348cf0382e63 *man/spml.reg.Rd
+b187777b84886dca6ead840d572a56df *man/spml.mle.Rd
+6f27862670349a29bd17d21198d54ef9 *man/spml.reg.Rd
 f2b8f844e7fcc5118b0bcabc70f446ea *man/spml.regs.Rd
 90a63b07fb60958078f07fa008292d78 *man/tang.conc.Rd
 e203602da1604beb2104adb6b4d1ba84 *man/vec.Rd
@@ -356,7 +357,7 @@ e203602da1604beb2104adb6b4d1ba84 *man/vec.Rd
 bab0960e0babb41e15db9b6b17c97bef *man/vmf.contour.Rd
 0b8d148125c217699b0eb3354aff2f25 *man/vmf.kde.Rd
 7d951c1e1c4056efae1ea06e322d104b *man/vmf.kerncontour.Rd
-3e9e435d2aaa1eefc7a817088ec3df75 *man/vmf.mle.Rd
+eb38b2216179472b2767601e0e0fa9e6 *man/vmf.mle.Rd
 8adffd829c7d8b2ef6596dce396dcaf3 *man/vmfkde.tune.Rd
 fc2ec6b8726898ee9a95fd14c58aba58 *man/vmfreg.Rd
 8f85768b28888524acd2c270e6d6a84b *man/vmkde.tune.Rd
