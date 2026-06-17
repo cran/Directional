@@ -1,13 +1,8 @@
-rcircpurka <- function(n, m, a, rads = TRUE) {
-
-  u <- runif(n)
-  con <- ( 2 - exp(-a * m) - exp(a * m - 2 * pi * a) ) / a
-  u1 <- u[u < 0.5]
-  x1 <- log(1 + a / con * u1 * exp(a * m) ) / a
-  u2 <- u[u > 0.5]
-  x2 <- m - log(1 - a / con * (u2 - 0.5) ) / a
-  x <- c(x1, x2)
-  if ( !rads )  x <- x/pi * 180
+rcircpurka <- function(n, mu, a, rads = TRUE) {
+  u <- rangen::Runif(n)
+  theta <-   -log( 1 - u * ( 1 - exp(-a * pi) ) ) / a
+  x <- ifelse( rangen::Runif(n) < 0.5, 1, -1)
+  x <- (mu + x * theta) %% (2 * pi)
+  if ( !rads )  x <- x / pi * 180
   x
-
 }

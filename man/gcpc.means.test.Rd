@@ -60,7 +60,8 @@ Rumcheva P. and Presnell B. (2017). An improved test of equality of mean directi
 the Langevin-von Mises-Fisher distribution. Australian & New Zealand Journal of Statistics, 59(1): 119--135.
 
 Alzeley O. and Tsagris M. (2026). On the generalized circular projected Cauchy distribution.
-https://arxiv.org/abs/2603.04030.
+Mathematics, 14(11): 1934. 
+https://www.mdpi.com/2227-7390/14/11/1934
 }
 
 \author{

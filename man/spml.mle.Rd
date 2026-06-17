@@ -119,8 +119,9 @@ Tsagris M. and Alzeley O. (2025). Circular and spherical projected Cauchy distri
 A Novel Framework for Circular and Directional Data Modeling.
 Australian & New Zealand Journal of Statistics, 67(1): 77--103. https://arxiv.org/pdf/2302.02468.pdf
 
-Alzeley O. & Tsagris M. (2026). On the generalized circular projected Cauchy distribution.
-https://arxiv.org/pdf/2603.04030.
+Alzeley O. and Tsagris M. (2026). On the generalized circular projected Cauchy distribution.
+Mathematics, 14(11): 1934. 
+https://www.mdpi.com/2227-7390/14/11/1934
 
 Barnett M. J. and Kingston R. L. (2024). A note on the Hendrickson-Lattman phase probability
 distribution and its equivalence to the generalized von Mises distribution.

@@ -4,7 +4,7 @@ resag <- function(n, mu, gam) {
   gam1 <- gam[1]
   gam2 <- gam[2]
   if ( gam1 == 0  &  gam2 == 0 ) {
-    y <- Rfast::matrnorm(n, 3)  ## IAG is used
+    y <- rangen::Rnorm.mat(n, 3)  ## IAG is used
     y <- Rfast::eachrow(y, mu, oper = "+")
   } else {
     m0 <- sqrt( mu[2]^2 + mu[3]^2 )

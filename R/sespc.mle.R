@@ -2,7 +2,9 @@ sespc.mle <- function(y, full = FALSE, tol = 1e-6) {
 
   n <- dim(y)[1]
   I3 <- diag(3)
-   mag <- function(param, y, I3) {
+  z <- t(y)
+
+   mag <- function(param, z, I3) {
      m <- param[1:3]
      the1 <- param[4]
      the2 <- param[5]
@@ -16,22 +18,23 @@ sespc.mle <- function(y, full = FALSE, tol = 1e-6) {
      T12 <- tcrossprod(x1b, x2b)
      vinv <- I3 + the1 * (T1 - T2) + the2 * ( T12 + t(T12) ) +
              heta * (T1 + T2)
-     a <- as.vector( y %*% m )
-     b <- Rfast::rowsums( y %*% vinv * y )
+     a <- colSums( z * m )
+     b <- colSums( z * crossprod(vinv, z) )
      E <- b * rl + b - a^2
      sqe <- sqrt(E)
-     up <- log( b * (rl + 1) * sqe * ( atan2(sqe, -a) - atan2(sqe, a) + pi ) + 2 * a * E )
+     ## up <- log( b * (rl + 1) * sqe * ( atan2(sqe, -a) - atan2(sqe, a) + pi ) + 2 * a * E )
+     up <- log( b * (rl + 1) * sqe * ( 2 * pi - 2 * atan2(sqe, a) ) + 2 * a * E )
      down <- log( b * E^2 )
      - sum(up) + sum(down)
    }
   mod <- Directional::sipc.mle(y)
-  da <- nlm( mag, c( mod$mu, rnorm(2) ), y = y, I3 = I3, iterlim = 10000 )
+  da <- nlm( mag, c( mod$mu, rnorm(2) ), z  = z, I3 = I3, iterlim = 10000 )
   lik1 <-  -da$minimum
-  da <- optim( da$estimate, mag, y = y, I3 = I3, control = list(maxit = 10000) )
+  da <- optim( da$estimate, mag, z = z, I3 = I3, control = list(maxit = 10000), method = "BFGS" )
   lik2 <-  -da$value
   while (lik2 - lik1 > tol) {
     lik1 <- lik2
-    da <- optim( da$par, mag, y = y, I3 = I3, control = list(maxit = 10000) )
+    da <- optim( da$par, mag, z = z, I3 = I3, control = list(maxit = 10000) )
     lik2 <-  -da$value
   }
 

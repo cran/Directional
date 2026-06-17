@@ -11,8 +11,8 @@ rpkbd <- function(n, mu, rho) {
   b2 <-  - 1 + 1 / sqrt(1 - bstar)
 
   muv <- as.vector(mu)
-  u <- Rfast2::Runif(2 * n)
-  z <- Rfast::matrnorm(2 * n, d)
+  u <- rangen::Runif(2 * n)
+  z <- rangen::Rnorm.mat(2 * n, d)
   mz <- as.vector(z %*% muv)
   ##zz <- Rfast::mahala(z, numeric(d), diag(d) )
   zz <- Rfast::rowsums(z^2)
@@ -28,8 +28,8 @@ rpkbd <- function(n, mu, rho) {
   } else x <- NULL
 
   while (n1 < n) {
-    u <- Rfast2::Runif(2 *(n - n1) )
-    z <- Rfast::matrnorm(2 * (n - n1 ), d)
+    u <- rangen::Runif(2 *(n - n1) )
+    z <- rangen::Rnorm.mat(2 * (n - n1 ), d)
     mz <- as.vector(z %*% muv)
     ##zz <- Rfast::mahala(z, numeric(d), diag(d) )
 	zz <- Rfast::rowsums(z^2)

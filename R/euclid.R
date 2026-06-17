@@ -4,14 +4,11 @@
 #### mtsagris@yahoo.gr
 ################################
 euclid <- function(u) {
-  ## u is a matrix of two columns
-  ## the first column is the latitude and the second the longitude
   u <- as.matrix(u)
-  if ( ncol(u) == 1 )   u <- t(u)
-  u <- pi * u/180  ## from degrees to rads
-  a1 <- sin(u[, 1])
-  U <- cbind( cos(u[, 1]), a1 * cos(u[, 2]), a1 * sin(u[, 2]) )
+  if ( dim(u)[2] == 1 )  u <- t(u)
+  u <- pi * u / 180           ## degrees to radians
+  clat <- cos(u[, 1])
+  U <- cbind(clat * cos(u[, 2]), clat * sin(u[, 2]), sin(u[, 1]))
   colnames(U) <- c("x", "y", "z")
-  ## U are the cartesian coordinates of u
   U
 }

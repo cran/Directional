@@ -20,7 +20,7 @@ rvonmises(n, m, k, rads = TRUE)
 rwrapcauchy(n, m, rho, rads = TRUE)
 rspml(n, mu, rads = TRUE)
 rcircbeta(n, m, a, b, rads = TRUE)
-rcircpurka(n, m, a, rads = TRUE)
+rcircpurka(n, mu, a, rads = TRUE)
 rcircexp(n, lambda, rads = TRUE)
 rcipc(n, mu = NULL, omega, g, rads = TRUE)
 rgcpc(n, mu = NULL, omega, g, rho, rads = TRUE)
@@ -35,7 +35,7 @@ The sample size.
 The mean angle expressed in radians or degrees.
 }
 \item{mu}{
-The mean vector of the SPML, CIPC and GCPC in \eqn{R^2}. For the CIPC and GCPC, if this argument is not given, 
+The mean vector of the SPML, CIPC and GCPC in \eqn{R^2}. For the CIPC and GCPC, if this argument is not given,
 then the omega and g must be given.
 }
 \item{omega}{
@@ -99,15 +99,15 @@ https://dspace.library.uvic.ca/bitstream/handle/1828/2698/zhengsun_master_thesis
 Lai M. (1994). Some results in the statistical analysis of directional data.
 Master thesis, University of Hong Kong.
 
-Presnell B., Morrison S.P. and Littell R.C. (1998). 
+Presnell B., Morrison S.P. and Littell R.C. (1998).
 Projected multivariate linear models for directional data.
 Journal of the American Statistical Association, 93(443): 1068--1077.
 
-Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution: 
-Obtained through Maximum Likelihood Characterization. 
+Purkayastha S. (1991). A Rotationally Symmetric Directional Distribution:
+Obtained through Maximum Likelihood Characterization.
 The Indian Journal of Statistics, Series A, 53(1): 70--83
 
-Jammalamadaka S.R. and Kozubowski T.J. (2003). A new family of circular models: 
+Jammalamadaka S.R. and Kozubowski T.J. (2003). A new family of circular models:
 The wrapped Laplace distributions. Advances and Applications in Statistics, 3(1): 77--103.
 }
 

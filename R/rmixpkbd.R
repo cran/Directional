@@ -5,7 +5,7 @@ rmixpkbd <- function(n, probs, mu, k) {
   ## k is a vector with the concentration parameters
   p2 <- c( 0, cumsum(probs) )
   p <- ncol(mu)  ## dimensionality of the data
-  u <- Rfast2::Runif(n)
+  u <- rangen::Runif(n)
   g <- length(k)  ## how many clusters are there
   ina <- as.numeric( cut(u, breaks = p2) )  ## the cluster of each observation
   ina <- sort(ina)

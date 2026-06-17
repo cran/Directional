@@ -4,7 +4,7 @@
 Inverse of the Euclidean transformation
 }
 \description{
-It transforms the data from the Euclidan coordinates to latitude dn longitude.
+It transforms the data from the Euclidan coordinates to latitude and longitude.
 }
 
 \usage{

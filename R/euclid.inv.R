@@ -4,14 +4,11 @@
 #### mtsagris@yahoo.gr
 ################################
 euclid.inv <- function(U) {
-  ## U is a 3-column matrix of unit vectors
-  ## the cartesian coordinates
   U <- as.matrix(U)
-  if ( ncol(U) == 1 )   U <- t(U)
-  u <- cbind( acos(U[, 1]), ( atan(U[, 3]/U[, 2]) + pi * I(U[, 2]<0) ) %% (2 * pi) )
-  u <- u * 180/pi  ## from rads to degrees
-  colnames(u) <- c("Lat", "Long")
-  ## u is a matrix of two columns
-  ## the first column is the latitude and the second the longitude in degrees
-  u
+  if ( dim(U)[2] == 1 )  U <- t(U)
+  lat <- asin(U[, 3])
+  lon <- atan2(U[, 2], U[, 1])
+  res <- 180 * cbind(lat, lon) / pi   ## back to degrees
+  colnames(res) <- c("latitude", "longitude")
+  res
 }

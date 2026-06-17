@@ -10,7 +10,7 @@ bic.mixpkbd <- function(x, G = 5, n.start = 5, tol = 1e-6, maxiters = 500) {
     for (vim in 2:G) {
       a <- Directional::mixpkbd.mle(x, vim, n.start = n.start, tol = tol, maxiters = maxiters)  ## model based clustering for some possible clusters
       bic[vim] <-  -2 * a$loglik + ( (vim - 1) + vim * p ) * logn
-      icl[vim] <- bic[vim] - sum( a$w * log(a$w), na.rm = TRUE )
+      icl[vim] <- bic[vim] - 2 * sum( a$w * log(a$w), na.rm = TRUE )
     }  ## BIC for a range of different clusters
     runtime <- proc.time() - runtime
     names(bic) <- 1:G

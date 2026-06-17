@@ -13,8 +13,8 @@ euclid(u)
 }
 
 \arguments{
-  \item{u}{
-  A two column matrix or even one single vector, where the first column (or element) is the latitude and the second is the longitude. The order is important.
+\item{u}{
+A two column matrix or even one single vector, where the first column (or element) is the latitude and the second is the longitude. The order is important.
 }
 }
 
