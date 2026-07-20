@@ -1,5 +1,6 @@
-cipc.reg <- function(y, x, rads = TRUE, xnew = NULL, tol = 1e-6) {
+cipc.reg <- function(y, x, rads = TRUE, xnew = NULL, tol = 1e-6, maxiters = 100) {
 
+  tic <- proc.time()
   if ( !is.matrix(y) ) {
     if ( !rads )  y <- y * pi / 180
     y <- cbind( cos(y), sin(y) )
@@ -9,8 +10,7 @@ cipc.reg <- function(y, x, rads = TRUE, xnew = NULL, tol = 1e-6) {
   n <- dim(y)[1]  ;  p <- dim(x)[2]
   H <- matrix(0, 2 * p, 2 * p)
 
-  tic <- proc.time()
-  be <- Rfast::spml.reg(y, x[, -1], tol)$be
+  be <- solve( crossprod(x), crossprod(x, y) )  ## initial values for the beta
   mu <- x %*% be
   g2 <- Rfast::rowsums(mu^2)
   a <- Rfast::rowsums(y * mu)
@@ -47,7 +47,7 @@ cipc.reg <- function(y, x, rads = TRUE, xnew = NULL, tol = 1e-6) {
   lik[2] <-  - sum( log( com2 ) )
 
   i <- 2
-  while (lik[i] - lik[i-1] > tol) {
+  while ( lik[i] - lik[i-1] > tol  &  i < maxiters ) {
     i <- i + 1
     muc_y <- mu / com - y
     der1 <- Rfast::eachcol.apply(x, muc_y[, 1] / com2 )

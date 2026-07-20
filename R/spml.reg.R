@@ -1,4 +1,4 @@
-spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-07) {
+spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-6, maxiters = 100) {
   ## y is the angular dependent variable
   ## x contains the independent variable(s)
   ## xnew is some new data or the current ones
@@ -6,8 +6,11 @@ spml.reg <- function(y, x, rads = TRUE, xnew = NULL, seb = FALSE, tol = 1e-07) {
   ## FALSE (xnew is the same as x)
   ## if the data are in degrees we transform them into radians
   tic <- proc.time()
-  if ( !rads )   y <- y * pi/180
-  mod <- Rfast::spml.reg(y, x, tol, seb = seb)
+  if ( !is.matrix(y) ) {
+    if ( !rads )   y <- y * pi/180
+    y <- cbind( cos(y), sin(y) )
+  }
+  mod <- Rfast::spml.reg(y, x, tol = tol, seb = seb, maxiters = maxiters)
   runtime <- proc.time() - tic
   est <- NULL
   if ( !is.null(xnew) ) {  ## predict new values?

@@ -12,9 +12,11 @@ gcpc.mle2 <- function(x, rads = FALSE) {
   n <- length(x)
   mod <- Directional::cipc.mle(x, TRUE)
   ini <- c(mod$circmu, log( mod$gamma), rnorm(1) )
-  mod <- optim(ini, lik, x = x, n = n)
-  mod <- optim(mod$par, lik, x = x, n = n)
-  mod <- optim(mod$par, lik, x = x, n = n)
+  suppressWarnings({
+    mod <- optim(ini, lik, x = x, n = n)
+    mod <- optim(mod$par, lik, x = x, n = n)
+    mod <- optim(mod$par, lik, x = x, n = n)
+  })
   circmu <- mod$par[1] %% (2 *pi)
   rho <- exp(mod$par[2])  ;  gama <- exp(mod$par[3])
   mu <- c( cos(circmu), sin(circmu) ) * gama

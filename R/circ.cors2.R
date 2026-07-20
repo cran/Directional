@@ -30,7 +30,7 @@ circ.cors2 <- function(theta, phi, rads = FALSE) {
   rho <- up/down
   test <- n * rho^2
   pvalue <- pchisq(test, 4, lower.tail = FALSE)
-  res <- c(rho, pvalue)
-  names(res) <- c("rho", "p-value")
+  res <- cbind(rho, pvalue)
+  colnames(res) <- c("rho", "p-value")
   res
 }
