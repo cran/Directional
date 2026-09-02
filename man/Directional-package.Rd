@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 7.7\cr
-Date: \tab 2026-07-20\cr
+Version: \tab 7.8\cr
+Date: \tab 2026-09-02\cr
 License: \tab GPL-2\cr
 }
 }
@@ -74,13 +74,6 @@ If you want more information on many of these algorithms see Chapters 9 and 10 i
 https://www.researchgate.net/publication/324363311_Multivariate_data_analysis_in_R
 }
 
-\keyword{ Directional data }
-\keyword{ Spherical data }
-\keyword{ circular data }
-\keyword{ Regression }
-\keyword{ Anova }
-\keyword{ Discriminant analysis }
-\keyword{ Graphs }
-\keyword{ Simulation }
+
 
 

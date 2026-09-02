@@ -14,16 +14,15 @@ kent.mle <- function(x) {
   S <- crossprod(x) / n
   xbar <- xbar / sqrt( sum(xbar^2) ) ## mean direction
   u <- c( acos(xbar[1]), ( atan(xbar[3] / xbar[2]) + pi * I(xbar[2]<0) )
-  %% (2 * pi) )
+          %% (2 * pi) )
   ## u is the mean vector to latitude and longitude
-  theta <- u[1]
-  phi <- u[2]
+  theta <- u[1]   ;   phi <- u[2]
   costheta <- cos(theta)
   sintheta <- sin(theta)
   cosphi <- cos(phi)
   sinphi <- sin(phi)
   H <- matrix( c(costheta, sintheta * cosphi, sintheta * sinphi, -sintheta, costheta * cosphi,
-       costheta * sinphi, 0, -sinphi, cosphi), ncol = 3 )
+                 costheta * sinphi, 0, -sinphi, cosphi), ncol = 3 )
   B <- crossprod(H, S) %*% H
   psi <- 0.5 * atan(2 * B[2, 3]/(B[2, 2] - B[3, 3]))
   K <- matrix( c(1, 0, 0, 0, cos(psi), sin(psi), 0, -sin(psi), cos(psi) ), ncol = 3)
@@ -33,34 +32,30 @@ kent.mle <- function(x) {
   xg <- x %*% G
   xg1 <- sum(xg[, 1])
   a <- Rfast::colsums(xg[, 2:3]^2)
-  xg2 <- a[1]
-  xg3 <- a[2]
+  xg2 <- a[1]   ;   xg3 <- a[2]
 
   mle <- function(para) {
-    ## maximization w.r.t. to k and b
-    k <- para[1]
-    b <- para[2]
-    gam <- c(0, k, 0)
-    lam <- c(0, -b, b)
-    ckb <- fb.saddle(gam, lam)[3]
-    g <-  n * ckb - k * xg1 - b * ( xg2 - xg3 )
-    g
+    k <- para[1]   ;   b <- para[2]
+    #gam <- c(0, k, 0)
+    #lam <- c(0, -b, b)
+    #?ckb <- fb.saddle(gam, lam)[3]
+    ckb <- kent.logcon(k, b)
+    n * ckb - k * xg1 - b * ( xg2 - xg3 )
   }
 
   ini <- Rfast::vmf.mle(x)$kappa
   ini <- c(ini, ini/2.1)  ## initial values for kappa and beta
   qa <- optim(ini, mle, control = list(maxit = 5000))
   para <- qa$par
-  k <- para[1]
-  b <- para[2]  ## the estimated parameters
-  gam <- c(0, k, 0)
-  lam <- c(0, -b, b)
-  ckb <- as.numeric( fb.saddle(gam, lam)[3] )
-  ## the line below calculates the log-likelihood
-  l <-  -n * ckb + k * xg1 + b * ( xg2 - xg3 )
+  k <- para[1]   ;   b <- para[2]  ## the estimated parameters
+  #gam <- c(0, k, 0)
+  #lam <- c(0, -b, b)
+  #ckb <- as.numeric( fb.saddle(gam, lam)[3] )
+  ckb <- Directional::kent.logcon(k, b)
+  lik <-  - n * ckb + k * xg1 + b * ( xg2 - xg3 )
   param <- c(k, b, psi)
   runtime <- proc.time() - tic
   names(param) <- c("kappa", "beta", "psi")
   colnames(G) <- c("mean", "major", "minor")
-  list(G = G, param = param, logcon = ckb, loglik = l, runtime = runtime)
+  list(G = G, param = param, logcon = ckb, loglik = lik, runtime = runtime)
 }

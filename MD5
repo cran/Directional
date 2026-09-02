@@ -1,4 +1,4 @@
-2bd8b0806f072aacf33ffddfd444eb7d *DESCRIPTION
+ed1712c877a8d6ca0716c46616b71c3f *DESCRIPTION
 47815ac674496e15cc8a45811bd06a13 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 ffc80a1ca4a2c1f2fa2b8d08f831ba5b *R/ESAGd.mle.R
@@ -109,8 +109,8 @@ fd71c9595516ce775ba93ecc18ca25b2 *R/het.perm.R
 1e5a088d6549555fcfa706e09e74f0a1 *R/iagd.R
 ced10a8b8e466d862c46fcd3d7e9e3e5 *R/iagesag.R
 8d7d90ebe8c64b0fa5057ebde2612563 *R/kent.contour.R
-8f197c07f00e10bc4781ad78930ff67a *R/kent.logcon.R
-253d10a3d632584484f6cfb907a655bf *R/kent.mle.R
+b1950d20f19ec498bf4138ad4871403a *R/kent.logcon.R
+e7ab1ce1761ae652ddc4649ca32e185e *R/kent.mle.R
 be6cd247dfd66fe3cabb275efd825a30 *R/knn.reg.R
 46dff81ba7dc83fd2ed3ac6c253871ff *R/knnreg.tune.R
 f571ed812331d99c537b290834e79d6b *R/kuiper.R
@@ -246,7 +246,7 @@ faf58436a2c967b63d47b1208ed75412 *R/watson.R
 57a855f285b7cbd23dae5614dfa10ea8 *R/wraplaplace.mle.R
 30cfb97ab9b7f4503d375e4522c274ee *R/wrapnormal.mle.R
 081bae313416545a82e844d1225dc6a4 *man/Arotation.Rd
-2becbe94ce4abbdba6679308f5e3d9d7 *man/Directional-package.Rd
+2551e3f93744133e41646411cc57fdc6 *man/Directional-package.Rd
 b2a6716e56f6fd5b8601aec1c6e9d278 *man/bic.mixvmf.Rd
 31afb62193fa405192f81e4945e52788 *man/circ.cor1.Rd
 cc28105c873009ddcf34a19eea52bbbb *man/circ.cors1.Rd

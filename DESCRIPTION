@@ -1,8 +1,8 @@
 Package: Directional
 Type: Package
 Title: A Collection of Functions for Directional Data Analysis
-Version: 7.7
-Date: 2026-07-20
+Version: 7.8
+Date: 2026-09-02
 Authors@R: c( person(given = "Michail", family = "Tsagris", role = c("aut", "cre"), email = "mtsagris@uoc.gr"),
                person(given = "Giorgos", family = "Athineou", role = "aut"), 
                person(given = "Christos", family = "Adam", role = "aut"),
@@ -31,7 +31,7 @@ Imports: bigstatsr, doParallel, foreach, ggplot2, grDevices, magrittr,
 Suggests: bigreadr
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2026-07-20 19:12:16 UTC; mtsag
+Packaged: 2026-09-02 08:56:18 UTC; mtsag
 Author: Michail Tsagris [aut, cre],
   Giorgos Athineou [aut],
   Christos Adam [aut],
@@ -41,4 +41,4 @@ Author: Michail Tsagris [aut, cre],
   Micah J. Waldstein [ctb],
   Panagiotis Papastamoulis [ctb]
 Repository: CRAN
-Date/Publication: 2026-07-20 21:00:10 UTC
+Date/Publication: 2026-09-02 12:20:22 UTC
