@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 7.8\cr
-Date: \tab 2026-09-02\cr
+Version: \tab 7.9\cr
+Date: \tab 2026-10-05\cr
 License: \tab GPL-2\cr
 }
 }
@@ -69,6 +69,8 @@ Rafail Vargiakakis found a bug in the functions \code{\link{circbeta.mle}}, \cod
 Arhtur Pewsey spotted a bug in the function \code{\link{cardio.mle}} which is now fixed.
 
 Nicholas Foster spotted no output in the functions \code{\link{kuiper}} and \code{\link{watson}}. The same problem occured in two more functions.
+
+Theodoros Perdikis spotted a case where the \code{\link{kent.logcon}} could return NA, which is now fixed.
 
 If you want more information on many of these algorithms see Chapters 9 and 10 in the following document.
 https://www.researchgate.net/publication/324363311_Multivariate_data_analysis_in_R

@@ -32,7 +32,7 @@ The value of the logarithm of the normalising constant of the Kent distribution.
 }
 
 \references{
-Kent John (1982). The Fisher-Bingham distribution on the sphere. 
+Kent John (1982). The Fisher-Bingham distribution on the sphere.
 Journal of the Royal Statistical Society, Series B, 44(1): 71--80.
 }
 
@@ -56,7 +56,4 @@ kent.logcon(10, 2)
 fb.saddle( c(0, 10, 0), c(0, -2, 2) )
 }
 
-\keyword{ Kent distribution }
-\keyword{ Normalising constant }
-\keyword{ Saddlepoint approximation }
 
