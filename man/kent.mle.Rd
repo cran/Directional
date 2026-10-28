@@ -1,11 +1,11 @@
 \name{MLE of the Kent distribution}
 \alias{kent.mle}
 \title{
-MLe of the Kent distribution
+MLE of the Kent distribution
 }
 
 \description{
-It estimates the concentration and the ovalness parameter of some directional data assuming the Kent distribution. The mean direction and major and minor axes are also estimated.
+MLE of the Kent distribution.
 }
 
 \usage{
@@ -20,6 +20,8 @@ A matrix containing spherical data in Euclidean coordinates.
 
 \details{
 The Kent distribution is fitted to some data and its parameters are estimated.
+If the normalizing constant cannot be evaluated exactly using Kent's (1982) formula,
+the saddlepoint approximation of Kume and Wood (2005) is used.
 }
 
 \value{
@@ -28,14 +30,17 @@ A list including:
 The run time of the procedure.
 }
 \item{G}{
-A 3 x 3 matrix whose first column is the mean direction. The second and third columns are the major and minor axes respectively.
+A 3 x 3 matrix whose first column is the mean direction. The second and third columns
+are the major and minor axes respectively.
 }
 \item{param}{
-A vector with the concentration \eqn{\kappa} and ovalness \eqn{\beta} parameters and the angle \eqn{\psi} used to rotate \bold{H}
+A vector with the concentration \eqn{\kappa} and ovalness \eqn{\beta} parameters and
+the angle \eqn{\psi} used to rotate \bold{H}
 and hence estimate \bold{G} as in Kent (1982).
 }
 \item{logcon}{
-The logarithm of the normalising constant, using the third type approximation (Kume and Wood, 2005).
+The logarithm of the normalising constant, either using Kent's (1982) formula or
+using the third type saddlepoint approximation (Kume and Wood, 2005).
 }
 \item{loglik}{
 The value of the log-likelihood.
@@ -43,7 +48,7 @@ The value of the log-likelihood.
 }
 
 \references{
-Kent John (1982). The Fisher-Bingham distribution on the sphere. 
+Kent John (1982). The Fisher-Bingham distribution on the sphere.
 Journal of the Royal Statistical Society, Series B, 44(1): 71--80.
 
 Kume Alfred and Wood Andrew T.A. (2005). Saddlepoint approximations for the Bingham and Fisher-Bingham normalizing constants.
@@ -60,7 +65,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %%  ~~further notes~~
 %}
 \seealso{
-\code{\link{kent.mle}, \link{fb.saddle}, \link{vmf.mle}, \link{wood.mle}, \link{sphereplot}
+\code{\link{kent.logcon}, \link{fb.saddle}, \link{vmf.mle}, \link{wood.mle}, \link{sphereplot}
 }
 }
 

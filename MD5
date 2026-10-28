@@ -1,4 +1,4 @@
-e7b37fbaf26d34db59d5d67debb28e7e *DESCRIPTION
+07364e99fa80abfa08c16f92f00233a8 *DESCRIPTION
 47815ac674496e15cc8a45811bd06a13 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 ffc80a1ca4a2c1f2fa2b8d08f831ba5b *R/ESAGd.mle.R
@@ -36,7 +36,7 @@ a767a503899ba59d2bd8adb0f6dbec91 *R/dcircpurka.R
 c4ef2ffb5b1f93accda80ea6a29ef733 *R/desag.R
 9c319e00245f3f861b4d08364a7edf06 *R/dgcpc.R
 e7cb7eead077fbc8955d3bc25fa29ac0 *R/dggvm.R
-076b49ce6012f1c4264fc8d39233bfd6 *R/dirda.R
+9dbad9eb5707edaecbd06e34614f21e9 *R/dirda.R
 2048ee6887fd697bffde3e65b404ded6 *R/dirda.cv.R
 4e2a82ed4fe55cc8ee236874c6676e3c *R/dirknn.R
 994d8bb698b8f48df5ef7db0f02ab383 *R/dirknn.tune.R
@@ -63,6 +63,7 @@ c1536f3fa8447d4c3336ab50a63c64db *R/embed.perm.R
 a7f71e7136d1a0ab8246c0d48144dee7 *R/embedcirc.perm.R
 f80465622888756f076ca9b09604c5ac *R/esag.contour.R
 6e9b6c3b52911afbe315e3fa0454cf6a *R/esag.mle.R
+b844437f877f19b5defe8e6f6e94c3b1 *R/esag.nr.R
 8c0117e6d1ec1564dcb31ffc81049292 *R/esag.reg.R
 12d771f0b3019eaacc1ad1864190a0c7 *R/etoa.R
 199ed51ab8b811b219abf1457ddd9ca3 *R/euclid.R
@@ -110,7 +111,7 @@ fd71c9595516ce775ba93ecc18ca25b2 *R/het.perm.R
 ced10a8b8e466d862c46fcd3d7e9e3e5 *R/iagesag.R
 8d7d90ebe8c64b0fa5057ebde2612563 *R/kent.contour.R
 13cd1d6fc8d2b23f4c2961169e682adf *R/kent.logcon.R
-e7ab1ce1761ae652ddc4649ca32e185e *R/kent.mle.R
+91dde5da05483093ec41f425b013d2ec *R/kent.mle.R
 be6cd247dfd66fe3cabb275efd825a30 *R/knn.reg.R
 46dff81ba7dc83fd2ed3ac6c253871ff *R/knnreg.tune.R
 f571ed812331d99c537b290834e79d6b *R/kuiper.R
@@ -246,7 +247,7 @@ faf58436a2c967b63d47b1208ed75412 *R/watson.R
 57a855f285b7cbd23dae5614dfa10ea8 *R/wraplaplace.mle.R
 30cfb97ab9b7f4503d375e4522c274ee *R/wrapnormal.mle.R
 081bae313416545a82e844d1225dc6a4 *man/Arotation.Rd
-3a1416fb1677af4afaebcc3da576aa14 *man/Directional-package.Rd
+ba297d93ad193db9da03d04d4847cb37 *man/Directional-package.Rd
 b2a6716e56f6fd5b8601aec1c6e9d278 *man/bic.mixvmf.Rd
 31afb62193fa405192f81e4945e52788 *man/circ.cor1.Rd
 cc28105c873009ddcf34a19eea52bbbb *man/circ.cors1.Rd
@@ -269,7 +270,7 @@ ab7b6aeabdac046e008c6bddf78ab0bc *man/dirda.Rd
 d52bc8ac71c2bb3a116befd1118c43cd *man/dvmf.Rd
 d86aebf3ef5a343b9af2b0685ff4da54 *man/dwood.Rd
 1c6f6c2141a00302ddf9599e9a898ebe *man/esag.contour.Rd
-bafc27eeb5dac3f9444c70dde3c6fde7 *man/esag.mle.Rd
+9b090f5fbdc2d951412c36028efb2f75 *man/esag.mle.Rd
 8172c29ed5de98ceec8b7fadfb7cef51 *man/esag.reg.Rd
 4a3cd7892c9c207f8d66c09c62b62b5f *man/etoa.Rd
 228e8971e7f278e6eb9ef387f23c9e8f *man/euclid.Rd
@@ -295,7 +296,7 @@ f092b6ab258eb7b6635f33b85155a9f1 *man/hcfcirc.perm.Rd
 e9d208cdcef4bd0e9fbc4492b7c3ca1f *man/iag.reg.Rd
 86de74134a6aa5cd611d75761409387e *man/iagesag.Rd
 8f6633d05e977dbff45f2d10c41bc8f3 *man/kent.logcon.Rd
-082373e48f122d61584f63f4cacf5da1 *man/kent.mle.Rd
+6ddada25354f7e3a49b5cf17b20fc1c9 *man/kent.mle.Rd
 c969fb11be235270aad75eec8cbdea0b *man/knn.reg.Rd
 73c6b99030fced4d96b4154a1348100d *man/knnreg.tune.Rd
 8a54e9a002618ef2dc562696cfcea6e5 *man/kuiper.Rd

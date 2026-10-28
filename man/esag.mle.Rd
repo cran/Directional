@@ -1,6 +1,8 @@
 \name{MLE of the ESAG distribution in arbitrary dimensions}
 \alias{esag.mle}
+\alias{esag.nr}
 \alias{ESAGd.mle}
+
 \title{
 MLE of the ESAG distribution
 }
@@ -11,6 +13,7 @@ MLE of the ESAG distribution.
 
 \usage{
 esag.mle(y, full = FALSE, tol = 1e-06)
+esag.nr(y, tol = 1e-06, maxiters = 100)
 ESAGd.mle(y, full = FALSE)
 }
 
@@ -24,14 +27,18 @@ If you want some extra information, the inverse of the covariance matrix, the \e
 \item{tol}{
 A tolerance value to stop performing successive optimizations.
 }
+\item{maxiters}{
+The maximum number of iterations the Newton-Raphson algorithm will perform.
+}
 }
 
 \details{
 MLE of the MLE of the ESAG distributiontribution, on the sphere, is implemented.
 ESAG stands for Elliptically Symmetric Angular Gaussian and it was suugested by Paine et al. (2018).
 Unlike the projected normal distribution this is rotationally symmetric and is a competitor
-of the spherical Kent distribution (which is also elliptically symmetric).
-ESAG was then generalized to arbitrary dimensions by Yu and Huang (2024).
+of the spherical Kent distribution (which is also elliptically symmetric). ESAG was then generalized
+to arbitrary dimensions by Yu and Huang (2024). The esag.nr() was implemented by Claude Opus 5.5,
+and I did some minor modifications.
 }
 
 \value{
@@ -58,9 +65,12 @@ The angle of rotation \eqn{\psi} set this equal to TRUE. It is returned if the a
 The \eqn{d-1} eigenvalues of the covariance matrix of the ESAG distribution in arbitrary dimensions.
 This is returned if "full" is set to TRUE in the ESAGd.mle().
 }
+\item{iters}{
+The number of iterations the Newton-Raphson algorithm performed.
+}
 \item{iag.loglik}{
-The log-likelihood value of the isotropic angular Gaussian distribution in the esag.mle(). That is, the projected
-normal distribution which is rotationally symmetric.
+The log-likelihood value of the isotropic angular Gaussian distribution.
+The projected normal distribution which is rotationally symmetric.
 }
 }
 
@@ -83,7 +93,7 @@ R implementation and documentation: Michail Tsagris \email{mtsagris@uoc.gr} and 
 %}
 
 \seealso{
-\code{\link{desag}, \link{resag}, \link{iag.mle}, \link{kent.mle}, \link{acg.mle}, \link{circ.summary}, \link{sphereplot}
+\code{\link{desag}, \link{resag}, \link{iag.mle}, \link{kent.mle}, \link{acg.mle}
 }
 }
 

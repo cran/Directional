@@ -11,8 +11,8 @@ Circular-linear regression, spherical-spherical regression, spherical regression
 \tabular{ll}{
 Package: \tab Directional\cr
 Type: \tab Package\cr
-Version: \tab 7.9\cr
-Date: \tab 2026-10-05\cr
+Version: \tab 8.0\cr
+Date: \tab 2026-10-27\cr
 License: \tab GPL-2\cr
 }
 }

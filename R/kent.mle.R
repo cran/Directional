@@ -34,24 +34,36 @@ kent.mle <- function(x) {
   a <- Rfast::colsums(xg[, 2:3]^2)
   xg2 <- a[1]   ;   xg3 <- a[2]
 
-  mle <- function(para) {
+  mle <- function(para, xg1, xg2, xg3, n) {
     k <- para[1]   ;   b <- para[2]
     #gam <- c(0, k, 0)
     #lam <- c(0, -b, b)
-    #?ckb <- fb.saddle(gam, lam)[3]
+    #ckb <- fb.saddle(gam, lam)[3]
     ckb <- kent.logcon(k, b)
     n * ckb - k * xg1 - b * ( xg2 - xg3 )
   }
-
+  mle2 <- function(para, xg1, xg2, xg3, n) {
+    k <- para[1]   ;   b <- para[2]
+    gam <- c(0, k, 0)
+    lam <- c(0, -b, b)
+    ckb <- fb.saddle(gam, lam)[3]
+    #ckb <- kent.logcon(k, b)
+    n * ckb - k * xg1 - b * ( xg2 - xg3 )
+  }
   ini <- Rfast::vmf.mle(x)$kappa
   ini <- c(ini, ini/2.1)  ## initial values for kappa and beta
-  qa <- optim(ini, mle, control = list(maxit = 5000))
-  para <- qa$par
-  k <- para[1]   ;   b <- para[2]  ## the estimated parameters
-  #gam <- c(0, k, 0)
-  #lam <- c(0, -b, b)
-  #ckb <- as.numeric( fb.saddle(gam, lam)[3] )
-  ckb <- Directional::kent.logcon(k, b)
+  qa <- try( optim(ini, mle, xg1 = xg1, xg2 = xg2, xg3 = xg3, n = n, control = list(maxit = 5000)), silent = TRUE )
+  if ( !identical(class(qa), "try-error") )  {
+    para <- qa$par
+    k <- para[1]   ;   b <- para[2]  ## the estimated parameters
+    ckb <- kent.logcon(k, b)
+  } else {
+    qa <- optim(ini, mle2, xg1 = xg1, xg2 = xg2, xg3 = xg3, n = n, control = list(maxit = 5000))
+    para <- qa$par
+    k <- para[1]   ;   b <- para[2]  ## the estimated parameters
+    gam <- c(0, k, 0)   ;   lam <- c(0, -b, b)
+    ckb <- as.numeric( fb.saddle(gam, lam)[3] )
+  }
   lik <-  - n * ckb + k * xg1 + b * ( xg2 - xg3 )
   param <- c(k, b, psi)
   runtime <- proc.time() - tic

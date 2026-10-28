@@ -26,7 +26,7 @@ dirda <- function(xnew, x, ina, type = c("vmf", "iag", "esag", "kent", "sc", "pk
   if ( sum( type == "esag") == 1 ) {
     if ( p == 3 ) {
       for (j in 1:g) {
-        mod <- Directional::esag.mle( x[ina == j, ] )
+        mod <- Directional::esag.nr( x[ina == j, ] )
         mat[, j] <- Directional::desag(xnew, mod$mu, mod$gam, logden = TRUE )
       }
     } else {
