@@ -1,117 +1,173 @@
-esag.reg <- function(y, x, con = TRUE, xnew = NULL, lati = 10, longi = 10, tol = 1e-06) {
+################################################################################
+## ESAG regression (Structure 2 of Paine, Preston, Tsagris & Wood, 2020,
+## Statistics and Computing 30: 153-165)
+##
+##   Q' y_i ~ ESAG( mu(x_i), gamma ),   mu(x_i) = B' x_i,   gamma constant.
+##
+## Q is a tuning parameter. The likelihood depends on Q only through the axis
+## +-Q e1, because the frame (xi1~, xi2~) of eqs. (11)-(12) is built from
+## e1 x mu: it turns with any rotation about e1, and flipping e1 -> -e1 changes
+## only the signs of xi1~ and xi2~, which cancel in V^{-1}. Hence the search is
+## over axes on a hemisphere (Fibonacci grid), not over the whole of O(3).
+##
+## Every output except gamma, rho and psi is given in the ORIGINAL coordinates
+## of y. gamma is defined relative to the frame induced by the selected Q,
+## which is returned so that submodels can be fitted with the same Q.
+################################################################################
 
-  lati <- seq(0, 360, len = lati) * pi / 180
-  longi <- seq(0, 360, len = longi) * pi / 180
-  x1 <- cos(lati) * cos(longi)
-  x2 <- cos(lati) * sin(longi)
-  x3 <- sin(lati)
-  lat <- asin( x3 / sqrt(x1^2 + x2^2 + x3^2) ) * 180 / pi
-  long <- atan2(x2, x1) * 180 / pi
-  wa <- Directional::euclid( expand.grid(lat, long) )
-  wa <- round(wa, 10)
-  wa <- unique(wa)
+esag.reg <- function(y, x, con = TRUE, xnew = NULL, n.axes = 50, Q = NULL) {
+  ## y:      n x 3 matrix of unit vectors
+  ## x:      covariates (vector, matrix or data.frame)
+  ## con:    include an intercept (TRUE) or not
+  ## xnew:   new covariate values for prediction (optional)
+  ## n.axes: approximate number of axes searched over for Q
+  ## Q:      if supplied, use this Q and skip the search (e.g. for submodels)
 
-  my <- Directional::esag.mle(y)$mu
-  my <- my / sqrt( sum(my^2) )
+  X <- model.matrix( ~., data.frame(x) )
+  if ( !con )  X <- X[, -1, drop = FALSE]
 
-  B <- dim(wa)[1]
-  mod <- list()
-  lik <- numeric(B)
-  x <- model.matrix( ~., data.frame(x) )
-
-  for (i in 1:B) {
-    rot <- t( Directional::rotation(my, wa[i, ]) )
-    y1 <- y %*% rot
-    mod[[ i ]] <- .esag.reg2(y1, x, con = con, xnew = xnew, tol = tol)
-    lik[i] <- mod[[ i ]]$loglik
-  }
-
-  ep <- which.max(lik)
-  mod[[ ep ]]
-
-}
-
-
-
-.esag.reg2 <- function(y, x, con = TRUE, xnew = NULL, tol = 1e-06) {
-  ## y is the spherical data,  unit vectors
-  ## x is the independent variable(s)
-  ## if you want a constant term, set con eaual to TRUE (default value)
-  if ( !con ) x <- x[, -1]
-  n <- dim(y)[1]
-  y1 <- y[, 1]^2   ;  y2 <- y[, 2]^2   ;  y3 <- y[, 3]^2
-  y12 <- y[, 1] * y[, 2]  ;    y13 <- y[, 1] * y[, 3]
-  y23 <- y[, 2] * y[, 3]
-  za <- cbind(y1, y12, y13, y12, y2, y23, y13, y23, y3)
-  ### inner function for ESAG regression
-  reg2 <- function(param, y, x, za) {
-    gam1 <- param[1]
-    gam2 <- param[2]
-    heta <- sqrt( gam1^2 + gam2^2 + 1 ) - 1
-    be <- matrix(param[ - c( 1:2 ) ], ncol = 3)
-    m <- x %*% be
-    m0 <- sqrt( m[, 2]^2 + m[, 3]^2 )
-    rl <- Rfast::rowsums(m^2)
-    x1b <- cbind( -m0^2, m[, 1] * m[, 2], m[, 1] * m[, 3] ) / ( m0 * sqrt(rl) )
-    x2b <- cbind( 0, -m[, 3], m[, 2] ) / m0
-    z12 <- x1b[, 1] * x1b[, 2]  ;    z13 <- x1b[, 1] * x1b[, 3]
-    z23 <- x1b[, 2] * x1b[, 3]
-    tx1 <- cbind(x1b[, 1]^2, z12, z13, z12, x1b[, 2]^2, z23, z13, z23, x1b[, 3]^2)
-    z23 <- x2b[, 2] * x2b[, 3]
-    tx2 <- cbind(0, 0, 0, 0, x2b[, 2]^2, z23, 0, z23, x2b[, 3]^2)
-    vinv <- cbind(x1b[, 1] * x2b, x1b[, 1] * x2b[, 2], 2 * x1b[, 2] * x2b[, 2], x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3],
-                  x1b[, 1] * x2b[, 3], x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3], 2 * x1b[, 3] * x2b[, 3]  )
-    g1 <- 1 + Rfast::rowsums( (gam2 * vinv + gam1 * (tx1 - tx2) + heta * (tx1 + tx2) ) * za )
-    g2 <- Rfast::rowsums( y * m )
-    a <- g2 / sqrt(g1)
-    a2 <- a^2
-    M2 <- ( 1 + a2 ) * pnorm(a) + a * dnorm(a)
-    - 0.5 * sum(a2) + 0.5 * sum(rl) + 1.5 * sum( log(g1) ) - sum( log(M2) )
-  }
-
-  ini <- .lm.fit(x, y)$coefficients
-  ini <- c( rnorm(2), ini)
-  val1 <- optim( ini, reg2, y = y, x = x, za = za, control = list(maxit = 5000))
-  val2 <- optim(val1$par, reg2, y = y, x = x, za = za, control = list(maxit = 5000))
-  while (val1$value - val2$value > 1e-06) {
-    val1 <- val2
-    val2 <-  optim(val1$par, reg2, y = y, x = x, za = za, control = list(maxit = 5000))
-  }
-  da <- optim(val2$par, reg2, y = y, x = x, za = za, control = list(maxit = 10000), hessian = TRUE)
-  gam1 <- da$par[1]
-  gam2 <- da$par[2]
-  rho <- sqrt( gam1^2 + gam2^2 + 1 ) - sqrt( gam1^2 + gam2^2 )
-  psi <- 0.5 * acos( 2 * gam1 / ( 1/rho - rho ) )
-  be <- matrix(da$par[ -c( 1:2 ) ], ncol = 3)
-  m <- x %*% be
-  rl <- sqrt( Rfast::rowsums(m^2) )
-  est <- m/rl
-  #di <- sum( y * est )
-  di <- Rfast::XopY.sum(y, est) 
-  se <- sqrt( diag( solve(da$hessian) ) )
-  seb <- matrix(se[-c(1:2)], ncol = 3)
-
-  if ( is.null(xnew) ) {
-    est <- est
+  if ( is.null(Q) ) {
+    wa <- .esag.hemi.axes(n.axes)
+    best <- NULL
+    for ( j in 1:nrow(wa) ) {
+      Qj <- .esag.rot.e1(wa[j, ])         ## Qj %*% e1 = wa[j, ]
+      mod <- .esag.reg2(y %*% Qj, X)      ## rows are t(Qj) %*% y_i
+      if ( is.null(best) || mod$loglik > best$loglik ) {
+        best <- mod
+        Q <- Qj
+      }
+    }
   } else {
-    xnew <- model.matrix( ~., data.frame(xnew) )
-    if ( !con )  xnew <- xnew[, -1]
-    mu <- xnew %*% be
-    est <- mu / sqrt( Rfast::rowsums(mu^2) )
-    fit <- NULL
+    best <- .esag.reg2(y %*% Q, X)
   }
 
-  if ( is.null( colnames(y) ) ) {
-    colnames(est) <- colnames(be) <- colnames(seb) <- c("X", "Y", "Z")
-  } else  colnames(est) <- colnames(be) <- colnames(seb) <- colnames(y)
-  rownames(be) <- rownames(seb) <- c( colnames(x) )
-
-  param <- c(di, rho, psi)
-  names(param) = c("Fit measure", "Rho", "Psi")
-  gam <- c(gam1, gam2)
-  names(gam) <- c("Gamma_1", "Gamma_2")
-  list(loglik = -da$value - n * log(2 * pi), param = param, rl = rl,
-       gam = gam, beta = be, seb = seb, est = est)
+  .esag.backtransform(best, Q, y, X, con, xnew)
 }
 
 
+## ---------------------------------------------------------------------------
+## Fit for a given (already rotated) response z_i = Q' y_i
+## ---------------------------------------------------------------------------
+.esag.reg2 <- function(z, X) {
+  n <- dim(z)[1]
+  p <- dim(X)[2]
+  za <- cbind(z[, 1]^2, z[, 1] * z[, 2], z[, 1] * z[, 3], z[, 1] * z[, 2],
+              z[, 2]^2, z[, 2] * z[, 3], z[, 1] * z[, 3], z[, 2] * z[, 3], z[, 3]^2)
+
+  nll <- function(param) {
+    be <- matrix( param[-(1:2)], ncol = 3 )
+    m <- X %*% be
+    g1 <- .esag.vinv(m, param[1], param[2], za)
+    if ( any( !is.finite(g1) ) || any(g1 <= 0) )  return(1e+10)
+    a <- Rfast::rowsums(z * m) / sqrt(g1)
+    a2 <- a^2
+    M2 <- (1 + a2) * pnorm(a) + a * dnorm(a)
+    if ( any( !(M2 > 0) ) )  return(1e+10)
+    - 0.5 * sum(a2) + 0.5 * sum(m^2) + 1.5 * sum( log(g1) ) - sum( log(M2) )
+  }
+
+  ## deterministic starting values: least squares for B, isotropy for gamma
+  ini <- c( 0, 0, as.vector( .lm.fit(X, z)$coefficients ) )
+  val <- optim(ini, nll, method = "BFGS", control = list(maxit = 10000))
+  repeat {
+    val2 <- optim(val$par, nll, method = "Nelder-Mead", control = list(maxit = 5000))
+    val2 <- optim(val2$par, nll, method = "BFGS", control = list(maxit = 10000))
+    if ( val$value - val2$value < 1e-06 )  break
+    val <- val2
+  }
+  if ( val2$value < val$value )  val <- val2
+
+  H <- optimHess(val$par, nll)
+  covb <- tryCatch( solve(H), error = function(e) matrix(NA, length(val$par), length(val$par)) )
+  list( loglik = -val$value - n * log(2 * pi), gam = val$par[1:2],
+        be = matrix( val$par[-(1:2)], ncol = 3 ), covb = covb )
+}
+
+
+## ---------------------------------------------------------------------------
+## Rotate everything (except gamma, rho, psi) back to the original coordinates
+## ---------------------------------------------------------------------------
+.esag.backtransform <- function(fit, Q, y, X, con, xnew) {
+  p <- dim(X)[2]
+
+  ## mean regression coefficients: mu_orig = Q mu_z  =>  B_orig = B_z Q'
+  be <- fit$be %*% t(Q)
+  ## covariance: vec(B_orig) = (Q kron I_p) vec(B_z); the gammas are unchanged
+  Tm <- diag( 2 + 3 * p )
+  Tm[ -(1:2), -(1:2) ] <- kronecker( Q, diag(p) )
+  covb <- Tm %*% fit$covb %*% t(Tm)
+  se <- suppressWarnings( sqrt( diag(covb) ) )   ## NaN flags a non-PD Hessian
+  seb <- matrix( se[-(1:2)], ncol = 3 )
+  gam <- fit$gam
+  seg <- se[1:2]
+
+  ## norms of the fitted mu(x_i) and the measure of fit, in original coordinates
+  m <- X %*% be
+  rl <- sqrt( Rfast::rowsums(m^2) )
+  fitm <- sum(y * m / rl)
+
+  ## rho and psi (relative to the frame induced by Q)
+  b <- sqrt( sum(gam^2) )
+  rho <- sqrt(b^2 + 1) - b
+  psi <- 0.5 * atan2( gam[2], gam[1] )
+
+  nam <- if ( is.null( colnames(y) ) )  c("X", "Y", "Z")  else  colnames(y)
+  colnames(be) <- colnames(seb) <- nam
+  rownames(be) <- rownames(seb) <- colnames(X)
+  names(gam) <- names(seg) <- c("Gamma_1", "Gamma_2")
+
+  ## predicted mean directions for xnew (NULL if xnew is NULL)
+  est <- NULL
+  if ( !is.null(xnew) ) {
+    Xn <- model.matrix( ~., data.frame(xnew) )
+    if ( !con )  Xn <- Xn[, -1, drop = FALSE]
+    mu <- Xn %*% be
+    est <- mu / sqrt( Rfast::rowsums(mu^2) )
+    colnames(est) <- nam
+  }
+
+  list( loglik = fit$loglik, fit = fitm,
+        beta = be, seb = seb, gamma = gam, seg = seg,
+        rho = rho, psi = psi, rl = rl, est = est,
+        Q = Q, covb = covb )
+}
+
+
+## ---------------------------------------------------------------------------
+## Helpers
+## ---------------------------------------------------------------------------
+## y' V^{-1} y for each observation, eq. (15)
+.esag.vinv <- function(m, gam1, gam2, za) {
+  m0 <- sqrt( m[, 2]^2 + m[, 3]^2 )
+  rl <- sqrt( Rfast::rowsums(m^2) )
+  x1b <- cbind( -m0^2, m[, 1] * m[, 2], m[, 1] * m[, 3] ) / (m0 * rl)
+  x2b <- cbind( 0, -m[, 3], m[, 2] ) / m0
+  z12 <- x1b[, 1] * x1b[, 2]  ;  z13 <- x1b[, 1] * x1b[, 3]  ;  z23 <- x1b[, 2] * x1b[, 3]
+  tx1 <- cbind(x1b[, 1]^2, z12, z13, z12, x1b[, 2]^2, z23, z13, z23, x1b[, 3]^2)
+  w23 <- x2b[, 2] * x2b[, 3]
+  tx2 <- cbind(0, 0, 0, 0, x2b[, 2]^2, w23, 0, w23, x2b[, 3]^2)
+  vinv <- cbind( x1b[, 1] * x2b, x1b[, 1] * x2b[, 2], 2 * x1b[, 2] * x2b[, 2],
+                 x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3], x1b[, 1] * x2b[, 3],
+                 x1b[, 3] * x2b[, 2] + x1b[, 2] * x2b[, 3], 2 * x1b[, 3] * x2b[, 3] )
+  heta <- sqrt(gam1^2 + gam2^2 + 1) - 1
+  1 + Rfast::rowsums( (gam2 * vinv + gam1 * (tx1 - tx2) + heta * (tx1 + tx2)) * za )
+}
+
+## approximately k axes, evenly spread on the hemisphere with first coordinate > 0
+.esag.hemi.axes <- function(k) {
+  N <- 2 * k
+  i <- seq(0.5, N - 0.5)
+  z <- 1 - 2 * i / N
+  ph <- pi * (1 + sqrt(5)) * i
+  w <- cbind( sqrt(1 - z^2) * cos(ph), sqrt(1 - z^2) * sin(ph), z )
+  w[ w[, 1] > 0, , drop = FALSE ]
+}
+
+## rotation matrix R with R %*% e1 = q (Rodrigues); stable because q[1] > 0
+.esag.rot.e1 <- function(q) {
+  q <- q / sqrt( sum(q^2) )
+  v <- c(0, -q[3], q[2])                 ## e1 x q
+  cc <- q[1]
+  K <- matrix( c(0, v[3], -v[2], -v[3], 0, v[1], v[2], -v[1], 0), 3, 3 )
+  diag(3) + K + K %*% K / (1 + cc)
+}

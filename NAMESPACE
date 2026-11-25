@@ -3,10 +3,10 @@
 importFrom("graphics", contour, lines, plot, points, abline, filled.contour,
            axis, par, segments)
 
-importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise,
-           .lm.fit, optim, optimize, pchisq, pf, pnorm, qchisq,
-           quantile, rbeta, rnorm, runif, sd, uniroot, qnorm, cov, BIC,
-		   model.matrix, nlm, integrate, rbinom, rcauchy, rexp, ks.test)
+importFrom("stats", aggregate, coef, cor, dnorm, kmeans, optimise, .lm.fit,
+           optim, optimize, pchisq, pf, pnorm, qchisq, quantile, rbeta, rnorm,
+           runif, sd, uniroot, qnorm, cov, BIC, model.matrix, nlm, integrate,
+           rbinom, rcauchy, rexp, ks.test, optimHess)
 
 importFrom("Rfast", colVars, mahala, colmeans, colsums, rowmeans, rowsums,
            colSort, colMedians, rowMins, rowMaxs, colMaxs, rvmf, vmf.mle,
@@ -31,8 +31,8 @@ importFrom("rnaturalearth", ne_countries)
 importFrom("sf", st_transform, st_as_sf)
 importFrom("grDevices", heat.colors, hcl.colors, colorRampPalette, contourLines)
 importFrom("magrittr", "%>%")
-importFrom("ggplot2", aes, element_line, element_rect, element_text, geom_sf, ggplot,
-           ggtitle, labs, scale_fill_gradientn, theme, xlim, ylim)
+importFrom("ggplot2", aes, element_line, element_rect, element_text, geom_sf,
+           ggplot, ggtitle, labs, scale_fill_gradientn, theme, xlim, ylim)
 
 exportPattern("^[[:alpha:]]+")
 exportPattern("^[^\\.]")

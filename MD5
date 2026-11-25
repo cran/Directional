@@ -1,5 +1,5 @@
-07364e99fa80abfa08c16f92f00233a8 *DESCRIPTION
-47815ac674496e15cc8a45811bd06a13 *NAMESPACE
+dbc7b25db5ecb89e94deeaf387a26e20 *DESCRIPTION
+a5ae19c7a6eb29e9adb9748115d95748 *NAMESPACE
 6f1a448d9685fa742dec300e011f0682 *R/Arotation.R
 ffc80a1ca4a2c1f2fa2b8d08f831ba5b *R/ESAGd.mle.R
 a53621d69e3af1d26ade4982c04ef53e *R/acg.mle.R
@@ -64,7 +64,7 @@ a7f71e7136d1a0ab8246c0d48144dee7 *R/embedcirc.perm.R
 f80465622888756f076ca9b09604c5ac *R/esag.contour.R
 6e9b6c3b52911afbe315e3fa0454cf6a *R/esag.mle.R
 b844437f877f19b5defe8e6f6e94c3b1 *R/esag.nr.R
-8c0117e6d1ec1564dcb31ffc81049292 *R/esag.reg.R
+05804dc2739128656e550831f407d311 *R/esag.reg.R
 12d771f0b3019eaacc1ad1864190a0c7 *R/etoa.R
 199ed51ab8b811b219abf1457ddd9ca3 *R/euclid.R
 34c2a95ff04525ec85e141f77b951dfa *R/euclid.inv.R
@@ -195,7 +195,7 @@ b38d46ee98785a247fd9fb7065f13901 *R/rspcauchy.R
 23d27ff3c5576e44d3224d45edfd7639 *R/score.cipc.R
 9c3c7805bad4b26a72043fe34237cef8 *R/score.spml.R
 c6547e53f98446ba47a7f7d7038ab72f *R/sespc.mle.R
-3e4564c8fe171588e1bdd0224c8872a9 *R/sespc.reg.R
+b1a48f7f3a52e50d29c23d8e62dd4ebb *R/sespc.reg.R
 187d64319c7d890f609b66662cb1186b *R/sipc.mle.R
 b58da1901dc5365d98f6918a5a7c6c1f *R/sipc.reg.R
 7d7c80430ce3c06fd2efc1f8afbc15d4 *R/south.america.R
@@ -247,7 +247,7 @@ faf58436a2c967b63d47b1208ed75412 *R/watson.R
 57a855f285b7cbd23dae5614dfa10ea8 *R/wraplaplace.mle.R
 30cfb97ab9b7f4503d375e4522c274ee *R/wrapnormal.mle.R
 081bae313416545a82e844d1225dc6a4 *man/Arotation.Rd
-ba297d93ad193db9da03d04d4847cb37 *man/Directional-package.Rd
+9cb67a20c921baf7adbb588b04e5adee *man/Directional-package.Rd
 b2a6716e56f6fd5b8601aec1c6e9d278 *man/bic.mixvmf.Rd
 31afb62193fa405192f81e4945e52788 *man/circ.cor1.Rd
 cc28105c873009ddcf34a19eea52bbbb *man/circ.cors1.Rd
@@ -271,7 +271,7 @@ d52bc8ac71c2bb3a116befd1118c43cd *man/dvmf.Rd
 d86aebf3ef5a343b9af2b0685ff4da54 *man/dwood.Rd
 1c6f6c2141a00302ddf9599e9a898ebe *man/esag.contour.Rd
 9b090f5fbdc2d951412c36028efb2f75 *man/esag.mle.Rd
-8172c29ed5de98ceec8b7fadfb7cef51 *man/esag.reg.Rd
+220e524acd795d75d63ceb01f4aa655e *man/esag.reg.Rd
 4a3cd7892c9c207f8d66c09c62b62b5f *man/etoa.Rd
 228e8971e7f278e6eb9ef387f23c9e8f *man/euclid.Rd
 76f2f1f2619bb17cab59defcc5f76ebc *man/euclid.inv.Rd
@@ -335,7 +335,7 @@ f3a39d8ff8f42c2384d8c0d5c6fd6315 *man/rvmf.Rd
 68738be7a6d0fcc58a19f0e153ab1d91 *man/rvonmises.Rd
 e8b0a6da1fc59244a69f9edfea2fb5c7 *man/score.cipc.Rd
 6adf6d80670650829cbb3d0f130e6873 *man/sespc.mle.Rd
-045b79d1774f87a41e7cb35b054c0d76 *man/sespc.reg.Rd
+7edda80935c4768ba44b0e110b98120f *man/sespc.reg.Rd
 82feba416587fdfa5ef8c75ae0e2f538 *man/spcauchy2test.Rd
 de241c4d5026f0115e0586b244c2ed51 *man/spher.cor.Rd
 d9e7822d52a884255a985bed7682b0b5 *man/spher.dcor.Rd
